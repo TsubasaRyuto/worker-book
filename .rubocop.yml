@@ -15,6 +15,8 @@ CaseIndentation:
   # Valid values are: case, end
   EnforcedStyle: case
   IndentOneStep: true
+Bundler/OrderedGems:
+  Enabled: false
 Metrics/AbcSize:
   Enabled: false
 Metrics/CyclomaticComplexity:
