@@ -1,5 +1,6 @@
 class Worker < ApplicationRecord
   has_many :skills, dependent: :destroy, class_name: 'Workers::Skill'
+  has_many :skill_languages, through: :appointments
   has_many :agreements
   has_one :account, dependent: :destroy, foreign_key: 'id', class_name: 'Workers::account'
   has_one :address, dependent: :destroy, foreign_key: 'id', class_name: 'Workers::Address'
