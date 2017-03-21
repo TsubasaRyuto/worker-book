@@ -19,7 +19,7 @@ gem 'bcrypt', '~> 3.1.11'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'annotate', '~> 2.7.1'
+  gem 'annotate', github: 'ctran/annotate_models'
   gem 'pry-rails', '~> 0.3.5'
   gem 'pry-byebug', '~> 3.4.2'
   gem 'factory_girl_rails', '~> 4.8.0'
