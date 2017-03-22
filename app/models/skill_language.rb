@@ -1,6 +1,6 @@
 class SkillLanguage < ApplicationRecord
   has_many :skills, class_name: 'Workers::Skill'
-  has_many :workers, through: :appointments
+  has_many :workers, through: :skills
 end
 
 # == Schema Information

@@ -152,13 +152,18 @@ ActiveRecord::Schema.define(version: 20_170_320_113_419) do
   end
 
   create_table 'workers', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.string   'last_name',       null: false
-    t.string   'first_name',      null: false
-    t.string   'username',        null: false
-    t.string   'email',           null: false
-    t.string   'password_digest', null: false
-    t.datetime 'created_at',      null: false
-    t.datetime 'updated_at',      null: false
+    t.string   'last_name',                         null: false
+    t.string   'first_name',                        null: false
+    t.string   'username',                          null: false
+    t.string   'email',                             null: false
+    t.string   'password_digest',                   null: false
+    t.string   'remember_digest'
+    t.boolean  'admin', default: false, null: false
+    t.string   'activation_digest'
+    t.boolean  'activated', default: false, null: false
+    t.datetime 'activated_at'
+    t.datetime 'created_at',                        null: false
+    t.datetime 'updated_at',                        null: false
   end
 
 end
