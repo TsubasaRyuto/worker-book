@@ -1,0 +1,39 @@
+.sign-up {
+  background-color: $color-main;
+  width: 100%;
+
+  .form {
+    background-color: $color-sub3;
+    margin-top: 13vh;
+    margin-bottom: 13vh;
+    padding: 7vh 0;
+
+    h1 {
+      text-align: center;
+      margin-bottom: 15vh;
+    }
+
+    .form-control {
+      border: none;
+      border-bottom: 1px solid $color-main;
+      border-radius: 0;
+      box-shadow: none;
+      font-size: 23px;
+      font-style: italic;
+      font-family: $font-family-main;
+      letter-spacing: 1px;
+      margin-bottom: 45px;
+      opacity: .6;
+      padding-bottom: 15px;
+    }
+    .btn-primary {
+      background-color: $color-sub2;
+    }
+    .btn {
+      font-size: 20px;
+      margin-bottom: 10vh;
+      width: 100%;
+
+    }
+  }
+}
