@@ -1,0 +1,26 @@
+<header class="intro">
+  <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="row">
+        <div class="navbar-header">
+          <h1><%= link_to 'WorkerBook', root_path, id: 'top' %></h1>
+
+          <button type="button" class="navbar-toggle cllapsed" data-toggle="collapse" data-target="#header-navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="header-navbar" role='navigation'>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'WorkerBookとは？', '#', class: 'explanation' %></li>
+            <li><%= link_to 'サインイン', '#' %></li>
+            <li><%= link_to 'アカウント作成', '#' %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,7 @@
+ja:
+  views:
+    common:
+      info:
+        messages:
+          flash_check_email: 'メールアドレスの確認'
+          

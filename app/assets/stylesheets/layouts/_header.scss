@@ -1,0 +1,53 @@
+.intro {
+  height: 100px;
+  margin: 0;
+  padding: 0;
+
+  .navbar {
+    background-color: $color-sub3;
+    border-color: $color-sub3;
+    height: 100px;
+    margin: 0;
+
+    .navbar-header {
+      margin-left: 7%;
+
+      h1 {
+        line-height: 65px;
+
+        a {
+          color: $color-main;
+          font-size: 55px;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .navbar-collapse {
+      .navbar-nav {
+        font-size: 150%;
+        margin-top: 34px;
+
+        .explanation {
+          margin-right: 190px;
+        }
+
+        li {
+          color: $color-main;
+
+          a {
+            text-decoration: none;
+
+            &:hover {
+              color: $color-sub1;
+            }
+
+            &:focus {
+              color: $color-sub1;
+            }
+          }
+        }
+      }
+    }
+  }
+}

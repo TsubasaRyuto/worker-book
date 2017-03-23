@@ -1,0 +1,20 @@
+<%= @worker.first_name %>さん
+
+WorkerBookにご登録いただきありがとうございます。
+メールアドレスの確認など、登録を完了するためには以下のURLをクリックする必要があります。
+また、実際に仕事を受注するには<%= @worker.first_name %>さんのプロフィールを作成する必要があります。
+
+<%= activate_worker_url(@worker.activation_token, email: @worker.email) %>
+
+Hi <%= @worker.first_name %>
+Thank you getting start with WorkerBook.
+We need a confirm your email to complete your registration.
+Click below to confirm your email address.
+And You must create your profile to order the creative job.
+
+<%= activate_worker_url(@worker.activation_token, email: @worker.email) %>
+
+--------------------------------------------------------------------
+※このメールは送信専用で、返信を受け付けることはできません。
+
+WorkerBook Support
