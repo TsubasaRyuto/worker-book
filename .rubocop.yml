@@ -11,6 +11,8 @@ llCops:
     - !ruby/regexp /old_and_unused\.rb$/
 Rails:
   Enabled: true
+Rails:
+  SkipsValidation: false
 CaseIndentation:
   # Valid values are: case, end
   EnforcedStyle: case
