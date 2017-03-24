@@ -18,6 +18,12 @@
 #
 
 class WorkersController < ApplicationController
+  def index; end
+
+  def show; end
+
+  def edit; end
+
   def new
     @worker = Worker.new
   end
@@ -34,15 +40,14 @@ class WorkersController < ApplicationController
 
   def activate
     worker = Worker.find_by(email: params[:email])
-    if worker && !worker.activated? && worker.authenticated?(activation, paramas[:id])
-      worker.update_attribute(:activated, true)
-      worker.update_attribute(:activated_at, Time.zone.now)
-      login worker
+    if worker && !worker.activated? && worker.authenticated?(:activation, params[:token])
+      worker.activate
+      sign_in worker
       flash[:success] = 'アカウント登録完了'
-      redirect_to worker_create_profile_url
+      redirect_to root_url# worker_create_profile_url
     else
       flash[:danger] = '失敗'
-      redirect_to roo_url
+      redirect_to root_url
     end
   end
 

@@ -1,5 +1,5 @@
 class Worker < ApplicationRecord
-  attr_accessor :remember_toeken, :activation_token
+  attr_accessor :remember_token, :activation_token
 
   before_save :downcase_email, :downcase_username
   before_create :create_activation_digest
@@ -34,6 +34,11 @@ class Worker < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
+  def remember
+    self.remember_token = Worker.new_token
+    update_attribute(:remember_digest, Worker.digest(remember_token))
+  end
+
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
     return false if digest.nil?
@@ -42,11 +47,15 @@ class Worker < ApplicationRecord
 
   def activate
     update_attribute(:activated, true)
-    udpate_attribute(:activated_at, Time.zone.now)
+    update_attribute(:activated_at, Time.zone.now)
   end
 
   def send_activation_email
     WorkerMailer.activate_worker(self).deliver_now
+  end
+
+  def forget
+    update_attribute(:remember_digest, nil)
   end
 
   private
