@@ -5,7 +5,8 @@ FactoryGirl.define do
     first_name { name.first_name }
     username 'example_worker'
     email 'worker@example.com'
-    password_digest Worker.digest('foobar123')
+    password 'foobar123'
+    password_confirmation 'foobar123'
     activated true
     activated_at Time.zone.now
   end

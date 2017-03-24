@@ -3,7 +3,6 @@
 WorkerBookにご登録いただきありがとうございます。
 メールアドレスの確認など、登録を完了するためには以下のURLをクリックする必要があります。
 また、実際に仕事を受注するには<%= @worker.first_name %>さんのプロフィールを作成する必要があります。
-
 <%= activate_worker_url(@worker.activation_token, email: @worker.email) %>
 
 Hi <%= @worker.first_name %>
