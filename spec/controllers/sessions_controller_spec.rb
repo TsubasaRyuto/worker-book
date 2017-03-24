@@ -26,7 +26,7 @@ RSpec.describe SessionsController, type: :controller do
 
       context 'remember_me off' do
         before do
-          post :create, params: { session: { email: worker.email, password: worker.password, remember_me: '0'} }
+          post :create, params: { session: { email: worker.email, password: worker.password, remember_me: '0' } }
         end
         it 'should worker sign in' do
           expect(response).to redirect_to worker_path(worker)

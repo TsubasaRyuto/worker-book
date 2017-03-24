@@ -44,7 +44,7 @@ class WorkersController < ApplicationController
       worker.activate
       sign_in worker
       flash[:success] = 'アカウント登録完了'
-      redirect_to root_url# worker_create_profile_url
+      redirect_to root_url #worker_create_profile_url
     else
       flash[:danger] = '失敗'
       redirect_to root_url
