@@ -1,0 +1,249 @@
+// introbody
+.introbody {
+  background-size: 350px 390px;
+  background-image: url('static_pages/top_book.png');
+  background-repeat: no-repeat;
+  background-color: $color-main;
+  background-position: center 50px;
+  height: auto;
+
+  .service-name {
+    color: $color-sub3;
+    font-size: 130px;
+    font-weight: bold;
+    padding-top: 25vh;
+    text-align: center;
+    z-index: 100;
+  }
+
+  .buttons {
+    padding-bottom: 6vh;
+
+    ul {
+      font-size: 0;
+      padding: 0;
+      text-align: center;
+      margin-top: 22vh;
+
+      li {
+        display: inline-block;
+        padding: 3vh 25px;
+        font-size: 25px;
+        font-weight: bold;
+        width: 260px;
+      }
+      .account-create {
+        background-color: $color-sub2;
+        color: $color-sub3;
+      }
+
+      .find-worker {
+        background-color: $color-sub3;
+        color: $color-sub2;
+      }
+    }
+  }
+}
+
+// wb-explanation
+.wb-explanation {
+  color: $color-main;
+  padding: 10vh 0;
+
+  .title-ja {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .title-en {
+    text-align: center;
+    font-weight: lighter;
+  }
+
+  .content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 35px 0 45px;
+
+    p {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+
+  .wb-impossible {
+    .title {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .contents {
+      margin-left: 55px;
+
+      li {
+        list-style-type: disc;
+        padding-top: 10px;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .wb-features {
+    .title {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .contents {
+      margin-left: 120px;
+
+      li {
+        list-style-type: disc;
+        padding-top: 10px;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+// how-it-work
+.how-it-work {
+  background-color: $color-sub2;
+  padding: 15vh 0;
+
+  .img-size {
+    max-width: 210px;
+    max-height: 160px;
+    display: block;
+    margin: 15px auto;
+  }
+
+  .title-en {
+    color: $color-sub3;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .title-ja {
+    color: $color-sub3;
+    text-align: center;
+    font-weight: lighter;
+  }
+
+  .client-flow {
+    margin: 40px 0;
+    background-color: $color-sub3;
+
+    .header {
+      background-color: $color-main;
+      height: 70px;
+
+      .title {
+        color: $color-sub3;
+        font-weight: bold;
+        line-height: 70px;
+        text-align: center;
+      }
+    }
+
+    .contents {
+      .text {
+        color: $color-main;
+
+        h3 {
+          font-weight: bold;
+          text-align: center;
+        }
+
+        p {
+          display: block;
+          font-size: 20px;
+          padding: 10px 0;
+          margin: 0 auto;
+          width: 220px;
+        }
+      }
+    }
+  }
+  .worker-flow {
+    margin-top: 30px;
+    background-color: $color-sub3;
+
+    .header {
+      background-color: $color-main;
+      height: 70px;
+
+      .title {
+        color: $color-sub3;
+        font-weight: bold;
+        line-height: 70px;
+        text-align: center;
+      }
+    }
+
+    .contents {
+      .text {
+        color: $color-main;
+
+        h3 {
+          font-weight: bold;
+          text-align: center;
+        }
+
+        p {
+          display: block;
+          font-size: 20px;
+          padding: 10px 0;
+          margin: 0 auto;
+          width: 250px;
+        }
+      }
+    }
+  }
+}
+
+// find workers
+.find-workers {
+  color: $color-main;
+  padding: 10vh 0;
+
+  .title-ja {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .title-en {
+    text-align: center;
+    font-weight: lighter;
+  }
+
+  .developer-types {
+    margin-top: 50px;
+
+    .row {
+      margin: 0 auto;
+      width: 900px;
+      .type {
+        border: 1px solid $color-main;
+        height: 225px;
+
+        .img-size {
+          max-width: 180px;
+          height: 130px;
+          display: block;
+          margin: 15px auto;
+        }
+
+        .name {
+          font-size: 20px;
+          text-align: center;
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+}

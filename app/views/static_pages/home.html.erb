@@ -1,1 +1,165 @@
-<h1>Welcom to WorkerBook</h1>
+<section class="introbody">
+  <h1 class="service-name">WorkerBook</h1>
+  <div class="buttons">
+    <ul>
+      <%= link_to '#' do %>
+        <li class="account-create">アカウント作成</li>
+      <% end %>
+      <%= link_to '#' do %>
+        <li class="find-worker">Workerを探す</li>
+      <% end %>
+    </ul>
+  </div>
+</section>
+
+<section class="wb-explanation">
+  <div class="container">
+    <h1 class="title-ja">WorkerBookとは？</h1>
+    <h2 class="title-en">What is WorkerBook?</h2>
+    <div class="content">
+      <p>WorkerBookとは自分にあった働き方を目指すフリーランスエンジニアが集まり、チームに最適なフリーランスパートナーを探しマッチングすることができるITエンジニアに特化したクラウドソーシングサービスです。</p>
+    </div>
+    <div class="row">
+      <div class="wb-impossible col-md-6">
+        <h2 class="title">WorkerBookでできないこと</h2>
+        <ul class="contents">
+          <li>コンペ形式の発注</li>
+          <li>発注内容に対しての提案受付</li>
+          <li>クライアントが報酬を決めること</li>
+        </ul>
+      </div>
+      <div class="wb-features col-md-6">
+        <h2 class="title">WorkerBookの特徴</h2>
+        <ul class="contents">
+          <li>ワーカー自らが人日報酬額を決めることができる</li>
+          <li>クライアントは条件にあったワーカーを選択し、仕事を発注する</li>
+          <li>クライアント側が報酬価格を決めることはできない</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-work">
+  <div class="container">
+    <h1 class="title-en">How it works</h1>
+    <h2 class="title-ja">使い方</h2>
+    <div class="client-flow">
+      <div class="header">
+        <h2 class="title">仕事の依頼フロー</h2>
+      </div>
+      <div class="contents row">
+        <div class="col-md-3">
+          <%= image_tag 'static_pages/how_it_works/create_account.png', alt: "登録", class: 'img-size' %>
+          <div class="text">
+            <h3>登録</h3>
+            <p>まずは登録から。登録をしないと発注することはできません。</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <%= image_tag 'static_pages/how_it_works/find_workers.png', alt: "探す", class: 'img-size' %>
+          <div class="text">
+            <h3>探す</h3>
+            <p>条件にあったパートナーを探す。必ず見つかるはずです。</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <%= image_tag 'static_pages/how_it_works/order_agreement.png', alt: "発注＆契約", class: 'img-size' %>
+          <div class="text">
+            <h3 >発注＆契約</h3>
+            <p>条件にあったパートナーを見つけたら仕事を発注し、契約する。</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <%= image_tag 'static_pages/how_it_works/client_work.png', alt: "支払い＆仕事", class: 'img-size' %>
+          <div class="text">
+            <h3>支払い＆仕事</h3>
+            <p>契約を終えたら、報酬を仮払いし、仕事を始める。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="worker-flow">
+      <div class="header">
+        <h2 class="title">仕事の受注フロー</h2>
+      </div>
+      <div class="contents row">
+        <div class="col-md-4">
+          <%= image_tag 'static_pages/how_it_works/create_account.png', alt: "支払い＆仕事", class: 'img-size' %>
+          <div class="text">
+            <h3>登録</h3>
+            <p>まずは登録から。できる限り正確な情報を登録しましょう。</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <%= image_tag 'static_pages/how_it_works/agreement_order.png', alt: "支払い＆仕事", class: 'img-size' %>
+          <div class="text">
+            <h3>受注＆契約</h3>
+            <p>登録をしたらあとはクライアントからの受注を待つだけ。必ずあなたと仕事をしたいというクライアントが現れます。</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <%= image_tag 'static_pages/how_it_works/worker_work.png', alt: "支払い＆仕事", class: 'img-size' %>
+          <div class="text">
+            <h3>仕事</h3>
+            <p>契約を終えたら、報酬の仮払いを確認し、仕事を始める。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="find-workers">
+  <div class="container">
+    <h1 class="title-ja">Workerを探す
+    <h2 class="title-en">Find Freelancers</h2>
+    <div class="row">
+      <!-- 検索機能に関してはのちほど -->
+    </div>
+    <div class="developer-types">
+      <div class="row">
+        <div class="web-developer type col-md-4">
+          <%= image_tag 'static_pages/types/web_developer.png', alt: "Web Developer", class: 'img-size' %>
+          <p class="name">Web Developer</p>
+        </div>
+        <div class="mobile-developer type col-md-4">
+          <%= image_tag 'static_pages/types/mobile_developer.png', alt: "Mobile Developer", class: 'img-size' %>
+          <p class="name">Mobile Developer</p>
+        </div>
+        <div class="game-developer type col-md-4">
+          <%= image_tag 'static_pages/types/game_developer.png', alt: "Game Developer", class: 'img-size' %>
+          <p class="name">Game Developer</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="desktop-developer type col-md-4">
+          <%= image_tag 'static_pages/types/desktop_developer.png', alt: "DesktopSoftware Developer", class: 'img-size' %>
+          <p class="name">DesktopSoftware Developer</p>
+        </div>
+        <div class="ai-developer type col-md-4">
+          <%= image_tag 'static_pages/types/ai_developer.png', alt: "AI Developer", class: 'img-size' %>
+          <p class="name">AI Developer</p>
+        </div>
+        <div class="web-mobile-designer type col-md-4">
+          <%= image_tag 'static_pages/types/web_designer.png', alt: "Web&Mobile Designer", class: 'img-size' %>
+          <p class="name">Web＆Mobile Designer</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="project-maneger type col-md-4">
+          <%= image_tag 'static_pages/types/project_manager.png', alt: "Project Manger", class: 'img-size' %>
+          <p class="name">Project Manager</p>
+        </div>
+        <div class="qa-testing type col-md-4">
+          <%= image_tag 'static_pages/types/qa_testing', alt: "QA&Testing", class: 'img-size' %>
+          <p class="name">QA ＆ Testing</p>
+        </div>
+        <div class="other type col-md-4">
+          <%= image_tag 'static_pages/wb_icon.png', alt: "Other", class: 'img-size' %>
+          <p class="name">Other</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
