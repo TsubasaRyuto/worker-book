@@ -1,13 +1,12 @@
-module Clients
-  class Profile < ApplicationRecord
-    self.table_name = 'client_profiles'
-    self.primary_key = :id
-    belongs_to :clients, foreign_key: 'id'
+class ClientProfile < ApplicationRecord
+  self.table_name = 'client_profiles'
+  self.primary_key = :id
+  belongs_to :clients, foreign_key: 'id'
 
-    before_create { self.id = self.client.id }
-    validates :id, uniqueness: true
-  end
+  before_create { self.id = self.client.id }
+  validates :id, uniqueness: true
 end
+
 
 # == Schema Information
 #

@@ -1,7 +1,7 @@
 class Chat < ApplicationRecord
   belongs_to :agreement
-  has_many :chat_images, dependent: :destroy, class_name: 'Chats::Image'
-  has_many :chat_file, dependent: :destroy, class_name: 'Chats::file'
+  has_many :chat_images, dependent: :destroy, class_name: 'ChatImage'
+  has_many :chat_file, dependent: :destroy, class_name: 'Chatfile'
 end
 
 # == Schema Information

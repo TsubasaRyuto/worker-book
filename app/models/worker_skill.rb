@@ -1,9 +1,9 @@
-module Workers
-  class Skill < ApplicationRecord
-    self.table_name = 'worker_skills'
-    belongs_to :worker
-    belongs_to :skill_language
-  end
+class WorkerSkill < ApplicationRecord
+  belongs_to :worker
+  belongs_to :skill_language
+
+  validates :worker_id, presence: true
+  validates :skill_language_id, presence: true
 end
 
 # == Schema Information

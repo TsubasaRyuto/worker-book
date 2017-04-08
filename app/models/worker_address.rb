@@ -1,12 +1,10 @@
-module Workers
-  class Address < ApplicationRecord
-    self.table_name = 'worker_addresses'
-    self.primary_key = :id
-    belongs_to :worker, foreign_key: 'id'
+class WorkerAddress < ApplicationRecord
+  self.table_name = 'worker_addresses'
+  self.primary_key = :id
+  belongs_to :worker, foreign_key: 'id'
 
-    before_create { self.id = self.worker.id }
-    validates :id, uniqueness: true
-  end
+  before_create { self.id = self.worker.id }
+  validates :id, uniqueness: true
 end
 
 # == Schema Information
