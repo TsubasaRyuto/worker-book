@@ -1,0 +1,54 @@
+.upload-picture {
+  margin-bottom: 50px;
+  position: relative;
+
+  &:hover {
+    .picture-info {
+      display: block;
+    }
+  }
+
+  .picture-info {
+    @include info_box($top: 80px);
+
+    &:after {
+      @include info_box_after($top: 40px);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    strong {
+      font-size: 20px;
+    }
+  }
+
+  .worker-picture {
+    border: 1px solid $color-main;
+    border-radius: 50%;
+    position:relative;
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    .pic-size {
+      height: 150px;
+      left: -9px;
+      position: absolute;
+      top: -12px;
+      width: 150px;
+    }
+  }
+
+  .mess {
+    font-size: 20px;
+  }
+
+  .upload-link {
+    cursor: pointer;
+  }
+  .upload {
+    color: $color-sub2;
+    margin-top: 40px;
+  }
+}
