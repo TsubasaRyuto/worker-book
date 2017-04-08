@@ -7,14 +7,12 @@ Rails.application.routes.draw do
   delete '/sign_out', to: 'sessions#destroy'
 
   resources :workers, except: %i(new), param: :username, path: '/' do
-    get '/create_profile', to: 'profiles#new'
-    resource :profiles, only: %i(create), path: '/', controller: :worker_profiles do
-      scope '/profile' do
-        member do
-          get :confirm
-        end
-      end
+    collection do
+      get '/autocomplete_skill/:term', to: 'workers#autocomplete_skill', defaults: { format: 'json' }
     end
+
+    get '/create_profile', to: 'worker_profiles#new'
+    resource :profiles, only: %i(create), path: '/', controller: :worker_profiles
   end
 
   resources :clients, except: %i(new), param: :username, path: '/' do

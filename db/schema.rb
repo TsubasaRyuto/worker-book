@@ -10,160 +10,160 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_320_113_419) do
+ActiveRecord::Schema.define(version: 20170320113419) do
 
-  create_table 'agreements', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.integer  'worker_id',                     null: false
-    t.integer  'job_content_id',                null: false
-    t.boolean  'active', default: true, null: false
-    t.datetime 'created_at',                    null: false
-    t.datetime 'updated_at',                    null: false
-    t.index ['job_content_id'], name: 'index_agreements_on_job_content_id', using: :btree
-    t.index ['worker_id'], name: 'index_agreements_on_worker_id', using: :btree
+  create_table "agreements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "worker_id",                     null: false
+    t.integer  "job_content_id",                null: false
+    t.boolean  "active",         default: true, null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["job_content_id"], name: "index_agreements_on_job_content_id", using: :btree
+    t.index ["worker_id"], name: "index_agreements_on_worker_id", using: :btree
   end
 
-  create_table 'chat_files', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.integer  'chat_id',    null: false
-    t.string   'filename',   null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['chat_id'], name: 'index_chat_files_on_chat_id', using: :btree
+  create_table "chat_files", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "chat_id",    null: false
+    t.string   "filename",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_chat_files_on_chat_id", using: :btree
   end
 
-  create_table 'chat_images', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.integer  'chat_id',    null: false
-    t.string   'image',      null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['chat_id'], name: 'index_chat_images_on_chat_id', using: :btree
+  create_table "chat_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "chat_id",    null: false
+    t.string   "image",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_chat_images_on_chat_id", using: :btree
   end
 
-  create_table 'chats', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.integer  'agreement_id', null: false
-    t.text     'message', limit: 65_535, null: false
-    t.datetime 'created_at',                 null: false
-    t.datetime 'updated_at',                 null: false
-    t.index ['agreement_id'], name: 'index_chats_on_agreement_id', using: :btree
+  create_table "chats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "agreement_id",               null: false
+    t.text     "message",      limit: 65535, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["agreement_id"], name: "index_chats_on_agreement_id", using: :btree
   end
 
-  create_table 'clents', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.string   'last_name',       null: false
-    t.string   'first_name',      null: false
-    t.string   'username',        null: false
-    t.string   'company_name',    null: false
-    t.string   'email',           null: false
-    t.string   'password_digest', null: false
-    t.datetime 'created_at',      null: false
-    t.datetime 'updated_at',      null: false
+  create_table "clents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "last_name",       null: false
+    t.string   "first_name",      null: false
+    t.string   "username",        null: false
+    t.string   "company_name",    null: false
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  create_table 'client_profiles', id: false, force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.integer  'id',             null: false
-    t.string   'corporate_site', null: false
-    t.string   'logo',           null: false
-    t.datetime 'created_at',     null: false
-    t.datetime 'updated_at',     null: false
-    t.index ['id'], name: 'index_client_profiles_on_id', unique: true, using: :btree
+  create_table "client_profiles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "id",             null: false
+    t.string   "corporate_site", null: false
+    t.string   "logo",           null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["id"], name: "index_client_profiles_on_id", unique: true, using: :btree
   end
 
-  create_table 'job_contents', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.integer  'client_id',                     null: false
-    t.string   'title',                         null: false
-    t.text     'content',         limit: 65_535, null: false
-    t.text     'skill_language',  limit: 65_535
-    t.text     'past_experience', limit: 65_535, null: false
-    t.datetime 'start_date',                    null: false
-    t.datetime 'finish_date',                   null: false
-    t.datetime 'created_at',                    null: false
-    t.datetime 'updated_at',                    null: false
-    t.index ['client_id'], name: 'index_job_contents_on_client_id', using: :btree
+  create_table "job_contents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "client_id",                     null: false
+    t.string   "title",                         null: false
+    t.text     "content",         limit: 65535, null: false
+    t.text     "skill_language",  limit: 65535
+    t.text     "past_experience", limit: 65535, null: false
+    t.datetime "start_date",                    null: false
+    t.datetime "finish_date",                   null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["client_id"], name: "index_job_contents_on_client_id", using: :btree
   end
 
-  create_table 'skill_languages', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.string   'name',       null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "skill_languages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'worker_accounts', id: false, force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.integer  'id'
-    t.boolean  'bank',         default: true,  null: false
-    t.boolean  'post_bank',    default: false, null: false
-    t.string   'bank_name'
-    t.string   'branch_name'
-    t.boolean  'type', default: false, null: false
-    t.string   'account_name'
-    t.string   'number'
-    t.datetime 'created_at',                   null: false
-    t.datetime 'updated_at',                   null: false
-    t.index ['id'], name: 'index_worker_accounts_on_id', unique: true, using: :btree
+  create_table "worker_accounts", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "id"
+    t.boolean  "bank",         default: true,  null: false
+    t.boolean  "post_bank",    default: false, null: false
+    t.string   "bank_name"
+    t.string   "branch_name"
+    t.boolean  "type",         default: false, null: false
+    t.string   "account_name"
+    t.string   "number"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["id"], name: "index_worker_accounts_on_id", unique: true, using: :btree
   end
 
-  create_table 'worker_addresses', id: false, force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.integer  'id',                       null: false
-    t.string   'postcode',     limit: 7,   null: false
-    t.string   'prefecture',   limit: 2
-    t.string   'city',         limit: 200
-    t.string   'house_number', limit: 200
-    t.string   'phone_number', limit: 13
-    t.datetime 'created_at',               null: false
-    t.datetime 'updated_at',               null: false
-    t.index ['id'], name: 'index_worker_addresses_on_id', unique: true, using: :btree
+  create_table "worker_addresses", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "id",                       null: false
+    t.string   "postcode",     limit: 7,   null: false
+    t.string   "prefecture",   limit: 2
+    t.string   "city",         limit: 200
+    t.string   "house_number", limit: 200
+    t.string   "phone_number", limit: 13
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["id"], name: "index_worker_addresses_on_id", unique: true, using: :btree
   end
 
-  create_table 'worker_profiles', id: false, force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.integer  'id',                                                    null: false
-    t.boolean  'type_web_developer',                    default: false, null: false
-    t.boolean  'type_mobile_developer',                 default: false, null: false
-    t.boolean  'type_game_developer',                   default: false, null: false
-    t.boolean  'type_desktop_developer',                default: false, null: false
-    t.boolean  'type_ai_developer',                     default: false, null: false
-    t.boolean  'type_qa_testing',                       default: false, null: false
-    t.boolean  'type_web_mobile_desiner',               default: false, null: false
-    t.boolean  'type_project_maneger',                  default: false, null: false
-    t.boolean  'type_other',                            default: false, null: false
-    t.integer  'availability',                          default: 0,     null: false
-    t.string   'past_performance1',                                     null: false
-    t.string   'past_performance2'
-    t.string   'past_performance3'
-    t.string   'past_performance4'
-    t.integer  'unit_price', default: 30_000, null: false
-    t.text     'appeal_note', limit: 65_535, null: false
-    t.string   'picture',                                               null: false
-    t.string   'location',                                              null: false
-    t.string   'employment_history1',                                   null: false
-    t.string   'employment_history2'
-    t.string   'employment_history3'
-    t.string   'employment_history4'
-    t.boolean  'currently_freelancer',                  default: true,  null: false
-    t.boolean  'active',                                default: true,  null: false
-    t.datetime 'created_at',                                            null: false
-    t.datetime 'updated_at',                                            null: false
-    t.index ['id'], name: 'index_worker_profiles_on_id', unique: true, using: :btree
+  create_table "worker_profiles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "id",                                                    null: false
+    t.boolean  "type_web_developer",                    default: false, null: false
+    t.boolean  "type_mobile_developer",                 default: false, null: false
+    t.boolean  "type_game_developer",                   default: false, null: false
+    t.boolean  "type_desktop_developer",                default: false, null: false
+    t.boolean  "type_ai_developer",                     default: false, null: false
+    t.boolean  "type_qa_testing",                       default: false, null: false
+    t.boolean  "type_web_mobile_desiner",               default: false, null: false
+    t.boolean  "type_project_maneger",                  default: false, null: false
+    t.boolean  "type_other",                            default: false, null: false
+    t.integer  "availability",                          default: 0,     null: false
+    t.string   "past_performance1",                                     null: false
+    t.string   "past_performance2"
+    t.string   "past_performance3"
+    t.string   "past_performance4"
+    t.integer  "unit_price",                            default: 30000, null: false
+    t.text     "appeal_note",             limit: 65535,                 null: false
+    t.string   "picture",                                               null: false
+    t.string   "location",                                              null: false
+    t.string   "employment_history1",                                   null: false
+    t.string   "employment_history2"
+    t.string   "employment_history3"
+    t.string   "employment_history4"
+    t.boolean  "currently_freelancer",                  default: true,  null: false
+    t.boolean  "active",                                default: true,  null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+    t.index ["id"], name: "index_worker_profiles_on_id", unique: true, using: :btree
   end
 
-  create_table 'worker_skills', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.integer  'worker_id',         null: false
-    t.integer  'skill_language_id', null: false
-    t.datetime 'created_at',        null: false
-    t.datetime 'updated_at',        null: false
-    t.index ['skill_language_id'], name: 'index_worker_skills_on_skill_language_id', using: :btree
-    t.index ['worker_id'], name: 'index_worker_skills_on_worker_id', using: :btree
+  create_table "worker_skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "worker_id",         null: false
+    t.integer  "skill_language_id", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["skill_language_id"], name: "index_worker_skills_on_skill_language_id", using: :btree
+    t.index ["worker_id"], name: "index_worker_skills_on_worker_id", using: :btree
   end
 
-  create_table 'workers', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.string   'last_name',                         null: false
-    t.string   'first_name',                        null: false
-    t.string   'username',                          null: false
-    t.string   'email',                             null: false
-    t.string   'password_digest',                   null: false
-    t.string   'remember_digest'
-    t.boolean  'admin', default: false, null: false
-    t.string   'activation_digest'
-    t.boolean  'activated', default: false, null: false
-    t.datetime 'activated_at'
-    t.datetime 'created_at',                        null: false
-    t.datetime 'updated_at',                        null: false
+  create_table "workers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "last_name",                         null: false
+    t.string   "first_name",                        null: false
+    t.string   "username",                          null: false
+    t.string   "email",                             null: false
+    t.string   "password_digest",                   null: false
+    t.string   "remember_digest"
+    t.boolean  "admin",             default: false, null: false
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false, null: false
+    t.datetime "activated_at"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
 end

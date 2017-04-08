@@ -1,6 +1,8 @@
 class SkillLanguage < ApplicationRecord
-  has_many :skills, class_name: 'Workers::Skill'
-  has_many :workers, through: :skills
+  has_many :worker_skills
+  has_many :workers, through: :worker_skills
+
+  scope :autocomplete, ->(term) { where("name LIKE ?", "#{term}%").order(:name) }
 end
 
 # == Schema Information

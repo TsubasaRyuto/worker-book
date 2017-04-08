@@ -4,12 +4,12 @@ class Worker < ApplicationRecord
   before_save :downcase_email, :downcase_username
   before_create :create_activation_digest
 
-  has_many :skills, dependent: :destroy, class_name: 'Workers::Skill'
-  has_many :skill_languages, through: :skills
+  has_many :worker_skills, dependent: :destroy
+  has_many :skill_languages, through: :worker_skills
   has_many :agreements
-  has_one :account, dependent: :destroy, foreign_key: 'id', class_name: 'Workers::account'
-  has_one :address, dependent: :destroy, foreign_key: 'id', class_name: 'Workers::Address'
-  has_one :profile, dependent: :destroy, foreign_key: 'id', class_name: 'Workers::profile'
+  has_one :account, dependent: :destroy, foreign_key: 'id', class_name: 'WorkerAccount'
+  has_one :address, dependent: :destroy, foreign_key: 'id', class_name: 'WorkerAddress'
+  has_one :profile, dependent: :destroy, foreign_key: 'id', class_name: 'WorkerProfile'
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   MAX_LENGTH_EMAIL = 100

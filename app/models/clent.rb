@@ -1,6 +1,6 @@
 class Clent < ApplicationRecord
   has_many :job_contents, dependent: :destroy
-  has_one :profile, dependent: :destroy, foreign_key: 'id', class_name: 'Clients::Profile'
+  has_one :profile, dependent: :destroy, foreign_key: 'id', class_name: 'ClientProfile'
 
   before_save {
     self.build_profile unless self.profile

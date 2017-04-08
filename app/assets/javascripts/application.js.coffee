@@ -13,5 +13,8 @@
 #= require jquery
 #= require bootstrap-sprockets
 #= require jquery_ujs
+#= require jquery-ui/widgets/autocomplete
+#= require jquery.Jcrop
+#= require tag-it
 #= require turbolinks
-#= require_tree .
+#= require_tree ./worker_profiles/

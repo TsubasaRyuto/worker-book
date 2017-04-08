@@ -12,9 +12,15 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2.1'
 gem 'therubyracer', '~> 0.12.3'
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'turbolinks', '~> 5.0.1'
 gem 'jbuilder', '~> 2.6.3'
 gem 'bcrypt', '~> 3.1.11'
+gem 'seed-fu', '~> 2.3.6'
+gem 'enum_help', '~> 0.0.17'
+gem 'carrierwave', '~> 1.0.0'
+gem 'mini_magick', '~> 4.5.1'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

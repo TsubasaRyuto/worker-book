@@ -1,8 +1,14 @@
+/*
+*= require jquery-ui/autocomplete
+*= require jquery.tagit
+*= require tagit.ui-zendesk
+*= require jquery.Jcrop.min
+*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "variables";
 @import "base";
 @import "layouts/header";
-@import "workers/*";
 @import "sessions/*";
 @import "static_pages/*";
+@import "workers/profile/creates/new";

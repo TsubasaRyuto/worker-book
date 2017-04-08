@@ -1,0 +1,47 @@
+.type-note {
+  margin-bottom: 30px;
+  position: relative;
+
+  &:hover {
+    .note-info {
+      display: block;
+    }
+  }
+
+  .note-info {
+    @include info_box($top: 80px);
+
+    &:after {
+      @include info_box_after($top: 40px);
+    }
+
+    p {
+      margin: 0;
+
+    }
+
+    strong {
+      font-size: 20px;
+    }
+  }
+
+  h4 {
+    margin-bottom: 15px;
+  }
+
+  .form-control {
+    color: $color-main;
+    border-color: $color-main;
+    font-size: 20px;
+    resize: vertical;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .count-charcters {
+    color: $color-warning;
+    padding-left: 150px;
+  }
+}
