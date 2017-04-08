@@ -10,7 +10,7 @@ module SessionsHelper
   end
 
   def current_worker
-    if (worker_id = session[:user_id])
+    if (worker_id = session[:worker_id])
       @current_worker ||= Worker.find_by(id: worker_id)
     elsif (worker_id = cookies.signed[:worker_id])
       worker = Worker.find_by(id: worker_id)
@@ -31,7 +31,7 @@ module SessionsHelper
     cookies.delete(:remember_token)
   end
 
-  def log_out
+  def sign_out
     forget(current_worker)
     session.deleted(:worker_id)
     @current_worker = nil
