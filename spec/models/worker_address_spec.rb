@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe Workers::Skill, type: :model do
+RSpec.describe WorkerAddress, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

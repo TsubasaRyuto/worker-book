@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe Workers::Profile, type: :model do
+RSpec.describe ChatImage, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end
