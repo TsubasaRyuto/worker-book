@@ -1,0 +1,71 @@
+.select-signup-type {
+
+  .container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    .row {
+      margin: 0;
+    }
+  }
+
+  .client-area{
+    background-color: $color-sub3;
+    height: 85vh;
+
+    &:hover {
+      p {
+        display: block;
+      }
+    }
+
+    .caption{
+      color: $color-main;
+    }
+
+    p {
+      color: $color-main;
+    }
+  }
+
+  .worker-area{
+    background-color: $color-main;
+    height: 85vh;
+
+    &:hover {
+      p {
+        display: block;
+      }
+    }
+
+    .caption{
+      color: $color-sub3;
+    }
+
+    p {
+      color: $color-sub3;
+    }
+  }
+
+  // shared
+  .icon {
+    display: block;
+    margin: 150px auto 50px;
+    height: 120px;
+    width: 100px;
+  }
+
+  .caption {
+    font-size: 24px;
+    letter-spacing: 1.5px;
+    text-align: center;
+  }
+
+  p {
+    display: none;
+    font-size: 18px;
+    margin-top: 30px;
+    text-align: center;
+  }
+}
