@@ -1,3 +1,4 @@
+# rubocop:disable all
 class Prefecture
   ROWS = {
     '01'.freeze => '北海道'.freeze,
@@ -96,7 +97,7 @@ class Prefecture
     oita: { code: '44', name: '大分県' },
     miyazaki: { code: '45', name: '宮崎県' },
     kagoshima: { code: '46', name: '鹿児島県' },
-    okinawa: { code: '47', name: '沖縄県' },
+    okinawa: { code: '47', name: '沖縄県' }
   }.freeze
 
   def self.options
@@ -111,3 +112,4 @@ class Prefecture
     ROWS[key]
   end
 end
+# rubocop:enable all

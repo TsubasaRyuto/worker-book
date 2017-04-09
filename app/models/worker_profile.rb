@@ -13,7 +13,7 @@ class WorkerProfile < ApplicationRecord
   MAX_LENGTH = 3000
   MIN_LENGTH = 400
   UNIT_PRICE_REGEX = /\A[0-9]+$\Z/
-  URL_REGEX = /\A#{URI::regexp(%w(http https))}\z/
+  URL_REGEX = /\A#{URI.regexp(%w(http https))}\z/
 
   validates :id, uniqueness: true
   validates :type, presence_developer_type: true, max_count_developer_type: true
@@ -25,7 +25,7 @@ class WorkerProfile < ApplicationRecord
   with_options unless: 'past_performance4.blank?' do |n|
     n.validates :past_performance4, format: { with: URL_REGEX }, past_performance_dumplicate: true
   end
-  validates :unit_price, presence: true, inclusion: { in: 30000..200000 }, format: { with: UNIT_PRICE_REGEX }
+  validates :unit_price, presence: true, inclusion: { in: 30_000..200_000 }, format: { with: UNIT_PRICE_REGEX }
   validates :appeal_note, presence: true, length: { maximum: MAX_LENGTH, minimum: MIN_LENGTH }
   validates :location, presence: true
   validates :picture, presence: true

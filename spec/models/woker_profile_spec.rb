@@ -11,30 +11,32 @@ RSpec.describe WorkerProfile, type: :model do
   let(:type_web_mobile_desiner) { false }
   let(:type_project_maneger) { false }
   let(:type_other) { false }
-  let(:availability) {  WorkerProfile.availabilities.invert[1] }
+  let(:availability) { WorkerProfile.availabilities.invert[1] }
   let(:past_performance1) { 'http://example.com' }
   let(:past_performance2) { 'http://hogehoge.com' }
-  let(:past_performance3) {  }
-  let(:past_performance4) {  }
-  let(:unit_price) { 40000 }
+  let(:past_performance3) {}
+  let(:past_performance4) {}
+  let(:unit_price) { 40_000 }
   let(:appeal_note) { 'hoge' * 101 }
   let(:picture) { File.open(File.join(Rails.root, 'spec/fixtures/images/lobo.png')) }
   let(:location) { 01 }
   let(:employment_history1) { 'example company' }
   let(:employment_history2) { 'example2 comapny' }
-  let(:employment_history3) { }
-  let(:employment_history4) { }
+  let(:employment_history3) {}
+  let(:employment_history4) {}
   let(:currently_freelancer) { true }
   let(:active) { true }
   let(:skill_languages) { skills }
-  let(:worker_profile) { worker.build_profile(
-    type_web_developer: type_web_developer, type_mobile_developer: type_mobile_developer, type_game_developer: type_game_developer,
-    type_desktop_developer: type_desktop_developer, type_ai_developer: type_ai_developer, type_qa_testing: type_qa_testing, type_web_mobile_desiner: type_web_mobile_desiner,
-    type_project_maneger: type_project_maneger, type_other: type_other, availability: availability, past_performance1: past_performance1, past_performance2: past_performance2,
-    past_performance3: past_performance3, past_performance4: past_performance4, unit_price: unit_price, appeal_note: appeal_note, picture: picture, location: location,
-    employment_history1: employment_history1, employment_history2: employment_history2, employment_history3: employment_history3, employment_history3: employment_history3,
-    currently_freelancer: currently_freelancer, active: active
-    ) }
+  let(:worker_profile) {
+    worker.build_profile(
+      type_web_developer: type_web_developer, type_mobile_developer: type_mobile_developer, type_game_developer: type_game_developer,
+      type_desktop_developer: type_desktop_developer, type_ai_developer: type_ai_developer, type_qa_testing: type_qa_testing, type_web_mobile_desiner: type_web_mobile_desiner,
+      type_project_maneger: type_project_maneger, type_other: type_other, availability: availability, past_performance1: past_performance1, past_performance2: past_performance2,
+      past_performance3: past_performance3, past_performance4: past_performance4, unit_price: unit_price, appeal_note: appeal_note, picture: picture, location: location,
+      employment_history1: employment_history1, employment_history2: employment_history2, employment_history3: employment_history3, employment_history4: employment_history4,
+      currently_freelancer: currently_freelancer, active: active
+    )
+  }
 
   context 'validates' do
     context 'successful' do
@@ -97,12 +99,12 @@ RSpec.describe WorkerProfile, type: :model do
       context 'unit_price' do
         context 'inclusion' do
           context 'less than 30000' do
-            let(:unit_price) { 29999 }
+            let(:unit_price) { 29_999 }
             it { expect(worker_profile).to be_invalid }
           end
 
           context 'not less than 200000' do
-            let(:unit_price) { 200001 }
+            let(:unit_price) { 200_001 }
             it { expect(worker_profile).to be_invalid }
           end
 

@@ -2,7 +2,7 @@ class SkillLanguage < ApplicationRecord
   has_many :worker_skills
   has_many :workers, through: :worker_skills
 
-  scope :autocomplete, ->(term) { where("name LIKE ?", "#{term}%").order(:name) }
+  scope :autocomplete, ->(term) { where('name LIKE ?', "#{term}%").order(:name) }
 end
 
 # == Schema Information

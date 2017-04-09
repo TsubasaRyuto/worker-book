@@ -12,7 +12,7 @@ FactoryGirl.define do
     availability 'limited'
     past_performance1 'http://example.com'
     past_performance2 'http://example2.com'
-    unit_price 40000
+    unit_price 40_000
     appeal_note 'test hoge foo bar' * 80
     picture { Rack::Test::UploadedFile.new(File.join(Rails.root, '/spec/fixtures/images/lobo.png'), 'image/png') }
     location 02

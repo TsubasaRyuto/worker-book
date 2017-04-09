@@ -36,7 +36,6 @@
 #
 
 class WorkerProfilesController < ApplicationController
-
   def new
     @worker = current_worker
     if @worker && @worker.activated?
@@ -51,9 +50,9 @@ class WorkerProfilesController < ApplicationController
     @worker = current_worker
     @worker_skills = []
     @worker_profile = @worker.build_profile(profile_params)
-    redirect_to worker_create_profile_path(worker_username: @worker.username) unless skills = skill_params[:skill_language_id]
+    redirect_to worker_create_profile_path(worker_username: @worker.username) unless (skills = skill_params[:skill_language_id])
     skills.each do |skill|
-      worker_skills = @worker.worker_skills.build({skill_language_id: skill})
+      worker_skills = @worker.worker_skills.build(skill_language_id: skill)
       @worker_skills.push(worker_skills)
     end
     if @worker_profile.save && @worker_skills.each(&:save)
