@@ -74,19 +74,19 @@ RSpec.describe WorkerProfilesController, type: :controller do
     let(:type_web_mobile_desiner) { false }
     let(:type_project_maneger) { false }
     let(:type_other) { false }
-    let(:availability) {  WorkerProfile.availabilities.invert[1] }
+    let(:availability) { WorkerProfile.availabilities.invert[1] }
     let(:past_performance1) { 'http://example.com' }
     let(:past_performance2) { 'http://example2.com' }
     let(:past_performance3) {}
     let(:past_performance4) {}
-    let(:unit_price) { 40000 }
+    let(:unit_price) { 40_000 }
     let(:appeal_note) { 'hoge' * 101 }
     let(:picture) { fixture_file_upload('images/lobo.png', 'image/png') }
     let(:location) { 01 }
     let(:employment_history1) { 'example company' }
-    let(:employment_history2) { '' }
-    let(:employment_history3) { '' }
-    let(:employment_history4) { '' }
+    let(:employment_history2) {}
+    let(:employment_history3) {}
+    let(:employment_history4) {}
     let(:currently_freelancer) { true }
     let(:active) { true }
     let(:skill_languages) { skills }
@@ -104,10 +104,10 @@ RSpec.describe WorkerProfilesController, type: :controller do
             type_project_maneger: type_project_maneger, type_other: type_other, availability: availability, past_performance1: past_performance1, past_performance2: past_performance2,
             past_performance3: past_performance3, past_performance4: past_performance4, unit_price: unit_price, appeal_note: appeal_note, picture: picture, location: location,
             employment_history1: employment_history1, employment_history2: employment_history2, employment_history3: employment_history3, employment_history4: employment_history4,
-            currently_freelancer: currently_freelancer, active: active }, worker_skill: { skill_language_id: skill_languages }
-          }
+            currently_freelancer: currently_freelancer, active: active
+          }, worker_skill: { skill_language_id: skill_languages } }
         end
-        .to change { WorkerProfile.count }.by(1)
+          .to change { WorkerProfile.count }.by(1)
         expect(response).to redirect_to @worker
         expect(flash).to be_present
       end
@@ -121,8 +121,8 @@ RSpec.describe WorkerProfilesController, type: :controller do
             type_project_maneger: type_project_maneger, type_other: type_other, availability: availability, past_performance1: past_performance1, past_performance2: past_performance2,
             past_performance3: past_performance3, past_performance4: past_performance4, unit_price: unit_price, appeal_note: appeal_note, picture: picture, location: location,
             employment_history1: employment_history1, employment_history2: employment_history2,
-            currently_freelancer: currently_freelancer, active: active }, worker_skill: { skill_language_id: skill_languages }
-          }
+            currently_freelancer: currently_freelancer, active: active
+          }, worker_skill: { skill_language_id: skill_languages } }
         end
         it 'should not create worker profile' do
           expect(response).to redirect_to worker_create_profile_url(worker_username: worker.username)
@@ -203,13 +203,13 @@ RSpec.describe WorkerProfilesController, type: :controller do
       context 'invalid unit price' do
         context 'less than 30000' do
           it_behaves_like 'invalid profile information' do
-            let(:unit_price) { 29999 }
+            let(:unit_price) { 29_999 }
           end
         end
 
         context 'not less than 200000' do
           it_behaves_like 'invalid profile information' do
-            let(:unit_price) { 200001 }
+            let(:unit_price) { 200_001 }
           end
         end
 
