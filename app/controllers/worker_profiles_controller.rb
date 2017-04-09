@@ -58,9 +58,9 @@ class WorkerProfilesController < ApplicationController
     end
     if @worker_profile.save && @worker_skills.each(&:save)
       flash[:success] = 'プロフィールを作成しました'
-      redirect_to worker_path(username: @worker.username)
+      redirect_to worker_url(username: @worker.username)
     else
-      redirect_to worker_create_profile_path(worker_username: @worker.username)
+      redirect_to worker_create_profile_url(worker_username: @worker.username)
     end
   end
 

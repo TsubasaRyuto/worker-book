@@ -1,0 +1,12 @@
+ja:
+  worker_profile:
+    developer_type:
+      web_developer: 'Web Developer'
+      mobile_developer: 'Mobile Developer'
+      game_developer: 'Game Developer'
+      desktop_developer: 'Desktop Developer'
+      ai_developer: 'AI Developer'
+      qa_testing: 'QA&Testing'
+      web_mobile_desiner: 'Web&Mobile Designer'
+      project_maneger: 'Project Maneger'
+      other: 'Other'

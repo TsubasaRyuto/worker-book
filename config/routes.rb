@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     end
 
     get '/create_profile', to: 'worker_profiles#new'
-    resource :profiles, only: %i(create), path: '/', controller: :worker_profiles
+    get '/settings/profile', to: 'worker_profiles#edit'
+    resource :profiles, only: %i(create update), path: '/', controller: :worker_profiles
   end
 
   resources :clients, except: %i(new), param: :username, path: '/' do

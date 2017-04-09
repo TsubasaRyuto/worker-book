@@ -1,6 +1,9 @@
 class ProfilePictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
+  process resize_to_limit: [200, 200]
+
   storage :file
+
 
   def store_dir
     "system/#{Rails.env}#{ENV['TEST_ENV_NUMBER']}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
