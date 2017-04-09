@@ -20,7 +20,10 @@
 class WorkersController < ApplicationController
   def index; end
 
-  def show; end
+  def show
+    @worker = Worker.find_by(username: params[:username])
+  end
+
 
   def edit; end
 
@@ -44,7 +47,7 @@ class WorkersController < ApplicationController
       worker.activate
       sign_in worker
       flash[:success] = 'アカウント登録完了'
-      redirect_to root_url #worker_create_profile_url
+      redirect_to worker_create_profile_url(worker_username: worker.username)
     else
       flash[:danger] = '失敗'
       redirect_to root_url

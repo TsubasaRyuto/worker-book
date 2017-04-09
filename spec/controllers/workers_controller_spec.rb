@@ -25,8 +25,15 @@ RSpec.describe WorkersController, type: :controller do
     before do
       get :new
     end
-    it 'should get new' do
-      expect(response).to have_http_status :success
+    it { expect(response).to have_http_status :success }
+  end
+
+  context 'get show' do
+    context 'successfull' do
+      before do
+        get :show, params: { username: worker.username }
+      end
+      it { expect(response).to have_http_status :success }
     end
   end
 

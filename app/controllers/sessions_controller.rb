@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
       if worker.activated?
         sign_in worker
         params[:session][:remember_me] == '1' ? remember(worker) : forget(worker)
-        redirect_to worker
+        if worker.profile.nil?
+          redirect_to worker_create_profile_url(worker_username: worker.username)
+        else
+          redirect_to worker_url(username: worker.username)
+        end
       else
         flash[:warning] = ''
         redirect_to root_url

@@ -2,3 +2,4 @@ ja:
   worker_mailer:
     sign_up:
       subject: 'メールアドレス確認メール'
+        

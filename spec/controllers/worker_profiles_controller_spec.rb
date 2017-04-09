@@ -125,7 +125,7 @@ RSpec.describe WorkerProfilesController, type: :controller do
           }
         end
         it 'should not create worker profile' do
-          expect(response).to redirect_to worker_create_profile_path(worker_username: worker.username)
+          expect(response).to redirect_to worker_create_profile_url(worker_username: worker.username)
         end
       end
       context 'invalid developer type' do
