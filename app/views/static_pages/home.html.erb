@@ -2,8 +2,14 @@
   <h1 class="service-name">WorkerBook</h1>
   <div class="buttons">
     <ul>
-      <%= link_to sign_up_path do %>
-        <li class="account-create">アカウント作成</li>
+      <% if signed_in? %>
+        <%= link_to worker_path(username: current_worker.username) do %>
+          <li class="account-create">プロフィール</li>
+        <% end %>
+      <% else %>
+        <%= link_to sign_up_path do %>
+          <li class="account-create">アカウント作成</li>
+        <% end %>
       <% end %>
       <%= link_to '#' do %>
         <li class="find-worker">Workerを探す</li>

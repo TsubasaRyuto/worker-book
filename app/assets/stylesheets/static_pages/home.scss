@@ -4,20 +4,21 @@
   background-image: url('static_pages/top_book.png');
   background-repeat: no-repeat;
   background-color: $color-main;
-  background-position: center 50px;
+  background-position: center 100px;
   height: auto;
 
   .service-name {
     color: $color-sub3;
     font-size: 130px;
     font-weight: bold;
-    padding-top: 25vh;
+    margin: 0;
+    padding-top: 220px;
     text-align: center;
     z-index: 100;
   }
 
   .buttons {
-    padding-bottom: 6vh;
+    padding: 20px 0 40px;
 
     ul {
       font-size: 0;
@@ -114,8 +115,8 @@
   padding: 15vh 0;
 
   .img-size {
-    max-width: 210px;
-    max-height: 160px;
+    max-width: 180px;
+    max-height: 130px;
     display: block;
     margin: 15px auto;
   }
@@ -232,10 +233,10 @@
         height: 225px;
 
         .img-size {
-          max-width: 180px;
-          height: 130px;
+          max-width: 140px;
+          height: 90px;
           display: block;
-          margin: 15px auto;
+          margin: 40px auto 15px;
         }
 
         .name {

@@ -1,0 +1,13 @@
+// 全体のalert
+.alert {
+  margin: 25px 0 0;
+  text-align: center;
+}
+
+// sign up error alert
+.signup-form {
+  .alert {
+    margin: 20px 0 40px;
+    text-align: left;
+  }
+}
