@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'workers/:token/activate', to: 'workers#activate', as: 'activate_worker'
   get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'
-  delete '/sign_out', to: 'sessions#destroy'
+  get '/sign_out', to: 'sessions#destroy'
 
   resources :workers, except: %i(new), param: :username, path: '/' do
     collection do

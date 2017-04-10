@@ -32,8 +32,8 @@ module SessionsHelper
   end
 
   def sign_out
-    forget(current_worker)
-    session.deleted(:worker_id)
+    forget(current_worker) if current_worker.present?
+    session.delete(:worker_id)
     @current_worker = nil
   end
 end

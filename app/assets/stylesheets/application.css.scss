@@ -10,8 +10,9 @@
 @import "base";
 @import "layouts/header";
 @import "layouts/footer";
+@import "shared/error";
 @import "sessions/*";
 @import "static_pages/*";
 @import "workers/profile/creates/new";
 @import "workers/show";
-@import "shared/*"
+@import "workers/new";
