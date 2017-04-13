@@ -26,7 +26,6 @@ RSpec.describe WorkerProfile, type: :model do
   let(:employment_history4) {}
   let(:currently_freelancer) { true }
   let(:active) { true }
-  let(:skill_languages) { skills }
   let(:worker_profile) {
     worker.build_profile(
       type_web_developer: type_web_developer, type_mobile_developer: type_mobile_developer, type_game_developer: type_game_developer,
@@ -38,8 +37,8 @@ RSpec.describe WorkerProfile, type: :model do
     )
   }
 
-  context 'validates' do
-    context 'successful' do
+  describe 'validates' do
+    context 'successfull' do
       it { expect(worker_profile).to be_valid }
     end
 

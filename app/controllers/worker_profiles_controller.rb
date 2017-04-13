@@ -50,7 +50,8 @@ class WorkerProfilesController < ApplicationController
     @worker = current_worker
     @worker_skills = []
     @worker_profile = @worker.build_profile(profile_params)
-    redirect_to worker_create_profile_path(worker_username: @worker.username) unless (skills = skill_params[:skill_language_id])
+
+    skills = skill_params[:skill_language_id]
     skills.each do |skill|
       worker_skills = @worker.worker_skills.build(skill_language_id: skill)
       @worker_skills.push(worker_skills)
@@ -59,7 +60,7 @@ class WorkerProfilesController < ApplicationController
       flash[:success] = 'プロフィールを作成しました'
       redirect_to worker_url(username: @worker.username)
     else
-      redirect_to worker_create_profile_url(worker_username: @worker.username)
+      render :new
     end
   end
 

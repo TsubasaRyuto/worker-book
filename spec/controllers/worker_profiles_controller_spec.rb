@@ -39,7 +39,7 @@ require 'rails_helper'
 
 RSpec.describe WorkerProfilesController, type: :controller do
   let(:worker) { create :worker }
-  let(:skills) { create_list :skill_language, 5 }
+  let(:skills) { %w(Ruby C PHP jQery HTML JAVA) }
   context 'get new' do
     context 'success' do
       before do
@@ -53,13 +53,27 @@ RSpec.describe WorkerProfilesController, type: :controller do
       end
     end
 
-    context 'faild with not signed in' do
-      before do
-        get :new, params: { worker_username: worker.username }
+    context 'faild' do
+      context 'with not signed in' do
+        before do
+          get :new, params: { worker_username: worker.username }
+        end
+        it 'should redirect to root' do
+          expect(response).to redirect_to root_url
+          expect(signed_in?).to be_falsey
+        end
       end
-      it 'should get new' do
-        expect(response).to redirect_to root_url
-        expect(signed_in?).to be_falsey
+
+      context 'with not activated' do
+        let(:activated) { false }
+        before do
+          worker.activated = activated
+          get :new, params: { worker_username: worker.username }
+        end
+        it 'should redirect to root' do
+          expect(response).to redirect_to root_url
+          expect(signed_in?).to be_falsey
+        end
       end
     end
   end
@@ -125,7 +139,7 @@ RSpec.describe WorkerProfilesController, type: :controller do
           }, worker_skill: { skill_language_id: skill_languages } }
         end
         it 'should not create worker profile' do
-          expect(response).to redirect_to worker_create_profile_url(worker_username: worker.username)
+          expect(response).to render_template :new
         end
       end
       context 'invalid developer type' do

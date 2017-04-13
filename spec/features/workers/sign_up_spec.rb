@@ -5,7 +5,6 @@ RSpec.feature 'Workers:SingUp', type: :feature do
     before do
       ApplicationMailer.deliveries.clear
     end
-
     context 'invalid information' do
       it 'should not sign up' do
         visit '/worker/sign_up'
@@ -35,13 +34,30 @@ RSpec.feature 'Workers:SingUp', type: :feature do
         expect(ApplicationMailer.deliveries.size).to eq 1
         worker = Worker.last
         expect(worker.activated?).to be_falsey
+        # --- not activated
+        sign_on_as(worker)
+        expect(signed_on?(worker)).to be_falsey
+        # ---
+
+        # --- invalid token of activate
+        visit activate_worker_url('invalid token')
+        expect(signed_on?(worker)).to be_falsey
+        # ---
         mail = ApplicationMailer.deliveries.last
         mail_body = mail.body.encoded
         mail_body.split('\r\n').detect { |s| s.start_with?('http') }
         activation_token = mail_body.split('/')[4]
+
+        # --- valid token but email is invalid
+        visit activate_worker_url(activation_token, email: 'invalid email')
+        expect(signed_on?(worker)).to be_falsey
+        # ---
+
+        # --- valid activate
         visit activate_worker_path(activation_token, email: worker.email)
         expect(worker.reload.activated?).to be_truthy
-        # expect(logged_on?(worker)).to be_truthy
+        expect(signed_on?(worker)).to be_truthy
+        expect(page).to have_selector 'h1', text: "Create Profile"
       end
     end
   end

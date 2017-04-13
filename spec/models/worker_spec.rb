@@ -8,9 +8,20 @@ RSpec.describe Worker, type: :model do
   let(:password) { 'foobar123' }
   let(:confirmation) { 'foobar123' }
   let(:worker) { Worker.new(last_name: last_name, first_name: first_name, username: username, email: email, password: password, password_confirmation: confirmation) }
-  context 'validates' do
+
+  describe 'validates' do
     context 'successful' do
       it { expect(worker).to be_valid }
+
+      context 'valid any email' do
+        let(:addresses) { %w(example@i.example.com foo+123@i.com foo-bar@EXAMPLE.COM foo_bar@example.NET) }
+        it 'should be invalid' do
+          addresses.each do |address|
+            worker.email = address
+            expect(worker).to be_valid
+          end
+        end
+      end
     end
 
     context 'faild' do
@@ -111,6 +122,57 @@ RSpec.describe Worker, type: :model do
           let(:confirmation) { 'a' * 7 }
           it { expect(worker).to be_invalid }
         end
+      end
+    end
+  end
+
+  describe '#remember' do
+    context 'when worker remember' do
+      let(:worker) { create(:worker) }
+      before do
+        worker.remember
+      end
+
+      it 'is remember worker' do
+        expect(worker.remember_digest).to be_present
+        expect(worker.remember_token).to be_present
+      end
+    end
+  end
+
+  describe '#authenticated' do
+    it 'authenticated? should return false for a worker with nil digest' do
+      expect(worker).to_not be_authenticated(:remember, '')
+    end
+  end
+
+  describe '#forget' do
+    context 'when forget worker' do
+      before do
+        worker.save
+        worker.remember
+      end
+      it 'is worget' do
+        expect(worker.remember_digest).to be_present
+        worker.forget
+        expect(worker.remember_digest).to be_blank
+      end
+    end
+  end
+
+  describe '#activate' do
+    let(:time_now) { Time.zone.local(2017, 1,1,0,0,0) }
+    context 'when activate worker' do
+      before do
+        worker.save
+        Timecop.freeze(time_now) do
+          worker.activate
+        end
+      end
+      it 'is activatie' do
+        expect(worker.activated?).to be_truthy
+        expect(worker.activated_at).to be_present
+        expect(worker.activated_at).to eq time_now
       end
     end
   end

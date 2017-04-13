@@ -4,14 +4,37 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
   context 'sign in' do
     context 'successfull' do
       let(:worker) { create :worker }
-      context 'valid information' do
+      let(:profile) { create :worker_profile, worker: worker }
+      context 'valid information but not create profile' do
         it 'should sign in on remember_me' do
           visit '/sign_in'
-          expect(page).to have_selector 'h1', text: 'サインイン'
+          expect(page).to have_selector 'h1', text: 'Sign In'
           fill_in placeholder: 'Email', with: worker.email
           fill_in placeholder: 'Password', with: worker.password
-          click_button 'サインイン'
-          # expect(signed_on?).to be_truthy
+          click_button 'Sign In'
+          expect(signed_on?(worker)).to be_truthy
+          expect(page).to have_selector 'h1', text: 'Create Profile'
+          expect(page).to have_link "#{worker.username}"
+          expect(page).to have_link 'Sign out', href: '/sign_out'
+          expect(page).to have_link 'Settings', href: worker_settings_profile_path(worker_username: worker.username)
+        end
+      end
+
+      context 'valid information and created profile' do
+        before do
+          profile
+        end
+        it 'should sign in on remember_me' do
+          visit '/sign_in'
+          expect(page).to have_selector 'h1', text: 'Sign In'
+          fill_in placeholder: 'Email', with: worker.email
+          fill_in placeholder: 'Password', with: worker.password
+          click_button 'Sign In'
+          expect(signed_on?(worker)).to be_truthy
+          expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"
+          expect(page).to have_link "#{worker.username}"
+          expect(page).to have_link 'Sign out', href: '/sign_out'
+          expect(page).to have_link 'Settings', href: worker_settings_profile_path(worker_username: worker.username)
         end
       end
 
@@ -34,11 +57,11 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
       context 'invalid information' do
         it 'should not sign in' do
           visit '/sign_in'
-          expect(page).to have_selector 'h1', text: 'サインイン'
+          expect(page).to have_selector 'h1', text: 'Sign In'
           fill_in placeholder: 'Email', with: ''
           fill_in placeholder: 'Password', with: ''
-          click_button 'サインイン'
-          expect(page).to have_selector 'h1', text: 'サインイン'
+          click_button 'Sign In'
+          expect(page).to have_selector 'h1', text: 'Sign In'
           expect(page).to have_selector '.alert'
           visit root_path
           expect(page).to_not have_selector '.alert'
@@ -49,10 +72,10 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
         let(:worker) { create :worker, activated: false, activated_at: nil }
         it 'should not sign in' do
           visit '/sign_in'
-          expect(page).to have_selector 'h1', text: 'サインイン'
+          expect(page).to have_selector 'h1', text: 'Sign In'
           fill_in placeholder: 'Email', with: worker.email
           fill_in placeholder: 'Password', with: worker.password
-          click_button 'サインイン'
+          click_button 'Sign In'
           expect(page).to have_selector 'h1', text: 'WorkerBook'
           expect(page).to have_selector '.alert'
         end

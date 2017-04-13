@@ -5,6 +5,7 @@ $ ->
     url = $(past_peformance).val()
     unique_url = $(one_before).val()
 
+
     if url.match URL_REGEX
       $(past_peformance).css('border-bottom', '3px solid #486d94')
       $(next).attr('disabled', false)
