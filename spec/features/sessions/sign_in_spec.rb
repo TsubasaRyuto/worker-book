@@ -53,7 +53,7 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
       end
     end
 
-    context 'faild' do
+    context 'failed' do
       context 'invalid information' do
         it 'should not sign in' do
           visit '/sign_in'

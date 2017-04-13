@@ -30,6 +30,7 @@ RSpec.feature 'Workers:SingUp', type: :feature do
         fill_in placeholder: 'Email', with: 'foobar@example.com'
         fill_in placeholder: 'Password', with: 'foobar123'
         fill_in placeholder: 'Confirmation', with: 'foobar123'
+        expect(page).to have_selector 'h1', 'Member registration have not ended yet.'
         expect { click_button 'Create my account' }.to change { Worker.count }.by(1)
         expect(ApplicationMailer.deliveries.size).to eq 1
         worker = Worker.last

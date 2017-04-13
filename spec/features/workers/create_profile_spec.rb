@@ -33,7 +33,7 @@ RSpec.feature 'Workers:CreateProfile', type: :feature, js: true do
         expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"
       end
     end
-    context 'faild' do
+    context 'failed' do
       it 'should not create profile by worker' do
         sign_on_as(worker)
         visit  worker_create_profile_path(worker_username: worker.username)

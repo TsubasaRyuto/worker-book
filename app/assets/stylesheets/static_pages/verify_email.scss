@@ -1,0 +1,24 @@
+.verify_email {
+  color: $color-main;
+  height: 93vh;
+  position: relatie;
+
+  h1 {
+    font-size: 270%;
+    padding-top: 10%;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 210%;
+    text-align: center;
+    padding-top: 5%;
+  }
+
+  .runningman {
+    bottom: 0;
+    height: 17vh;
+    position: absolute;
+    width: 100%;
+  }
+}

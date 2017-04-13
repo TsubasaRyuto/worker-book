@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
   get '/sign_up', to: 'static_pages#signup'
+  get '/verify_email', to: 'static_pages#verify_email'
   get 'workers/:token/activate', to: 'workers#activate', as: 'activate_worker'
   get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'

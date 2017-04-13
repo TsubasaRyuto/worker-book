@@ -42,7 +42,7 @@ RSpec.describe WorkerProfile, type: :model do
       it { expect(worker_profile).to be_valid }
     end
 
-    context 'faild' do
+    context 'failed' do
       context 'developer type' do
         context 'presence' do
           let(:type_web_developer) { false }
@@ -80,7 +80,7 @@ RSpec.describe WorkerProfile, type: :model do
 
         context 'format' do
           let(:invalid_urls) { ['//http://exmaple.com', 'httP:example.com', 'httpr://example.com', 'http;//example.com'] }
-          it 'should faild validate' do
+          it 'should failed validate' do
             invalid_urls.each do |url|
               worker_profile.past_performance1 = url
               expect(worker_profile).to be_invalid

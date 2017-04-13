@@ -24,7 +24,7 @@ RSpec.describe Worker, type: :model do
       end
     end
 
-    context 'faild' do
+    context 'failed' do
       context 'last_name' do
         context 'present' do
           let(:last_name) { '' }
