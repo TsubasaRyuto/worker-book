@@ -35,7 +35,8 @@ class WorkersController < ApplicationController
     @worker = Worker.new(worker_params)
     if @worker.save
       @worker.send_activation_email
-      redirect_to root_url, flash: { success: t('info.messages.flash_check_email') }
+      session[:verify_email] = true
+      redirect_to verify_email_url
     else
       render :new
     end
@@ -46,10 +47,10 @@ class WorkersController < ApplicationController
     if worker && !worker.activated? && worker.authenticated?(:activation, params[:token])
       worker.activate
       sign_in worker
-      flash[:success] = 'アカウント登録完了'
+      flash[:success] = I18n.t('info.success.sign_up_completion')
       redirect_to worker_create_profile_url(worker_username: worker.username)
     else
-      flash[:danger] = '失敗'
+      flash[:danger] = I18n.('info.danger.sign_up_failed')
       redirect_to root_url
     end
   end

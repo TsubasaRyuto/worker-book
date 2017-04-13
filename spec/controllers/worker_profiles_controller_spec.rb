@@ -53,7 +53,7 @@ RSpec.describe WorkerProfilesController, type: :controller do
       end
     end
 
-    context 'faild' do
+    context 'failed' do
       context 'with not signed in' do
         before do
           get :new, params: { worker_username: worker.username }
@@ -126,7 +126,7 @@ RSpec.describe WorkerProfilesController, type: :controller do
         expect(flash).to be_present
       end
     end
-    context 'faild with invalid information' do
+    context 'failed with invalid information' do
       shared_examples_for 'invalid profile information' do
         before do
           post :create, params: { worker_username: worker.username, worker_profile: {

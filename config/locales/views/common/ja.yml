@@ -2,6 +2,7 @@ ja:
   views:
     common:
       info:
-        messages:
-          flash_check_email: 'メールアドレスの確認'
-          
+        success:
+          sign_up_completion'アカウント登録が完了いたしました。'
+        danger:
+          sign_up_failed 'アカウント認証に失敗いたしました。もう一度やり直してください'
