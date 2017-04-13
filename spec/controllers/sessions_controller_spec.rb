@@ -37,6 +37,17 @@ RSpec.describe SessionsController, type: :controller do
           expect(cookies['remember_token']).to be_blank
         end
       end
+
+      context 'successfull sign in, but not create worker profile' do
+        before do
+          post :create, params: { session: { email: worker.email, password: worker.password, remember_me: '1' } }
+        end
+        it 'should worker sign in' do
+          expect(response).to redirect_to worker_create_profile_path(worker_username: worker.username)
+          expect(signed_in?).to be_truthy
+          expect(cookies['remember_token']).to be_present
+        end
+      end
     end
 
     context 'failed' do
@@ -67,9 +78,9 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
-  context 'delete destroy' do
+  context 'get destroy' do
     before do
-      delete :destroy
+      get :destroy
     end
     it 'should worker log out' do
       expect(response).to redirect_to root_url

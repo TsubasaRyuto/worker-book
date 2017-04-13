@@ -36,12 +36,11 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
-
   config.use_transactional_fixtures = false
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :truncation, { except: %w(skill_languages) }
+    DatabaseCleaner.clean_with(:truncation, { except: %w(skill_languages) })
   end
 
   config.before(:each) do
@@ -73,7 +72,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, inspector: true)
+  Capybara::Poltergeist::Driver.new(app, js_errors: false, inspector: true)
 end
 Capybara.default_driver = :poltergeist
 Capybara.javascript_driver = :poltergeist

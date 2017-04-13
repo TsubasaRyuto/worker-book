@@ -17,6 +17,7 @@
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <%= form_for @worker_profile, url: worker_profiles_path, html: { multipart: true } do |f| %>
+              <%= render 'shared/error', object: f.object %>
               <h2>Your strengths</h2>
               <!-- type -->
               <div class="select-type">
@@ -78,7 +79,7 @@
               </div><!-- .select-type -->
               <!-- skill -->
               <div class="select-skill">
-                <%= fields_for @worker_skills do %>
+                <%= f.fields_for @worker_skills do %>
                 <h3>Skill & Language</h3>
                 <div class="input-skills">
                   <ul id="worker-skill-field">
@@ -181,7 +182,6 @@
                 <h4>Please write your top skill, experience and attitude towards work.</h4>
                 <%= f.text_area :appeal_note, class: 'form-control appeal-note', cols: 45, rows: 18, maxlength: 3000 %>
                 <p class="help-block">*You can only input up to 3000 charcters in japanese.<span class="count-charcters">0</span></p>
-
                 <div class="note-info">
                   <p>
                     <strong>Required</strong><br>Describe your strengths and skills at least 400 words. This is one of the first things clients will see on your profile.
@@ -193,7 +193,6 @@
                 <h2>Other your profile</h2>
                 <h3>Upload your face</h3>
                 <div class="row">
-
                   <div class="worker-picture col-md-4">
                     <%= image_tag 'worker_profiles/no_picture.png', alt: "NO PICTURE", class: 'pic-size upload-link' %>
                   </div>
@@ -259,7 +258,7 @@
                   </p>
                 </div>
               </div><!-- .check-active .check-box -->
-              <%= f.submit "Create my account", class: "btn btn-primary" %>
+              <%= f.submit "Create my profile", class: "btn btn-primary" %>
               <% end %>
             </div><!-- .col-md-8 .col-md-offset-2 -->
           </div><!-- .row -->
