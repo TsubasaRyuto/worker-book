@@ -40,7 +40,7 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation, { except: %w(skill_languages) }
-    DatabaseCleaner.clean_with(:truncation, { except: %w(skill_languages) })
+    DatabaseCleaner.clean_with(:truncation, except: %w(skill_languages))
   end
 
   config.before(:each) do

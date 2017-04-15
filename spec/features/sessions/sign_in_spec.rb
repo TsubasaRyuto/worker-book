@@ -14,7 +14,7 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
           click_button 'Sign In'
           expect(signed_on?(worker)).to be_truthy
           expect(page).to have_selector 'h1', text: 'Create Profile'
-          expect(page).to have_link "#{worker.username}"
+          expect(page).to have_link worker.username.to_s
           expect(page).to have_link 'Sign out', href: '/sign_out'
           expect(page).to have_link 'Settings', href: worker_settings_profile_path(worker_username: worker.username)
         end
@@ -32,7 +32,7 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
           click_button 'Sign In'
           expect(signed_on?(worker)).to be_truthy
           expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"
-          expect(page).to have_link "#{worker.username}"
+          expect(page).to have_link worker.username.to_s
           expect(page).to have_link 'Sign out', href: '/sign_out'
           expect(page).to have_link 'Settings', href: worker_settings_profile_path(worker_username: worker.username)
         end

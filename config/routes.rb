@@ -30,4 +30,7 @@ Rails.application.routes.draw do
   scope '/client' do
     get '/sign_up', to: 'clients#new'
   end
+
+  get 'errors/error_404', to: 'errors#error_404'
+  get 'errors/error_500', to: 'errors#error_500'
 end

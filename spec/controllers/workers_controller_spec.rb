@@ -35,6 +35,10 @@ RSpec.describe WorkersController, type: :controller do
       end
       it { expect(response).to have_http_status :success }
     end
+
+    context 'exception' do
+      it { expect{ get :show, params: { username: 'invalid' } }.to raise_error(ActiveRecord::RecordNotFound) }
+    end
   end
 
   context 'create' do
