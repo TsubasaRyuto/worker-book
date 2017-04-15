@@ -161,7 +161,7 @@ RSpec.describe Worker, type: :model do
   end
 
   describe '#activate' do
-    let(:time_now) { Time.zone.local(2017, 1,1,0,0,0) }
+    let(:time_now) { Time.zone.local(2017, 1, 1, 0, 0, 0) }
     context 'when activate worker' do
       before do
         worker.save

@@ -6,20 +6,20 @@ RSpec.feature 'Workers:CreateProfile', type: :feature, js: true do
     context 'successfull' do
       it 'should create profile by worker' do
         sign_on_as(worker)
-        visit  worker_create_profile_path(worker_username: worker.username)
+        visit worker_create_profile_path(worker_username: worker.username)
         expect(page).to have_selector 'h1', text: 'Create Profile'
         page.find('.lever', text: 'Web Developer').click
         page.find('.lever', text: 'Mobile Developer').click
         fill_autocomplete('ui-autocomplete-input', with: 'javas', select: 'JavaScript')
-        expect(page).to have_selector 'span.tagit-label', text: "JavaScript"
+        expect(page).to have_selector 'span.tagit-label', text: 'JavaScript'
         fill_autocomplete('ui-autocomplete-input', with: 'jque', select: 'jQuery')
-        expect(page).to have_selector 'span.tagit-label', text: "jQuery"
+        expect(page).to have_selector 'span.tagit-label', text: 'jQuery'
         fill_autocomplete('ui-autocomplete-input', with: 'php', select: 'PHP')
-        expect(page).to have_selector 'span.tagit-label', text: "PHP"
+        expect(page).to have_selector 'span.tagit-label', text: 'PHP'
         fill_autocomplete('ui-autocomplete-input', with: 'py', select: 'Python')
-        expect(page).to have_selector 'span.tagit-label', text: "Python"
+        expect(page).to have_selector 'span.tagit-label', text: 'Python'
         fill_autocomplete('ui-autocomplete-input', with: 'htm', select: 'HTML')
-        expect(page).to have_selector 'span.tagit-label', text: "HTML"
+        expect(page).to have_selector 'span.tagit-label', text: 'HTML'
         choose id: 'worker_profile_availability_limited'
         fill_in id: 'worker_profile_past_performance1', with: 'http://example1.com'
         fill_in id: 'worker_profile_past_performance2', with: 'http://example2.com'
@@ -36,18 +36,18 @@ RSpec.feature 'Workers:CreateProfile', type: :feature, js: true do
     context 'failed' do
       it 'should not create profile by worker' do
         sign_on_as(worker)
-        visit  worker_create_profile_path(worker_username: worker.username)
+        visit worker_create_profile_path(worker_username: worker.username)
         expect(page).to have_selector 'h1', text: 'Create Profile'
         fill_autocomplete('ui-autocomplete-input', with: 'javas', select: 'JavaScript')
-        expect(page).to have_selector 'span.tagit-label', text: "JavaScript"
+        expect(page).to have_selector 'span.tagit-label', text: 'JavaScript'
         fill_autocomplete('ui-autocomplete-input', with: 'jque', select: 'jQuery')
-        expect(page).to have_selector 'span.tagit-label', text: "jQuery"
+        expect(page).to have_selector 'span.tagit-label', text: 'jQuery'
         fill_autocomplete('ui-autocomplete-input', with: 'php', select: 'PHP')
-        expect(page).to have_selector 'span.tagit-label', text: "PHP"
+        expect(page).to have_selector 'span.tagit-label', text: 'PHP'
         fill_autocomplete('ui-autocomplete-input', with: 'py', select: 'Python')
-        expect(page).to have_selector 'span.tagit-label', text: "Python"
+        expect(page).to have_selector 'span.tagit-label', text: 'Python'
         fill_autocomplete('ui-autocomplete-input', with: 'htm', select: 'HTML')
-        expect(page).to have_selector 'span.tagit-label', text: "HTML"
+        expect(page).to have_selector 'span.tagit-label', text: 'HTML'
         choose id: 'worker_profile_availability_limited'
         fill_in id: 'worker_profile_past_performance1', with: 'http://example1.com'
         fill_in id: 'input-price', with: '40000'

@@ -58,7 +58,7 @@ RSpec.feature 'Workers:SingUp', type: :feature do
         visit activate_worker_path(activation_token, email: worker.email)
         expect(worker.reload.activated?).to be_truthy
         expect(signed_on?(worker)).to be_truthy
-        expect(page).to have_selector 'h1', text: "Create Profile"
+        expect(page).to have_selector 'h1', text: 'Create Profile'
       end
     end
   end

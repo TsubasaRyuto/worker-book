@@ -4,7 +4,7 @@ end
 
 def signed_on?(worker)
   if current_path == worker_path(username: worker.username) || current_path == worker_create_profile_path(worker_username: worker.username)
-    click_link "#{worker.username}"
+    click_link worker.username.to_s
     page.has_link? 'Sign out'
   end
 end

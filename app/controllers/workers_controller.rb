@@ -22,6 +22,7 @@ class WorkersController < ApplicationController
 
   def show
     @worker = Worker.find_by(username: params[:username])
+    raise ActiveRecord::RecordNotFound if @worker.blank?
   end
 
 
@@ -44,6 +45,7 @@ class WorkersController < ApplicationController
 
   def activate
     worker = Worker.find_by(email: params[:email])
+    raise ActiveRecord::RecordNotFound if worker.blank?
     if worker && !worker.activated? && worker.authenticated?(:activation, params[:token])
       worker.activate
       sign_in worker
