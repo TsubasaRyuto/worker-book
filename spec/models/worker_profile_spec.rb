@@ -88,7 +88,7 @@ RSpec.describe WorkerProfile, type: :model do
           end
         end
 
-        context 'dumplicate' do
+        context 'duplicate' do
           let(:past_performance1) { 'http://example.com' }
           let(:past_performance2) { 'http://example.com' }
           it { expect(worker_profile).to be_invalid }

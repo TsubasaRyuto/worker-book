@@ -17,13 +17,13 @@ class WorkerProfile < ApplicationRecord
 
   validates :id, uniqueness: true
   validates :type, presence_developer_type: true, max_count_developer_type: true
-  validates :past_performance1, presence: true, format: { with: URL_REGEX }, past_performance_dumplicate: true
-  validates :past_performance2, presence: true, format: { with: URL_REGEX }, past_performance_dumplicate: true
+  validates :past_performance1, presence: true, format: { with: URL_REGEX }, past_performance_duplicate: true
+  validates :past_performance2, presence: true, format: { with: URL_REGEX }, past_performance_duplicate: true
   with_options unless: 'past_performance3.blank?' do |n|
-    n.validates :past_performance3, format: { with: URL_REGEX }, past_performance_dumplicate: true
+    n.validates :past_performance3, format: { with: URL_REGEX }, past_performance_duplicate: true
   end
   with_options unless: 'past_performance4.blank?' do |n|
-    n.validates :past_performance4, format: { with: URL_REGEX }, past_performance_dumplicate: true
+    n.validates :past_performance4, format: { with: URL_REGEX }, past_performance_duplicate: true
   end
   validates :unit_price, presence: true, inclusion: { in: 30_000..200_000 }, format: { with: UNIT_PRICE_REGEX }
   validates :appeal_note, presence: true, length: { maximum: MAX_LENGTH, minimum: MIN_LENGTH }

@@ -39,7 +39,7 @@ require 'rails_helper'
 
 RSpec.describe WorkerProfilesController, type: :controller do
   let(:worker) { create :worker }
-  let(:skills) { %w(Ruby C PHP jQery HTML JAVA) }
+  let(:skills) { %w(1 2 3 4 5) }
   context 'get new' do
     context 'success' do
       before do
@@ -172,6 +172,26 @@ RSpec.describe WorkerProfilesController, type: :controller do
         end
       end
 
+      context 'invalid skill language' do
+        context 'too many' do
+          it_behaves_like 'invalid profile information' do
+            let(:skills) { %w(1 2 3 4 5 6 10 23 34 45 56) }
+          end
+        end
+
+        context 'too little' do
+          it_behaves_like 'invalid profile information' do
+            let(:skills) { %w(1 2 3 4) }
+          end
+        end
+
+        context 'duplicate' do
+          it_behaves_like 'invalid profile information' do
+            let(:skills) { %w(1 2 2 3 4) }
+          end
+        end
+      end
+
       context 'invalid past performance' do
         context 'present' do
           it_behaves_like 'invalid profile information' do
@@ -199,14 +219,14 @@ RSpec.describe WorkerProfilesController, type: :controller do
             let(:past_performance1) { 'http;//example.com' }
           end
         end
-        context 'dumplicate' do
+        context 'duplicate' do
           it_behaves_like 'invalid profile information' do
             let(:past_performance1) { 'http://example.com' }
             let(:past_performance2) { 'http://example.com' }
           end
         end
 
-        context 'dumplicate url3 and 4' do
+        context 'duplicate url3 and 4' do
           it_behaves_like 'invalid profile information' do
             let(:past_performance3) { 'http://example.com' }
             let(:past_performance4) { 'http://example.com' }

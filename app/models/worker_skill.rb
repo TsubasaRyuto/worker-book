@@ -4,6 +4,34 @@ class WorkerSkill < ApplicationRecord
 
   validates :worker_id, presence: true
   validates :skill_language_id, presence: true
+
+  validate :max_count_worker_skill, :min_count_worker_skill, :duplicate_worker_skill
+
+  private
+
+  def max_count_worker_skill
+    if worker && worker.worker_skills.size + worker.worker_skills.count >= 10
+      errors.add(:worker_skill, I18n.t('activerecord.errors.worker_skills.too_many'))
+    end
+  end
+
+  def min_count_worker_skill
+    if worker && worker.worker_skills.size + worker.worker_skills.count < 5
+      errors.add(:worker_skill, I18n.t('activerecord.errors.worker_skills.too_little'))
+    end
+  end
+
+  def duplicate_worker_skill
+    worker_skills = worker.worker_skills
+    skill_ids = []
+    worker_skills.each do |s|
+      skill_id = s.skill_language_id
+      skill_ids.push(skill_id)
+    end
+    unless worker && skill_ids.size == skill_ids.uniq.size
+      errors.add(:worker_skill, I18n.t('activerecord.errors.worker_skills.duplicate'))
+    end
+  end
 end
 
 # == Schema Information

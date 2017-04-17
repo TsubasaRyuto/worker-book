@@ -22,7 +22,7 @@ class WorkersController < ApplicationController
 
   def show
     @worker = Worker.find_by(username: params[:username])
-    raise ActiveRecord::RecordNotFound if @worker.blank?
+    raise ActiveRecord::RecordNotFound if @worker.blank? || @worker.profile.blank?
   end
 
 
@@ -49,10 +49,10 @@ class WorkersController < ApplicationController
     if worker && !worker.activated? && worker.authenticated?(:activation, params[:token])
       worker.activate
       sign_in worker
-      flash[:success] = I18n.t('info.success.sign_up_completion')
+      flash[:success] = I18n.t('common.info.success')
       redirect_to worker_create_profile_url(worker_username: worker.username)
     else
-      flash[:danger] = I18n.('info.danger.sign_up_failed')
+      flash[:danger] = I18n.t('common.info.danger')
       redirect_to root_url
     end
   end

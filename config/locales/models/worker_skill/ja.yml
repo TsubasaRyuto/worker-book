@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      worker_skill:
+    errors:
+      worker_skills:
+        too_many: 'is selectable to up to 10.'
+        too_little: 'is selectable to enter at least 5 skills.'
+        duplicate: 'is duplicate'

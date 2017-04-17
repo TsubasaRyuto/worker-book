@@ -50,13 +50,14 @@ class WorkerProfilesController < ApplicationController
     @worker = current_worker
     @worker_skills = []
     @worker_profile = @worker.build_profile(profile_params)
-
     skills = skill_params[:skill_language_id]
     skills.each do |skill|
       worker_skills = @worker.worker_skills.build(skill_language_id: skill)
       @worker_skills.push(worker_skills)
     end
-    if @worker_profile.save && @worker_skills.each(&:save)
+    
+    if @worker_profile.save & @worker_skills.map(&:valid?).all?
+      WorkerSkill.transaction { @worker_skills.each(&:save!) }
       flash[:success] = 'プロフィールを作成しました'
       redirect_to worker_url(username: @worker.username)
     else

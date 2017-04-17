@@ -21,6 +21,7 @@ require 'rails_helper'
 
 RSpec.describe WorkersController, type: :controller do
   let(:worker) { create :worker }
+  let(:worker_profile) { create :worker_profile, worker: worker }
   context 'get new' do
     before do
       get :new
@@ -31,13 +32,14 @@ RSpec.describe WorkersController, type: :controller do
   context 'get show' do
     context 'successfull' do
       before do
+        worker_profile
         get :show, params: { username: worker.username }
       end
       it { expect(response).to have_http_status :success }
     end
 
     context 'exception' do
-      it { expect{ get :show, params: { username: 'invalid' } }.to raise_error(ActiveRecord::RecordNotFound) }
+      it { expect { get :show, params: { username: 'invalid' } }.to raise_error(ActiveRecord::RecordNotFound) }
     end
   end
 
