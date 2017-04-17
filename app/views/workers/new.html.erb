@@ -8,11 +8,9 @@
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <%= form_for(@worker) do |f| %>
-
-              <%= render 'shared/error', object: f.object %>
-
               <div class="last-name-form">
                 <%= f.text_field :last_name, class: 'form-control last-name-form', placeholder: 'Last Name', autocomplete: 'off' %>
+                <%= render 'shared/error', object: f.object, field: :last_name %>
                 <div class="last-name">
                   <p>
                     <strong>必須</strong><br>姓を入力してください
@@ -22,6 +20,7 @@
 
               <div class="first-name-form">
                 <%= f.text_field :first_name, class: 'form-control first-name-form', placeholder: 'First Name', autocomplete: 'off' %>
+                <%= render 'shared/error', object: f.object, field: :first_name %>
                 <div class="first-name">
                   <p>
                     <strong>必須</strong><br>名前を入力してください
@@ -31,6 +30,7 @@
 
               <div class="username-form">
                 <%= f.text_field :username, class: 'form-control username-form', placeholder: 'Username', autocomplete: 'off' %>
+                <%= render 'shared/error', object: f.object, field: :username %>
                 <div class="username">
                   <p>
                     <strong>必須</strong><br>Usernameを5文字以上で入力してください
@@ -40,6 +40,7 @@
 
               <div class="email-form">
                 <%= f.email_field :email, class: 'form-control email-form', placeholder: 'Email', autocomplete: 'off' %>
+                <%= render 'shared/error', object: f.object, field: :email %>
                 <div class="email">
                   <p>
                     <strong>必須</strong><br>メールアドレスを入力してください
@@ -49,6 +50,7 @@
 
               <div class="password-form">
                 <%= f.password_field :password, class: 'form-control password-form', placeholder: 'Password', autocomplete: 'off' %>
+                <%= render 'shared/error', object: f.object, field: :password %>
                 <div class="password">
                   <p>
                     <strong>必須</strong><br>パスワードを8文字以上で入力してください
@@ -58,6 +60,7 @@
 
               <div class="confirmation-form">
                 <%= f.password_field :password_confirmation, class: 'form-control confirmation-form', placeholder: 'Confirmation', autocomplete: 'off' %>
+                <%= render 'shared/error', object: f.object, field: :password_confirmation %>
                 <div class="confirmation">
                   <p>
                     <strong>必須</strong><br>パスワード確認。

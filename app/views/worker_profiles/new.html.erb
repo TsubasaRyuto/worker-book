@@ -1,4 +1,4 @@
-<% provide(:title, 'Create worker profile') %>
+/<% provide(:title, 'Create worker profile') %>
 
 <section class="workers-profile" id="worker-profile">
   <div class="container">
@@ -17,11 +17,12 @@
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <%= form_for @worker_profile, url: worker_profiles_path, html: { multipart: true } do |f| %>
-              <%= render 'shared/error', object: f.object %>
+
               <h2>Your strengths</h2>
               <!-- type -->
               <div class="select-type">
                 <h3>Type of Web, Mobile & software Developer</h3>
+                <%= render 'shared/error', object: f.object, field: :type %>
                 <p class="warning">Select up to 4 types of work.</p>
                 <div class="row">
                   <div class="col-xs-12 col-md-12">
@@ -79,8 +80,9 @@
               </div><!-- .select-type -->
               <!-- skill -->
               <div class="select-skill">
-                <%= f.fields_for @worker_skills do %>
+                <%= f.fields_for @worker_skills do |skill_f| %>
                 <h3>Skill & Language</h3>
+                <%= render 'shared/error', object: skill_f.object, field: :worker_skill %>
                 <div class="input-skills">
                   <ul id="worker-skill-field">
                   </ul>
@@ -115,6 +117,8 @@
               <!-- past performance -->
               <div class="type-past-performance">
                 <h3>Your past performance</h3>
+                <%= render 'shared/error', object: f.object, field: :past_performance1 %>
+                <%= render 'shared/error', object: f.object, field: :past_performance2 %>
                 <p class="past-performance-warning">Please show at least 2 URLs what you have developed an application or other things.</p>
                 <div class="url-field">
                   <%= f.url_field :past_performance1, class: 'form-control past-performance1', placeholder: 'URL Here', autocomplete: 'off' %>
@@ -179,6 +183,7 @@
               <!-- note -->
               <div class="type-note">
                 <h3>Write Your strength and attitude towards work</h3>
+                <%= render 'shared/error', object: f.object, field: :note %>
                 <h4>Please write your top skill, experience and attitude towards work.</h4>
                 <%= f.text_area :appeal_note, class: 'form-control appeal-note', cols: 45, rows: 18, maxlength: 3000 %>
                 <p class="help-block">*You can only input up to 3000 charcters in japanese.<span class="count-charcters">0</span></p>
@@ -192,6 +197,7 @@
               <div class="upload-picture">
                 <h2>Other your profile</h2>
                 <h3>Upload your face</h3>
+                <%= render 'shared/error', object: f.object, field: :picture %>
                 <div class="row">
                   <div class="worker-picture col-md-4">
                     <%= image_tag 'worker_profiles/no_picture.png', alt: "NO PICTURE", class: 'pic-size upload-link' %>
@@ -225,6 +231,7 @@
               <!-- employment history -->
               <div class="type-history">
                 <h3>Your employment history</h3>
+                <%= render 'shared/error', object: f.object, field: :employment_history1%>
                 <div class="company-name-field">
                   <%= f.text_field :employment_history1, placeholder: 'Company Name', class: 'form-control employment-history1', autocomplete: 'off' %>
                   <%= f.text_field :employment_history2, placeholder: 'Company Name', class: 'form-control employment-history2', autocomplete: 'off', disabled: true %>
