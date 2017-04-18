@@ -27,20 +27,20 @@
       margin-top: 22vh;
 
       li {
+        background-color: $color-sub3;
+        border: 1px solid $color-main;
+        color: $color-main;
         display: inline-block;
         padding: 3vh 25px;
-        font-size: 25px;
+        font-size: 20px;
         font-weight: bold;
-        width: 260px;
-      }
-      .account-create {
-        background-color: $color-sub2;
-        color: $color-sub3;
-      }
+        width: 220px;
 
-      .find-worker {
-        background-color: $color-sub3;
-        color: $color-sub2;
+        &:hover {
+          background-color: $color-sub2;
+          color: $color-sub3;
+          opacity: .7;
+        }
       }
     }
   }
@@ -75,6 +75,10 @@
   }
 
   .wb-impossible {
+    border: 2px solid $color-main;
+    border-radius: 3px;
+    padding-bottom: 4vh;
+
     .title {
       text-align: center;
       font-weight: bold;
@@ -91,19 +95,20 @@
     }
   }
 
-  .wb-features {
-    .title {
-      text-align: center;
-      font-weight: bold;
+  .wb-detail {
+    margin-top: 10vh;
+    a {
+      color: $color-main;
+      text-decoration: none;
     }
 
-    .contents {
-      margin-left: 120px;
+    .btn {
+      background-color: $color-sub3;
+      border: 2px solid $color-main;
 
-      li {
-        list-style-type: disc;
-        padding-top: 10px;
-        font-size: 18px;
+      &:hover {
+        background-color: $color-main;
+        color: $color-sub3;
       }
     }
   }

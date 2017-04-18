@@ -1,29 +1,30 @@
 .error-404 {
-  background-size: auto 450px;
+  background-size: auto 72%;
   background-image: url(errors/error_404.png);
-  background-position: center 80%;
+  background-position: center 10vh;
   background-repeat: no-repeat;
   display: block;
   height: 90vh;
 
   h1 {
     color: $color-main;
-    padding-top: 5%;
+    font-size: 250%;
+    margin-top: 15vh;
     text-align: center;
   }
 
   .links {
     a {
       color: $color-main;
-      font-size: 24px;
+      font-size: 160%;
       letter-spacing: 2px;
-      line-height: 50px;
+      line-height: 9vh;
       text-decoration: none;
       &:hover {
         color: $color-sub2;
       }
     }
-    padding-left: 550px;
-    padding-top: 90px;
+    padding-left: 44%;
+    padding-top: 12vh;
   }
 }
