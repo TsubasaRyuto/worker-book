@@ -2,15 +2,15 @@
   background-color: $color-sub1;
 
   .text-box{
-    font-size: 15px;
-    padding: 70px 0;
+    font-size: 120%;
+    padding: 10vh 0;
 
     ul {
       text-align: center;
 
       li {
         display: inline-block;
-        padding-left: 50px;
+        padding-left: 7%;
         list-style: none;
 
         &:first-child {
@@ -30,21 +30,23 @@
   }
   .sns-links {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 4vh;
 
     .twitter {
-  		width: 40px !important;
+      height: auto;
+      margin: 0 1.6%;
+      width: 4% !important;
   	}
 
   	.sns-img{
-  		width: 30px;
-  		height: auto;
-  		margin: 0 20px;
+      height: auto;
+  		margin: 0 2%;
+  		width: 3%;
   	}
   }
   .copyright{
     margin: 0;
-    padding: 20px 0;
+    padding: 2vh 0;
 		color: $color-sub3;
 		text-align: center;
 	}
