@@ -89,7 +89,7 @@
                 </div>
                 <% end %>
                 <p class="skill-max-warning">You have reached the limit of skills allowed to be added to your profile.</p>
-                <p class="skill-minimum-warning">Please write your programming languages or skills at least 5 things.</p>
+                <p class="skill-minimum-warning">Please input your programming languages or skills at least 5 things.</p>
                 <div class="select-skill-info">
                   <p>
                     <strong>Required</strong><br>Select programming languages or skills of work which you have expertise. we recommend 5 to 10.
@@ -117,9 +117,8 @@
               <!-- past performance -->
               <div class="type-past-performance">
                 <h3>Your past performance</h3>
-                <%= render 'shared/error', object: f.object, field: :past_performance1 %>
-                <%= render 'shared/error', object: f.object, field: :past_performance2 %>
-                <p class="past-performance-warning">Please show at least 2 URLs what you have developed an application or other things.</p>
+                <%= render 'shared/error', object: f.object, field: :past_performance %>
+                <p class="past-performance-warning">Please enter at least 2 URLs what you have developed an application or other things.</p>
                 <div class="url-field">
                   <%= f.url_field :past_performance1, class: 'form-control past-performance1', placeholder: 'URL Here', autocomplete: 'off' %>
                   <%= f.url_field :past_performance2, class: 'form-control past-performance2', placeholder: 'URL Here', autocomplete: 'off', disabled: true %>
@@ -128,7 +127,7 @@
                 </div>
                 <div class="past-performance-info">
                   <p>
-                    <strong>Required</strong><br>Write url about your developed web service, mobile application or etc. we recommend 2 to 4.
+                    <strong>Required</strong><br>Input url about your developed web service, mobile application or etc. we recommend 2 to 4.
                   </p>
                 </div>
               </div><!-- .type-past-performance -->
@@ -175,7 +174,7 @@
                 </div>
                 <div class="unit-price-info">
                   <p>
-                    <strong>Required</strong><br>Write your unit price of Person-day. This price is base your reward of the work.
+                    <strong>Required</strong><br>Input your unit price of Person-day. This price is base your reward of the work.
                     <br><strong>At least 30,000 yen</strong>
                   </p>
                 </div>
@@ -183,10 +182,10 @@
               <!-- note -->
               <div class="type-note">
                 <h3>Write Your strength and attitude towards work</h3>
-                <%= render 'shared/error', object: f.object, field: :note %>
+                <%= render 'shared/error', object: f.object, field: :appeal_note %>
                 <h4>Please write your top skill, experience and attitude towards work.</h4>
                 <%= f.text_area :appeal_note, class: 'form-control appeal-note', cols: 45, rows: 18, maxlength: 3000 %>
-                <p class="help-block">*You can only input up to 3000 charcters in japanese.<span class="count-charcters">0</span></p>
+                <p class="help-block">*You can only enter up to 3000 charcters in japanese.<span class="count-charcters">0</span></p>
                 <div class="note-info">
                   <p>
                     <strong>Required</strong><br>Describe your strengths and skills at least 400 words. This is one of the first things clients will see on your profile.
@@ -231,7 +230,7 @@
               <!-- employment history -->
               <div class="type-history">
                 <h3>Your employment history</h3>
-                <%= render 'shared/error', object: f.object, field: :employment_history1%>
+                <%= render 'shared/error', object: f.object, field: :employment_history%>
                 <div class="company-name-field">
                   <%= f.text_field :employment_history1, placeholder: 'Company Name', class: 'form-control employment-history1', autocomplete: 'off' %>
                   <%= f.text_field :employment_history2, placeholder: 'Company Name', class: 'form-control employment-history2', autocomplete: 'off', disabled: true %>
@@ -240,7 +239,7 @@
                 </div>
                 <div class="employment-history-info">
                   <p>
-                    <strong>Required</strong><br>Please write about previous companies you've worked. But in the case you've never worked in the companies, you should write 'Freelance only'.
+                    <strong>Required</strong><br>Please input about previous companies you've worked. But in the case you've never worked in the companies, you should write 'Freelance only'.
                   </p>
                 </div>
               </div><!-- .type-history -->

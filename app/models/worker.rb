@@ -20,8 +20,10 @@ class Worker < ApplicationRecord
 
   validates :last_name, presence: true, length: { maximum: MAX_LENGTH_NAME }
   validates :first_name, presence: true, length: { maximum: MAX_LENGTH_NAME }
-  validates :username, presence: true, length: { maximum: MAX_LENGTH_NAME, minimum: MIN_LENGTH_NAME }, format: { with: VALID_USERNAME_REGEX }, uniqueness: { case_sensitive: false }
-  validates :email, presence: true, length: { maximum: MAX_LENGTH_EMAIL }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :username, presence: true
+  validates :username, length: { maximum: MAX_LENGTH_NAME, minimum: MIN_LENGTH_NAME }, uniqueness: { case_sensitive: false }, format: { with: VALID_USERNAME_REGEX }, allow_blank: true
+  validates :email, presence: true
+  validates :email, length: { maximum: MAX_LENGTH_EMAIL }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, allow_blank: true
   has_secure_password
   validates :password, presence: true, length: { minimum: MIN_LENGTH_PASSWORD }, allow_nil: true
 

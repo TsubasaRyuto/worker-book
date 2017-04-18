@@ -2,11 +2,21 @@ ja:
   activerecord:
     models:
       worker_profile:
+    attributes:
+      worker_profile:
+          type: Developer type
+          past_performance: Past performance
+          employment_history: Employment history
+
     errors:
       worker_profile:
-        preset_type: Developer type is required.
+        preset_type: " is required."
         max_count_type: You may select up to four categories of work.
-        wrong_size: "is the wrong size (should be %{file_size})"
-        size_too_small: "is too small (should be at least %{file_size})"
-        size_too_big: "is too big (should be at most %{file_size})"
-        past_performance1: is duplicated
+        wrong_size: " is the wrong size (should be %{file_size})"
+        size_too_small: " is too small (should be at least %{file_size})"
+        size_too_big: " is too big (should be at most %{file_size})"
+        past_performance_min: " is required, to enter at least 2 URSs"
+        past_performance_dup: " is duplicated"
+        past_performance_formant: " is invalid url format"
+        emp_hist_presence: " is required, to enter at least 1"
+        emp_hist_length: " is not less than 3 characters"
