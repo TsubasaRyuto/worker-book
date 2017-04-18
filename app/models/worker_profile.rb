@@ -1,7 +1,7 @@
 class WorkerProfile < ApplicationRecord
   mount_uploader :picture, ProfilePictureUploader
 
-  attr_accessor :type
+  attr_accessor :type, :past_performance, :employment_history
 
   self.table_name = 'worker_profiles'
   self.primary_key = :id
@@ -13,32 +13,17 @@ class WorkerProfile < ApplicationRecord
   MAX_LENGTH = 3000
   MIN_LENGTH = 400
   UNIT_PRICE_REGEX = /\A[0-9]+$\Z/
-  URL_REGEX = /\A#{URI.regexp(%w(http https))}\z/
 
   validates :id, uniqueness: true
   validates :type, presence_developer_type: true, max_count_developer_type: true
-  validates :past_performance1, presence: true, format: { with: URL_REGEX }, past_performance_duplicate: true
-  validates :past_performance2, presence: true, format: { with: URL_REGEX }, past_performance_duplicate: true
-  with_options unless: 'past_performance3.blank?' do |n|
-    n.validates :past_performance3, format: { with: URL_REGEX }, past_performance_duplicate: true
-  end
-  with_options unless: 'past_performance4.blank?' do |n|
-    n.validates :past_performance4, format: { with: URL_REGEX }, past_performance_duplicate: true
-  end
-  validates :unit_price, presence: true, inclusion: { in: 30_000..200_000 }, format: { with: UNIT_PRICE_REGEX }
-  validates :appeal_note, presence: true, length: { maximum: MAX_LENGTH, minimum: MIN_LENGTH }
+  validates :past_performance, past_performance_min: true, past_performance_dup: true, past_performance_format: true
+  validates :unit_price, presence: true
+  validates :unit_price, inclusion: { in: 30_000..200_000 }, format: { with: UNIT_PRICE_REGEX }, allow_blank: true
+  validates :appeal_note, presence: true
+  validates :appeal_note, length: { maximum: MAX_LENGTH, minimum: MIN_LENGTH }, allow_blank: true
   validates :location, presence: true
   validates :picture, presence: true
-  validates :employment_history1, presence: true, length: { minimum: 2 }
-  with_options unless: 'employment_history2.blank?' do |n|
-    n.validates :employment_history2, length: { minimum: 2 }
-  end
-  with_options unless: 'employment_history3.blank?' do |n|
-    n.validates :employment_history3, length: { minimum: 2 }
-  end
-  with_options unless: 'employment_history4.blank?' do |n|
-    n.validates :employment_history4, length: { minimum: 2 }
-  end
+  validates :employment_history, emp_hist_presence: true, emp_hist_length: true
 end
 
 
