@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         if worker.profile.nil?
           redirect_to worker_create_profile_url(worker_username: worker.username)
         else
-          redirect_to worker_url(username: worker.username)
+          redirect_back_or worker_url(username: worker.username)
         end
       else
         flash[:warning] = ''

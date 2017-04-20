@@ -122,7 +122,7 @@ RSpec.describe WorkerProfilesController, type: :controller do
           }, worker_skill: { skill_language_id: skill_languages } }
         end
           .to change { WorkerProfile.count }.by(1)
-        expect(response).to redirect_to @worker
+        expect(response).to redirect_to worker_url(username: worker.username)
         expect(flash).to be_present
       end
     end

@@ -37,10 +37,27 @@
         margin: 0 auto;
         width: 150px;
       }
+      a {
+        text-decoration: none;
+        .btn {
+          background-color: $color-main;
+          border: none;
+          display: block;
+          font-size: .8em;
+          margin: 2vh auto 0;
+          width: 50%;
+        }
+      }
     } // face
     .info {
       color: $color-sub2;
       font-size: 18px;
+      margin-top: 5vh;
+
+      h2 {
+        display: inline-block;
+      }
+
       ul {
         li {
           border-right: 1px solid $color-sub2;
@@ -105,9 +122,14 @@
     } //strength
 
     .appeal {
-      p {
-        font-size: 20px;
-        letter-spacing: 1px;
+      .text {
+        width: 100%;
+
+        p {
+          font-size: 20px;
+          letter-spacing: 1px;
+          word-wrap:break-word;
+        }
       }
     } // appeal
 

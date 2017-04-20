@@ -21,6 +21,7 @@ require 'rails_helper'
 
 RSpec.describe WorkersController, type: :controller do
   let(:worker) { create :worker }
+  let(:other_worker) { create :other_worker }
   let(:worker_profile) { create :worker_profile, worker: worker }
   context 'get new' do
     before do
@@ -43,7 +44,32 @@ RSpec.describe WorkersController, type: :controller do
     end
   end
 
-  context 'create' do
+  context 'get edit' do
+    context 'successfull' do
+      before do
+        sign_in_as(worker)
+        get :edit, params: { username: worker.username }
+      end
+      it { expect(response).to have_http_status :success }
+    end
+
+    context 'not signed in worker' do
+      before do
+        get :edit, params: { username: worker.username }
+      end
+      it { expect(response).to redirect_to sign_in_url }
+    end
+
+    context 'not correct worker' do
+      before do
+        sign_in_as(other_worker)
+        get :edit, params: { username: worker.username }
+      end
+      it { expect(response).to redirect_to root_url }
+    end
+  end
+
+  context '#create' do
     let(:last_name) { Faker::Name.last_name }
     let(:first_name) { Faker::Name.first_name }
     let(:username) { 'example_worker' }
@@ -116,6 +142,65 @@ RSpec.describe WorkersController, type: :controller do
           let!(:old_worker) { worker }
           let(:email) { 'worker@example.com' }
         end
+      end
+    end
+  end
+
+  context '#update' do
+    context 'successfull' do
+      let(:username) { 'change_username' }
+      let(:email) { 'change_email@example.com' }
+      context 'update valid worker' do
+        before do
+          sign_in_as(worker)
+          patch :update, params: { username: worker.username, worker: { username: username, email: email } }
+        end
+
+        it 'create new worker' do
+          expect(response).to redirect_to worker_url(username: username)
+          worker = Worker.find_by(email: 'change_email@example.com')
+          expect(worker.email).to eq('change_email@example.com')
+          expect(worker.username).to eq('change_username')
+        end
+      end
+    end
+
+    context 'faild' do
+      context 'not correct worker' do
+        let(:username) { 'change_username' }
+        let(:email) { 'change_email@example.com' }
+        before do
+          sign_in_as(other_worker)
+          patch :update, params: { username: worker.username, worker: { username: username, email: email } }
+        end
+        it { expect(response).to redirect_to root_url }
+      end
+
+      context 'not signed in' do
+        let(:username) { 'change_username' }
+        let(:email) { 'change_email@example.com' }
+        before do
+          patch :update, params: { username: worker.username, worker: { username: username, email: email } }
+        end
+        it { expect(response).to redirect_to sign_in_url }
+      end
+
+      context 'invalid username' do
+        let(:username) { '' }
+        before do
+          sign_in_as(worker)
+          patch :update, params: { username: worker.username, worker: { username: username } }
+        end
+        it { expect(response).to render_template :edit }
+      end
+
+      context 'invalid email' do
+        let(:email) { '' }
+        before do
+          sign_in_as(worker)
+          patch :update, params: { username: worker.username, worker: { email: email } }
+        end
+        it { expect(response).to render_template :edit }
       end
     end
   end

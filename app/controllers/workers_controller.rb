@@ -18,6 +18,9 @@
 #
 
 class WorkersController < ApplicationController
+  before_action :signed_in_worker, only: [:edit, :update]
+  before_action :correct_worker, only: [:edit, :update]
+
   def index; end
 
   def show
@@ -25,11 +28,12 @@ class WorkersController < ApplicationController
     raise ActiveRecord::RecordNotFound if @worker.blank? || @worker.profile.blank?
   end
 
-
-  def edit; end
-
   def new
     @worker = Worker.new
+  end
+
+  def edit
+    @worker = Worker.find_by(username: params[:username])
   end
 
   def create
@@ -43,16 +47,28 @@ class WorkersController < ApplicationController
     end
   end
 
+  def update
+    @worker = Worker.find_by(username: params[:username])
+    # binding.pry
+    if @worker.update_attributes(update_params)
+      # @worker.send_update_email
+      flash[:success] = I18n.t('views.common.info.success.update_account')
+      redirect_to worker_url(username: @worker.username)
+    else
+      render :edit
+    end
+  end
+
   def activate
     worker = Worker.find_by(email: params[:email])
     raise ActiveRecord::RecordNotFound if worker.blank?
     if worker && !worker.activated? && worker.authenticated?(:activation, params[:token])
       worker.activate
       sign_in worker
-      flash[:success] = I18n.t('common.info.success')
+      flash[:success] = I18n.t('views.common.info.success.sign_up_completion')
       redirect_to worker_create_profile_url(worker_username: worker.username)
     else
-      flash[:danger] = I18n.t('common.info.danger')
+      flash[:danger] = I18n.t('views.common.info.danger.sign_up_failed')
       redirect_to root_url
     end
   end
@@ -66,5 +82,22 @@ class WorkersController < ApplicationController
 
   def worker_params
     params.require(:worker).permit(:last_name, :first_name, :username, :email, :password, :password_confirmation)
+  end
+
+  def update_params
+    params.require(:worker).permit(:username, :email)
+  end
+
+  def signed_in_worker
+    unless signed_in?
+      store_location
+      flash[:danger] = I18n.t('common.info.danger.not_signed_in')
+      redirect_to sign_in_url
+    end
+  end
+
+  def correct_worker
+    @worker = Worker.find_by(username: params[:username])
+    redirect_to root_url unless current_worker?(@worker)
   end
 end
