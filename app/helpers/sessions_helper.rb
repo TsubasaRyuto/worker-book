@@ -9,6 +9,10 @@ module SessionsHelper
     cookies.permanent[:remember_token] = worker.remember_token
   end
 
+  def current_worker?(worker)
+    worker == current_worker
+  end
+
   def current_worker
     if (worker_id = session[:worker_id])
       @current_worker ||= Worker.find_by(id: worker_id)
@@ -35,5 +39,14 @@ module SessionsHelper
     forget(current_worker) if current_worker.present?
     session.delete(:worker_id)
     @current_worker = nil
+  end
+
+  def redirect_back_or(default)
+    redirect_to(session[:forwading_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  def store_location
+    session[:forwarding_url] = request.url if request.get?
   end
 end

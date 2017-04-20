@@ -46,6 +46,8 @@ class WorkerProfilesController < ApplicationController
     end
   end
 
+  def edit; end
+
   def create
     @worker = current_worker
     @worker_skills = []
@@ -55,7 +57,6 @@ class WorkerProfilesController < ApplicationController
       worker_skills = @worker.worker_skills.build(skill_language_id: skill)
       @worker_skills.push(worker_skills)
     end
-    
     if @worker_profile.save & @worker_skills.map(&:valid?).all?
       WorkerSkill.transaction { @worker_skills.each(&:save!) }
       flash[:success] = 'プロフィールを作成しました'
@@ -64,6 +65,8 @@ class WorkerProfilesController < ApplicationController
       render :new
     end
   end
+
+  def update; end
 
   private
 

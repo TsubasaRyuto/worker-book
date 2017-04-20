@@ -56,6 +56,10 @@ class Worker < ApplicationRecord
     WorkerMailer.activate_worker(self).deliver_now
   end
 
+  def send_update_email
+    WorkerMailer.update_account(self).deliver_now
+  end
+
   def forget
     update_attribute(:remember_digest, nil)
   end

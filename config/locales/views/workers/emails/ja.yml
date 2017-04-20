@@ -2,4 +2,5 @@ ja:
   worker_mailer:
     sign_up:
       subject: 'メールアドレス確認メール'
-        
+    update:
+      subject: 'アカウント情報変更確認メール'

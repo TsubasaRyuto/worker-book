@@ -22,7 +22,7 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li><%= link_to "Profile", worker_path(username: current_worker.username) %></li>
-                    <li><%= link_to "Settings", worker_settings_profile_path(worker_username: current_worker.username) %></li>
+                    <li><%= link_to "Settings", worker_settings_account_path(username: current_worker.username) %></li>
                   </ul>
                   <li>
                     <%= link_to sign_out_path do %>
