@@ -16,7 +16,7 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
           expect(page).to have_selector 'h1', text: 'Create Profile'
           expect(page).to have_link worker.username.to_s
           expect(page).to have_link 'Sign out', href: '/sign_out'
-          expect(page).to have_link 'Settings', href: worker_settings_account_path(username: worker.username)
+          expect(page).to have_link 'Delete Account', href: retire_worker_path(username: worker.username)
         end
       end
 

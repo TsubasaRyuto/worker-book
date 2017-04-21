@@ -13,11 +13,11 @@ class SessionsController < ApplicationController
           redirect_back_or worker_url(username: worker.username)
         end
       else
-        flash[:warning] = ''
+        flash[:warning] = I18n.t('views.common.info.danger.not_activate_account')
         redirect_to root_url
       end
     else
-      flash.now[:danger] = 'サインイン認証に失敗しました。もう一度やり直してください。'
+      flash.now[:danger] = I18n.t('views.common.info.danger.sign_in_failed')
       render :new
     end
   end

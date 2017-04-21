@@ -13,9 +13,8 @@ Rails.application.routes.draw do
     get '/sign_up', to: 'workers#new'
   end
   resources :workers, except: %i(new edit), param: :username, path: '/' do
-    collection do
-      get '/autocomplete_skill/:term', to: 'workers#autocomplete_skill', defaults: { format: 'json' }
-    end
+    collection { get '/autocomplete_skill/:term', to: 'workers#autocomplete_skill', defaults: { format: 'json' } }
+    member { get '/retire', to: 'workers#retire' }
 
     get '/create_profile', to: 'worker_profiles#new'
     get '/settings/profile', to: 'worker_profiles#edit'
