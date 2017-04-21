@@ -158,7 +158,6 @@ ActiveRecord::Schema.define(version: 20_170_320_113_419) do
     t.string   'email',                             null: false
     t.string   'password_digest',                   null: false
     t.string   'remember_digest'
-    t.boolean  'admin', default: false, null: false
     t.string   'activation_digest'
     t.boolean  'activated', default: false, null: false
     t.datetime 'activated_at'

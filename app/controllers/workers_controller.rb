@@ -9,7 +9,6 @@
 #  email             :string(255)      not null
 #  password_digest   :string(255)      not null
 #  remember_digest   :string(255)
-#  admin             :boolean          default(FALSE), not null
 #  activation_digest :string(255)
 #  activated         :boolean          default(FALSE), not null
 #  activated_at      :datetime
