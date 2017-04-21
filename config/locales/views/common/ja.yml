@@ -5,6 +5,12 @@ ja:
         success:
           sign_up_completion: アカウント登録が完了いたしました。
           update_account: アカウント情報を変更いたしました。
+          delete_account: 退会完了いたしました。
         danger:
-          sign_up_failed: アカウント認証に失敗いたしました。もう一度やり直してください
-          not_signed_in: サインインしてください
+          sign_up_failed: アカウント認証に失敗いたしました。もう一度やり直してください。
+          sign_in_failed: 認証に失敗しました。もう一度やり直してください。
+          not_signed_in: サインインしてください。
+          invalid_password: パスワードが正しくありません。
+          not_activate_account: 
+            アカウントの有効化が完了しておりません。
+            メールボックスを確認の上アカウントを有効にしてください。

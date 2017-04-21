@@ -18,8 +18,8 @@
 #
 
 class WorkersController < ApplicationController
-  before_action :signed_in_worker, only: [:edit, :update]
-  before_action :correct_worker, only: [:edit, :update]
+  before_action :signed_in_worker, only: [:edit, :update, :retire, :destroy]
+  before_action :correct_worker, only: [:edit, :update, :retire, :destroy]
 
   def index; end
 
@@ -49,13 +49,29 @@ class WorkersController < ApplicationController
 
   def update
     @worker = Worker.find_by(username: params[:username])
-    # binding.pry
     if @worker.update_attributes(update_params)
       # @worker.send_update_email
       flash[:success] = I18n.t('views.common.info.success.update_account')
       redirect_to worker_url(username: @worker.username)
     else
       render :edit
+    end
+  end
+
+  def retire
+    @worker = Worker.find_by(username: params[:username])
+  end
+
+  def destroy
+    @worker = Worker.find_by(username: params[:username])
+    if @worker && @worker.authenticate(params[:password])
+      @worker.destroy
+      session.delete(:worker_id)
+      flash[:success] = I18n.t('views.common.info.success.delete_account')
+      redirect_to root_url
+    else
+      flash[:warning] = I18n.t('views.common.info.danger.invalid_password')
+      render :retire
     end
   end
 
@@ -91,7 +107,7 @@ class WorkersController < ApplicationController
   def signed_in_worker
     unless signed_in?
       store_location
-      flash[:danger] = I18n.t('common.info.danger.not_signed_in')
+      flash[:danger] = I18n.t('views.common.info.danger.not_signed_in')
       redirect_to sign_in_url
     end
   end

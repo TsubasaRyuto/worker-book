@@ -8,4 +8,9 @@ module ApplicationHelper
       page_title + ' | ' + base_title
     end
   end
+
+  def worker_profile_present?
+    @worker_profile = WorkerProfile.find_by(id: current_worker.id)
+    !@worker_profile.nil?
+  end
 end

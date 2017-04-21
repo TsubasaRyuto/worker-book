@@ -21,8 +21,13 @@
                     <span class="glyphicon glyphicon-menu-hamburger"></span><%= current_worker.username %>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><%= link_to "Profile", worker_path(username: current_worker.username) %></li>
-                    <li><%= link_to "Settings", worker_settings_account_path(username: current_worker.username) %></li>
+
+                    <% if worker_profile_present? %>
+                      <li><%= link_to "Profile", worker_path(username: current_worker.username) %></li>
+                      <li><%= link_to "Settings", worker_settings_account_path(username: current_worker.username) %></li>
+                    <% else %>
+                      <li><%= link_to "Delete Account", retire_worker_path(username: current_worker.username) %></li>
+                    <% end %>
                   </ul>
                   <li>
                     <%= link_to sign_out_path do %>

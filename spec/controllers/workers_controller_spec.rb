@@ -69,6 +69,31 @@ RSpec.describe WorkersController, type: :controller do
     end
   end
 
+  context 'get retire' do
+    context 'successfull' do
+      before do
+        sign_in_as(worker)
+        get :retire, params: { username: worker.username }
+      end
+      it { expect(response).to have_http_status :success }
+    end
+
+    context 'not signed in worker' do
+      before do
+        get :retire, params: { username: worker.username }
+      end
+      it { expect(response).to redirect_to sign_in_url }
+    end
+
+    context 'not correct worker' do
+      before do
+        sign_in_as(other_worker)
+        get :retire, params: { username: worker.username }
+      end
+      it { expect(response).to redirect_to root_url }
+    end
+  end
+
   context '#create' do
     let(:last_name) { Faker::Name.last_name }
     let(:first_name) { Faker::Name.first_name }
@@ -81,7 +106,7 @@ RSpec.describe WorkersController, type: :controller do
         ApplicationMailer.deliveries.clear
       end
 
-      it 'create new worker' do
+      it 'should create new worker' do
         expect { post :create, params: { worker: { last_name: last_name, first_name: first_name, username: username, email: email, password: password, password_confirmation: confirmation } } }.to change { Worker.count }.by(1)
         expect(response).to redirect_to verify_email_url
         expect(ActionMailer::Base.deliveries.size).to eq(1)
@@ -156,7 +181,7 @@ RSpec.describe WorkersController, type: :controller do
           patch :update, params: { username: worker.username, worker: { username: username, email: email } }
         end
 
-        it 'create new worker' do
+        it 'should update worker info' do
           expect(response).to redirect_to worker_url(username: username)
           worker = Worker.find_by(email: 'change_email@example.com')
           expect(worker.email).to eq('change_email@example.com')
@@ -201,6 +226,47 @@ RSpec.describe WorkersController, type: :controller do
           patch :update, params: { username: worker.username, worker: { email: email } }
         end
         it { expect(response).to render_template :edit }
+      end
+    end
+  end
+
+  context '#destroy' do
+    context 'successfull' do
+      context 'update valid worker' do
+        before do
+          sign_in_as(worker)
+        end
+
+        it 'should delete account' do
+          expect { delete :destroy, params: { username: worker.username, password: worker.password } }.to change { Worker.count }.by(-1)
+          expect(response).to redirect_to root_url
+        end
+      end
+    end
+
+    context 'faild' do
+      context 'not correct worker' do
+        before do
+          sign_in_as(other_worker)
+          delete :destroy, params: { username: worker.username, password: worker.password }
+        end
+        it { expect(response).to redirect_to root_url }
+      end
+
+      context 'not signed in' do
+        before do
+          delete :destroy, params: { username: worker.username, password: worker.password }
+        end
+        it { expect(response).to redirect_to sign_in_url }
+      end
+
+      context 'invalid password' do
+        let(:password) { '' }
+        before do
+          sign_in_as(worker)
+          delete :destroy, params: { username: worker.username, password: password }
+        end
+        it{ expect(response).to render_template :retire }
       end
     end
   end

@@ -8,22 +8,23 @@ RSpec.feature 'Workers:AccountUpdate', type: :feature do
       worker_profile
     end
     context 'successful' do
-      it 'should sign up with account activate' do
+      it 'should update account' do
+        username = 'change_username'
+        email = 'change_email@example.com'
         sign_on_as(worker)
-        visit '/worker/sign_up'
         visit "/#{worker.username}/settings/account"
-        fill_in 'Username', with: 'change_username'
-        fill_in 'Email', with: 'change_email@exmaple.com'
+        fill_in 'Username', with: username
+        fill_in 'Email', with: email
         click_button 'Save changes'
-        expect(page).to have_selector 'div', text: "アカウント情報を変更いたしました"
+        expect(page).to have_selector '.alert'
         worker.reload
-        expect(worker.username).to eq('change_username')
-        expect(worker.username).to eq('change_username')
+        expect(worker.username).to eq username
+        expect(worker.email).to eq email
       end
     end
 
     context 'failed' do
-      it 'should not sign up' do
+      it 'should not update' do
         sign_on_as(worker)
         visit "/#{worker.username}/settings/account"
         fill_in 'Username', with: 'invali+info'
