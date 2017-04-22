@@ -30,7 +30,7 @@ RSpec.feature 'Workers:AccountUpdate', type: :feature do
         fill_in 'Username', with: 'invali+info'
         fill_in 'Email', with: 'worker@invalid'
         click_button 'Save changes'
-        expect(page).to have_selector 'h3', text: "Information"
+        expect(page).to have_selector 'h3', text: 'Information'
         expect(page).to have_selector 'div#error_explanation'
         expect(page).to have_selector 'div.field_with_errors'
       end

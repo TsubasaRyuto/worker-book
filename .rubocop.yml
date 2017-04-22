@@ -63,3 +63,5 @@ Style/TrailingBlankLines:
   Enabled: false
 Style/NumericLiteralPrefix:
   Enabled: false
+Style/CaseEquality:
+  Enabled: false

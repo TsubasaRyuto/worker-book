@@ -9,6 +9,5 @@ class WorkerMailer < ApplicationMailer
     mail to: @worker.email, subject: I18n.t('worker_mailer.update.subjet')
   end
 
-  def password_reset
-  end
+  def password_reset; end
 end
