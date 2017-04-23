@@ -1,10 +1,16 @@
-<% provide(:title, 'Forgot password') %>
+<% if signed_in? %>
+  <% title = 'Reset' %>
+  <% provide(:title, "#{title} password") %>
+<% else %>
+  <% title = 'Forgot' %>
+  <% provide(:title, "#{title} password") %>
+<% end %>
 
 <selction class="forgot-pass">
   <div class="container">
     <div class="row">
       <div class="forgot-pass-form col-md-8 col-md-offset-2">
-        <h1>Forgot your password?</h1>
+        <h1><%= title %> your password?</h1>
         <p>
           パスワードを再設定するには、WorkerBookのログインに使用しているメールアドレスが必要となります。
         </p>
