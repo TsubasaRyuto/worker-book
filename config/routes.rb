@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'
   get '/sign_out', to: 'sessions#destroy'
+  get '/forgot/password', to: 'password_resets#new', as: 'new_password_reset'
+  get '/password/reset/:id/activate', to: 'password_resets#edit', as: 'edit_password_reset'
+  post '/password_resets', to: 'password_resets#create', as: 'password_resets'
+  patch '/password_reset/:id/', to: 'password_resets#update', as: 'password_reset_update'
 
   # workers/
   get 'workers/:token/activate', to: 'workers#activate', as: 'activate_worker'

@@ -28,7 +28,7 @@ def workers
       availability: availability,
       past_performance1: 'http://example1.com',
       past_performance2: 'http://example2.com',
-      unit_price: 40000,
+      unit_price: 40_000,
       appeal_note: note,
       picture: picture,
       location: 02,

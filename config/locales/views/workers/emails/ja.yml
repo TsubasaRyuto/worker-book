@@ -4,3 +4,5 @@ ja:
       subject: 'メールアドレス確認メール'
     update:
       subject: 'アカウント情報変更確認メール'
+    reset_pass:
+      subject: 'パスワード再設定メール'

@@ -1,5 +1,5 @@
 class Worker < ApplicationRecord
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email, :downcase_username
   before_create :create_activation_digest
@@ -64,6 +64,20 @@ class Worker < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  def create_reset_digest
+    self.reset_token = Worker.new_token
+    update_attribute(:reset_digest,  Worker.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  def send_password_reset_email
+    WorkerMailer.password_reset(self).deliver_now
+  end
+
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+
   private
 
   def downcase_email
@@ -94,6 +108,8 @@ end
 #  activation_digest :string(255)
 #  activated         :boolean          default(FALSE), not null
 #  activated_at      :datetime
+#  reset_digest      :string(255)
+#  reset_sent_at     :datetime
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
