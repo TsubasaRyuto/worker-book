@@ -176,4 +176,37 @@ RSpec.describe Worker, type: :model do
       end
     end
   end
+
+  describe '#create_reset_digest' do
+    context 'when create reset digest' do
+      let(:time_now) { Time.zone.local(2016, 3, 7, 18, 0, 0) }
+      before do
+        worker.save
+        Timecop.freeze(time_now) do
+          worker.create_reset_digest
+        end
+      end
+      it 'worker have reset digest' do
+        expect(worker.reset_token).to be_present
+        expect(worker.reset_digest).to be_present
+        expect(worker.reset_sent_at).to be_present
+        expect(worker.reset_sent_at).to eq time_now
+      end
+    end
+  end
+
+  describe '#password_reset_expired?' do
+    context 'when password is reset' do
+      before do
+        worker.save
+        worker.create_reset_digest
+      end
+      it 'worker have not reset sent at' do
+        expect(worker.reset_sent_at).to be_present
+        Timecop.travel(2.hours.from_now) do
+          expect(worker.password_reset_expired?).to be_truthy
+        end
+      end
+    end
+  end
 end

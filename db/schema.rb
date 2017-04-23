@@ -161,6 +161,8 @@ ActiveRecord::Schema.define(version: 20_170_320_113_419) do
     t.string   'activation_digest'
     t.boolean  'activated', default: false, null: false
     t.datetime 'activated_at'
+    t.string   'reset_digest'
+    t.datetime 'reset_sent_at'
     t.datetime 'created_at',                        null: false
     t.datetime 'updated_at',                        null: false
   end

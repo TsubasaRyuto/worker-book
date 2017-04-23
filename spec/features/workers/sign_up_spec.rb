@@ -15,7 +15,7 @@ RSpec.feature 'Workers:SingUp', type: :feature do
         fill_in placeholder: 'Password', with: 'foo'
         fill_in placeholder: 'Confirmation', with: 'bar'
         expect { click_button 'Create my account' }.to_not change { Worker.count }
-        expect(page).to have_selector 'h1', 'Create Account of Freelancer'
+        expect(page).to have_selector 'h1', text: 'Create Account of Freelancer'
         expect(page).to have_selector 'div#error_explanation'
         expect(page).to have_selector 'div.field_with_errors'
       end
@@ -30,8 +30,8 @@ RSpec.feature 'Workers:SingUp', type: :feature do
         fill_in placeholder: 'Email', with: 'foobar@example.com'
         fill_in placeholder: 'Password', with: 'foobar123'
         fill_in placeholder: 'Confirmation', with: 'foobar123'
-        expect(page).to have_selector 'h1', 'Member registration have not ended yet.'
         expect { click_button 'Create my account' }.to change { Worker.count }.by(1)
+        expect(page).to have_selector 'h1', text: 'Member registration have not ended yet.'
         expect(ApplicationMailer.deliveries.size).to eq 1
         worker = Worker.last
         expect(worker.activated?).to be_falsey
@@ -46,7 +46,6 @@ RSpec.feature 'Workers:SingUp', type: :feature do
         # ---
         mail = ApplicationMailer.deliveries.last
         mail_body = mail.body.encoded
-        mail_body.split('\r\n').detect { |s| s.start_with?('http') }
         activation_token = mail_body.split('/')[4]
 
         # --- valid token but email is invalid

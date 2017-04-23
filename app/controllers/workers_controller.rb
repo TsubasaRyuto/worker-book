@@ -12,6 +12,8 @@
 #  activation_digest :string(255)
 #  activated         :boolean          default(FALSE), not null
 #  activated_at      :datetime
+#  reset_digest      :string(255)
+#  reset_sent_at     :datetime
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
