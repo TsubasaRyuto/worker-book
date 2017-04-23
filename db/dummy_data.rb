@@ -2,6 +2,7 @@ def clean_data
   Worker.delete_all
   WorkerProfile.delete_all
   WorkerSkill.delete_all
+  Client.delete_all
 end
 
 def workers
@@ -17,11 +18,12 @@ def workers
       last_name: last_name,
       first_name: first_name,
       username: "example_worker#{index + 1}",
-      email: "example#{index + 1}@example.com",
+      email: "worker#{index + 1}@example.com",
       password: 'foobar123',
       password_confirmation: 'foobar123',
       activated: true
     )
+
     worker_profile = worker.build_profile(
       type_web_developer: true,
       type_mobile_developer: true,
@@ -52,6 +54,27 @@ def worker_skills
   end
 end
 
+def client
+  2.times do |index|
+    name = Faker::Name
+    last_name = name.last_name
+    first_name = name.first_name
+    com_name = Faker::Company.name
+
+    Client.create(
+      last_name: last_name,
+      first_name: first_name,
+      username: "example_client#{index + 1}",
+      company_name: com_name,
+      email: "client#{index + 1}@example.com",
+      password: 'foobar123',
+      password_confirmation: 'foobar123',
+      activated: true
+    )
+  end
+end
+
 clean_data
 workers
 worker_skills
+client

@@ -11,19 +11,12 @@ class Worker < ApplicationRecord
   has_one :address, dependent: :destroy, foreign_key: 'id', class_name: 'WorkerAddress'
   has_one :profile, dependent: :destroy, foreign_key: 'id', class_name: 'WorkerProfile'
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  MAX_LENGTH_EMAIL = 100
-  MAX_LENGTH_NAME = 30
-  MIN_LENGTH_NAME = 5
   MIN_LENGTH_PASSWORD = 8
-  VALID_USERNAME_REGEX = /\A[a-z\d_]{5,30}\Z/
 
-  validates :last_name, presence: true, length: { maximum: MAX_LENGTH_NAME }
-  validates :first_name, presence: true, length: { maximum: MAX_LENGTH_NAME }
-  validates :username, presence: true
-  validates :username, length: { maximum: MAX_LENGTH_NAME, minimum: MIN_LENGTH_NAME }, uniqueness: { case_sensitive: false }, format: { with: VALID_USERNAME_REGEX }, allow_blank: true
-  validates :email, presence: true
-  validates :email, length: { maximum: MAX_LENGTH_EMAIL }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, allow_blank: true
+  validates :last_name, presence: true, name_max_length: true
+  validates :first_name, presence: true, name_max_length: true
+  validates :username, presence: true, username: true, username_unique: true
+  validates :email, presence: true, email: true, email_unique: true
   has_secure_password
   validates :password, presence: true, length: { minimum: MIN_LENGTH_PASSWORD }, allow_nil: true
 

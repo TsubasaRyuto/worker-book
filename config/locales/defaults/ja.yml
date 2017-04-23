@@ -203,6 +203,11 @@ ja:
   activemodel:
     errors:
       <<: *errors
+      messages:
+        username: は" _ "のみ記号が使えます。
+        email: を正しいフォーマットで入力してください。
+        email_unique: に入力されたアドレスはすでに登録されています。
+        username_unique: はすでに登録されています。
   activerecord:
     errors:
       <<: *errors
