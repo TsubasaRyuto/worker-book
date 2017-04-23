@@ -46,17 +46,6 @@ ActiveRecord::Schema.define(version: 20_170_320_113_419) do
     t.index ['agreement_id'], name: 'index_chats_on_agreement_id', using: :btree
   end
 
-  create_table 'clents', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
-    t.string   'last_name',       null: false
-    t.string   'first_name',      null: false
-    t.string   'username',        null: false
-    t.string   'company_name',    null: false
-    t.string   'email',           null: false
-    t.string   'password_digest', null: false
-    t.datetime 'created_at',      null: false
-    t.datetime 'updated_at',      null: false
-  end
-
   create_table 'client_profiles', id: false, force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
     t.integer  'id',             null: false
     t.string   'corporate_site', null: false
@@ -64,6 +53,23 @@ ActiveRecord::Schema.define(version: 20_170_320_113_419) do
     t.datetime 'created_at',     null: false
     t.datetime 'updated_at',     null: false
     t.index ['id'], name: 'index_client_profiles_on_id', unique: true, using: :btree
+  end
+
+  create_table 'clients', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
+    t.string   'last_name',                         null: false
+    t.string   'first_name',                        null: false
+    t.string   'username',                          null: false
+    t.string   'company_name',                      null: false
+    t.string   'email',                             null: false
+    t.string   'password_digest',                   null: false
+    t.string   'remember_digest'
+    t.string   'activation_digest'
+    t.boolean  'activated', default: false, null: false
+    t.datetime 'activated_at'
+    t.string   'reset_digest'
+    t.datetime 'reset_sent_at'
+    t.datetime 'created_at',                        null: false
+    t.datetime 'updated_at',                        null: false
   end
 
   create_table 'job_contents', force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
