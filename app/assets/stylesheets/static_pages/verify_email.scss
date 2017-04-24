@@ -1,4 +1,4 @@
-.verify_email {
+.worker-verify-email {
   color: $color-main;
   height: 93vh;
   position: relatie;
@@ -20,5 +20,31 @@
     height: 17vh;
     position: absolute;
     width: 100%;
+  }
+}
+
+.client-verify-email {
+  color: $color-main;
+  height: 93vh;
+
+  h1 {
+    font-size: 220%;
+    padding-top: 8vh;
+    text-align: center;
+  }
+
+  .verify-img {
+    display: block;
+    height: 35vh;
+    margin: 5vh auto 4vh;
+    width: 30%;
+  }
+
+  h2 {
+    display: block;
+    font-size: 150%;
+    text-align: left;
+    margin: 0 auto;
+    width: 25em;
   }
 }
