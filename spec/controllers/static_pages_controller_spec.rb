@@ -23,19 +23,19 @@ RSpec.describe StaticPagesController, type: :controller do
     end
   end
 
-  context 'verify email' do
+  context 'worker verify email' do
     context 'have a session' do
       before do
         session[:verify_email] = true
       end
       it_behaves_like 'should get page' do
-        let(:page) { :verify_email }
+        let(:page) { :worker_verify_email }
       end
     end
 
     context 'not have a session' do
       before do
-        get :verify_email
+        get :worker_verify_email
       end
 
       it 'should get page' do

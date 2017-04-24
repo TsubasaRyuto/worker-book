@@ -109,7 +109,7 @@ RSpec.describe WorkersController, type: :controller do
 
       it 'should create new worker' do
         expect { post :create, params: { worker: { last_name: last_name, first_name: first_name, username: username, email: email, password: password, password_confirmation: confirmation } } }.to change { Worker.count }.by(1)
-        expect(response).to redirect_to verify_email_url
+        expect(response).to redirect_to worker_verify_email_url
         expect(ActionMailer::Base.deliveries.size).to eq(1)
         worker = Worker.find_by(email: 'worker@example.com')
         expect(worker.email).to eq('worker@example.com')

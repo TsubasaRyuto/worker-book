@@ -13,7 +13,7 @@ RSpec.feature 'Workers:AccountDelete', type: :feature do
           worker_email = worker.email
           worker_password = worker.password
           sign_on_as(worker)
-          visit "/#{worker.username}/retire"
+          visit "/worker/#{worker.username}/retire"
           fill_in placeholder: 'Password Here....', with: worker.password
           expect { click_button '退会' }.to change { Worker.count }.by(-1)
           expect(page).to have_selector '.alert'
@@ -32,7 +32,7 @@ RSpec.feature 'Workers:AccountDelete', type: :feature do
       context 'failed' do
         it 'should not delete' do
           sign_on_as(worker)
-          visit "/#{worker.username}/retire"
+          visit "/worker/#{worker.username}/retire"
           fill_in placeholder: 'Password Here....', with: ''
           expect { click_button '退会' }.to change { Worker.count }.by(0)
           expect(page).to have_selector '.alert'

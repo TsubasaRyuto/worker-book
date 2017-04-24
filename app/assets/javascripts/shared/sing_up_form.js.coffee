@@ -17,6 +17,12 @@ $(document).on 'turbolinks:load', ->
   $('.username-form').blur ->
     $('.username').css 'display', 'none'
 
+  $('.company-name-form').focus ->
+    $('.company-name').css 'display', 'block'
+
+  $('.company-name-form').blur ->
+    $('.company-name').css 'display', 'none'
+
   $('.email-form').focus ->
     $('.email').css 'display', 'block'
 

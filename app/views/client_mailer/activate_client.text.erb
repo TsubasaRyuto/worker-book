@@ -1,0 +1,20 @@
+<%= @client.company_name %> <%= @client.last_name %>様
+
+WorkerBookにご登録いただきありがとうございます。
+メールアドレスの確認など、登録を完了するためには以下のURLをクリックする必要があります。
+また、workerへお仕事を発注するためにはプロフィールを作成する必要があります。
+<%= activate_client_url(@client.activation_token, email: @client.email) %>
+
+Hi <%= @client.last_name %> <%= @client.company_name %>
+Thank you getting start with WorkerBook.
+We need a confirm your email to complete your registration.
+Click below to confirm your email address.
+And You must create your profile so as to order to the suitable worker.
+
+<%= activate_client_url(@client.activation_token, email: @client.email) %>
+
+------------------------------------------------
+※このメールは送信専用で、返信を受け付けることはできません。
+
+WorkerBook Support
+------------------------------------------------

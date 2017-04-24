@@ -1,0 +1,173 @@
+@mixin info_box($top) {
+  background-color: $color-sub2;
+  color: $color-sub3;
+  display: none;
+  font-weight: bold;
+  padding: 10px 18px;
+  position: absolute;
+  top: $top;
+  right: -336px;
+  width: 200px;
+}
+
+@mixin info_box_after($top) {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -40px;
+  top: $top;
+  border: 20px solid transparent;
+  border-right: 20px solid $color-sub2;
+  pointer-events: none;
+  content: " ";
+}
+
+.last-name-form {
+  position: relative;
+
+  &:hover {
+    .last-name {
+      display: block;
+    }
+  }
+}
+
+.last-name {
+  @include info_box($top: -20px);
+
+  &:after {
+    @include info_box_after($top: 12px);
+  }
+
+  p {
+    margin: 0;
+    strong {
+      font-size: 18px;
+    }
+  }
+}
+
+.first-name-form {
+  position: relative;
+
+  &:hover {
+    .first-name {
+      display: block;
+    }
+  }
+}
+
+.first-name {
+  @include info_box($top: -20px);
+
+  &:after {
+    @include info_box_after($top: 12px);
+  }
+
+  p {
+    margin: 0;
+    strong {
+      font-size: 18px;
+    }
+  }
+}
+
+.username-form {
+  position: relative;
+
+  &:hover {
+    .username {
+      display: block;
+    }
+  }
+}
+
+.username {
+  @include info_box($top: -20px);
+
+  &:after {
+    @include info_box_after($top: 12px);
+  }
+
+  p {
+    margin: 0;
+    strong {
+      font-size: 18px;
+    }
+  }
+}
+
+.email-form {
+  position: relative;
+
+  &:hover {
+    .email {
+      display: block;
+    }
+  }
+}
+
+.email {
+  @include info_box($top: -20px);
+
+  &:after {
+    @include info_box_after($top: 12px);
+  }
+
+  p {
+    margin: 0;
+    strong {
+      font-size: 18px;
+    }
+  }
+}
+
+.password-form {
+  position: relative;
+
+  &:hover {
+    .password {
+      display: block;
+    }
+  }
+}
+
+.password {
+  @include info_box($top: -20px);
+
+  &:after {
+    @include info_box_after($top: 12px);
+  }
+
+  p {
+    margin: 0;
+    strong {
+      font-size: 18px;
+    }
+  }
+}
+
+.confirmation-form {
+  position: relative;
+
+  &:hover {
+    .confirmation {
+      display: block;
+    }
+  }
+}
+
+.confirmation {
+  @include info_box($top: -20px);
+
+  &:after {
+    @include info_box_after($top: 12px);
+  }
+
+  p {
+    margin: 0;
+    strong {
+      font-size: 18px;
+    }
+  }
+}

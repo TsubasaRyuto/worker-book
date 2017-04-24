@@ -42,7 +42,7 @@ class WorkersController < ApplicationController
     if @worker.save
       @worker.send_activation_email
       session[:verify_email] = true
-      redirect_to verify_email_url
+      redirect_to worker_verify_email_url
     else
       render :new
     end
