@@ -10,13 +10,11 @@
 @import "base";
 @import "layouts/header";
 @import "layouts/footer";
-@import "shared/error";
+@import "shared/*";
 @import "sessions/*";
 @import "static_pages/*";
-@import "workers/profile/creates/new";
-@import "workers/show";
-@import "workers/new";
-@import "workers/edit";
-@import "workers/retire";
+@import "worker_profiles/creates/new";
+@import "workers/*";
 @import "errors/*";
 @import "pass_resets/*";
+@import "clients/*";

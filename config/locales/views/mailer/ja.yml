@@ -1,5 +1,5 @@
 ja:
-  worker_mailer:
+  user_mailer:
     sign_up:
       subject: 'メールアドレス確認メール'
     update:

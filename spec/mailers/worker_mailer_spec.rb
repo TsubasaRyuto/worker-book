@@ -7,7 +7,7 @@ RSpec.describe WorkerMailer, type: :mailer do
 
     it 'should valid account activation' do
       worker.activation_token = Worker.new_token
-      expect(mail.subject).to eq(I18n.t('worker_mailer.sign_up.subjet'))
+      expect(mail.subject).to eq(I18n.t('user_mailer.sign_up.subjet'))
       expect(mail.to).to eq([worker.email])
       expect(mail.from).to eq(['from@example.com'])
       expect(mail.body.encoded).to match worker.activation_token

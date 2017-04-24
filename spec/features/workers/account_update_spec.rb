@@ -12,7 +12,7 @@ RSpec.feature 'Workers:AccountUpdate', type: :feature do
         username = 'change_username'
         email = 'change_email@example.com'
         sign_on_as(worker)
-        visit "/#{worker.username}/settings/account"
+        visit "/worker/#{worker.username}/settings/account"
         fill_in 'Username', with: username
         fill_in 'Email', with: email
         click_button 'Save changes'
@@ -26,7 +26,7 @@ RSpec.feature 'Workers:AccountUpdate', type: :feature do
     context 'failed' do
       it 'should not update' do
         sign_on_as(worker)
-        visit "/#{worker.username}/settings/account"
+        visit "/worker/#{worker.username}/settings/account"
         fill_in 'Username', with: 'invali+info'
         fill_in 'Email', with: 'worker@invalid'
         click_button 'Save changes'

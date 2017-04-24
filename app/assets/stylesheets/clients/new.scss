@@ -1,0 +1,26 @@
+@import '../commons/sign_up_info';
+
+.company-name-form {
+  position: relative;
+
+  &:hover {
+    .company-name {
+      display: block;
+    }
+  }
+}
+
+.company-name {
+  @include info_box($top: -20px);
+
+  &:after {
+    @include info_box_after($top: 12px);
+  }
+
+  p {
+    margin: 0;
+    strong {
+      font-size: 18px;
+    }
+  }
+}
