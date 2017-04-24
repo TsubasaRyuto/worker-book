@@ -115,6 +115,6 @@ class WorkersController < ApplicationController
 
   def correct_worker
     @worker = Worker.find_by(username: params[:username])
-    redirect_to root_url unless current_worker?(@worker)
+    redirect_to root_url unless current_user?(@worker)
   end
 end

@@ -8,7 +8,7 @@
           <div class="face col-md-4">
             <%= image_tag @worker.profile.picture_url %>
             <% if signed_in? %>
-              <%= link_to worker_settings_profile_path(worker_username: current_worker.username) do %>
+              <%= link_to worker_settings_profile_path(worker_username: current_user.username) do %>
                 <button type=button class="btn btn-primary">プロフィール変更</button>
               <% end %>
             <% end %>

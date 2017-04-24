@@ -2,15 +2,15 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    worker = Worker.find_by(email: params[:session][:email].downcase)
-    if worker && worker.authenticate(params[:session][:password])
-      if worker.activated?
-        sign_in worker
-        params[:session][:remember_me] == '1' ? remember(worker) : forget(worker)
-        if worker.profile.nil?
-          redirect_to worker_create_profile_url(worker_username: worker.username)
+    user = wb_user
+    if user && user.authenticate(params[:session][:password])
+      if user.activated?
+        sign_in user
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        if user.profile.nil?
+          redirect_to "/#{user_type(user)}/#{user.username}/create_profile"
         else
-          redirect_back_or worker_url(username: worker.username)
+          redirect_back_or "/#{user_type(user)}/#{user.username}"
         end
       else
         flash[:warning] = I18n.t('views.common.info.danger.not_activate_account')

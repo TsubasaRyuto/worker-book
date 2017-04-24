@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def worker_profile_present?
-    @worker_profile = WorkerProfile.find_by(id: current_worker.id)
+    @worker_profile = WorkerProfile.find_by(id: current_user.id)
     !@worker_profile.nil?
   end
 end

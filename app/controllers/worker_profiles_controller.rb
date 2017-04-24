@@ -37,7 +37,7 @@
 
 class WorkerProfilesController < ApplicationController
   def new
-    @worker = current_worker
+    @worker = current_user
     if @worker && @worker.activated?
       @worker_profile = @worker.build_profile
       @worker_skills = @worker.worker_skills.build
@@ -49,7 +49,7 @@ class WorkerProfilesController < ApplicationController
   def edit; end
 
   def create
-    @worker = current_worker
+    @worker = current_user
     @worker_skills = []
     @worker_profile = @worker.build_profile(profile_params)
     skills = skill_params[:skill_language_id]
