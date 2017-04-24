@@ -10,7 +10,7 @@ class PasswordResetsController < ApplicationController
     @worker = Worker.find_by(email: params[:password_reset][:email].downcase)
     if @worker
       @worker.create_reset_digest
-      @worker.send_password_reset_email(WorkerMailer)
+      @worker.send_password_reset_email
       flash[:info] = I18n.t('views.common.info.success.send_apss_reset_email')
       redirect_to root_url
     else

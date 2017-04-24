@@ -18,5 +18,4 @@
 #= require tag-it
 #= require turbolinks
 #= require_tree ./worker_profiles/
-#= require_tree ./workers/
 #= require_tree ./shared/

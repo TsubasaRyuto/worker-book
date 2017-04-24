@@ -1,23 +1,34 @@
 def signed_in?
-  !session[:worker_id].nil?
+  !session[:user_id].nil?
 end
 
-def signed_on?(worker)
-  if current_path == worker_path(username: worker.username) || current_path == worker_create_profile_path(worker_username: worker.username)
-    click_link worker.username.to_s
+def user_type(user)
+  if user.class == Worker
+    'worker'
+  elsif user.class == Client
+    'client'
+  else
+    false
+  end
+end
+
+def signed_on?(user)
+  urls = ["/#{user_type(user)}/#{user.username}/create_profile", "/#{user_type(user)}/#{user.username}"]
+  if urls.include?(current_path)
+    click_link user.username.to_s
     page.has_link? 'Sign out'
   end
 end
 
-def sign_in_as(worker)
-  session[:worker_id] = worker.id
+def sign_in_as(user)
+  session[:user_id] = user.id
 end
 
-def sign_on_as(worker, option = {})
+def sign_on_as(user, option = {})
   remember_me = option[:remember_me] || '1'
   visit '/sign_in'
-  fill_in placeholder: 'Email', with: worker.email
-  fill_in placeholder: 'Password', with: worker.password
+  fill_in placeholder: 'Email', with: user.email
+  fill_in placeholder: 'Password', with: user.password
   check 'Remember me' if remember_me == '1'
   click_button 'Sign In'
 end
