@@ -144,4 +144,88 @@ RSpec.describe Client, type: :model do
       end
     end
   end
+
+  describe '#remember' do
+    context 'when worker remember' do
+      let(:client) { create(:client) }
+      before do
+        client.remember
+      end
+
+      it 'is remember client' do
+        expect(client.remember_digest).to be_present
+        expect(client.remember_token).to be_present
+      end
+    end
+  end
+
+  describe '#authenticated' do
+    it 'authenticated? should return false for a client with nil digest' do
+      expect(client).to_not be_authenticated(:remember, '')
+    end
+  end
+
+  describe '#forget' do
+    context 'when forget client' do
+      before do
+        client.save
+        client.remember
+      end
+      it 'is worget' do
+        expect(client.remember_digest).to be_present
+        client.forget
+        expect(client.remember_digest).to be_blank
+      end
+    end
+  end
+
+  describe '#activate' do
+    let(:time_now) { Time.zone.local(2017, 1, 1, 0, 0, 0) }
+    context 'when activate client' do
+      before do
+        client.save
+        Timecop.freeze(time_now) do
+          client.activate
+        end
+      end
+      it 'is activatie' do
+        expect(client.activated?).to be_truthy
+        expect(client.activated_at).to be_present
+        expect(client.activated_at).to eq time_now
+      end
+    end
+  end
+
+  describe '#create_reset_digest' do
+    context 'when create reset digest' do
+      let(:time_now) { Time.zone.local(2016, 3, 7, 18, 0, 0) }
+      before do
+        client.save
+        Timecop.freeze(time_now) do
+          client.create_reset_digest
+        end
+      end
+      it 'client have reset digest' do
+        expect(client.reset_token).to be_present
+        expect(client.reset_digest).to be_present
+        expect(client.reset_sent_at).to be_present
+        expect(client.reset_sent_at).to eq time_now
+      end
+    end
+  end
+
+  describe '#password_reset_expired?' do
+    context 'when password is reset' do
+      before do
+        client.save
+        client.create_reset_digest
+      end
+      it 'client have not reset sent at' do
+        expect(client.reset_sent_at).to be_present
+        Timecop.travel(2.hours.from_now) do
+          expect(client.password_reset_expired?).to be_truthy
+        end
+      end
+    end
+  end
 end

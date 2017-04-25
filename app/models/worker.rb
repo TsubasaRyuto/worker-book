@@ -1,4 +1,6 @@
 class Worker < ApplicationRecord
+  include UserSignUP
+
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email, :downcase_username
@@ -19,72 +21,6 @@ class Worker < ApplicationRecord
   validates :email, presence: true, email: true, email_unique: true
   has_secure_password
   validates :password, presence: true, length: { minimum: MIN_LENGTH_PASSWORD }, allow_nil: true
-
-  def self.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-    BCrypt::Password.create(string, MIN_COSTst: cost)
-  end
-
-  def self.new_token
-    SecureRandom.urlsafe_base64
-  end
-
-  def remember
-    self.remember_token = Worker.new_token
-    update_attribute(:remember_digest, Worker.digest(remember_token))
-  end
-
-  def authenticated?(attribute, token)
-    digest = send("#{attribute}_digest")
-    return false if digest.nil?
-    BCrypt::Password.new(digest).is_password?(token)
-  end
-
-  def activate
-    update_attribute(:activated, true)
-    update_attribute(:activated_at, Time.zone.now)
-  end
-
-  def send_activation_email
-    WorkerMailer.activate_worker(self).deliver_now
-  end
-
-  def send_update_email
-    WorkerMailer.update_account(self).deliver_now
-  end
-
-  def forget
-    update_attribute(:remember_digest, nil)
-  end
-
-  def create_reset_digest
-    self.reset_token = Worker.new_token
-    update_attribute(:reset_digest,  Worker.digest(reset_token))
-    update_attribute(:reset_sent_at, Time.zone.now)
-  end
-
-  def send_password_reset_email
-    WorkerMailer.password_reset(self).deliver_now
-  end
-
-  def password_reset_expired?
-    reset_sent_at < 2.hours.ago
-  end
-
-  private
-
-  def downcase_email
-    self.email = email.downcase
-  end
-
-  def downcase_username
-    self.username = username.downcase
-  end
-
-  def create_activation_digest
-    self.activation_token = Worker.new_token
-    self.activation_digest = Worker.digest(activation_token)
-  end
 end
 
 # == Schema Information
