@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="signup-form col-md-8 col-md-offset-2">
-        <h1>クライアントアカウント作成</h1>
+        <h1>Create Account of Client</h1>
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <%= form_for(@client) do |f| %>
@@ -39,7 +39,7 @@
               </div>
 
               <div class="company-name-form comn-form">
-                <%= f.text_field :company_name, class: 'form-control company-name-form', placeholder: 'Company name', autocomplete: 'off' %>
+                <%= f.text_field :company_name, class: 'form-control company-name-form', placeholder: 'Company Name', autocomplete: 'off' %>
                 <%= render 'shared/error', object: f.object, field: :company_name %>
                 <div class="company-name">
                   <p>

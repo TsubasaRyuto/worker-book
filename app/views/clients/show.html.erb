@@ -1,0 +1,25 @@
+<% provide(:title, @client.username) %>
+
+<section class="client-page">
+  <div class="container">
+    <div class="row">
+      <div class="body col-md-8 col-md-offset-2">
+        <div class="row">
+          <div class="face col-md-4">
+            <%= image_tag @client.profile.logo_url %>
+            <% if signed_in? %>
+              <%= link_to client_settings_account_path(client_username: current_user.username) do %>
+                <button type=button class="btn btn-primary">プロフィール変更</button>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="info col-md-8">
+            <h1><%= @client.company_name %></h1>
+            <span>担当者:</span> <h2><%= @client.last_name %> <%= @client.first_name %></h2>
+            <span>コーポレートサイト:</span> <p><%= @client.profile.corporate_site %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

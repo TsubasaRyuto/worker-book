@@ -1,6 +1,6 @@
 module SessionsHelper
-  def wb_user
-    wb_user = Worker.find_by(email: params[:session][:email].downcase) || Client.find_by(email: params[:session][:email].downcase)
+  def worker_book_user
+    Worker.find_by(email: params[:session][:email].downcase) || Client.find_by(email: params[:session][:email].downcase)
   end
 
   def user_type(user)
