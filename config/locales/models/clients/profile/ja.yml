@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      client_profile:
+    attributes:
+      client_profile:
+          logo: 会社ロゴ
+          corporate_site: 会社サイトURL

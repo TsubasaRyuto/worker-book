@@ -21,23 +21,26 @@ Rails.application.routes.draw do
     get '/sign_up', to: 'workers#new'
     resources :workers, except: %i(new edit), param: :username, path: '/' do
       member { get '/retire', to: 'workers#retire' }
+
       get '/create_profile', to: 'worker_profiles#new'
       get '/settings/profile', to: 'worker_profiles#edit'
-
       resource :profiles, only: %i(create update), controller: :worker_profiles
     end
   end
 
   # clients/
   scope '/client' do
-    get '/sign_up', to: 'clients#new'
     get '/:token/activate', to: 'clients#activate', as: 'activate_client'
-    resources :clients, except: %i(new), param: :username, path: '/' do
+    get '/:username/settings/account', to: 'clients#edit', as: 'client_settings_account'
+    get '/sign_up', to: 'clients#new'
+    resources :clients, except: %i(new edit), param: :username, path: '/' do
+      member { get '/retire', to: 'clients#retire' }
 
+      get '/create_profile', to: 'client_profiles#new'
       resource :profiles, only: %i(create update), controller: :client_profiles
-      resources :jobs, only: %i(show edit create update destroy), controller: :client_jobs
-      get '/create_profile', to: 'profiles#new'
+
       get '/create_job', to: 'jobs#new'
+      resources :jobs, only: %i(show edit create update destroy), controller: :client_jobs
     end
   end
 

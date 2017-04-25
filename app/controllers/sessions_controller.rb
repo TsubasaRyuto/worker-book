@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    user = wb_user
+    user = worker_book_user
     if user && user.authenticate(params[:session][:password])
       if user.activated?
         sign_in user

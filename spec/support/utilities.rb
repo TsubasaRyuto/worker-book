@@ -15,7 +15,11 @@ end
 def signed_on?(user)
   urls = ["/#{user_type(user)}/#{user.username}/create_profile", "/#{user_type(user)}/#{user.username}"]
   if urls.include?(current_path)
-    click_link user.username.to_s
+    if user_type(user) == 'worker'
+      click_link user.username.to_s
+    else
+      click_link user.company_name.to_s
+    end
     page.has_link? 'Sign out'
   end
 end

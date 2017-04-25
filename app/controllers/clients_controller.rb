@@ -1,4 +1,9 @@
 class ClientsController < ApplicationController
+  def show
+    @client = Client.find_by(username: params[:username])
+    raise ActiveRecord::RecordNotFound if @client.blank? || @client.profile.blank?
+  end
+
   def new
     @client = Client.new
   end

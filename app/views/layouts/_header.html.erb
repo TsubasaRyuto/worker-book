@@ -18,15 +18,18 @@
               <% if signed_in? %>
                 <li class="dropdown">
                   <a href="#" calss="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-menu-hamburger"></span><%= current_user.username %>
+                    <% if user_type(current_user) == 'worker' %>
+                      <span class="glyphicon glyphicon-menu-hamburger"></span><%= current_user.username %>
+                    <% else %>
+                      <span class="glyphicon glyphicon-menu-hamburger"></span><%= current_user.company_name %>
+                    <% end %>
                   </a>
                   <ul class="dropdown-menu">
-
-                    <% if worker_profile_present? %>
-                      <li><%= link_to "Profile", worker_path(username: current_user.username) %></li>
-                      <li><%= link_to "Settings", worker_settings_account_path(username: current_user.username) %></li>
+                    <% if user_profile_present? %>
+                      <li><%= link_to "Profile", "/#{user_type(current_user)}/#{current_user.username}" %></li>
+                      <li><%= link_to "Settings", "/#{user_type(current_user)}/#{current_user.username}/settings/profile" %></li>
                     <% else %>
-                      <li><%= link_to "Delete Account", retire_worker_path(username: current_user.username) %></li>
+                      <li><%= link_to "Delete Account", "/#{user_type(current_user)}/#{current_user.username}/retire" %></li>
                     <% end %>
                   </ul>
                   <li>
