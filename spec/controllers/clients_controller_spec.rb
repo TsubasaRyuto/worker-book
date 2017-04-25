@@ -4,7 +4,7 @@ RSpec.describe ClientsController, type: :controller do
   let(:client) { create :client }
   let(:other_client) { create :other_client }
   let(:client_profile) { create :client_profile, client: client }
-  
+
   describe 'get new' do
     context 'successfull' do
       before do
