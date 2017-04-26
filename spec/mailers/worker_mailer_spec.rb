@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe WorkerMailer, type: :mailer do
-  describe 'activate_worker' do
+  context 'activate_worker' do
     let(:worker) { create :worker }
     let(:mail) { WorkerMailer.activate_worker(worker) }
 

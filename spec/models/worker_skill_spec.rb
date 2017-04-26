@@ -17,7 +17,7 @@ RSpec.describe WorkerSkill, type: :model do
   let(:skill_languages) { [ruby, php, python, html, jquery] }
   let(:worker_skill_languages) { [] }
 
-  describe 'validate' do
+  context 'validate' do
     context 'successfull' do
       before do
         skill_languages.each do |skill|

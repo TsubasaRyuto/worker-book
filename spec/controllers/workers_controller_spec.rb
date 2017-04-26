@@ -95,7 +95,7 @@ RSpec.describe WorkersController, type: :controller do
     end
   end
 
-  context '#create' do
+  context 'post create' do
     let(:last_name) { Faker::Name.last_name }
     let(:first_name) { Faker::Name.first_name }
     let(:username) { 'example_worker' }
@@ -172,7 +172,7 @@ RSpec.describe WorkersController, type: :controller do
     end
   end
 
-  context '#update' do
+  context 'patch update' do
     context 'successfull' do
       let(:username) { 'change_username' }
       let(:email) { 'change_email@example.com' }
@@ -231,7 +231,7 @@ RSpec.describe WorkersController, type: :controller do
     end
   end
 
-  context '#destroy' do
+  context 'delete destroy' do
     context 'successfull' do
       context 'update valid worker' do
         before do

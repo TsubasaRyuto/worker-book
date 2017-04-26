@@ -60,8 +60,9 @@ def client
     last_name = name.last_name
     first_name = name.first_name
     com_name = Faker::Company.name
+    logo = Rails.root.join('spec/fixtures/images/lobo.png').open
 
-    Client.create(
+    client = Client.create(
       last_name: last_name,
       first_name: first_name,
       username: "example_client#{index + 1}",
@@ -71,6 +72,12 @@ def client
       password_confirmation: 'foobar123',
       activated: true
     )
+
+    client_profile = client.build_profile(
+      corporate_site: "http://client_example#{index + 1}.com",
+      logo: logo
+    )
+    client_profile.save
   end
 end
 

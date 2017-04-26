@@ -15,8 +15,26 @@
           </div>
           <div class="info col-md-8">
             <h1><%= @client.company_name %></h1>
-            <span>担当者:</span> <h2><%= @client.last_name %> <%= @client.first_name %></h2>
-            <span>コーポレートサイト:</span> <p><%= @client.profile.corporate_site %></p>
+            <div>
+              <span>担当者:</span> <h2><%= @client.last_name %> <%= @client.first_name %></h2>
+            </div>
+            <div>
+              <span>コーポレートサイト:</span> <p><%= link_to @client.profile.corporate_site %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="contents-list section col-md-12">
+            <h2>発注内容一覧</h2>
+            <p>発注内容は作成されておりません</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="past-performance section col-md-12">
+            <h2>過去発注実績</h2>
+            <p>発注実績はございません</p>
           </div>
         </div>
       </div>

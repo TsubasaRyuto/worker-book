@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'PasswordRests', type: :feature do
-  context 'password reset spec' do
-    let(:worker) { create :worker }
-    let(:worker_profile) { create :worker_profile, worker: worker }
+  shared_examples_for 'password reset spec' do
     before do
-      worker_profile
+      user_profile
       ActionMailer::Base.deliveries.clear
       visit new_password_reset_path
     end
@@ -20,10 +18,10 @@ RSpec.feature 'PasswordRests', type: :feature do
       expect(page).to have_selector 'h1', text: 'Forgot your password?'
 
       # valid email
-      fill_in 'Email', with: worker.email
+      fill_in 'Email', with: user.email
       click_button 'Send an email'
       expect(ActionMailer::Base.deliveries.size).to eq 1
-      expect(worker.reload.reset_digest).to eq worker.reset_digest
+      expect(user.reload.reset_digest).to eq user.reset_digest
       expect(page).to have_selector '.alert'
       expect(current_path).to eq root_path
 
@@ -37,15 +35,15 @@ RSpec.feature 'PasswordRests', type: :feature do
       expect(current_path).to eq root_path
 
       # invalid user
-      worker.toggle!(:activated)
-      visit edit_password_reset_path(reset_token, email: worker.email)
+      user.toggle!(:activated)
+      visit edit_password_reset_path(reset_token, email: user.email)
       expect(current_path).to eq root_path
-      worker.toggle!(:activated)
+      user.toggle!(:activated)
 
       # valid email and valid token
-      visit edit_password_reset_path(reset_token, email: worker.email)
+      visit edit_password_reset_path(reset_token, email: user.email)
       expect(page).to have_selector 'h1', text: 'Reset password'
-      expect(find('input[name=email]', visible: false).value).to eq worker.email
+      expect(find('input[name=email]', visible: false).value).to eq user.email
 
       # invalid password and confirmation
       fill_in placeholder: 'Password', with: 'foobaz12'
@@ -63,10 +61,24 @@ RSpec.feature 'PasswordRests', type: :feature do
       fill_in placeholder: 'Password', with: 'foobaz12'
       fill_in placeholder: 'Confirmation', with: 'foobaz12'
       click_button 'Reset password'
-      worker.reload
-      expect(signed_on?(worker)).to be_truthy
+      user.reload
+      expect(signed_on?(user)).to be_truthy
       expect(page).to have_selector '.alert'
-      expect(current_path).to eq worker_path(username: worker.username)
+      expect(current_path).to eq "/#{user_type(user)}/#{user.username}"
+    end
+  end
+
+  context 'worker' do
+    it_behaves_like 'password reset spec' do
+      let(:user) { create :worker }
+      let(:user_profile) { create :worker_profile, worker: user }
+    end
+  end
+
+  context 'client' do
+    it_behaves_like 'password reset spec' do
+      let(:user) { create :client }
+      let(:user_profile) { create :client_profile, client: user }
     end
   end
 end

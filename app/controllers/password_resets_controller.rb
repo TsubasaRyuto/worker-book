@@ -1,16 +1,16 @@
 class PasswordResetsController < ApplicationController
-  before_action :find_worker, only: [:edit, :update]
-  before_action :valid_worker, only: [:edit, :update]
+  before_action :find_user, only: [:edit, :update]
+  before_action :valid_user, only: [:edit, :update]
 
   def new; end
 
   def edit; end
 
   def create
-    @worker = Worker.find_by(email: params[:password_reset][:email].downcase)
-    if @worker
-      @worker.create_reset_digest
-      @worker.send_password_reset_email
+    @user = password_reset_user
+    if @user
+      @user.create_reset_digest
+      @user.send_password_reset_email
       flash[:info] = I18n.t('views.common.info.success.send_apss_reset_email')
       redirect_to root_url
     else
@@ -20,13 +20,14 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    if params[:worker][:password].empty?
-      @worker.errors.add(:password, 'は必須項目です')
+    if params[:worker] && params[:worker][:password].empty? || params[:client] && params[:client][:password].empty?
+      @user.errors.add(:password, 'は必須項目です')
       render :edit
-    elsif @worker.update_attributes(worker_params)
-      sign_in @worker
+    elsif @user.update_attributes(user_params)
+      sign_in @user
       flash[:success] = I18n.t('views.common.info.success.pass_reseted')
-      redirect_to worker_url(username: @worker.username)
+      redirect_to worker_url(username: @user.username) if params[:worker]
+      redirect_to client_url(username: @user.username) if params[:client]
     else
       render :edit
     end
@@ -34,24 +35,25 @@ class PasswordResetsController < ApplicationController
 
   private
 
-  def worker_params
-    params.require(:worker).permit(:password, :password_confirmation)
+  def user_params
+    if params[:worker].present?
+      params.require(:worker).permit(:password, :password_confirmation)
+    elsif params[:client].present?
+      params.require(:client).permit(:password, :password_confirmation)
+    end
   end
 
-  def find_worker
-    @worker = Worker.find_by(email: params[:email])
+  def find_user
+    @user = Worker.find_by(email: params[:email]) || Client.find_by(email: params[:email])
   end
 
-  def valid_worker
-    unless @worker && @worker.activated? && @worker.authenticated?(:reset, params[:id])
+  def valid_user
+    unless @user && @user.activated? && @user.authenticated?(:reset, params[:id])
       redirect_to root_url
     end
   end
 
-  def checkbox_expireation
-    if @worker.password_reset_expired?
-      flash[:danger] = I18n.t('views.common.info.danger.expired_link')
-      redirect_to new_password_reset_url
-    end
+  def password_reset_user
+    Worker.find_by(email: params[:password_reset][:email].downcase) || Client.find_by(email: params[:password_reset][:email].downcase)
   end
 end

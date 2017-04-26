@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ClientMailer, type: :mailer do
-  describe 'activate_client' do
+   context'activate_client' do
     let(:client) { create :client }
     let(:mail) { ClientMailer.activate_client(client) }
 
