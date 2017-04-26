@@ -1,13 +1,13 @@
 <% provide(:title, '退会確認') %>
 
-<selction class="retire-worker retire-user">
+<selction class="retire-client retire-user">
   <div class="container">
     <div class="body">
       <h1>WorkerBook 退会確認</h1>
       <p>
-        WorkerBookをご利用いただきありがとうございます。退会されることは残念ですが、退会されるということは <%= @worker.username %>さんにとって必要のない
+        WorkerBookをご利用いただきありがとうございます。退会されることは残念ですが、退会されるということは <%= @client.company_name %>様にとって必要のない
         サービスであるという事実を曲げることはできません。<br>
-        今後、<%= @worker.username %>さんがWorkerBookを「使いたい」と思えるサービスへと改善していきますので今後とも応援よろしくお願いいたします。<br>
+        今後、<%= @client.company_name %>様がWorkerBookを「使いたい」と思えるサービスへと改善していきますので今後とも応援よろしくお願いいたします。<br>
       </p>
       <p class="confirm">
         退会した場合、ユーザーに関する情報が全て削除されます。<br>
@@ -16,7 +16,7 @@
         >> 引き続きWorkerBookをご利用になられる場合は「やっぱり続ける」ボタンを押してください。
       </p>
       <div class="form">
-        <%= form_tag worker_path(username: @worker.username), method: :delete do |f| %>
+        <%= form_tag client_path(username: @client.username), method: :delete do |f| %>
           <%= label :password, 'Password', class: 'form-label'%>
           <%= password_field_tag :password, '', class: 'form-control', placeholder: 'Password Here....' %>
           <%= link_to 'やっぱり続ける', root_path, class: 'btn btn-primary' %>

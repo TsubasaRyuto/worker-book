@@ -40,7 +40,7 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
             expect(page).to have_link user.company_name.to_s
           end
           expect(page).to have_link 'Sign out', href: '/sign_out'
-          expect(page).to have_link 'Settings', href: "/#{user_type(user)}/#{user.username}/settings/profile"
+          expect(page).to have_link 'Settings', href: "/#{user_type(user)}/#{user.username}/settings/account"
         end
       end
 

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ClientProfilesController, type: :controller do
   let(:client) { create :client }
-  describe 'get new' do
+  context 'get new' do
     context 'success' do
       before do
         sign_in_as(client)
@@ -40,7 +40,7 @@ RSpec.describe ClientProfilesController, type: :controller do
     end
   end
 
-  describe 'post create' do
+  context 'post create' do
     let(:com_url) { 'http://example.com' }
     let(:logo) { fixture_file_upload('images/lobo.png', 'image/png') }
     before do

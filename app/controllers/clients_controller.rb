@@ -1,4 +1,7 @@
 class ClientsController < ApplicationController
+  before_action :signed_in_client, only: [:edit, :update, :retire, :destroy]
+  before_action :correct_client, only: [:edit, :update, :retire, :destroy]
+
   def show
     @client = Client.find_by(username: params[:username])
     raise ActiveRecord::RecordNotFound if @client.blank? || @client.profile.blank?
@@ -6,6 +9,14 @@ class ClientsController < ApplicationController
 
   def new
     @client = Client.new
+  end
+
+  def edit
+    @client = Client.find_by(username: params[:username])
+  end
+
+  def retire
+    @client = Client.find_by(username: params[:username])
   end
 
   def create
@@ -16,6 +27,30 @@ class ClientsController < ApplicationController
       redirect_to client_verify_email_url
     else
       render :new
+    end
+  end
+
+  def update
+    @client = Client.find_by(username: params[:username])
+    if @client.update_attributes(update_params)
+      # @client.send_update_email
+      flash[:success] = I18n.t('views.common.info.success.update_account')
+      redirect_to client_url(username: @client.username)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @client = Client.find_by(username: params[:username])
+    if @client && @client.authenticate(params[:password])
+      @client.destroy
+      session.delete(:client_id)
+      flash[:success] = I18n.t('views.common.info.success.delete_account')
+      redirect_to root_url
+    else
+      flash[:warning] = I18n.t('views.common.info.danger.invalid_password')
+      render :retire
     end
   end
 
@@ -37,5 +72,22 @@ class ClientsController < ApplicationController
 
   def client_params
     params.require(:client).permit(:last_name, :first_name, :username, :company_name, :email, :password, :password_confirmation)
+  end
+
+  def update_params
+    params.require(:client).permit(:last_name, :first_name, :username, :company_name, :email)
+  end
+
+  def signed_in_client
+    unless signed_in?
+      store_location
+      flash[:danger] = I18n.t('views.common.info.danger.not_signed_in')
+      redirect_to sign_in_url
+    end
+  end
+
+  def correct_client
+    @client = Client.find_by(username: params[:username])
+    redirect_to root_url unless current_user?(@client)
   end
 end

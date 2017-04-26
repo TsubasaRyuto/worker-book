@@ -10,7 +10,7 @@ RSpec.describe Client, type: :model do
   let(:confirmation) { 'foobar123' }
   let(:client) { Client.new(last_name: last_name, first_name: first_name, username: username, company_name: com_name, email: email, password: password, password_confirmation: confirmation) }
 
-  describe 'validates' do
+  context 'validates' do
     context 'successful' do
       it { expect(client).to be_valid }
 
@@ -145,7 +145,7 @@ RSpec.describe Client, type: :model do
     end
   end
 
-  describe '#remember' do
+  context '#remember' do
     context 'when worker remember' do
       let(:client) { create(:client) }
       before do
@@ -159,13 +159,13 @@ RSpec.describe Client, type: :model do
     end
   end
 
-  describe '#authenticated' do
+  context '#authenticated' do
     it 'authenticated? should return false for a client with nil digest' do
       expect(client).to_not be_authenticated(:remember, '')
     end
   end
 
-  describe '#forget' do
+  context '#forget' do
     context 'when forget client' do
       before do
         client.save
@@ -179,7 +179,7 @@ RSpec.describe Client, type: :model do
     end
   end
 
-  describe '#activate' do
+  context '#activate' do
     let(:time_now) { Time.zone.local(2017, 1, 1, 0, 0, 0) }
     context 'when activate client' do
       before do
@@ -196,7 +196,7 @@ RSpec.describe Client, type: :model do
     end
   end
 
-  describe '#create_reset_digest' do
+  context '#create_reset_digest' do
     context 'when create reset digest' do
       let(:time_now) { Time.zone.local(2016, 3, 7, 18, 0, 0) }
       before do
@@ -214,7 +214,7 @@ RSpec.describe Client, type: :model do
     end
   end
 
-  describe '#password_reset_expired?' do
+  context '#password_reset_expired?' do
     context 'when password is reset' do
       before do
         client.save

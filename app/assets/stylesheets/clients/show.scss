@@ -1,0 +1,76 @@
+.client-page {
+  background-color: $color-main;
+  display: block;
+  width: 100%;
+
+  .section {
+    border-top: 1px solid $color-main;
+    color: $color-main;
+    display: block;
+    float: none;
+    margin: 50px auto 30px;
+    width: 80%;
+  }
+
+  .body {
+    background-color: $color-sub3;
+    padding: 7vh 0;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+
+    .face {
+      img {
+        border-radius: 50%;
+        display: block;
+        height: 150px;
+        margin: 0 auto;
+        width: 150px;
+      }
+      a {
+        text-decoration: none;
+        .btn {
+          background-color: $color-main;
+          border: none;
+          display: block;
+          font-size: .8em;
+          margin: 2vh auto 0;
+          width: 50%;
+        }
+      }
+    } // face
+    .info {
+      margin-top: 5vh;
+
+      span {
+        color: $color-main;
+        font-size: 1.2em;
+      }
+
+      h1 {
+        color: $color-main;
+      }
+
+      h2 {
+        color: $color-main;
+        display: inline-block;
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      p {
+        display: inline-block;
+        font-size: 1.4em;
+        a {
+          color: $color-sub2;
+          padding-bottom: 1vh;
+          text-decoration: none;
+
+          &:hover {
+            color: $color-sub2;
+            border-bottom: 1px solid $color-main;
+          }
+        }
+      }
+    } // info
+  }
+}

@@ -37,6 +37,10 @@ class WorkersController < ApplicationController
     @worker = Worker.find_by(username: params[:username])
   end
 
+  def retire
+    @worker = Worker.find_by(username: params[:username])
+  end
+
   def create
     @worker = Worker.new(worker_params)
     if @worker.save
@@ -57,10 +61,6 @@ class WorkersController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def retire
-    @worker = Worker.find_by(username: params[:username])
   end
 
   def destroy
