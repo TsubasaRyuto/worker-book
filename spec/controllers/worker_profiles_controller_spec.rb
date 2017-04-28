@@ -37,9 +37,9 @@
 
 require 'rails_helper'
 
-RSpec.describe WorkerProfilesController, type: :controller do
+RSpec.describe WorkerProfilesController, truncation: true, type: :controller do
   let(:worker) { create :worker }
-  let(:skills) { %w(1 2 3 4 5) }
+  let(:skill_ids) { %w(1 2 3 4 5) }
   context 'get new' do
     context 'success' do
       before do
@@ -103,7 +103,7 @@ RSpec.describe WorkerProfilesController, type: :controller do
     let(:employment_history4) {}
     let(:currently_freelancer) { true }
     let(:active) { true }
-    let(:skill_languages) { skills }
+    let(:skills) { skill_ids }
 
     before do
       sign_in_as(worker)
@@ -119,7 +119,7 @@ RSpec.describe WorkerProfilesController, type: :controller do
             past_performance3: past_performance3, past_performance4: past_performance4, unit_price: unit_price, appeal_note: appeal_note, picture: picture, location: location,
             employment_history1: employment_history1, employment_history2: employment_history2, employment_history3: employment_history3, employment_history4: employment_history4,
             currently_freelancer: currently_freelancer, active: active
-          }, worker_skill: { skill_language_id: skill_languages } }
+          }, worker_skill: { skill_id: skills } }
         end
           .to change { WorkerProfile.count }.by(1)
         expect(response).to redirect_to worker_url(username: worker.username)
@@ -136,7 +136,7 @@ RSpec.describe WorkerProfilesController, type: :controller do
             past_performance3: past_performance3, past_performance4: past_performance4, unit_price: unit_price, appeal_note: appeal_note, picture: picture, location: location,
             employment_history1: employment_history1, employment_history2: employment_history2,
             currently_freelancer: currently_freelancer, active: active
-          }, worker_skill: { skill_language_id: skill_languages } }
+          }, worker_skill: { skill_id: skills } }
         end
         it 'should not create worker profile' do
           expect(response).to render_template :new
@@ -175,19 +175,19 @@ RSpec.describe WorkerProfilesController, type: :controller do
       context 'invalid skill language' do
         context 'too many' do
           it_behaves_like 'invalid profile information' do
-            let(:skills) { %w(1 2 3 4 5 6 10 23 34 45 56) }
+            let(:skill_ids) { %w(1 2 3 4 5 6 10 23 34 45 56) }
           end
         end
 
         context 'too little' do
           it_behaves_like 'invalid profile information' do
-            let(:skills) { %w(1 2 3 4) }
+            let(:skill_ids) { %w(1 2 3 4) }
           end
         end
 
         context 'duplicate' do
           it_behaves_like 'invalid profile information' do
-            let(:skills) { %w(1 2 2 3 4) }
+            let(:skill_ids) { %w(1 2 2 3 4) }
           end
         end
       end

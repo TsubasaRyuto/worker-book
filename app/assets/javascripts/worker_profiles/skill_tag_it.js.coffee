@@ -3,7 +3,7 @@ $(document).on 'turbolinks:load', ->
     placeholderText: 'Type Here......',
     tagLimit: 10,
     showAutocompleteOnFocus : true,
-    fieldName: 'worker_skill[skill_language_id][]'
+    fieldName: 'worker_skill[skill_id][]'
     autocomplete: {delay: 0, minLength: 1, autoFocus: true},
     tagSource: (req, res) ->
       $.ajax
@@ -15,7 +15,7 @@ $(document).on 'turbolinks:load', ->
             return false
           else
             res $.map(data, (item) ->
-              # skill_language_idを取得する為に、valueでidを取得し、tag-it.jsで指定している。
+              # skill_idを取得する為に、valueでidを取得し、tag-it.jsで指定している。
               value: item.id
               label: item.name
             )

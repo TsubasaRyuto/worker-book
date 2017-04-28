@@ -39,8 +39,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation, { except: %w(skill_languages) }
-    DatabaseCleaner.clean_with(:truncation, except: %w(skill_languages))
+    DatabaseCleaner.strategy = :truncation, { except: %w(skills) }
+    DatabaseCleaner.clean_with(:truncation, except: %w(skills))
   end
 
   config.before(:each) do

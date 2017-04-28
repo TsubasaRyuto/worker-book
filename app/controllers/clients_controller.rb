@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: clients
+#
+#  id                :integer          not null, primary key
+#  last_name         :string(255)      not null
+#  first_name        :string(255)      not null
+#  username          :string(255)      not null
+#  company_name      :string(255)      not null
+#  email             :string(255)      not null
+#  password_digest   :string(255)      not null
+#  remember_digest   :string(255)
+#  activation_digest :string(255)
+#  activated         :boolean          default(FALSE), not null
+#  activated_at      :datetime
+#  reset_digest      :string(255)
+#  reset_sent_at     :datetime
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
 class ClientsController < ApplicationController
   before_action :signed_in_client, only: [:edit, :update, :retire, :destroy]
   before_action :correct_client, only: [:edit, :update, :retire, :destroy]

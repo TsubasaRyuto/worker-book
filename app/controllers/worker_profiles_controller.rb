@@ -52,9 +52,9 @@ class WorkerProfilesController < ApplicationController
     @worker = current_user
     @worker_skills = []
     @worker_profile = @worker.build_profile(profile_params)
-    skills = skill_params[:skill_language_id]
-    skills.each do |skill|
-      worker_skills = @worker.worker_skills.build(skill_language_id: skill)
+    skill_ids = skill_params[:skill_id]
+    skill_ids.each do |skill_id|
+      worker_skills = @worker.worker_skills.build(skill_id: skill_id)
       @worker_skills.push(worker_skills)
     end
     if @worker_profile.save & @worker_skills.map(&:valid?).all?
@@ -72,7 +72,7 @@ class WorkerProfilesController < ApplicationController
 
   def profile_params
     params.require(:worker_profile).permit(
-      :skill_language_id, :type_web_developer, :type_mobile_developer, :type_game_developer,
+      :skill_id, :type_web_developer, :type_mobile_developer, :type_game_developer,
       :type_desktop_developer, :type_ai_developer, :type_qa_testing, :type_web_mobile_desiner,
       :type_project_maneger, :type_other, :availability, :past_performance1, :past_performance2,
       :past_performance3, :past_performance4, :unit_price, :appeal_note, :picture, :location,
@@ -82,6 +82,6 @@ class WorkerProfilesController < ApplicationController
   end
 
   def skill_params
-    params.require(:worker_skill).permit(skill_language_id: [])
+    params.require(:worker_skill).permit(skill_id: [])
   end
 end
