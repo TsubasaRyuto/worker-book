@@ -1,4 +1,4 @@
 FactoryGirl.define do
-  factory :skill_language do
+  factory :skill do
   end
 end

@@ -91,8 +91,8 @@ class WorkersController < ApplicationController
   end
 
   def autocomplete_skill
-    skill_languages = SkillLanguage.autocomplete(params[:term])
-    render json: skill_languages
+    skills = Skill.autocomplete(params[:term])
+    render json: skills
   end
 
   private

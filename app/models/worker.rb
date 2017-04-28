@@ -7,7 +7,7 @@ class Worker < ApplicationRecord
   before_create :create_activation_digest
 
   has_many :worker_skills, dependent: :destroy
-  has_many :skill_languages, through: :worker_skills
+  has_many :skills, through: :worker_skills
   has_many :agreements
   has_one :account, dependent: :destroy, foreign_key: 'id', class_name: 'WorkerAccount'
   has_one :address, dependent: :destroy, foreign_key: 'id', class_name: 'WorkerAddress'

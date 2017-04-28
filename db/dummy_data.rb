@@ -47,7 +47,7 @@ def worker_skills
 
   workers.each do |worker|
     skills.each do |skill|
-      worker_skill = worker.worker_skills.build(skill_language_id: skill)
+      worker_skill = worker.worker_skills.build(skill_id: skill)
       worker_skills.push(worker_skill)
     end
     worker_skills.each(&:save)
