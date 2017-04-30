@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   get '/password/reset/:id/activate', to: 'password_resets#edit', as: 'edit_password_reset'
   post '/password_resets', to: 'password_resets#create', as: 'password_resets'
   patch '/password_reset/:id/', to: 'password_resets#update', as: 'password_reset_update'
+  get '/autocomplete_skill/:term', to: 'skills#autocomplete_skill', defaults: { format: 'json' }
 
   # workers/
-  get '/autocomplete_skill/:term', to: 'workers#autocomplete_skill', defaults: { format: 'json' }
   scope '/worker' do
     get '/:token/activate', to: 'workers#activate', as: 'activate_worker'
     get '/:username/settings/account', to: 'workers#edit', as: 'worker_settings_account'

@@ -6,37 +6,34 @@ $(document).on 'turbolinks:load', ->
   tagit = $('.tagit')
 
   skill_validate = ->
-    count = $('.tagit-hidden-field').length
+    count = $('.tagit-choice').length
     if count < 5
       tagit.css 'border', '2px solid #dc143c'
       min_warning.css 'color', '#dc1432'
       min_warning.css 'display', 'block'
-      create_btn.attr('disabled', true)
     else if count == 10
       $('.skiltal-max-warning').css 'display', 'block'
     else
       tagit.css 'border', '2px solid #486d94'
       min_warning.css 'display', 'none'
-      create_btn.attr('disabled', false)
-
-  if $('.tagit-hidden-field').val() && $('.tagit-hidden-field').length >= 5
-    create_btn.attr('disabled', false)
 
   $('.ui-autocomplete-input').on 'keydown', (e) ->
     skill_validate()
-    if e.keyCode == 8 || e.keyCode == 46 && count < 6　
-      tagit.css 'border', '2px solid #dc143c'
-      min_warning.css 'color', '#dc1432'
-      min_warning.css 'display', 'block'
-      create_btn.attr('disabled', true)
+    # deleteボタンでタグが５以下になった時にスタイルをwarningにする
+    # count = $('.tagit-choice').length
+    # if e.keyCode == 8 or e.keyCode == 46 and count < 6
+    #   console.log(count)
+    #   tagit.css 'border', '2px solid #dc143c'
+    #   min_warning.css 'color', '#dc1432'
+    #   min_warning.css 'display', 'block'
 
   $('ul').on 'click', '.ui-menu-item', ->
     skill_validate()
+
   $('ul').on 'click', 'a', ->
-    count = $('.tagit-hidden-field').length
+    count = $('.tagit-choice').length
     # clickイベント発火時にはcount==5であるため、count<6としている
     if count < 6
       tagit.css 'border', '2px solid #dc143c'
       min_warning.css 'color', '#dc1432'
       min_warning.css 'display', 'block'
-      create_btn.attr('disabled', true)

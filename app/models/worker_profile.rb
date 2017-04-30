@@ -3,6 +3,9 @@ class WorkerProfile < ApplicationRecord
 
   attr_accessor :type, :past_performance, :employment_history
 
+  acts_as_taggable
+  acts_as_taggable_on :skill
+
   self.table_name = 'worker_profiles'
   self.primary_key = :id
   belongs_to :worker, foreign_key: 'id'
@@ -24,6 +27,29 @@ class WorkerProfile < ApplicationRecord
   validates :location, presence: true
   validates :picture, presence: true
   validates :employment_history, emp_hist_presence: true, emp_hist_length: true
+
+  validate :max_count_worker_skill, :min_count_worker_skill, :duplicate_worker_skill
+
+  private
+
+  def max_count_worker_skill
+    if self.skill_list.count >= 10
+      errors.add(:skill_list, I18n.t('activerecord.errors.worker_skills.too_many'))
+    end
+  end
+
+  def min_count_worker_skill
+    if self.skill_list.count < 5
+      errors.add(:skill_list, I18n.t('activerecord.errors.worker_skills.too_little'))
+    end
+  end
+
+  def duplicate_worker_skill
+    worker_skills = self.skill_list
+    unless worker_skills.size == worker_skills.uniq.size
+      errors.add(:skill_list, I18n.t('activerecord.errors.worker_skills.duplicate'))
+    end
+  end
 end
 
 

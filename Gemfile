@@ -20,8 +20,8 @@ gem 'seed-fu', '~> 2.3.6'
 gem 'enum_help', '~> 0.0.17'
 gem 'carrierwave', '~> 1.0.0'
 gem 'mini_magick', '~> 4.5.1'
+gem 'acts-as-taggable-on', '~> 4.0'
 gem 'gon', '~> 6.0.1'
-gem 'counter_culture', '~> 1.6.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

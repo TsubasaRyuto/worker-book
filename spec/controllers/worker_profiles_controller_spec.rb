@@ -39,7 +39,6 @@ require 'rails_helper'
 
 RSpec.describe WorkerProfilesController, truncation: true, type: :controller do
   let(:worker) { create :worker }
-  let(:skill_ids) { %w(1 2 3 4 5) }
   context 'get new' do
     context 'success' do
       before do
@@ -103,7 +102,7 @@ RSpec.describe WorkerProfilesController, truncation: true, type: :controller do
     let(:employment_history4) {}
     let(:currently_freelancer) { true }
     let(:active) { true }
-    let(:skills) { skill_ids }
+    let(:skills) { 'Ruby, HTML, css, C, PHP' }
 
     before do
       sign_in_as(worker)
@@ -118,8 +117,8 @@ RSpec.describe WorkerProfilesController, truncation: true, type: :controller do
             type_project_maneger: type_project_maneger, type_other: type_other, availability: availability, past_performance1: past_performance1, past_performance2: past_performance2,
             past_performance3: past_performance3, past_performance4: past_performance4, unit_price: unit_price, appeal_note: appeal_note, picture: picture, location: location,
             employment_history1: employment_history1, employment_history2: employment_history2, employment_history3: employment_history3, employment_history4: employment_history4,
-            currently_freelancer: currently_freelancer, active: active
-          }, worker_skill: { skill_id: skills } }
+            currently_freelancer: currently_freelancer, active: active, skill_list: skills
+          } }
         end
           .to change { WorkerProfile.count }.by(1)
         expect(response).to redirect_to worker_url(username: worker.username)
@@ -135,8 +134,8 @@ RSpec.describe WorkerProfilesController, truncation: true, type: :controller do
             type_project_maneger: type_project_maneger, type_other: type_other, availability: availability, past_performance1: past_performance1, past_performance2: past_performance2,
             past_performance3: past_performance3, past_performance4: past_performance4, unit_price: unit_price, appeal_note: appeal_note, picture: picture, location: location,
             employment_history1: employment_history1, employment_history2: employment_history2,
-            currently_freelancer: currently_freelancer, active: active
-          }, worker_skill: { skill_id: skills } }
+            currently_freelancer: currently_freelancer, active: active, skill_list: skills
+          } }
         end
         it 'should not create worker profile' do
           expect(response).to render_template :new
@@ -175,19 +174,19 @@ RSpec.describe WorkerProfilesController, truncation: true, type: :controller do
       context 'invalid skill language' do
         context 'too many' do
           it_behaves_like 'invalid profile information' do
-            let(:skill_ids) { %w(1 2 3 4 5 6 10 23 34 45 56) }
+            let(:skills) { 'Ruby, HTML, css, C, PHP, AWS, jQuery, JavaScript, CoffeeScript, C++, JAVA' }
           end
         end
 
         context 'too little' do
           it_behaves_like 'invalid profile information' do
-            let(:skill_ids) { %w(1 2 3 4) }
+            let(:skills) { 'Ruby, HTML, css' }
           end
         end
 
         context 'duplicate' do
           it_behaves_like 'invalid profile information' do
-            let(:skill_ids) { %w(1 2 2 3 4) }
+            let(:skills) { 'Ruby, HTML, css, C, Ruby' }
           end
         end
       end

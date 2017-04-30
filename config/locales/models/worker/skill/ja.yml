@@ -1,7 +1,8 @@
 ja:
   activerecord:
     models:
-      worker_skill:
+      worker_skill: Worker Skills
+      skill_list: Worker skills
     errors:
       worker_skills:
         too_many: 'is selectable to up to 10.'
