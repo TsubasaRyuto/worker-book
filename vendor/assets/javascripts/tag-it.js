@@ -236,11 +236,6 @@
                         that._lastTag().removeClass('remove ui-state-highlight');
                     }
 
-
-                    if ((event.which == 38 || event.Keycode == 38) || (event.which == 40 || event.Keycode == 40)) {
-                        event.preventDefault();
-                    }
-
                     // Comma/Space/Enter are all valid delimiters for new tags,
                     // except when there is an open quote or if setting allowSpaces = true.
                     // Tab will also create a tag, unless the tag input is empty,
@@ -288,9 +283,7 @@
             if (this.options.availableTags || this.options.tagSource || this.options.autocomplete.source) {
                 var autocompleteOptions = {
                     select: function(event, ui) {
-                        // skill_language_idを取得する為に書き換えている。
-                        skillsId = ui.item.value
-                        that.createTag(ui.item.label);
+                        that.createTag(ui.item.value);
                         // Preventing the tag input to be updated with the chosen value.
                         return false;
                     }
@@ -404,10 +397,12 @@
         },
 
         tagLabel: function(tag) {
-            // Returns the tag's string labetrl
-            // valueにはdbのidが入るように修正しているので、findTagByLabelで、マッチしない問題があった。
-            // なので.tagit-labelのtextを取得してイコールで比較するようにした。
-            return $(tag).find('.tagit-label:first').text();
+            // Returns the tag's string label.
+            if (this.options.singleField) {
+                return $(tag).find('.tagit-label:first').text();
+            } else {
+                return $(tag).find('input:first').val();
+            }
         },
 
         _showAutocomplete: function() {
@@ -472,7 +467,6 @@
                 return false;
             }
 
-
             var label = $(this.options.onTagClicked ? '<a class="tagit-label"></a>' : '<span class="tagit-label"></span>').text(value);
 
             // Create tag.
@@ -501,8 +495,7 @@
             // Unless options.singleField is set, each tag has a hidden input field inline.
             if (!this.options.singleField) {
                 var escapedValue = label.html();
-                // worker_skillテーブルにidを渡す為に書き換えている。
-                tag.append('<input type="hidden" value="' + skillsId + '"name="' + this.options.fieldName + '" class="tagit-hidden-field" />');
+                tag.append('<input type="hidden" value="' + escapedValue + '" name="' + this.options.fieldName + '" class="tagit-hidden-field" />');
             }
 
             if (this._trigger('beforeTagAdded', null, {

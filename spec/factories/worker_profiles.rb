@@ -19,5 +19,6 @@ FactoryGirl.define do
     employment_history1 'example company'
     currently_freelancer true
     active true
+    skill_list %w(Ruby PHP Python HTML jQuery)
   end
 end

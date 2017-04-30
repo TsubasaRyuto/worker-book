@@ -1,7 +1,7 @@
 def clean_data
   Worker.delete_all
   WorkerProfile.delete_all
-  WorkerSkill.delete_all
+  ActsAsTaggableOn::Tagging.delete_all
   Client.delete_all
 end
 
@@ -34,23 +34,10 @@ def workers
       appeal_note: note,
       picture: picture,
       location: 02,
-      employment_history1: 'Lobo 株式会社'
+      employment_history1: 'Lobo 株式会社',
+      skill_list: 'Ruby, PHP, C, HTML, css, JavaScript, jQuery'
     )
     worker_profile.save
-  end
-end
-
-def worker_skills
-  workers = Worker.all
-  skills = %w(1 2 3 4 5)
-  worker_skills = []
-
-  workers.each do |worker|
-    skills.each do |skill|
-      worker_skill = worker.worker_skills.build(skill_id: skill)
-      worker_skills.push(worker_skill)
-    end
-    worker_skills.each(&:save)
   end
 end
 
@@ -83,5 +70,4 @@ end
 
 clean_data
 workers
-worker_skills
 client

@@ -90,11 +90,6 @@ class WorkersController < ApplicationController
     end
   end
 
-  def autocomplete_skill
-    skills = Skill.autocomplete(params[:term])
-    render json: skills
-  end
-
   private
 
   def worker_params

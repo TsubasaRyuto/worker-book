@@ -80,14 +80,12 @@
               </div><!-- .select-type -->
               <!-- skill -->
               <div class="select-skill">
-                <%= f.fields_for @worker_skills do |skill_f| %>
                 <h3>Skill & Language</h3>
-                <%= render 'shared/error', object: skill_f.object, field: :worker_skill %>
+                <%= render 'shared/error', object: f.object, field: :skill_list %>
                 <div class="input-skills">
                   <ul id="worker-skill-field">
                   </ul>
                 </div>
-                <% end %>
                 <p class="skill-max-warning">You have reached the limit of skills allowed to be added to your profile.</p>
                 <p class="skill-minimum-warning">Please input your programming languages or skills at least 5 things.</p>
                 <div class="select-skill-info">
@@ -264,7 +262,7 @@
                   </p>
                 </div>
               </div><!-- .check-active .check-box -->
-              <%= f.submit "Create my profile", class: "btn btn-primary create-worker-profile", disabled: 'off' %>
+              <%= f.submit "Create my profile", class: "btn btn-primary create-worker-profile" %>
               <% end %>
             </div><!-- .col-md-8 .col-md-offset-2 -->
           </div><!-- .row -->

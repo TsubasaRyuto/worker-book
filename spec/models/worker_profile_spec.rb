@@ -26,6 +26,7 @@ RSpec.describe WorkerProfile, type: :model do
   let(:employment_history4) {}
   let(:currently_freelancer) { true }
   let(:active) { true }
+  let(:skills) { %w(Ruby PHP Python HTML jQuery) }
   let(:worker_profile) {
     worker.build_profile(
       type_web_developer: type_web_developer, type_mobile_developer: type_mobile_developer, type_game_developer: type_game_developer,
@@ -33,7 +34,7 @@ RSpec.describe WorkerProfile, type: :model do
       type_project_maneger: type_project_maneger, type_other: type_other, availability: availability, past_performance1: past_performance1, past_performance2: past_performance2,
       past_performance3: past_performance3, past_performance4: past_performance4, unit_price: unit_price, appeal_note: appeal_note, picture: picture, location: location,
       employment_history1: employment_history1, employment_history2: employment_history2, employment_history3: employment_history3, employment_history4: employment_history4,
-      currently_freelancer: currently_freelancer, active: active
+      currently_freelancer: currently_freelancer, active: active, skill_list: skills
     )
   }
 
@@ -144,6 +145,23 @@ RSpec.describe WorkerProfile, type: :model do
         context 'presence' do
           let(:employment_history1) { '' }
           let(:employment_history2) { '' }
+          it { expect(worker_profile).to be_invalid }
+        end
+      end
+
+      context 'skill list' do
+        context 'maximum' do
+          let(:skills) { %w(Ruby C css HTML jQuery PHP C++ AWS CoffeeScript JavaScript CakePHP) }
+          it { expect(worker_profile).to be_invalid }
+        end
+
+        context 'minimum' do
+          let(:skills) { %w(Ruby C css ) }
+          it { expect(worker_profile).to be_invalid }
+        end
+
+        context 'duplicate' do
+          let(:skills) { %w(Ruby C css Ruby) }
           it { expect(worker_profile).to be_invalid }
         end
       end

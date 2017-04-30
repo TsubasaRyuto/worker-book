@@ -17,6 +17,6 @@ class ErrorsController < ApplicationController
   end
 
   def show
-    raise env['action_dispatch.exception']
+    raise request.env['action_dispatch.exception']
   end
 end

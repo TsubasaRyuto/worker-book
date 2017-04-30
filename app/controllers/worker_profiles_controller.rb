@@ -40,7 +40,6 @@ class WorkerProfilesController < ApplicationController
     @worker = current_user
     if @worker && @worker.activated?
       @worker_profile = @worker.build_profile
-      @worker_skills = @worker.worker_skills.build
     else
       redirect_to root_url
     end
@@ -50,18 +49,12 @@ class WorkerProfilesController < ApplicationController
 
   def create
     @worker = current_user
-    @worker_skills = []
     @worker_profile = @worker.build_profile(profile_params)
-    skill_ids = skill_params[:skill_id]
-    skill_ids.each do |skill_id|
-      worker_skills = @worker.worker_skills.build(skill_id: skill_id)
-      @worker_skills.push(worker_skills)
-    end
-    if @worker_profile.save & @worker_skills.map(&:valid?).all?
-      WorkerSkill.transaction { @worker_skills.each(&:save!) }
+    if @worker_profile.save
       flash[:success] = 'プロフィールを作成しました'
       redirect_to worker_url(username: @worker.username)
     else
+      set_worker_skills_to_gon
       render :new
     end
   end
@@ -69,7 +62,6 @@ class WorkerProfilesController < ApplicationController
   def update; end
 
   private
-
   def profile_params
     params.require(:worker_profile).permit(
       :skill_id, :type_web_developer, :type_mobile_developer, :type_game_developer,
@@ -77,11 +69,11 @@ class WorkerProfilesController < ApplicationController
       :type_project_maneger, :type_other, :availability, :past_performance1, :past_performance2,
       :past_performance3, :past_performance4, :unit_price, :appeal_note, :picture, :location,
       :employment_history1, :employment_history2, :employment_history3, :employment_history4,
-      :currently_freelancer, :active
+      :currently_freelancer, :active, :skill_list
     )
   end
 
-  def skill_params
-    params.require(:worker_skill).permit(skill_id: [])
+  def set_worker_skills_to_gon
+    gon.worker_skills = @worker_profile.skill_list
   end
 end

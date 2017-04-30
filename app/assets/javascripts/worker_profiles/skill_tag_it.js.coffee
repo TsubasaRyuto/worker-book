@@ -2,8 +2,9 @@ $(document).on 'turbolinks:load', ->
   $('#worker-skill-field').tagit
     placeholderText: 'Type Here......',
     tagLimit: 10,
+    singleField: true,
     showAutocompleteOnFocus : true,
-    fieldName: 'worker_skill[skill_id][]'
+    fieldName: 'worker_profile[skill_list]',
     autocomplete: {delay: 0, minLength: 1, autoFocus: true},
     tagSource: (req, res) ->
       $.ajax
@@ -14,8 +15,7 @@ $(document).on 'turbolinks:load', ->
             $('.ui-widget-content').val('')
             return false
           else
-            res $.map(data, (item) ->
-              # skill_idを取得する為に、valueでidを取得し、tag-it.jsで指定している。
-              value: item.id
-              label: item.name
-            )
+            res(data)
+  if gon.worker_skills?
+    for skill in gon.worker_skills
+      $('#worker-skill-field').tagit 'createTag', skill
