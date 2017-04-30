@@ -156,7 +156,7 @@ RSpec.describe WorkerProfile, type: :model do
         end
 
         context 'minimum' do
-          let(:skills) { %w(Ruby C css ) }
+          let(:skills) { %w(Ruby C css) }
           it { expect(worker_profile).to be_invalid }
         end
 
