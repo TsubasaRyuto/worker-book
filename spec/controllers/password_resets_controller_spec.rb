@@ -70,7 +70,7 @@ RSpec.describe PasswordResetsController, type: :controller do
       end
     end
   end
-#
+  #
   context 'patch updat' do
     shared_examples_for 'update user password' do
       context 'successful' do

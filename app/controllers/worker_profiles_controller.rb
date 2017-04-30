@@ -62,6 +62,7 @@ class WorkerProfilesController < ApplicationController
   def update; end
 
   private
+
   def profile_params
     params.require(:worker_profile).permit(
       :skill_id, :type_web_developer, :type_mobile_developer, :type_game_developer,
