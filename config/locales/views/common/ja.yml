@@ -5,6 +5,8 @@ ja:
         success:
           sign_up_completion: アカウント登録が完了いたしました。
           update_account: アカウント情報を変更いたしました。
+          create_profile: プロフィール作成が完了いたしました。
+          update_profile: プロフィールが変更されました。
           delete_account: 退会完了いたしました。
           send_apss_reset_email: パスワード再設定メールを送信しました。
           pass_reseted: パスワードが変更されました。

@@ -36,30 +36,39 @@
 #
 
 class WorkerProfilesController < ApplicationController
+  before_action :signed_in_worker, only: [:edit, :update, :new, :create]
+  before_action :correct_worker, only: [:edit, :update, :new, :create]
+
   def new
-    @worker = current_user
-    if @worker && @worker.activated?
-      @worker_profile = @worker.build_profile
-    else
-      redirect_to root_url
-    end
+    @worker_profile = @worker.build_profile
   end
 
-  def edit; end
+  def edit
+    @worker_profile = @worker.profile
+    set_worker_skill_list_to_gon
+  end
 
   def create
-    @worker = current_user
     @worker_profile = @worker.build_profile(profile_params)
     if @worker_profile.save
-      flash[:success] = 'プロフィールを作成しました'
+      flash[:success] = I18n.t('views.common.info.success.create_profile')
       redirect_to worker_url(username: @worker.username)
     else
-      set_worker_skills_to_gon
+      set_worker_skill_list_to_gon
       render :new
     end
   end
 
-  def update; end
+  def update
+    @worker_profile = @worker.profile
+    if @worker_profile.update_attributes(profile_params)
+      flash[:success] = I18n.t('views.common.info.success.update_profile')
+      redirect_to worker_url(username: @worker.username)
+    else
+      set_worker_skill_list_to_gon
+      render :edit
+    end
+  end
 
   private
 
@@ -74,7 +83,20 @@ class WorkerProfilesController < ApplicationController
     )
   end
 
-  def set_worker_skills_to_gon
+  def signed_in_worker
+    unless signed_in?
+      store_location
+      flash[:danger] = I18n.t('views.common.info.danger.not_signed_in')
+      redirect_to sign_in_url
+    end
+  end
+
+  def correct_worker
+    @worker = Worker.find_by(username: params[:worker_username])
+    redirect_to root_url unless current_user?(@worker)
+  end
+
+  def set_worker_skill_list_to_gon
     gon.worker_skills = @worker_profile.skill_list
   end
 end
