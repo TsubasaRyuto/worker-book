@@ -8,7 +8,7 @@
           <div class="face col-md-4">
             <%= image_tag @client.profile.logo_url %>
             <% if signed_in? %>
-              <%= link_to client_settings_account_path(client_username: current_user.username) do %>
+              <%= link_to client_settings_profile_path(client_username: current_user.username) do %>
                 <button type=button class="btn btn-primary">プロフィール変更</button>
               <% end %>
             <% end %>
