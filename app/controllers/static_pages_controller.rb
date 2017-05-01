@@ -12,10 +12,10 @@ class StaticPagesController < ApplicationController
   end
 
   def client_verify_email
-    # if session[:verify_email]
-    #   session[:verify_email] = nil
-    # else
-    #   redirect_to root_path
-    # end
+    if session[:verify_email]
+      session[:verify_email] = nil
+    else
+      redirect_to root_path
+    end
   end
 end

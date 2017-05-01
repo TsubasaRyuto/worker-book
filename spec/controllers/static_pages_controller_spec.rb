@@ -43,4 +43,25 @@ RSpec.describe StaticPagesController, type: :controller do
       end
     end
   end
+
+  context 'client verify email' do
+    context 'have a session' do
+      before do
+        session[:verify_email] = true
+      end
+      it_behaves_like 'should get page' do
+        let(:page) { :client_verify_email }
+      end
+    end
+
+    context 'not have a session' do
+      before do
+        get :client_verify_email
+      end
+
+      it 'should get page' do
+        expect(response).to redirect_to root_url
+      end
+    end
+  end
 end
