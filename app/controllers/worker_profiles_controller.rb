@@ -36,8 +36,7 @@
 #
 
 class WorkerProfilesController < ApplicationController
-  before_action :signed_in_worker, only: [:edit, :update, :new, :create]
-  before_action :correct_worker, only: [:edit, :update, :new, :create]
+  before_action :signed_in_worker, :correct_worker
 
   def new
     @worker_profile = @worker.build_profile

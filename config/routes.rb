@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       member { get '/retire', to: 'clients#retire' }
 
       get '/create_profile', to: 'client_profiles#new'
+      get '/settings/profile', to: 'client_profiles#edit'
       resource :profiles, only: %i(create update), controller: :client_profiles
 
       get '/create_job', to: 'jobs#new'
