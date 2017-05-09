@@ -33,7 +33,7 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
             expect(page).to have_selector 'h2', text: "#{user.last_name} #{user.first_name}"
             expect(page).to have_link user.username.to_s
           else
-            expect(page).to have_selector 'h2', text: "#{profile.name}"
+            expect(page).to have_selector 'h2', text: profile.name.to_s
             expect(page).to have_link profile.name.to_s
           end
           expect(page).to have_link 'Sign out', href: '/sign_out'
@@ -126,7 +126,7 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
 
       context 'client' do
         it_behaves_like 'no account activation' do
-          let(:client) { create :client}
+          let(:client) { create :client }
           let(:user) { create :client_user, client: client, activated: false, activated_at: nil }
         end
       end
