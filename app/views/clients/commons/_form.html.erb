@@ -1,0 +1,49 @@
+
+<div class="name">
+  <h3>会社名</h3>
+  <%= render 'shared/error', object: f.object, field: :name %>
+  <div class="url-field">
+    <%= f.text_field :name, class: 'form-control', placeholder: 'ex) Lobo株式会社', autocomplete: 'off' %>
+  </div>
+</div>
+
+<div class="corporate-site">
+  <h3>会社サイト</h3>
+  <%= render 'shared/error', object: f.object, field: :corporate_site %>
+  <div class="url-field">
+    <%= f.url_field :corporate_site, class: 'form-control', placeholder: 'ex) http://lobo-inc.com', autocomplete: 'off' %>
+  </div>
+</div>
+
+<div class="clientname">
+  <h3>クライアント名</h3>
+  <%= render 'shared/error', object: f.object, field: :clientname %>
+  <div class="url-field">
+    <%= f.text_field :clientname, class: 'form-control', placeholder: 'ex) lobo_inc', autocomplete: 'off' %>
+  </div>
+</div>
+
+<div class="select-location">
+  <h3>会社所在地</h3>
+  <%= render 'shared/error', object: f.object, field: :location %>
+  <%= f.select :location, Prefecture.options %>
+</div>
+
+<div class="logo">
+  <h3>会社ロゴ</h3>
+  <%= render 'shared/error', object: f.object, field: :logo %>
+  <div class="row">
+    <div class="logo-img col-md-4">
+      <%= image_tag 'worker_profiles/no_picture.png', alt: "NO LOGO", class: 'img-size upload-link' %>
+    </div>
+    <div class="col-md-8">
+      <p class="mess">
+        会社のロゴをアップロードしてください。<br>ワーカーに信頼を与えましょう。
+      </p>
+      <p class="upload upload-link">Upload photo</p>
+    </div>
+  </div>
+  <div id="modal-content" class="preview">
+    <%= f.file_field :logo , accept: 'image/jpeg, image/jpg, image/gif, image/png', class: 'img-upload' %>
+  </div>
+</div>

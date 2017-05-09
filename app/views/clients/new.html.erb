@@ -1,85 +1,87 @@
-<% provide(:title, 'Sign up') %>
+<% provide(:title, 'Create client account') %>
 
-<section class="sign-up" id="clients-signup">
+<section class="create-clients" id="create-client-profile">
   <div class="container">
     <div class="row">
-      <div class="signup-form col-md-8 col-md-offset-2">
-        <h1>Create Account of Client</h1>
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-            <%= form_for(@client) do |f| %>
-              <div class="last-name-form comn-form">
-                <%= f.text_field :last_name, class: 'form-control last-name-form', placeholder: 'Last Name', autocomplete: 'off' %>
-                <%= render 'shared/error', object: f.object, field: :last_name %>
-                <div class="last-name">
-                  <p>
-                    <strong>必須</strong><br>姓を入力してください
-                  </p>
+      <div class="form col-md-8 col-md-offset-2">
+        <div class="main-contents">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <%= form_for(@client, url: { controller: :clients, action: :create  }, html: { multipart: true })do |f| %>
+                <div class="client-profile">
+                  <h1>Create Account of Client</h1>
+                  <%= render 'shared/step_bar', { first: 'complete', second: '' } %>
+                  <%= render 'clients/commons/form', { f: f } %>
+                  <button class="btn btn-primary">Next Step</button>
                 </div>
-              </div>
+                <div class="client-user">
+                  <h1>Create Account of Client user</h1>
+                  <%= render 'shared/step_bar', { first: 'complete', second: 'complete' } %>
+                  <%= f.fields_for :client_users do |uf| %>
+                  <div class="last-name-form comn-form">
+                    <%= uf.text_field :last_name, class: 'form-control last-name-form', placeholder: 'Last Name', autocomplete: 'off' %>
+                    <%= render 'shared/error', object: uf.object, field: :last_name %>
+                    <div class="last-name">
+                      <p>
+                        <strong>必須</strong><br>姓を入力してください
+                      </p>
+                    </div>
+                  </div>
 
-              <div class="first-name-form comn-form">
-                <%= f.text_field :first_name, class: 'form-control first-name-form', placeholder: 'First Name', autocomplete: 'off' %>
-                <%= render 'shared/error', object: f.object, field: :first_name %>
-                <div class="first-name">
-                  <p>
-                    <strong>必須</strong><br>名前を入力してください
-                  </p>
+                  <div class="first-name-form comn-form">
+                    <%= uf.text_field :first_name, class: 'form-control first-name-form', placeholder: 'First Name', autocomplete: 'off' %>
+                    <%= render 'shared/error', object: uf.object, field: :first_name %>
+                    <div class="first-name">
+                      <p>
+                        <strong>必須</strong><br>名前を入力してください
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="username-form comn-form">
+                    <%= uf.text_field :username, class: 'form-control username-form', placeholder: 'Username', autocomplete: 'off' %>
+                    <%= render 'shared/error', object: uf.object, field: :username %>
+                    <div class="username">
+                      <p>
+                        <strong>必須</strong><br>ユーザー名を5文字以上で入力してください
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="email-form comn-form">
+                    <%= uf.email_field :email, class: 'form-control email-form', placeholder: 'Email', autocomplete: 'off' %>
+                    <%= render 'shared/error', object: uf.object, field: :email %>
+                    <div class="email">
+                      <p>
+                        <strong>必須</strong><br>メールアドレスを入力してください
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="password-form comn-form">
+                    <%= uf.password_field :password, class: 'form-control password-form', placeholder: 'Password', autocomplete: 'off' %>
+                    <%= render 'shared/error', object: uf.object, field: :password %>
+                    <div class="password">
+                      <p>
+                        <strong>必須</strong><br>パスワードを8文字以上で入力してください
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="confirmation-form comn-form">
+                    <%= uf.password_field :password_confirmation, class: 'form-control confirmation-form', placeholder: 'Confirmation', autocomplete: 'off' %>
+                    <%= render 'shared/error', object: uf.object, field: :password_confirmation %>
+                    <div class="confirmation">
+                      <p>
+                        <strong>必須</strong><br>パスワード確認
+                      </p>
+                    </div>
+                  </div>
+                  <% end %>
+                  <%= f.submit 'アカウント作成', class: "btn btn-primary" %>
                 </div>
-              </div>
-
-              <div class="username-form comn-form">
-                <%= f.text_field :username, class: 'form-control username-form', placeholder: 'Username', autocomplete: 'off' %>
-                <%= render 'shared/error', object: f.object, field: :username %>
-                <div class="username">
-                  <p>
-                    <strong>必須</strong><br>ユーザー名を5文字以上で入力してください
-                  </p>
-                </div>
-              </div>
-
-              <div class="company-name-form comn-form">
-                <%= f.text_field :company_name, class: 'form-control company-name-form', placeholder: 'Company Name', autocomplete: 'off' %>
-                <%= render 'shared/error', object: f.object, field: :company_name %>
-                <div class="company-name">
-                  <p>
-                    <strong>必須</strong><br>社名を入力してください。ワーカーに対しての信用につながります
-                  </p>
-                </div>
-              </div>
-
-              <div class="email-form comn-form">
-                <%= f.email_field :email, class: 'form-control email-form', placeholder: 'Email', autocomplete: 'off' %>
-                <%= render 'shared/error', object: f.object, field: :email %>
-                <div class="email">
-                  <p>
-                    <strong>必須</strong><br>メールアドレスを入力してください
-                  </p>
-                </div>
-              </div>
-
-              <div class="password-form comn-form">
-                <%= f.password_field :password, class: 'form-control password-form', placeholder: 'Password', autocomplete: 'off' %>
-                <%= render 'shared/error', object: f.object, field: :password %>
-                <div class="password">
-                  <p>
-                    <strong>必須</strong><br>パスワードを8文字以上で入力してください
-                  </p>
-                </div>
-              </div>
-
-              <div class="confirmation-form comn-form">
-                <%= f.password_field :password_confirmation, class: 'form-control confirmation-form', placeholder: 'Confirmation', autocomplete: 'off' %>
-                <%= render 'shared/error', object: f.object, field: :password_confirmation %>
-                <div class="confirmation">
-                  <p>
-                    <strong>必須</strong><br>パスワード確認
-                  </p>
-                </div>
-              </div>
-
-              <%= f.submit "アカウント作成", class: "btn btn-primary" %>
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

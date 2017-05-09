@@ -12,13 +12,8 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
           click_button 'Sign In'
           expect(signed_on?(user)).to be_truthy
           expect(page).to have_selector 'h1', text: 'Create Profile'
-          if user_type(user) == 'worker'
-            expect(page).to have_link user.username.to_s
-          else
-            expect(page).to have_link user.company_name.to_s
-          end
+          expect(page).to have_link user.username.to_s
           expect(page).to have_link 'Sign out', href: '/sign_out'
-          expect(page).to have_link 'Delete Account', href: "/#{user_type(user)}/#{user.username}/retire"
         end
       end
 
@@ -33,14 +28,15 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
           fill_in placeholder: 'Password', with: user.password
           click_button 'Sign In'
           expect(signed_on?(user)).to be_truthy
-          expect(page).to have_selector 'h2', text: "#{user.last_name} #{user.first_name}"
+
           if user_type(user) == 'worker'
+            expect(page).to have_selector 'h2', text: "#{user.last_name} #{user.first_name}"
             expect(page).to have_link user.username.to_s
           else
-            expect(page).to have_link user.company_name.to_s
+            expect(page).to have_selector 'h2', text: "#{profile.name}"
+            expect(page).to have_link profile.name.to_s
           end
           expect(page).to have_link 'Sign out', href: '/sign_out'
-          expect(page).to have_link 'Settings', href: "/#{user_type(user)}/#{user.username}/settings/account"
         end
       end
 
@@ -61,6 +57,7 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
       context 'worker' do
         it_behaves_like 'valid information but not create profile' do
           let(:user) { create :worker }
+          let(:delete_url) { "/worker/#{user.username}/retire" }
         end
 
         it_behaves_like 'valid information and created profile' do
@@ -78,21 +75,18 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
       end
 
       context 'client' do
-        it_behaves_like 'valid information but not create profile' do
-          let(:user) { create :client }
-        end
-
+        let(:client) { create :client }
         it_behaves_like 'valid information and created profile' do
-          let(:user) { create :client }
-          let(:profile) { create :client_profile, client: user }
+          let(:profile) { create :client }
+          let(:user) { create :client_user, client: profile }
         end
 
         it_behaves_like 'with not remember_me' do
-          let(:user) { create :client }
+          let(:user) { create :client_user, client: client }
         end
 
         it_behaves_like 'with remember_me' do
-          let(:user) { create :client }
+          let(:user) { create :client_user, client: client }
         end
       end
     end
@@ -132,7 +126,8 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
 
       context 'client' do
         it_behaves_like 'no account activation' do
-          let(:user) { create :client, activated: false, activated_at: nil }
+          let(:client) { create :client}
+          let(:user) { create :client_user, client: client, activated: false, activated_at: nil }
         end
       end
     end

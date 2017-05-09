@@ -5,7 +5,7 @@ end
 def user_type(user)
   if user.class == Worker
     'worker'
-  elsif user.class == Client
+  elsif user.class == ClientUser
     'client'
   else
     false
@@ -13,15 +13,14 @@ def user_type(user)
 end
 
 def signed_on?(user)
-  urls = ["/#{user_type(user)}/#{user.username}/create_profile", "/#{user_type(user)}/#{user.username}"]
-  if urls.include?(current_path)
-    if user_type(user) == 'worker'
-      click_link user.username.to_s
-    else
-      click_link user.company_name.to_s
-    end
-    page.has_link? 'Sign out'
+  if user_type(user) == 'worker'
+    urls = ["/#{user_type(user)}/#{user.username}/create_profile", "/#{user_type(user)}/#{user.username}"]
+    page.has_link? user.username.to_s if urls.include?(current_path)
+  elsif user_type(user) == 'client'
+    urls = ["/#{user_type(user)}/#{user.client.clientname}"]
+    page.has_link? user.client.name.to_s if urls.include?(current_path)
   end
+  page.has_link? 'Sign out'
 end
 
 def sign_in_as(user)

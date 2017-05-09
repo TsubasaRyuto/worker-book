@@ -1,8 +1,8 @@
-module UserSignUP
+module UserSignUp
   extend ActiveSupport::Concern
 
   included do
-    attr_accessor :remember_token, :activation_token
+    attr_accessor :remember_token, :activation_token, :reset_token
     before_save :downcase_email, :downcase_username
     before_create :create_activation_digest
   end
@@ -38,8 +38,8 @@ module UserSignUP
   def send_activation_email
     if self.class == Worker
       WorkerMailer.activate_worker(self).deliver_now
-    elsif self.class == Client
-      ClientMailer.activate_client(self).deliver_now
+    elsif self.class == ClientUser
+      ClientUserMailer.activate_client(self).deliver_now
     end
   end
 
@@ -62,8 +62,8 @@ module UserSignUP
   def send_password_reset_email
     if self.class == Worker
       mailer = WorkerMailer
-    elsif self.class == Client
-      mailer = ClientMailer
+    elsif self.class == ClientUser
+      mailer = ClientUserMailer
     end
     mailer.password_reset(self).deliver_now
   end
@@ -77,8 +77,8 @@ module UserSignUP
   def sort_out_model
     if self.class == Worker
       Worker
-    elsif self.class == Client
-      Client
+    elsif self.class == ClientUser
+      ClientUser
     end
   end
 

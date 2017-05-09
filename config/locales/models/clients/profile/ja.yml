@@ -1,8 +1,11 @@
 ja:
   activerecord:
     models:
-      client_profile:
+      client:
     attributes:
-      client_profile:
-          logo: 会社ロゴ
-          corporate_site: 会社サイトURL
+      client:
+        name: 会社名
+        clientname: クライアント名
+        location: 会社所在地
+        logo: 会社ロゴ
+        corporate_site: 会社サイトURL
