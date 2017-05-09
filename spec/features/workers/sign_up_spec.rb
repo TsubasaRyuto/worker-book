@@ -39,19 +39,9 @@ RSpec.feature 'Workers:SingUp', type: :feature do
         sign_on_as(worker)
         expect(signed_on?(worker)).to be_falsey
         # ---
-
-        # --- invalid token of activate
-        visit activate_worker_url('invalid token')
-        expect(signed_on?(worker)).to be_falsey
-        # ---
         mail = ApplicationMailer.deliveries.last
         mail_body = mail.body.encoded
         activation_token = mail_body.split('/')[4]
-
-        # --- valid token but email is invalid
-        visit activate_worker_url(activation_token, email: 'invalid email')
-        expect(signed_on?(worker)).to be_falsey
-        # ---
 
         # --- valid activate
         visit activate_worker_path(activation_token, email: worker.email)

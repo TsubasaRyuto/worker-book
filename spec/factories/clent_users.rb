@@ -1,24 +1,22 @@
 FactoryGirl.define do
-  factory :client do
+  factory :client_user do
     name = Faker::Name
     last_name { name.last_name }
     first_name { name.first_name }
-    username 'example_client'
-    email 'client@example.com'
-    company_name 'Example株式会社'
+    username 'example_client_user'
+    email 'client_user@example.com'
     password 'foobar123'
     password_confirmation 'foobar123'
     activated true
     activated_at Time.zone.now
   end
 
-  factory :other_client, class: Client do
+  factory :other_client_user, class: ClientUser do
     name = Faker::Name
     last_name { name.last_name }
     first_name { name.first_name }
-    username 'example_client2'
-    company_name 'Example２株式会社'
-    email 'client2@example.com'
+    username 'example_client_user2'
+    email 'client_user2@example.com'
     password 'foobar123'
     password_confirmation 'foobar123'
     activated true

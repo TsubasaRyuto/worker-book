@@ -19,7 +19,7 @@ RSpec.describe SessionsController, type: :controller do
             post :create, params: { session: { email: user.email, password: user.password, remember_me: '1' } }
           end
           it 'should user sign in' do
-            expect(response).to redirect_to "/#{user_type(user)}/#{user.username}"
+            expect(response).to redirect_to redirect_url
             expect(signed_in?).to be_truthy
             expect(cookies['remember_token']).to be_present
           end
@@ -31,13 +31,22 @@ RSpec.describe SessionsController, type: :controller do
             post :create, params: { session: { email: user.email, password: user.password, remember_me: '0' } }
           end
           it 'should user sign in' do
-            expect(response).to redirect_to "/#{user_type(user)}/#{user.username}"
+            expect(response).to redirect_to redirect_url
             expect(signed_in?).to be_truthy
             expect(cookies['remember_token']).to be_blank
           end
         end
+      end
+
+      context 'worker' do
+        it_behaves_like 'successfull sign in user' do
+          let(:user) { create :worker }
+          let(:user_profile) { create :worker_profile, worker: user }
+          let(:redirect_url) {"/worker/#{user.username}"}
+        end
 
         context 'successfull sign in, but not create user profile' do
+          let(:user) { create :worker }
           before do
             post :create, params: { session: { email: user.email, password: user.password, remember_me: '1' } }
           end
@@ -49,17 +58,11 @@ RSpec.describe SessionsController, type: :controller do
         end
       end
 
-      context 'worker' do
-        it_behaves_like 'successfull sign in user' do
-          let(:user) { create :worker }
-          let(:user_profile) { create :worker_profile, worker: user }
-        end
-      end
-
       context 'client' do
         it_behaves_like 'successfull sign in user' do
-          let(:user) { create :client }
-          let(:user_profile) { create :client_profile, client: user }
+          let(:user_profile) { create :client }
+          let(:user) { create :client_user, client: user_profile }
+          let(:redirect_url) {"/client/#{user_profile.clientname}"}
         end
       end
     end
@@ -103,13 +106,13 @@ RSpec.describe SessionsController, type: :controller do
 
       context 'client' do
         it_behaves_like 'valid information & invalid account activation' do
-          let(:user) { create :client, activated: false, activated_at: nil }
-          let(:user_profile) { create :client_profile, client: user }
+          let(:user_profile) { create :client }
+          let(:user) { create :client_user, client: user_profile, activated: false, activated_at: nil }
         end
 
         it_behaves_like 'invalid information' do
-          let(:user) { create :client }
-          let(:user_profile) { create :client_profile, client: user }
+          let(:user_profile) { create :client }
+          let(:user) { create :client_user, client: user_profile }
         end
       end
     end

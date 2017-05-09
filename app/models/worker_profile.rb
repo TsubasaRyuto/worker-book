@@ -1,5 +1,5 @@
 class WorkerProfile < ApplicationRecord
-  mount_uploader :picture, ProfilePictureUploader
+  mount_uploader :picture, PictureUploader
 
   attr_accessor :type, :past_performance, :employment_history
 

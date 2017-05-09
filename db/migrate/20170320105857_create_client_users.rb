@@ -1,11 +1,12 @@
-class CreateClients < ActiveRecord::Migration[5.0]
+class CreateClientUsers < ActiveRecord::Migration[5.0]
   def change
-    create_table :clients do |t|
+    create_table :client_users do |t|
+      t.references :client, null: false
       t.string :last_name, null: false
       t.string :first_name, null: false
       t.string :username, null: false
-      t.string :company_name, null: false
       t.string :email, null: false
+      t.integer :user_type, nul: false, default: 0
       t.string :password_digest, null: false
       t.string :remember_digest
       t.string :activation_digest

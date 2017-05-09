@@ -20,14 +20,14 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    if params[:worker] && params[:worker][:password].empty? || params[:client] && params[:client][:password].empty?
+    if params[:worker] && params[:worker][:password].empty? || params[:client_user] && params[:client_user][:password].empty?
       @user.errors.add(:password, 'は必須項目です')
       render :edit
     elsif @user.update_attributes(user_params)
       sign_in @user
       flash[:success] = I18n.t('views.common.info.success.pass_reseted')
       redirect_to worker_url(username: @user.username) if params[:worker]
-      redirect_to client_url(username: @user.username) if params[:client]
+      redirect_to client_url(clientname: @user.client.clientname) if params[:client_user]
     else
       render :edit
     end
@@ -38,13 +38,13 @@ class PasswordResetsController < ApplicationController
   def user_params
     if params[:worker].present?
       params.require(:worker).permit(:password, :password_confirmation)
-    elsif params[:client].present?
-      params.require(:client).permit(:password, :password_confirmation)
+    elsif params[:client_user].present?
+      params.require(:client_user).permit(:password, :password_confirmation)
     end
   end
 
   def find_user
-    @user = Worker.find_by(email: params[:email]) || Client.find_by(email: params[:email])
+    @user = Worker.find_by(email: params[:email]) || ClientUser.find_by(email: params[:email])
   end
 
   def valid_user
@@ -54,6 +54,6 @@ class PasswordResetsController < ApplicationController
   end
 
   def password_reset_user
-    Worker.find_by(email: params[:password_reset][:email].downcase) || Client.find_by(email: params[:password_reset][:email].downcase)
+    Worker.find_by(email: params[:password_reset][:email].downcase) || ClientUser.find_by(email: params[:password_reset][:email].downcase)
   end
 end

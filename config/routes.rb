@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'clients/new'
-
   root to: 'static_pages#home'
   get '/sign_up', to: 'static_pages#signup'
   get '/worker/verify_email', to: 'static_pages#worker_verify_email'
@@ -30,18 +28,18 @@ Rails.application.routes.draw do
 
   # clients/
   scope '/client' do
-    get '/:token/activate', to: 'clients#activate', as: 'activate_client'
-    get '/:username/settings/account', to: 'clients#edit', as: 'client_settings_account'
     get '/sign_up', to: 'clients#new'
-    resources :clients, except: %i(new edit), param: :username, path: '/' do
-      member { get '/retire', to: 'clients#retire' }
+    get '/:clientname/settings/profile', to: 'clients#edit', as: 'client_settings_profile'
+    resources :clients, except: %i(new edit), param: :clientname, path: '/' do
 
-      get '/create_profile', to: 'client_profiles#new'
-      get '/settings/profile', to: 'client_profiles#edit'
-      resource :profiles, only: %i(create update), controller: :client_profiles
+      get '/:token/activate', to: 'client_users#activate', as: 'activate_user'
+      get '/:username/settings/account', to: 'client_users#edit', as: 'client_settings_account'
+      resources :users, except: %i(new edit create index), param: :username, path: '/', controller: :client_users do
+        member { get '/retire', to: 'client_users#retire' }
 
-      get '/create_job', to: 'jobs#new'
-      resources :jobs, only: %i(show edit create update destroy), controller: :client_jobs
+        get '/create_job', to: 'jobs#new'
+        resources :jobs, only: %i(show edit create update destroy), controller: :client_jobs
+      end
     end
   end
 

@@ -1,12 +1,12 @@
 module SessionsHelper
   def worker_book_user
-    Worker.find_by(email: params[:session][:email].downcase) || Client.find_by(email: params[:session][:email].downcase)
+    Worker.find_by(email: params[:session][:email].downcase) || ClientUser.find_by(email: params[:session][:email].downcase)
   end
 
   def user_type(user)
     if user.class == Worker
       'worker'
-    elsif user.class == Client
+    elsif user.class == ClientUser
       'client'
     else
       false
@@ -27,11 +27,15 @@ module SessionsHelper
     user == current_user
   end
 
+  def current_client_user?(users)
+    users.include?(current_user)
+  end
+
   def current_user
     if (user_id = session[:user_id])
-      @current_user ||= Worker.find_by(id: user_id) || Client.find_by(id: user_id)
+      @current_user ||= Worker.find_by(id: user_id) || ClientUser.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])
-      user = Worker.find_by(id: user_id) || Client.find_by(id: user_id)
+      user = Worker.find_by(id: user_id) || ClientUser.find_by(id: user_id)
       if user && user.authenticated?(:remember, cookies[:remember_token])
         sign_in user
         @current_user = user

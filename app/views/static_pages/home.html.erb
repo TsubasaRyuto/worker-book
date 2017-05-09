@@ -3,7 +3,7 @@
   <div class="buttons">
     <ul>
       <% if signed_in? %>
-        <%= link_to user_profile_present? ? worker_path(username: current_user.username) : worker_create_profile_path(worker_username: current_user.username) do %>
+        <%= link_to worker_profile_present? ? worker_path(username: current_user.username) : worker_create_profile_path(worker_username: current_user.username) do %>
           <li class="account-create">プロフィール</li>
         <% end %>
       <% else %>

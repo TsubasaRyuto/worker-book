@@ -64,7 +64,7 @@ RSpec.feature 'PasswordRests', type: :feature do
       user.reload
       expect(signed_on?(user)).to be_truthy
       expect(page).to have_selector '.alert'
-      expect(current_path).to eq "/#{user_type(user)}/#{user.username}"
+      expect(current_path).to eq redirect_url
     end
   end
 
@@ -72,13 +72,15 @@ RSpec.feature 'PasswordRests', type: :feature do
     it_behaves_like 'password reset spec' do
       let(:user) { create :worker }
       let(:user_profile) { create :worker_profile, worker: user }
+      let(:redirect_url) { "/worker/#{user.username}" }
     end
   end
 
   context 'client' do
     it_behaves_like 'password reset spec' do
-      let(:user) { create :client }
-      let(:user_profile) { create :client_profile, client: user }
+      let(:user_profile) { create :client }
+      let(:user) { create :client_user, client: user_profile }
+      let(:redirect_url) { "/client/#{user_profile.clientname}" }
     end
   end
 end
