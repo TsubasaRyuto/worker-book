@@ -67,7 +67,7 @@ class WorkersController < ApplicationController
     @worker = Worker.find_by(username: params[:username])
     if @worker && @worker.authenticate(params[:password])
       @worker.destroy
-      session.delete(:worker_id)
+      session.delete(:user_id)
       flash[:success] = I18n.t('views.common.info.success.delete_account')
       redirect_to root_url
     else

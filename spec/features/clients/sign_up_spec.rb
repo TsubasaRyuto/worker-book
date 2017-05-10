@@ -29,7 +29,7 @@ RSpec.feature 'ClientUsers:SingUp', type: :feature do
         sign_on_as(client_user)
         expect(signed_on?(client_user)).to be_falsey
         # ---
-        
+
         mail = ApplicationMailer.deliveries.last
         mail_body = mail.body.encoded
         activation_token = mail_body.split('/')[5]

@@ -66,13 +66,13 @@ ActiveRecord::Schema.define(version: 20170429190849) do
   end
 
   create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                       null: false
-    t.string   "corporate_site",             null: false
-    t.string   "clientname",                 null: false
-    t.integer  "location",       default: 0, null: false
-    t.string   "logo",                       null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "name",                          null: false
+    t.string   "corporate_site",                null: false
+    t.string   "clientname",                    null: false
+    t.string   "location",       default: "01", null: false
+    t.string   "logo",                          null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "job_contents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(version: 20170429190849) do
     t.integer  "unit_price",                            default: 30000, null: false
     t.text     "appeal_note",             limit: 65535,                 null: false
     t.string   "picture",                                               null: false
-    t.string   "location",                                              null: false
+    t.string   "location",                              default: "01",  null: false
     t.string   "employment_history1",                                   null: false
     t.string   "employment_history2"
     t.string   "employment_history3"

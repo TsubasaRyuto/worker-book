@@ -20,8 +20,8 @@ class Client < ApplicationRecord
   validates :logo, presence: true
 
   def client_users_attributes=(listed_attributes)
-    listed_attributes.each do |index, attributes|
-      client_user = client_users.detect{|i| i.id == attributes['id'].to_i } || client_users.build
+    listed_attributes.each do |_index, attributes|
+      client_user = client_users.detect { |i| i.id == attributes['id'].to_i } || client_users.build
       client_user.assign_attributes(attributes)
       client_user.activation_token = ClientUser.new_token if client_user.activation_token.nil?
       client_user.activation_digest = ClientUser.digest(client_user.activation_token)
@@ -38,7 +38,7 @@ end
 #  name           :string(255)      not null
 #  corporate_site :string(255)      not null
 #  clientname     :string(255)      not null
-#  location       :integer          default(0), not null
+#  location       :string(255)      default("01"), not null
 #  logo           :string(255)      not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null

@@ -42,7 +42,7 @@ RSpec.describe SessionsController, type: :controller do
         it_behaves_like 'successfull sign in user' do
           let(:user) { create :worker }
           let(:user_profile) { create :worker_profile, worker: user }
-          let(:redirect_url) {"/worker/#{user.username}"}
+          let(:redirect_url) { "/worker/#{user.username}" }
         end
 
         context 'successfull sign in, but not create user profile' do
@@ -62,7 +62,7 @@ RSpec.describe SessionsController, type: :controller do
         it_behaves_like 'successfull sign in user' do
           let(:user_profile) { create :client }
           let(:user) { create :client_user, client: user_profile }
-          let(:redirect_url) {"/client/#{user_profile.clientname}"}
+          let(:redirect_url) { "/client/#{user_profile.clientname}" }
         end
       end
     end

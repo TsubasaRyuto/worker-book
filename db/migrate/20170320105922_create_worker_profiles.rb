@@ -19,7 +19,7 @@ class CreateWorkerProfiles < ActiveRecord::Migration[5.0]
       t.integer :unit_price, null: false, default: 30_000
       t.text :appeal_note, null: false
       t.string :picture, null: false
-      t.string :location, null: false
+      t.string :location, null: false, default: '01'
       t.string :employment_history1, null: false
       t.string :employment_history2
       t.string :employment_history3
