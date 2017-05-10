@@ -127,26 +127,5 @@
       }
     }
   }
-
-  .side {
-    color: $color-sub3;
-    padding: 7vh 0;
-    margin: 12vh 0 10vh 4%;
-    width: 20%;
-
-    .btn {
-      margin-bottom: 10%;
-    }
-
-    h3 {
-      margin-bottom: 4vh;
-      text-align: center;
-    }
-
-    ol {
-      li {
-        margin-bottom: 5vh;
-      }
-    }
-  }
+  @import 'clients/commons/description';
 }

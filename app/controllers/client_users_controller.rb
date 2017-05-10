@@ -28,11 +28,6 @@ class ClientUsersController < ApplicationController
   before_action :signed_in_client, only: [:edit, :update, :retire, :destroy]
   before_action :correct_client, only: [:edit, :update, :retire, :destroy]
 
-  def show
-    @client_user = ClientUser.find_by(username: params[:username])
-    raise ActiveRecord::RecordNotFound if @client_user.blank?
-  end
-
   def edit
     @client_user = ClientUser.find_by(username: params[:username])
   end

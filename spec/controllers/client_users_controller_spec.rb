@@ -31,14 +31,6 @@ RSpec.describe ClientUsersController, type: :controller do
   let(:client_user) { create :client_user, client: client }
   let(:other_client_user) { create :other_client_user, client: client }
 
-  context 'get show' do
-    before do
-      client_user
-      get :show, params: { client_clientname: client.clientname, username: client_user.username }
-    end
-    it { expect(response).to have_http_status(:success) }
-  end
-
   context 'get edit' do
     context 'successfull' do
       before do

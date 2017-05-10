@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Clients:UpdateProfile', type: :feature, js: true do
-  context 'clients create profile' do
+  context 'clients update profile' do
     let(:client) { create :client }
     let(:client_user) { create :client_user, client: client }
 

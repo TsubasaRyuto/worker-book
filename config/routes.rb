@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
       get '/:token/activate', to: 'client_users#activate', as: 'activate_user'
       get '/:username/settings/account', to: 'client_users#edit', as: 'client_settings_account'
-      resources :users, except: %i(new edit create index), param: :username, path: '/', controller: :client_users do
+      resources :users, only: %i(update destroy), param: :username, path: '/', controller: :client_users do
         member { get '/retire', to: 'client_users#retire' }
 
         get '/create_job', to: 'jobs#new'
