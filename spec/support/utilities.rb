@@ -24,7 +24,7 @@ def signed_on?(user)
 end
 
 def sign_in_as(user)
-  session[:user_id] = user.id
+  session[:user_id] = user.username
 end
 
 def sign_on_as(user, option = {})

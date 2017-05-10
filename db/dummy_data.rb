@@ -34,7 +34,7 @@ def workers
       unit_price: 40_000,
       appeal_note: note,
       picture: picture,
-      location: 02,
+      location: '02',
       employment_history1: 'Lobo 株式会社',
       skill_list: 'Ruby, PHP, C, HTML, css, JavaScript, jQuery'
     )
@@ -54,7 +54,7 @@ def client
       name: com_name,
       corporate_site: "http://client_example#{index + 1}.com",
       clientname: "example_client#{index + 1}",
-      location: 01,
+      location: '01',
       logo: logo
     )
 

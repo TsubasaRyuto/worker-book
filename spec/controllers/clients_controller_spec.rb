@@ -6,7 +6,7 @@
 #  name           :string(255)      not null
 #  corporate_site :string(255)      not null
 #  clientname     :string(255)      not null
-#  location       :integer          default(0), not null
+#  location       :string(255)      default("01"), not null
 #  logo           :string(255)      not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
@@ -17,6 +17,23 @@ require 'rails_helper'
 RSpec.describe ClientsController, truncation: true, type: :controller do
   let(:client) { create :client }
   let(:client_user) { create :client_user, client: client }
+
+  context 'get show' do
+    context 'success' do
+      before do
+        sign_in_as(client_user)
+        get :show, params: { clientname: client.clientname }
+      end
+      it { expect(response).to have_http_status :success }
+    end
+
+    context 'failed' do
+      before do
+        get :show, params: { clientname: client.clientname }
+      end
+      it { expect(response).to redirect_to sign_in_url }
+    end
+  end
 
   context 'get new' do
     context 'success' do
@@ -60,7 +77,7 @@ RSpec.describe ClientsController, truncation: true, type: :controller do
     let(:logo) { fixture_file_upload('images/lobo.png', 'image/png') }
     let(:com_url) { 'http://example.com' }
     let(:clientname) { 'examplename' }
-    let(:location) { 02 }
+    let(:location) { '02' }
 
     let(:last_name) { Faker::Name.last_name }
     let(:first_name) { Faker::Name.first_name }

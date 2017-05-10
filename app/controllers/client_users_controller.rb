@@ -59,7 +59,7 @@ class ClientUsersController < ApplicationController
     if @client_user && @client_user.authenticate(params[:password])
       @client.delete
       @client_user.delete
-      session.delete(:client_user_id)
+      session.delete(:user_id)
       flash[:success] = I18n.t('views.common.info.success.delete_account')
       redirect_to root_url
     else

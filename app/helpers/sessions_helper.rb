@@ -14,7 +14,7 @@ module SessionsHelper
   end
 
   def sign_in(user)
-    session[:user_id] = user.id
+    session[:user_id] = user.username
   end
 
   def remember(user)
@@ -33,9 +33,9 @@ module SessionsHelper
 
   def current_user
     if (user_id = session[:user_id])
-      @current_user ||= Worker.find_by(id: user_id) || ClientUser.find_by(id: user_id)
+      @current_user ||= Worker.find_by(username: user_id) || ClientUser.find_by(username: user_id)
     elsif (user_id = cookies.signed[:user_id])
-      user = Worker.find_by(id: user_id) || ClientUser.find_by(id: user_id)
+      user = Worker.find_by(username: user_id) || ClientUser.find_by(username: user_id)
       if user && user.authenticated?(:remember, cookies[:remember_token])
         sign_in user
         @current_user = user

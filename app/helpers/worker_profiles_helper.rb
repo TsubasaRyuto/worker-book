@@ -20,7 +20,7 @@
 #  unit_price              :integer          default(30000), not null
 #  appeal_note             :text(65535)      not null
 #  picture                 :string(255)      not null
-#  location                :string(255)      not null
+#  location                :string(255)      default("01"), not null
 #  employment_history1     :string(255)      not null
 #  employment_history2     :string(255)
 #  employment_history3     :string(255)

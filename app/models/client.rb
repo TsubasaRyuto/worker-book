@@ -38,7 +38,7 @@ end
 #  name           :string(255)      not null
 #  corporate_site :string(255)      not null
 #  clientname     :string(255)      not null
-#  location       :integer          default(0), not null
+#  location       :string(255)      default("01"), not null
 #  logo           :string(255)      not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null

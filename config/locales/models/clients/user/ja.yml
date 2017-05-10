@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      client_user:
+  enums:
+    client_users:
+        user_type:
+          admin: 管理ユーザー
+          general: 一般ユーザー
+          developer: デベロッパー

@@ -4,7 +4,7 @@ class CreateClients < ActiveRecord::Migration[5.0]
       t.string :name, null: false
       t.string :corporate_site, null: false
       t.string :clientname, null: false
-      t.integer :location, null: false, default: 0
+      t.string :location, null: false, default: '01'
       t.string :logo, null: false
 
       t.timestamps

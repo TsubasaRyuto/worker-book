@@ -1,1 +1,77 @@
-<h2><%= @client.name %></h2>
+<% provide(:title, @client.name) %>
+
+<section class="client-page">
+  <div class="container">
+    <div class="row">
+      <div class="body col-md-8 col-md-offset-1">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="logo">
+              <%= image_tag @client.logo_url %>
+            </div>
+            <% if signed_in? %>
+              <div class="update-profile">
+                <%= link_to client_settings_profile_path(clientname: @client.clientname) do %>
+                  <button type=button class="btn btn-primary">プロフィール変更</button>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="info col-md-8">
+            <h2><%= @client.name %></h2>
+            <%= link_to client_path(clientname: @client.clientname) do %>
+              <p>@<%= @client.clientname %></p>
+            <% end %>
+            <ul>
+              <li><%= Prefecture.name(@client.location) %></li>
+              <li>URL: <%= link_to @client.corporate_site, @client.corporate_site, target: ['_blank'] %></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="users section col-md-12">
+            <h2><%= @client.name %> Users</h2>
+            <ul>
+              <% @client.client_users.each do |user| %>
+                <%= link_to client_user_path(client_clientname: @client.clientname, username: user.username) do %>
+                  <li><%= user.last_name %> <%= user.first_name %><span>@<%= user.username %></span><span><%= t("enums.client_users.user_type.#{user.user_type}") %></span></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="order-contents section col-md-12">
+            <h2>発注内容一覧</h2>
+            <p>発注内容は作成されておりません</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="past-order section col-md-12">
+            <h2>過去発注実績</h2>
+            <p>発注実績はございません</p>
+          </div>
+        </div>
+      </div>
+      <div class="side col-md-3">
+        <div class="search-worker">
+          <%= link_to '#' do %>
+            <button type=button class="btn btn-primary">workerを探す</button>
+          <% end %>
+        </div>
+
+        <div class="description">
+          <h3>WorkerBookの使い方</h3>
+          <ol>
+            <li>ワーカーを探す</li>
+            <li>発注内容を登録する</li>
+            <li>発注する</li>
+            <li>報酬を仮払いする</li>
+            <li>仕事を始める</li>
+            <li>成果物をチェックする</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
