@@ -27,29 +27,7 @@ class WorkerProfile < ApplicationRecord
   validates :location, presence: true
   validates :picture, presence: true
   validates :employment_history, emp_hist_presence: true, emp_hist_length: true
-
-  validate :max_count_worker_skill, :min_count_worker_skill, :duplicate_worker_skill
-
-  private
-
-  def max_count_worker_skill
-    if self.skill_list.count >= 10
-      errors.add(:skill_list, I18n.t('activerecord.errors.worker_skills.too_many'))
-    end
-  end
-
-  def min_count_worker_skill
-    if self.skill_list.count < 5
-      errors.add(:skill_list, I18n.t('activerecord.errors.worker_skills.too_little'))
-    end
-  end
-
-  def duplicate_worker_skill
-    worker_skills = self.skill_list
-    unless worker_skills.size == worker_skills.uniq.size
-      errors.add(:skill_list, I18n.t('activerecord.errors.worker_skills.duplicate'))
-    end
-  end
+  validates :skill_list, max_count_skills: true, min_count_skills: true, duplicate_skills: true
 end
 
 

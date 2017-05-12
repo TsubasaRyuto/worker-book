@@ -76,15 +76,14 @@ ActiveRecord::Schema.define(version: 20170429190849) do
   end
 
   create_table "job_contents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "client_id",                     null: false
-    t.string   "title",                         null: false
-    t.text     "content",         limit: 65535, null: false
-    t.text     "skill_language",  limit: 65535
-    t.text     "past_experience", limit: 65535, null: false
-    t.datetime "start_date",                    null: false
-    t.datetime "finish_date",                   null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer  "client_id",                 null: false
+    t.string   "title",                     null: false
+    t.text     "content",     limit: 65535, null: false
+    t.text     "note",        limit: 65535, null: false
+    t.datetime "start_date",                null: false
+    t.datetime "finish_date",               null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["client_id"], name: "index_job_contents_on_client_id", using: :btree
   end
 

@@ -3,6 +3,7 @@ class Client < ApplicationRecord
 
   has_many :client_users, dependent: :destroy
   accepts_nested_attributes_for :client_users, allow_destroy: true
+  has_many :job_contents, dependent: :destroy
 
   MIN_LENGTH_NAME = 3
   MIN_LENGTH_CLIENTNAME = 5

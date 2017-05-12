@@ -1,0 +1,62 @@
+.job-content {
+  background-color: $color-main;
+  color: $color-main;
+  width: 100%;
+
+  .form {
+    background-color: $color-sub3;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    padding: 7vh 0;
+
+    .main-contents {
+      h1 {
+        color: $color-sub1;
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+        margin: 7vh 0;
+      }
+
+      h3 {
+        margin-bottom: 3vh;
+      }
+      .title, .term {
+        .form-control {
+          border: none;
+          border-bottom: 1px solid $color-main;
+          border-radius: 0;
+          box-shadow: none;
+          font-size: 1.4em;
+          font-style: italic;
+          font-family: $font-family-main;
+          letter-spacing: 1px;
+          margin-bottom: 10vh;
+          opacity: .6;
+        }
+      }
+
+      .content, .experience-seeking {
+        .form-control {
+          color: $color-main;
+          border-color: $color-main;
+          font-size: 1.4em;
+          resize: vertical;
+
+          &:focus {
+            box-shadow: none;
+          }
+        }
+      }
+
+      .btn-primary {
+        background-color: $color-sub2;
+      }
+      .btn {
+        font-size: 1.4em;
+        margin: 10vh 0;
+        width: 100%;
+      }
+    }
+  }
+}

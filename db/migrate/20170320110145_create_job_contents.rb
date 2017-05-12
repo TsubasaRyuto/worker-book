@@ -4,8 +4,7 @@ class CreateJobContents < ActiveRecord::Migration[5.0]
       t.references :client, null: false
       t.string :title, null: false
       t.text :content, null: false
-      t.text :skill_language
-      t.text :past_experience, null: false
+      t.text :note, null: false
       t.datetime :start_date, null: false
       t.datetime :finish_date, null: false
 
