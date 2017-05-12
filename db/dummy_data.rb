@@ -4,6 +4,7 @@ def clean_data
   ActsAsTaggableOn::Tagging.delete_all
   Client.delete_all
   ClientUser.delete_all
+  JobContent.delete_all
 end
 
 def workers
@@ -49,6 +50,11 @@ def client
     user_name = Faker::Name
     last_name = user_name.last_name
     first_name = user_name.first_name
+    title = 'Test title'
+    content = Faker::Lorem.sentence(300)
+    note = Faker::Lorem.sentence(100)
+    start_date = Time.zone.local(2017, 5, 16)
+    finish_date = Time.zone.local(2017, 9, 19)
 
     client = Client.create(
       name: com_name,
@@ -66,6 +72,15 @@ def client
       password: 'foobar123',
       password_confirmation: 'foobar123',
       activated: true
+    )
+
+    client.job_contents.create(
+      title: title,
+      content: content,
+      skill_list: 'Ruby, PHP, C, HTML, css, JavaScript, jQuery',
+      note: note,
+      start_date: start_date,
+      finish_date: finish_date
     )
   end
 end

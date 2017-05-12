@@ -36,10 +36,10 @@ Rails.application.routes.draw do
       get '/:username/settings/account', to: 'client_users#edit', as: 'client_settings_account'
       resources :users, only: %i(update destroy), param: :username, path: '/', controller: :client_users do
         member { get '/retire', to: 'client_users#retire' }
-
-        get '/create_job', to: 'jobs#new'
-        resources :jobs, only: %i(show edit create update destroy), controller: :client_jobs
       end
+
+      get '/create_job', to: 'job_contents#new'
+      resources :jobs, only: %i(show edit create update destroy), controller: :job_contents
     end
   end
 

@@ -2,25 +2,19 @@
 <div class="name">
   <h3>会社名</h3>
   <%= render 'shared/error', object: f.object, field: :name %>
-  <div class="url-field">
-    <%= f.text_field :name, class: 'form-control', placeholder: 'ex) Lobo株式会社', autocomplete: 'off' %>
-  </div>
+  <%= f.text_field :name, class: 'form-control', placeholder: 'ex) Lobo株式会社', autocomplete: 'off' %>
 </div>
 
 <div class="corporate-site">
   <h3>会社サイト</h3>
   <%= render 'shared/error', object: f.object, field: :corporate_site %>
-  <div class="url-field">
-    <%= f.url_field :corporate_site, class: 'form-control', placeholder: 'ex) http://lobo-inc.com', autocomplete: 'off' %>
-  </div>
+  <%= f.url_field :corporate_site, class: 'form-control', placeholder: 'ex) http://lobo-inc.com', autocomplete: 'off' %>
 </div>
 
 <div class="clientname">
   <h3>クライアント名</h3>
   <%= render 'shared/error', object: f.object, field: :clientname %>
-  <div class="url-field">
-    <%= f.text_field :clientname, class: 'form-control', placeholder: 'ex) lobo_inc', autocomplete: 'off' %>
-  </div>
+  <%= f.text_field :clientname, class: 'form-control', placeholder: 'ex) lobo_inc', autocomplete: 'off' %>
 </div>
 
 <div class="select-location">

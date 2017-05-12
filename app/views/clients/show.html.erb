@@ -43,6 +43,11 @@
         <div class="row">
           <div class="order-contents section col-md-12">
             <h2>発注内容一覧</h2>
+            <%= link_to client_create_job_path(client_clientname: current_user.client.clientname) do %>
+              <button type="button" class="btn btn-primary">
+                発注内容登録
+              </button>
+            <% end %>
             <p>発注内容は作成されておりません</p>
           </div>
         </div>

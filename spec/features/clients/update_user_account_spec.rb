@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Clients:UserAccountUdate', type: :feature do
+RSpec.feature 'Clients:UpdateUserAccount', type: :feature do
   context 'clients user account udpate' do
     let(:client) { create :client }
     let(:client_user) { create :client_user, client: client }

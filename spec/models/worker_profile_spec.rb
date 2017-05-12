@@ -159,11 +159,6 @@ RSpec.describe WorkerProfile, type: :model do
           let(:skills) { %w(Ruby C css) }
           it { expect(worker_profile).to be_invalid }
         end
-
-        context 'duplicate' do
-          let(:skills) { %w(Ruby C css Ruby) }
-          it { expect(worker_profile).to be_invalid }
-        end
       end
     end
   end

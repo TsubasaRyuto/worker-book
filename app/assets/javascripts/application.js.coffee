@@ -19,3 +19,4 @@
 #= require turbolinks
 #= require_tree ./worker_profiles/
 #= require_tree ./shared/
+#= require_tree ./job_contents/
