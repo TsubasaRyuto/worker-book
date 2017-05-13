@@ -131,6 +131,7 @@
       h2 {
         display: inline-block;
       }
+
       a {
         color: $color-sub2;
         font-size: 1.4em;
@@ -140,6 +141,25 @@
         &:hover{
           color: $color-main;
           border-bottom: 1px solid $color-main;
+        }
+      }
+
+      ul {
+        li {
+          color: $color-main;
+          display: block;
+          font-size: 1.2em;
+          padding: 2vh 4%;
+
+          &:hover {
+            background-color: $color-main;
+            color: $color-sub3;
+            opacity: .5;
+          }
+
+          span {
+            margin-left: 10%;
+          }
         }
       }
     }

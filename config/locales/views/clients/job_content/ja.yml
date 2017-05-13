@@ -3,3 +3,4 @@ ja:
     job_content:
       success:
         create_job_content: 発注内容の登録を完了いたしました。
+        update_job_content: 発注内を変更いたしました。

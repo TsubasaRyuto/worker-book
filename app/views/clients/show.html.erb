@@ -44,7 +44,17 @@
           <div class="order-contents section col-md-12">
             <h2>発注内容一覧</h2>
             <%= link_to '発注内容登録', client_create_job_path(client_clientname: current_user.client.clientname) %>
-            <p>発注内容は作成されておりません</p>
+            <ul>
+              <% if @job_contents %>
+                <% @job_contents.each do |job_content| %>
+                  <%= link_to edit_client_job_path(client_clientname: @client.clientname, id: job_content.id) do %>
+                    <li>タイトル：　<%= job_content.title %></li>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <p>発注内容は作成されておりません</p>
+              <% end %>
+            </ul>
           </div>
         </div>
         <div class="row">

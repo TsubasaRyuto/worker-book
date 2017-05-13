@@ -24,6 +24,7 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find_by(clientname: params[:clientname])
+    @job_contents = @client.job_contents
   end
 
   def create
