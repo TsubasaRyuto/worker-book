@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Workers:AccountDelete', type: :feature do
+RSpec.feature 'Workers:DeleteAccount', type: :feature do
   context 'workers account delete' do
     context 'workers account update' do
       let(:worker) { create :worker }

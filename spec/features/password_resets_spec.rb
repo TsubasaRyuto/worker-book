@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'PasswordRests', type: :feature do
+RSpec.feature 'ResetsPassword', type: :feature do
   shared_examples_for 'password reset spec' do
     before do
       user_profile

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Workers:AccountUpdate', type: :feature do
+RSpec.feature 'Workers:UpdateAccount', type: :feature do
   context 'workers account update' do
     let(:worker) { create :worker }
     let(:worker_profile) { create :worker_profile, worker: worker }

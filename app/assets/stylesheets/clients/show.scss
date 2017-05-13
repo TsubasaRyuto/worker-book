@@ -125,6 +125,23 @@
           }
         }
       }
+    } // users
+
+    .order-contents {
+      h2 {
+        display: inline-block;
+      }
+      a {
+        color: $color-sub2;
+        font-size: 1.4em;
+        margin-left: 10%;
+        text-decoration: none;
+
+        &:hover{
+          color: $color-main;
+          border-bottom: 1px solid $color-main;
+        }
+      }
     }
   }
   @import 'clients/commons/description';

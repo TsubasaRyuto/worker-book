@@ -5,6 +5,7 @@ $color-sub3: #fff;
 $color-warning: #DC143C;
 $font-family-main: myriad Pro;
 
+// Style of form information when hover or focus
 @mixin info_box($top) {
   background-color: $color-sub2;
   color: $color-sub3;
@@ -27,4 +28,18 @@ $font-family-main: myriad Pro;
   border-right: 20px solid $color-sub2;
   pointer-events: none;
   content: " ";
+}
+
+// よく使うフォームのスタイル
+@mixin basic_form_style {
+  border: none;
+  border-bottom: 1px solid $color-main;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 1.4em;
+  font-style: italic;
+  font-family: $font-family-main;
+  letter-spacing: 1px;
+  margin-bottom: 10vh;
+  opacity: .6;
 }

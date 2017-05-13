@@ -15,16 +15,7 @@
     }
 
     .form-control {
-      border: none;
-      border-bottom: 1px solid $color-main;
-      border-radius: 0;
-      box-shadow: none;
-      font-size: 23px;
-      font-style: italic;
-      font-family: $font-family-main;
-      letter-spacing: 1px;
-      margin-bottom: 45px;
-      opacity: .6;
+      @include basic_form_style();
     }
 
     .checkbox {
