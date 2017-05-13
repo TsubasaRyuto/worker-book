@@ -243,4 +243,15 @@ RSpec.describe JobContentsController, type: :controller do
       end
     end
   end
+
+  context 'delelte destroy' do
+    before do
+      sign_in_as(client_user)
+      delete :destroy, params: { client_clientname: client.clientname, id: job_content.id }
+    end
+    it 'should delete job content' do
+      expect(response).to redirect_to client_path(clientname: client.clientname)
+      expect(flash).to be_present
+    end
+  end
 end

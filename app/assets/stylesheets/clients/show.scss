@@ -155,14 +155,39 @@
             background-color: $color-main;
             color: $color-sub3;
             opacity: .5;
+
+            a {
+              color: $color-sub3;
+            }
+          }
+
+          a {
+            color: $color-sub2;
+            font-size: 1.2em;
+            margin-left: 0;
+
+            &:hover {
+              color: $color-sub3;
+              border-bottom: 1px solid $color-sub3;
+            }
           }
 
           span {
-            margin-left: 10%;
+            margin-left: 45%;
           }
         }
       }
     }
   }
   @import 'clients/commons/description';
+}
+
+.modal-content {
+  .modal-footer {
+    .btn {
+      font-size: 1.3em;
+      margin-bottom: 0;
+      width: 30%;
+    }
+  }
 }

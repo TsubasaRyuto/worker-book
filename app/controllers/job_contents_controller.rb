@@ -54,7 +54,13 @@ class JobContentsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @job_content = @client.job_contents.find(params[:id])
+    @job_content_title = @job_content.title
+    @job_content.destroy!
+    flash[:success] = I18n.t('views.job_content.success.delete_job_content', title: @job_content_title)
+    redirect_to client_path(clientname: @client.clientname)
+  end
 
   private
 
