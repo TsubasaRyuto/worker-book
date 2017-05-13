@@ -26,7 +26,11 @@ class JobContentsController < ApplicationController
   end
 
   def show; end
-  def edit; end
+
+  def edit
+    @job_content = @client.job_contents.find(params[:id])
+    set_job_content_skill_list_to_gon
+  end
 
   def create
     @job_content = @client.job_contents.build(job_content_params)
@@ -39,7 +43,17 @@ class JobContentsController < ApplicationController
     end
   end
 
-  def update; end
+  def update
+    @job_content = @client.job_contents.find(params[:id])
+    if @job_content.update_attributes(job_content_params)
+      flash[:success] = I18n.t('views.job_content.success.update_job_content')
+      redirect_to client_path(clientname: @client.clientname)
+    else
+      set_job_content_skill_list_to_gon
+      render :edit
+    end
+  end
+
   def destroy; end
 
   private
