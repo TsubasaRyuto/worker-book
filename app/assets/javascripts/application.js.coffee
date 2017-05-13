@@ -16,6 +16,7 @@
 #= require jquery-ui/widgets/autocomplete
 #= require jquery.Jcrop
 #= require tag-it
+#= require data-confirm-modal
 #= require turbolinks
 #= require_tree ./worker_profiles/
 #= require_tree ./shared/
