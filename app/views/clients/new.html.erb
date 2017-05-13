@@ -14,7 +14,7 @@
                   <%= render 'clients/commons/form', { f: f } %>
                   <button class="btn btn-primary">Next Step</button>
                 </div>
-                <div class="client-user">
+                <div class="client-user signup-form">
                   <h1>Create Account of Client user</h1>
                   <%= render 'shared/step_bar', { first: 'complete', second: 'complete' } %>
                   <%= f.fields_for :client_users do |uf| %>

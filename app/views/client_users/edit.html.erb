@@ -1,13 +1,15 @@
 <% provide(:title, 'Information') %>
 
-<section class="client-info user-info">
+<section class="client-user-setting user-setting">
   <div class="container">
     <div class="row">
       <div class="body col-md-8 col-md-offset-1">
         <div class="row">
-          <h2><%= @client_user.last_name %> <%= @client_user.first_name %></h2>
-          <%= link_to client_client_settings_account_path(client_clientname: @client_user.client.clientname, username: @client_user.username) do %>
-            <p>@<%= @client_user.username %></p>
+          <div class="name">
+            <h2><%= @client_user.last_name %> <%= @client_user.first_name %></h2>
+            <%= link_to client_client_settings_account_path(client_clientname: @client_user.client.clientname, username: @client_user.username) do %>
+              <p>@<%= @client_user.username %></p>
+          </div>
           <% end %>
           <div class="edit-form col-md-12">
             <h3>Information</h3>
