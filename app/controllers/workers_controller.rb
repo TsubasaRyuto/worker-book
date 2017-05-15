@@ -22,7 +22,9 @@ class WorkersController < ApplicationController
   before_action :signed_in_worker, only: [:edit, :update, :retire, :destroy]
   before_action :correct_worker, only: [:edit, :update, :retire, :destroy]
 
-  def index; end
+  def index
+    @workers = Worker.page(params[:page]).per(10)
+  end
 
   def show
     @worker = Worker.find_by(username: params[:username])

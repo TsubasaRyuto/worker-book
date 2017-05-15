@@ -8,7 +8,7 @@ def clean_data
 end
 
 def workers
-  2.times do |index|
+  1000.times do |index|
     name = Faker::Name
     last_name = name.last_name
     first_name = name.first_name
