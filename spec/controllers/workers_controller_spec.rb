@@ -24,6 +24,14 @@ RSpec.describe WorkersController, type: :controller do
   let(:worker) { create :worker }
   let(:other_worker) { create :other_worker }
   let(:worker_profile) { create :worker_profile, worker: worker }
+
+  context 'get index' do
+    before do
+      get :index
+    end
+    it { expect(response).to have_http_status :success }
+  end
+  
   context 'get new' do
     before do
       get :new

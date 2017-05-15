@@ -1,0 +1,55 @@
+<% provide(:title, 'ワーカー一覧') %>
+
+<section class="worker-list">
+  <div class="container">
+    <div class="row">
+      <div class="body col-md-8 col-md-offset-2">
+        <h1>Worker List</h1>
+        <div class="list">
+          <% @workers.each do |worker| %>
+          <%= link_to worker_path(username: worker.username) do %>
+            <div class="row section">
+              <div class="face col-md-4">
+                <%= image_tag worker.profile.picture_url %>
+              </div>
+              <div class="info col-md-8">
+                <h2><%= worker.last_name %> <%= worker.first_name %></h2>
+                <p>@<%= worker.username %></p>
+                <ul>
+                  <li><%= Prefecture.name(worker.profile.location) %></li>
+                  <li>¥<%= worker.profile.unit_price %>/人日</li>
+                  <li>¥<%= worker.profile.unit_price * 22 %>/人月</li>
+                  <% if worker.profile.active? %>
+                    <li>受付中</li>
+                  <% else %>
+                    <li>未受付</li>
+                  <% end %>
+                </ul>
+                <p class="clear">稼働時間/週　: <%= t("enums.workers.profile.availability.#{worker.profile.availability}") %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="strength col-md-12">
+                <ul class="developer-types">
+                  <p>Developer Types & Skills</p>
+                  <% developer_type_list(worker.profile).each do |type| %>
+                    <li><%= t("worker_profile.developer_type.#{type}") %></li>
+                  <% end %>
+                </ul>
+                <ul class="skills">
+                <% worker.profile.skill.each do |skill| %>
+                  <li><%= skill.name %></li>
+                <% end %>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+        <div class="paginate">
+          <%= paginate @workers, outer_window: 3 %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

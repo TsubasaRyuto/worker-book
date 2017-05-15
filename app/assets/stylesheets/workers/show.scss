@@ -32,6 +32,7 @@
     .face {
       img {
         border-radius: 50%;
+        border: 1px solid $color-main;
         display: block;
         height: 150px;
         margin: 0 auto;
@@ -52,7 +53,7 @@
     .info {
       color: $color-sub2;
       font-size: 18px;
-      margin-top: 5vh;
+      
 
       h2 {
         display: inline-block;
