@@ -8,11 +8,13 @@ end
 #
 # Table name: chats
 #
-#  id           :integer          not null, primary key
-#  agreement_id :integer          not null
-#  message      :text(65535)      not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id                :integer          not null, primary key
+#  agreement_id      :integer
+#  sender_username   :string(255)      not null
+#  receiver_username :string(255)      not null
+#  message           :text(65535)      not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
 #
 # Indexes
 #

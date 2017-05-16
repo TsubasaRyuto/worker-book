@@ -12,6 +12,7 @@ end
 #  worker_id      :integer          not null
 #  job_content_id :integer          not null
 #  active         :boolean          default(TRUE), not null
+#  activated_at   :datetime
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

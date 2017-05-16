@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170429190849) do
     t.integer  "worker_id",                     null: false
     t.integer  "job_content_id",                null: false
     t.boolean  "active",         default: true, null: false
+    t.datetime "activated_at"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["job_content_id"], name: "index_agreements_on_job_content_id", using: :btree
@@ -39,10 +40,12 @@ ActiveRecord::Schema.define(version: 20170429190849) do
   end
 
   create_table "chats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "agreement_id",               null: false
-    t.text     "message",      limit: 65535, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "agreement_id"
+    t.string   "sender_username",                 null: false
+    t.string   "receiver_username",               null: false
+    t.text     "message",           limit: 65535, null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["agreement_id"], name: "index_chats_on_agreement_id", using: :btree
   end
 

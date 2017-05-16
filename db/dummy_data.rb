@@ -8,7 +8,7 @@ def clean_data
 end
 
 def workers
-  1000.times do |index|
+  100.times do |index|
     name = Faker::Name
     last_name = name.last_name
     first_name = name.first_name
@@ -44,7 +44,7 @@ def workers
 end
 
 def client
-  2.times do |index|
+  50.times do |index|
     com_name = Faker::Company.name
     logo = Rails.root.join('spec/fixtures/images/lobo.png').open
     user_name = Faker::Name
