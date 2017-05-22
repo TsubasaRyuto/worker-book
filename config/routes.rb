@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'chats/show'
+
   root to: 'static_pages#home'
   get '/sign_up', to: 'static_pages#signup'
   get '/worker/verify_email', to: 'static_pages#worker_verify_email'
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   post '/password_resets', to: 'password_resets#create', as: 'password_resets'
   patch '/password_reset/:id/', to: 'password_resets#update', as: 'password_reset_update'
   get '/autocomplete_skill/:term', to: 'skills#autocomplete_skill', defaults: { format: 'json' }
+  get '/chat/messages/@:partner_username', to: 'chats#show'
 
   # workers/
   scope '/worker' do
@@ -46,4 +49,6 @@ Rails.application.routes.draw do
   # errors/
   get 'errors/error_404', to: 'errors#error_404'
   get 'errors/error_500', to: 'errors#error_500'
+
+  mount ActionCable.server => '/cable'
 end

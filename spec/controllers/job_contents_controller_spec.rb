@@ -48,8 +48,10 @@ RSpec.describe JobContentsController, type: :controller do
   context 'get edit' do
     context 'success' do
       before do
-        sign_in_as(client_user)
-        get :edit, params: { client_clientname: client.clientname, id: job_content.id }
+        Timecop.travel(Date.new(2017,01,01)) do
+          sign_in_as(client_user)
+          get :edit, params: { client_clientname: client.clientname, id: job_content.id }
+        end
       end
       it 'should get new' do
         expect(response).to have_http_status :success
@@ -58,7 +60,9 @@ RSpec.describe JobContentsController, type: :controller do
 
     context 'failed' do
       before do
-        get :new, params: { client_clientname: client.clientname, id: job_content.id }
+        Timecop.travel(Date.new(2017,01,01)) do
+          get :edit, params: { client_clientname: client.clientname, id: job_content.id }
+        end
       end
       it 'should get new' do
         expect(response).to redirect_to sign_in_path

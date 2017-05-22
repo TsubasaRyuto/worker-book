@@ -5,6 +5,7 @@ def clean_data
   Client.delete_all
   ClientUser.delete_all
   JobContent.delete_all
+  Agreement.delete_all
 end
 
 def workers
@@ -50,6 +51,7 @@ def client
     user_name = Faker::Name
     last_name = user_name.last_name
     first_name = user_name.first_name
+    Timecop.travel(Time.zone.local(2017,1,1))
     title = 'Test title'
     content = Faker::Lorem.sentence(300)
     note = Faker::Lorem.sentence(100)
@@ -83,8 +85,22 @@ def client
       finish_date: finish_date
     )
   end
+
+  def agreement
+    job_contents = JobContent.all
+    workers = Worker.all
+
+    job_contents.each do |i|
+      i.agreements.create(
+        worker_id: workers.sample.id,
+        active: true,
+        activated_at: Time.zone.local(2017, 5, 10)
+      )
+    end
+  end
 end
 
 clean_data
 workers
 client
+agreement

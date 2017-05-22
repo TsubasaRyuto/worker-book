@@ -15,7 +15,7 @@ RSpec.feature 'Workers:UpdateAccount', type: :feature do
         visit worker_settings_account_path(username: worker.username)
         fill_in 'Username', with: username
         fill_in 'Email', with: email
-        click_button 'Save changes'
+        find_button('Save changes').trigger('click')
         expect(page).to have_selector '.alert'
         worker.reload
         expect(worker.username).to eq username
@@ -29,7 +29,7 @@ RSpec.feature 'Workers:UpdateAccount', type: :feature do
         visit worker_settings_account_path(username: worker.username)
         fill_in 'Username', with: 'invali+info'
         fill_in 'Email', with: 'worker@invalid'
-        click_button 'Save changes'
+        find_button('Save changes').trigger('click')
         expect(page).to have_selector 'h3', text: 'Information'
         expect(page).to have_selector 'div#error_explanation'
         expect(page).to have_selector 'div.field_with_errors'

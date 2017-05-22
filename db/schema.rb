@@ -41,11 +41,12 @@ ActiveRecord::Schema.define(version: 20170429190849) do
 
   create_table "chats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "agreement_id"
-    t.string   "sender_username",                 null: false
-    t.string   "receiver_username",               null: false
-    t.text     "message",           limit: 65535, null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "sender_username",                                 null: false
+    t.string   "receiver_username",                               null: false
+    t.text     "message",           limit: 65535,                 null: false
+    t.boolean  "read_flg",                        default: false, null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.index ["agreement_id"], name: "index_chats_on_agreement_id", using: :btree
   end
 

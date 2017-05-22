@@ -2,7 +2,6 @@ class ClientUser < ApplicationRecord
   include UserSignUp
 
   belongs_to :client
-  has_many :job_contents, dependent: :destroy
 
   MIN_LENGTH_PASSWORD = 8
 
