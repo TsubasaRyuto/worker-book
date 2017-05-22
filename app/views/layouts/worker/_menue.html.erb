@@ -4,6 +4,7 @@
   </a>
   <ul class="dropdown-menu">
     <% if worker_profile_present? %>
+      <li><%= link_to 'WBチャット', '/chat/messages/@notification' %></li>
       <li><%= link_to "Profile", worker_path(username: current_user.username) %></li>
       <li><%= link_to "Settings", worker_settings_account_path(username: current_user.username) %></li>
     <% else %>

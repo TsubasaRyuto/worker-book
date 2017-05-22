@@ -29,7 +29,6 @@ class JobContent < ApplicationRecord
 
   def start_date_should_be_after_current_date
     return unless self.start_date
-
     if self.start_date <= Date.current
       errors.add(:start_date, I18n.t('activerecord.errors.job_contents.after_current_date'))
     end

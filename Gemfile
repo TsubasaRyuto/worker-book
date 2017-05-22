@@ -32,8 +32,9 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.5'
   gem 'pry-byebug', '~> 3.4.2'
   gem 'factory_girl_rails', '~> 4.8.0'
-  gem 'rspec-rails', '~> 3.5.2'
+  gem 'rspec-rails', '~> 3.6.0'
   gem 'faker', '~> 1.6.3'
+  gem 'timecop', '~> 0.8.1'
 end
 
 group :development do
@@ -46,9 +47,8 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '~> 2.13.0'
-  gem 'poltergeist', '~> 1.14.0'
-  gem 'timecop', '~> 0.8.1'
+  gem 'capybara', '~> 2.14.0'
+  gem 'poltergeist', '~> 1.15.0'
   gem 'database_cleaner', '~> 1.5.3'
   gem 'rails-controller-testing', '~> 1.0.1'
 end

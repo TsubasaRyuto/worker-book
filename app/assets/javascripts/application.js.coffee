@@ -17,7 +17,10 @@
 #= require jquery.Jcrop
 #= require tag-it
 #= require data-confirm-modal
+#= require jquery.autosize.js
 #= require turbolinks
+#= require cable
 #= require_tree ./worker_profiles/
 #= require_tree ./shared/
 #= require_tree ./job_contents/
+#= require_tree ./chat/

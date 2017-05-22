@@ -2,6 +2,7 @@ class Agreement < ApplicationRecord
   belongs_to :job_content
   belongs_to :worker
   has_many :chats
+  delegate :client, to: :job_content
 end
 
 # == Schema Information

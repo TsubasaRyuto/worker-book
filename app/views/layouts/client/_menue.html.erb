@@ -3,6 +3,7 @@
     <span class="glyphicon glyphicon-menu-hamburger"></span><%= current_user.client.name %>
   </a>
   <ul class="dropdown-menu">
+    <li><%= link_to 'WBチャット', '/chat/messages/@notification' %></li>
     <li><%= link_to "プロフィール", client_path(clientname: current_user.client.clientname) %></li>
     <li><%= link_to "発注内容登録", client_create_job_path(client_clientname: current_user.client.clientname) %></li>
     <li><%= link_to "ユーザー設定", client_client_settings_account_path(client_clientname: current_user.client.clientname, username: current_user.username) %></li>

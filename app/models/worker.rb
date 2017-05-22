@@ -5,6 +5,7 @@ class Worker < ApplicationRecord
   before_create :create_activation_digest
 
   has_many :agreements
+  has_many :chats ,through: :agreements
   has_one :account, dependent: :destroy, foreign_key: 'id', class_name: 'WorkerAccount'
   has_one :address, dependent: :destroy, foreign_key: 'id', class_name: 'WorkerAddress'
   has_one :profile, dependent: :destroy, foreign_key: 'id', class_name: 'WorkerProfile'

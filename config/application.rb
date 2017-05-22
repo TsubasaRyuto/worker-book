@@ -21,6 +21,7 @@ module WorkerBook
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.action_cable.mount_path = '/websocket'
     config.time_zone = 'Asia/Tokyo'
     config.active_record.default_timezone = :local
     I18n.enforce_available_locales = false
