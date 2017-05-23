@@ -63,7 +63,7 @@ RSpec.describe Worker, type: :model do
         context 'accept invalid username' do
           let(:invalid_usernames) { ['AA000', 'aa-bbb', 'aaaaa+b', 'aa.00', '///'] }
           it 'should be invalid' do
-            invalid_usernames.each do |invalid_username|\
+            invalid_usernames.each do |invalid_username|
               worker.username = invalid_username
               expect(worker).to be_invalid
             end
