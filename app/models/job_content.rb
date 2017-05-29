@@ -4,6 +4,7 @@ class JobContent < ApplicationRecord
 
   belongs_to :client
   has_many :agreements
+  has_many :job_requests
 
   MAX_LENGTH_TITLE = 70
   MAX_LENGTH_CONTENTS = 3000
@@ -46,6 +47,7 @@ end
 #  note        :text(65535)      not null
 #  start_date  :datetime         not null
 #  finish_date :datetime         not null
+#  finished    :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

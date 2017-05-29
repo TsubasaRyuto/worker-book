@@ -1,0 +1,19 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <%= form_tag url, remote: true do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 id="confirm-modal" class="modal-title">本人確認</h4>
+      </div>
+      <div class="modal-body">
+        <p><strong><%= partner_name %>さん</strong><%= message %>？</p>
+        <p>本人確認のためパスワードを入力してください。</p>
+        <%= password_field_tag :password, '', class: 'form-control', placeholder: 'Password Here....' %>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default close-btn" data-dismiss="modal">キャンセル</button>
+        <%= submit_tag "#{btn}", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

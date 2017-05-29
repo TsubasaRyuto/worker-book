@@ -1,0 +1,40 @@
+<% provide(:title, '受注内容確認') %>
+
+<section class="worker-confirm-order">
+  <div class="row">
+    <div class="body col-md-8 col-md-offset-2">
+      <div class="worker">
+        <h1>My profile</h1>
+        <%= render 'workers/commons/details' %>
+      </div>
+      <div class="selected-job-content">
+        <h1>Order content</h1>
+        <%= render 'job_contents/commons/details' %>
+      </div>
+      <div class="order-btn col-md-12">
+        <button class="btn btn-primary" id="send-agreement">
+          受諾する
+        </button>
+        <button class="btn btn-warning" id="send-refusal">
+          引き受けない
+        </button>
+      </div>
+      <div id="agreement-password-confirm" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <%= render 'shared/pass_confirm_modal', {
+          message: 'からの依頼を受諾しますか',
+          partner_name: @client.clientname,
+          btn: '受諾',
+          url: worker_create_agreement_url(client_clientname: @client.clientname, job_id: @job_content.id, worker_username: @worker.username)
+          } %>
+      </div>
+      <div id="refusal-password-confirm" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <%= render 'shared/pass_confirm_modal', {
+          message: 'からの依頼をキャンセルしますか',
+          partner_name: @client.clientname,
+          btn: '引き受けない',
+          url: worker_request_refusal_url(client_clientname: @client.clientname, job_id: @job_content.id, worker_username: @worker.username)
+          } %>
+      </div>
+    </div>
+  </div>
+</section>

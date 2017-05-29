@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="face col-md-4">
+    <%= image_tag @worker.profile.picture_url %>
+    <% if signed_in? && current_user.username == params[:username] %>
+      <%= link_to worker_settings_profile_path(worker_username: current_user.username) do %>
+        <button type=button class="btn btn-primary">プロフィール変更</button>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="info col-md-8">
+    <h2><%= @worker.last_name %> <%= @worker.first_name %></h2>
+    <ul>
+      <li><%= Prefecture.name(@worker.profile.location) %></li>
+      <li>¥<%= @worker.profile.unit_price %>/人日</li>
+      <li>¥<%= @worker.profile.unit_price * 22 %>/人月</li>
+      <% if @worker.profile.active? %>
+        <li>受付中</li>
+      <% else %>
+        <li>未受付</li>
+      <% end %>
+    </ul>
+    <p class="clear">稼働時間/週　: <%= t("enums.workers.profile.availability.#{@worker.profile.availability}") %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="strength section col-md-12">
+    <h2>Developer Types & Skills</h2>
+    <ul class="developer-types">
+      <p>Developer Types</p>
+      <% developer_type_list(@worker.profile).each do |type| %>
+        <li><%= t("worker_profile.developer_type.#{type}") %></li>
+      <% end %>
+    </ul>
+    <ul class="skills">
+    <p>skills & programming languages</p>
+    <% @worker.profile.skill.each do |skill| %>
+      <li><%= skill.name %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="appeal section col-md-12">
+    <h2>仕事に対する思い、スキルアピール</h2>
+    <div class="text">
+      <%= simple_format(@worker.profile.appeal_note) %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="employment-history section col-md-12">
+    <h2>職歴</h2>
+    <ul>
+      <li><%= @worker.profile.employment_history1 %></li>
+      <% unless @worker.profile.employment_history2.blank? %>
+        <li><%= @worker.profile.employment_history2 %></li>
+      <% end %>
+      <% unless @worker.profile.employment_history3.blank? %>
+        <li><%= @worker.profile.employment_history3 %></li>
+      <% end %>
+      <% unless @worker.profile.employment_history4.blank? %>
+        <li><%= @worker.profile.employment_history4 %></li>
+      <% end %>
+      <% if @worker.profile.currently_freelancer? %>
+        <li>現在: フリーランス </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="past-performance section col-md-12">
+    <h2>ポートフォリオ／過去制作物</h2>
+    <ul>
+      <li><%= link_to @worker.profile.past_performance1,  @worker.profile.past_performance1 %></li>
+      <li><%= link_to @worker.profile.past_performance2, @worker.profile.past_performance2 %></li>
+      <% unless @worker.profile.past_performance3.blank? %>
+        <li><%= link_to @worker.profile.past_performance3, @worker.profile.past_performance3  %></li>
+      <% end %>
+      <% unless @worker.profile.past_performance4.blank? %>
+        <li><%= link_to @worker.profile.past_performance4, @worker.profile.past_performance4 %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="wb-past-performance section col-md-12">
+    <h2>過去実績</h2>
+    <div class="list">
+      <h3>実績一覧</h3>
+      <p>WorkerBookでの成約は一つもありません</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<% provide(:title, '発注内容選択') %>
+
+<section class="select-job-content">
+  <div class="row">
+    <div class="body col-md-8 col-md-offset-2">
+      <div class="worker">
+        <h1>依頼ワーカー</h1>
+        <%= render 'workers/commons/details' %>
+      </div>
+      <div class="job-content-list">
+        <h1>発注内容一覧</h1>
+        <ul>
+          <% @active_job_contents.each do |job_content| %>
+          <li>
+            タイトル：　
+            <%= link_to client_confirmation_request_job_url(client_clientname: current_user.client.clientname, worker_username: @worker.username, id: job_content.id ) do %>
+            <%= job_content.title %>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

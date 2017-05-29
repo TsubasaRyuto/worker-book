@@ -7,6 +7,7 @@ class CreateJobContents < ActiveRecord::Migration[5.0]
       t.text :note, null: false
       t.datetime :start_date, null: false
       t.datetime :finish_date, null: false
+      t.boolean :finished, null: false, default: false
 
       t.timestamps
     end

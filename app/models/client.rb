@@ -6,6 +6,7 @@ class Client < ApplicationRecord
   has_many :job_contents, dependent: :destroy
   has_many :agreements, through: :job_contents
   has_many :chats ,through: :agreements
+  has_many :agreements, through: :job_contents
 
   MIN_LENGTH_NAME = 3
   MIN_LENGTH_CLIENTNAME = 5

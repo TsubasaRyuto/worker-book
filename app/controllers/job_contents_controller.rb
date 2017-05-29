@@ -9,6 +9,7 @@
 #  note        :text(65535)      not null
 #  start_date  :datetime         not null
 #  finish_date :datetime         not null
+#  finished    :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -25,7 +26,19 @@ class JobContentsController < ApplicationController
     @job_content = @client.job_contents.build
   end
 
-  def show; end
+  def select_job_content
+    @worker = Worker.find_by(username: params[:worker_username])
+    @job_contents = @client.job_contents.all
+    @active_job_contents = []
+    @job_contents.each do |job_content|
+      @active_job_contents.push(job_content) unless job_content.finished?
+    end
+  end
+
+  def show
+    @job_content = @client.job_contents.find(params[:id])
+    @worker = Worker.find_by(username: params[:worker_username])
+  end
 
   def edit
     @job_content = @client.job_contents.find(params[:id])
