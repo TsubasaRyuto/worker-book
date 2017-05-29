@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523005906) do
+ActiveRecord::Schema.define(version: 20170523122157) do
 
   create_table "agreements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "worker_id",                     null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20170523005906) do
   end
 
   create_table "chats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "agreement_id"
+    t.integer  "agreement_id",                                    null: false
     t.string   "sender_username",                                 null: false
     t.string   "receiver_username",                               null: false
     t.text     "message",           limit: 65535,                 null: false
@@ -80,15 +80,26 @@ ActiveRecord::Schema.define(version: 20170523005906) do
   end
 
   create_table "job_contents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "client_id",                 null: false
-    t.string   "title",                     null: false
-    t.text     "content",     limit: 65535, null: false
-    t.text     "note",        limit: 65535, null: false
-    t.datetime "start_date",                null: false
-    t.datetime "finish_date",               null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "client_id",                                 null: false
+    t.string   "title",                                     null: false
+    t.text     "content",     limit: 65535,                 null: false
+    t.text     "note",        limit: 65535,                 null: false
+    t.datetime "start_date",                                null: false
+    t.datetime "finish_date",                               null: false
+    t.boolean  "finished",                  default: false, null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.index ["client_id"], name: "index_job_contents_on_client_id", using: :btree
+  end
+
+  create_table "job_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "worker_id",         null: false
+    t.integer  "job_content_id",    null: false
+    t.string   "activation_digest"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["job_content_id"], name: "index_job_requests_on_job_content_id", using: :btree
+    t.index ["worker_id"], name: "index_job_requests_on_worker_id", using: :btree
   end
 
   create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

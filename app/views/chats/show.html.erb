@@ -9,10 +9,6 @@
   <div class="row">
     <div class="side col-md-3">
       <h2>@<%= @current_user.username %></h2>
-      <h3>Notification</h3>
-      <%= link_to '/chat/messages/@notification' do %>
-        <p class="message-link">WorkerBook</p>
-      <% end %>
       <h3>DirectMessages</h3>
       <% if @current_user.class == Worker %>
         <%= render 'chats/worker/partner_list' %>
@@ -21,14 +17,12 @@
       <% end %>
     </div>
     <div class="body col-md-9">
-      <% unless @notification.blank? %>
-        <%= render 'chats/notification' %>
-      <% else %>
+      <% if @partner_user %>
         <div class="chat-head">
           <h4>発注タイトル：
             <span>
               <%= link_to '#' do %>
-                <%= @agreement.job_content.title %>
+              <%= @agreement.job_content.title %>
               <% end %>
             </span>
           </h4>

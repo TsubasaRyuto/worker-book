@@ -1,0 +1,60 @@
+h2 {
+  color: $color-main;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+p {
+  border-bottom: 2px solid $color-main;
+  color: $color-main;
+  display: block;
+  font-size: 1.5em;
+  padding: 5px 10px;
+  width: 70%;
+}
+
+.section {
+  color: $color-main;
+  display: block;
+  float: none;
+  margin: 50px auto 30px;
+  width: 80%;
+}
+
+.pay {
+  h4 {
+    display: inline-block;
+    padding: 3px 15px;
+  }
+
+  p {
+    display: inline-block;
+    margin-left: 10px;
+    width: 40%;
+  }
+}
+
+.content, .experience-seeking {
+  p {
+    border: none;
+    width: 100%;
+  }
+}
+
+.skill-seeking {
+  clear: both;
+  padding-top: 15px;
+  ul {
+    display: inline-block;
+
+    li {
+      background-color: $color-sub2;
+      border: 1px solid $color-main;
+      border-radius: 3px;
+      color: $color-sub3;
+      float: left;
+      padding: 3px 15px;
+      margin: 10px 10px;
+    }
+  }
+}

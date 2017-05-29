@@ -3,7 +3,7 @@
 # Table name: chats
 #
 #  id                :integer          not null, primary key
-#  agreement_id      :integer
+#  agreement_id      :integer          not null
 #  sender_username   :string(255)      not null
 #  receiver_username :string(255)      not null
 #  message           :text(65535)      not null
@@ -26,7 +26,6 @@ class ChatsController < ApplicationController
       @agreement = (@partner_user.agreements & current_user.client.agreements).first if current_user_type_client_user
       @chats = @agreement.chats.all
     end
-    @notification = 'notification' if params[:partner_username] == 'notification'
     @agreements = @current_user.agreements if current_user_type_worker
     @agreements = @current_user.client.agreements if current_user_type_client_user
   end
@@ -46,7 +45,7 @@ class ChatsController < ApplicationController
     @partner_user = Worker.find_by(username: params[:partner_username]) || ClientUser.find_by(username: params[:partner_username])
     if @current_user.class == @partner_user.class
       flash[:danger] = I18n.t('views.common.info.danger.invalid_username')
-      redirect_to '/chat/messages/@notification'
+      redirect_to '/chat/messages/@workerbook'
       return
     end
     invalid_receiver_of_client_user_parameter if current_user_type_worker
@@ -62,16 +61,16 @@ class ChatsController < ApplicationController
   end
 
   def invalid_receiver_of_worker_parameter
-    unless params[:partner_username] == 'notification' || (@partner_user.agreements & @current_user.client.agreements).present?
+    unless params[:partner_username] == 'workerbook' || (@partner_user.agreements & @current_user.client.agreements).present?
       flash[:danger] = I18n.t('views.common.info.danger.invalid_username')
-      redirect_to '/chat/messages/@notification'
+      redirect_to '/chat/messages/@workerbook'
     end
   end
 
   def invalid_receiver_of_client_user_parameter
-    unless params[:partner_username] == 'notification' || (@partner_user.client.agreements & @current_user.agreements).present?
+    unless params[:partner_username] == 'workerbook' || (@partner_user.client.agreements & @current_user.agreements).present?
       flash[:danger] = I18n.t('views.common.info.danger.invalid_username')
-      redirect_to '/chat/messages/@notification'
+      redirect_to '/chat/messages/@workerbook'
     end
   end
 end

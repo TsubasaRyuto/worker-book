@@ -5,6 +5,7 @@ class Worker < ApplicationRecord
   before_create :create_activation_digest
 
   has_many :agreements
+  has_many :job_requests
   has_many :chats ,through: :agreements
   has_one :account, dependent: :destroy, foreign_key: 'id', class_name: 'WorkerAccount'
   has_one :address, dependent: :destroy, foreign_key: 'id', class_name: 'WorkerAddress'
@@ -18,6 +19,10 @@ class Worker < ApplicationRecord
   validates :email, presence: true, email: true, email_unique: true
   has_secure_password
   validates :password, presence: true, length: { minimum: MIN_LENGTH_PASSWORD }, allow_nil: true
+
+  def send_request_email(client, job_content, job_request)
+    WorkerMailer.request_job(self, client, job_content, job_request).deliver_now
+  end
 end
 
 # == Schema Information

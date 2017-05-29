@@ -13,6 +13,14 @@ class ClientUser < ApplicationRecord
   validates :password, presence: true, length: { minimum: MIN_LENGTH_PASSWORD }, allow_nil: true
 
   enum user_type: { admin: 0, general: 1, developer: 2 }
+
+  def send_request_agreement_email(worker, job_content)
+    ClientUserMailer.request_agreement(self, worker, job_content).deliver_now
+  end
+
+  def send_request_refusal_email(worker, job_content)
+    ClientUserMailer.request_refusal(self, worker, job_content).deliver_now
+  end
 end
 
 # == Schema Information

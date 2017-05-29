@@ -10,6 +10,8 @@ ja:
           delete_account: 退会完了いたしました。
           send_apss_reset_email: パスワード再設定メールを送信しました。
           pass_reseted: パスワードが変更されました。
+          agreement: "契約完了いたしました。"
+          refusal: "依頼をキャンセルいたしました。"
         danger:
           sign_up_failed: アカウント認証に失敗いたしました。もう一度やり直してください。
           sign_in_failed: 認証に失敗しました。もう一度やり直してください。

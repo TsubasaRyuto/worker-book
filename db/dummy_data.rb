@@ -6,6 +6,8 @@ def clean_data
   ClientUser.delete_all
   JobContent.delete_all
   Agreement.delete_all
+  Chat.delete_all
+  JobRequest.delete_all
 end
 
 def workers

@@ -17,7 +17,7 @@ end
 # Table name: chats
 #
 #  id                :integer          not null, primary key
-#  agreement_id      :integer
+#  agreement_id      :integer          not null
 #  sender_username   :string(255)      not null
 #  receiver_username :string(255)      not null
 #  message           :text(65535)      not null

@@ -3,7 +3,7 @@
 # Table name: chats
 #
 #  id                :integer          not null, primary key
-#  agreement_id      :integer
+#  agreement_id      :integer          not null
 #  sender_username   :string(255)      not null
 #  receiver_username :string(255)      not null
 #  message           :text(65535)      not null
@@ -62,7 +62,7 @@ RSpec.describe ChatsController, type: :controller do
             sign_in_as(signed_user)
             get :show, params: { partner_username: other_partner_name }
           end
-          it { expect(response).to redirect_to '/chat/messages/@notification' }
+          it { expect(response).to redirect_to '/chat/messages/@workerbook' }
         end
       end
     end

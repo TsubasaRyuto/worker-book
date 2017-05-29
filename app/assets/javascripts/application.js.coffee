@@ -24,3 +24,4 @@
 #= require_tree ./shared/
 #= require_tree ./job_contents/
 #= require_tree ./chat/
+#= require_tree ./order_confirm/

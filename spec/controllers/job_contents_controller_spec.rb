@@ -9,6 +9,7 @@
 #  note        :text(65535)      not null
 #  start_date  :datetime         not null
 #  finish_date :datetime         not null
+#  finished    :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
