@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'ClientUsers:SingUp', type: :feature do
+RSpec.feature 'ClientUsers:SingUp', type: :feature, js: true do
   context 'client users sign up' do
     before do
       ApplicationMailer.deliveries.clear
@@ -14,6 +14,10 @@ RSpec.feature 'ClientUsers:SingUp', type: :feature do
         fill_in placeholder: 'ex) lobo_inc', with: 'client_example'
         select '北海道', from: 'client_location'
         attach_file('client_logo', 'spec/fixtures/images/lobo.png')
+        page.find('#next-step').click
+        page.execute_script("$('.fade-out').hide()")
+        page.execute_script("$('#signup-client-user').show()")
+        expect(page).to have_selector 'h1', text: 'Create Account of Client user'
         fill_in placeholder: 'Last Name', with: 'Foo'
         fill_in placeholder: 'First Name', with: 'Bar'
         fill_in placeholder: 'Username', with: 'foobar'
@@ -50,6 +54,10 @@ RSpec.feature 'ClientUsers:SingUp', type: :feature do
         fill_in placeholder: 'ex) lobo_inc', with: ''
         select '北海道', from: 'client_location'
         attach_file('client_logo', 'spec/fixtures/images/lobo.png')
+        page.find('#next-step').click
+        page.execute_script("$('.fade-out').hide()")
+        page.execute_script("$('#signup-client-user').show()")
+        expect(page).to have_selector 'h1', text: 'Create Account of Client user'
         fill_in placeholder: 'Last Name', with: ''
         fill_in placeholder: 'First Name', with: ''
         fill_in placeholder: 'Username', with: 'invali+info'
@@ -57,7 +65,7 @@ RSpec.feature 'ClientUsers:SingUp', type: :feature do
         fill_in placeholder: 'Password', with: 'foo'
         fill_in placeholder: 'Confirmation', with: 'bar'
         expect { click_button 'アカウント作成' }.to_not change { ClientUser.count }
-        expect(page).to have_selector 'h1', text: 'Create Account of Client user'
+        expect(page).to have_selector 'h1', text: 'Create Account of Client'
         expect(page).to have_selector 'div#error_explanation'
         expect(page).to have_selector 'div.field_with_errors'
       end

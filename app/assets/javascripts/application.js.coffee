@@ -25,3 +25,4 @@
 #= require_tree ./job_contents/
 #= require_tree ./chat/
 #= require_tree ./order_confirm/
+#= require_tree ./clients/
