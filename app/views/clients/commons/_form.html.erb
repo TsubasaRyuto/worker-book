@@ -30,9 +30,9 @@
     <%= f.label :logo, class: 'col-md-4' do %>
       <div class="logo-img">
         <% if @client.logo.blank? %>
-          <%= image_tag 'worker_profiles/no_picture.png', alt: "NO LOGO", class: 'img-size', id: 'preview' %>
+          <%= image_tag '', alt: "NO LOGO", id: 'preview_logo' %>
         <% else %>
-          <%= image_tag @client.logo_url %>
+          <%= image_tag @client.logo_url, id: 'preview_logo' %>
         <% end %>
       </div>
       <p class="upload">Add a photo</p>

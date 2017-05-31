@@ -183,9 +183,9 @@
         <%= f.label :picture, class: 'col-md-4' do %>
           <div class="worker-picture">
             <% if @worker_profile.picture.blank? %>
-              <%= image_tag 'worker_profiles/no_picture.png', alt: "NO PICTURE", class: 'pic-size', id: 'preview' %>
+              <%= image_tag '', alt: "NO PICTURE", id: 'preview' %>
             <% else %>
-              <%= image_tag @worker.profile.picture_url %>
+              <%= image_tag @worker.profile.picture_url, id: 'preview' %>
             <% end %>
           </div>
           <p class="upload">Add a photo</p>

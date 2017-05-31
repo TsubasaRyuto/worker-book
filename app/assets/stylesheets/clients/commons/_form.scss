@@ -17,7 +17,6 @@
 
   .logo {
     margin-bottom: 10vh;
-    position: relative;
 
     &:hover {
       .picture-info {
@@ -26,20 +25,16 @@
     }
 
     .logo-img {
-      border: 1px solid $color-main;
-      border-radius: 50%;
-      cursor: pointer;
-      position:relative;
-      width: 130px;
-      height: 130px;
-      overflow: hidden;
-
-      .img-size {
-        height: 150px;
-        left: -9px;
-        position: absolute;
-        top: -12px;
-        width: 150px;
+      img {
+        border-radius: 50%;
+        cursor: pointer;
+        display: block;
+        font-size: 1.4em;
+        height: 130px;
+        line-height: 130px;
+        margin: 0 auto;
+        text-align: center;
+        width: 130px;
       }
     }
 
