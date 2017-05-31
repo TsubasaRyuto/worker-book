@@ -51,7 +51,7 @@ RSpec.describe ClientUserMailer, type: :mailer do
     let(:worker) { create :worker }
     let(:mail) { ClientUserMailer.request_agreement(client_user, worker, job_content) }
     before do
-      Timecop.travel(Date.new(2017,01,01)) do
+      Timecop.travel(Date.new(2017, 01, 01)) do
         job_content
       end
     end
@@ -70,7 +70,7 @@ RSpec.describe ClientUserMailer, type: :mailer do
     let(:worker) { create :worker }
     let(:mail) { ClientUserMailer.request_refusal(client_user, worker, job_content) }
     before do
-      Timecop.travel(Date.new(2017,01,01)) do
+      Timecop.travel(Date.new(2017, 01, 01)) do
         job_content
       end
     end

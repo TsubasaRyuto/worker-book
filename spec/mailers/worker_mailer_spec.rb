@@ -35,7 +35,7 @@ RSpec.describe WorkerMailer, type: :mailer do
     let(:job_request) { create :job_request, job_content: job_content, worker: worker }
     let(:mail) { WorkerMailer.request_job(worker, client, job_content, job_request) }
     before do
-      Timecop.travel(Date.new(2017,01,01)) do
+      Timecop.travel(Date.new(2017, 01, 01)) do
         job_content
       end
     end

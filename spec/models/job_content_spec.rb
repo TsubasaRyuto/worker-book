@@ -8,10 +8,12 @@ RSpec.describe JobContent, type: :model do
   let(:note) { 'example ' * 10 }
   let(:start_date) { Time.zone.local(2017, 5, 16) }
   let(:finish_date) { Time.zone.local(2017, 9, 19) }
-  let(:job_content) { client.job_contents.build(
-    title: title, content: content, skill_list: skills,
-    note: note, start_date: start_date, finish_date: finish_date
-    ) }
+  let(:job_content) {
+    client.job_contents.build(
+      title: title, content: content, skill_list: skills,
+      note: note, start_date: start_date, finish_date: finish_date
+    )
+  }
 
   context 'validates' do
     context 'successful' do

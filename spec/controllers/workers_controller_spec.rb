@@ -31,7 +31,7 @@ RSpec.describe WorkersController, type: :controller do
     end
     it { expect(response).to have_http_status :success }
   end
-  
+
   context 'get new' do
     before do
       get :new

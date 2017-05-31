@@ -31,7 +31,7 @@ RSpec.describe ChatsController, type: :controller do
     shared_examples_for 'redirect to show' do
       context 'successfull' do
         before do
-          Timecop.travel(Date.new(2017,01,01)) do
+          Timecop.travel(Date.new(2017, 01, 01)) do
             job_content
             agreement
           end
@@ -44,7 +44,7 @@ RSpec.describe ChatsController, type: :controller do
       context 'faild' do
         context 'not sign' do
           before do
-            Timecop.travel(Date.new(2017,01,01)) do
+            Timecop.travel(Date.new(2017, 01, 01)) do
               job_content
               agreement
             end
@@ -55,7 +55,7 @@ RSpec.describe ChatsController, type: :controller do
 
         context 'invalid agreement chat' do
           before do
-            Timecop.travel(Date.new(2017,01,01)) do
+            Timecop.travel(Date.new(2017, 01, 01)) do
               job_content
               agreement
             end
