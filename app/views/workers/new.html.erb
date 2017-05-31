@@ -7,6 +7,7 @@
         <h1>Create Account of Freelancer</h1>
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
+            <%= render 'shared/step_bar', { first: 'complete', second: '' } %>
             <%= form_for(@worker) do |f| %>
               <div class="last-name-form comn-form">
                 <%= f.text_field :last_name, class: 'form-control last-name-form', placeholder: 'Last Name', autocomplete: 'off' %>
