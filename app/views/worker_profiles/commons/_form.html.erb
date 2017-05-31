@@ -180,18 +180,22 @@
       <h3>Upload your face</h3>
       <%= render 'shared/error', object: f.object, field: :picture %>
       <div class="row">
-        <div class="worker-picture col-md-4">
-          <%= image_tag 'worker_profiles/no_picture.png', alt: "NO PICTURE", class: 'pic-size upload-link' %>
-        </div>
+        <%= f.label :picture, class: 'col-md-4' do %>
+          <div class="worker-picture">
+            <% if @worker_profile.picture.blank? %>
+              <%= image_tag 'worker_profiles/no_picture.png', alt: "NO PICTURE", class: 'pic-size', id: 'preview' %>
+            <% else %>
+              <%= image_tag @worker.profile.picture_url %>
+            <% end %>
+          </div>
+          <p class="upload">Add a photo</p>
+          <%= f.file_field :picture , accept: 'image/jpeg, image/jpg, image/gif, image/png', class: 'picture-upload' %>
+        <% end %>
         <div class="col-md-8">
           <p class="mess">
             Please upload your best looking pictures to gain the trust.
           </p>
-          <p class="upload upload-link">Upload photo</p>
         </div>
-      </div>
-      <div id="modal-content" class="preview">
-        <%= f.file_field :picture , accept: 'image/jpeg, image/jpg, image/gif, image/png', class: 'picture-upload' %>
       </div>
       <div class="picture-info">
         <p>

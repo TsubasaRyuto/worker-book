@@ -17,7 +17,7 @@ RSpec.feature 'Clients:UpdateProfile', type: :feature, js: true do
         fill_in placeholder: 'ex) http://lobo-inc.com', with: 'http://example1.com'
         fill_in placeholder: 'ex) lobo_inc', with: 'client_example'
         select '北海道', from: 'client_location'
-        attach_file('client_logo', 'spec/fixtures/images/lobo.png')
+        attach_file('client_logo', 'spec/fixtures/images/lobo.png', visible: false)
         click_button '変更を保存'
         client.reload
         expect(client.corporate_site).to eq('http://example1.com')
@@ -31,7 +31,7 @@ RSpec.feature 'Clients:UpdateProfile', type: :feature, js: true do
         fill_in placeholder: 'ex) http://lobo-inc.com', with: ''
         fill_in placeholder: 'ex) lobo_inc', with: 'client_example'
         select '北海道', from: 'client_location'
-        attach_file('client_logo', 'spec/fixtures/images/lobo.png')
+        attach_file('client_logo', 'spec/fixtures/images/lobo.png', visible: false)
         click_button '変更を保存'
         expect(page).to have_selector 'h1', text: 'Update Client profile'
       end

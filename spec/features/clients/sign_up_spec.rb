@@ -13,7 +13,7 @@ RSpec.feature 'ClientUsers:SingUp', type: :feature, js: true do
         fill_in placeholder: 'ex) http://lobo-inc.com', with: 'http://example.com'
         fill_in placeholder: 'ex) lobo_inc', with: 'client_example'
         select '北海道', from: 'client_location'
-        attach_file('client_logo', 'spec/fixtures/images/lobo.png')
+        attach_file('client_logo', 'spec/fixtures/images/lobo.png', visible: false)
         page.find('#next-step').click
         page.execute_script("$('.fade-out').hide()")
         page.execute_script("$('#signup-client-user').show()")
@@ -53,7 +53,7 @@ RSpec.feature 'ClientUsers:SingUp', type: :feature, js: true do
         fill_in placeholder: 'ex) http://lobo-inc.com', with: ''
         fill_in placeholder: 'ex) lobo_inc', with: ''
         select '北海道', from: 'client_location'
-        attach_file('client_logo', 'spec/fixtures/images/lobo.png')
+        attach_file('client_logo', 'spec/fixtures/images/lobo.png', visible: false)
         page.find('#next-step').click
         page.execute_script("$('.fade-out').hide()")
         page.execute_script("$('#signup-client-user').show()")
