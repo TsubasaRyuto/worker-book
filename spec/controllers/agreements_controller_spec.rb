@@ -27,7 +27,7 @@ RSpec.describe AgreementsController, type: :controller do
   let(:agreement) { worker.agreements.new(job_content_id: job_content.id, active: true, activated_at: Time.zone.now) }
 
   before do
-    Timecop.travel(Date.new(2017,01,01)) do
+    Timecop.travel(Date.new(2017, 01, 01)) do
       job_content
     end
     ApplicationMailer.deliveries.clear
@@ -55,7 +55,7 @@ RSpec.describe AgreementsController, type: :controller do
           sign_in_as(worker)
         end
         it 'should agreement' do
-          request.env["HTTP_REFERER"] = client_confirmation_request_job_url(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
+          request.env['HTTP_REFERER'] = client_confirmation_request_job_url(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
           expect do
             post :create, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: 'invalidpassword' }
           end.to change { Agreement.count }.by(0)
@@ -92,7 +92,7 @@ RSpec.describe AgreementsController, type: :controller do
           sign_in_as(worker)
         end
         it 'should agreement' do
-          request.env["HTTP_REFERER"] = client_confirmation_request_job_url(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
+          request.env['HTTP_REFERER'] = client_confirmation_request_job_url(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
           expect do
             post :refusal, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: 'invalid_password' }
           end.to change { JobRequest.count }.by(0)

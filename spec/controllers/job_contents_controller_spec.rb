@@ -49,7 +49,7 @@ RSpec.describe JobContentsController, type: :controller do
   context 'get edit' do
     context 'success' do
       before do
-        Timecop.travel(Date.new(2017,01,01)) do
+        Timecop.travel(Date.new(2017, 01, 01)) do
           sign_in_as(client_user)
           get :edit, params: { client_clientname: client.clientname, id: job_content.id }
         end
@@ -61,7 +61,7 @@ RSpec.describe JobContentsController, type: :controller do
 
     context 'failed' do
       before do
-        Timecop.travel(Date.new(2017,01,01)) do
+        Timecop.travel(Date.new(2017, 01, 01)) do
           get :edit, params: { client_clientname: client.clientname, id: job_content.id }
         end
       end
@@ -80,7 +80,7 @@ RSpec.describe JobContentsController, type: :controller do
     let(:finish_date) { Date.new(2017, 9, 19) }
     context 'success' do
       before do
-        Timecop.travel(Date.new(2017,01,01))
+        Timecop.travel(Date.new(2017, 01, 01))
         sign_in_as(client_user)
       end
       it 'should create job content' do
@@ -172,7 +172,7 @@ RSpec.describe JobContentsController, type: :controller do
     let(:finish_date) { Date.new(2017, 9, 19) }
     context 'success' do
       before do
-        Timecop.travel(Date.new(2017,01,01))
+        Timecop.travel(Date.new(2017, 01, 01))
         sign_in_as(client_user)
         patch :update, params: { client_clientname: client.clientname, id: job_content.id, job_content: {
           title: title, content: content, skill_list: skills, note: note,
@@ -200,7 +200,7 @@ RSpec.describe JobContentsController, type: :controller do
         shared_examples_for 'invalid information of job contents' do
           before do
             sign_in_as(client_user)
-            patch :update, params: { client_clientname: client.clientname,id: job_content.id, job_content: {
+            patch :update, params: { client_clientname: client.clientname, id: job_content.id, job_content: {
               title: title, content: content, skill_list: skills, note: note,
               start_date: start_date, finish_date: finish_date
             } }

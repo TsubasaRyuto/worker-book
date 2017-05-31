@@ -25,7 +25,7 @@ class AgreementsController < ApplicationController
     @worker = Worker.find_by(username: params[:worker_username])
     @client = Client.find_by(clientname: params[:client_clientname])
     if @worker && @worker.authenticate(params[:password])
-      @agreement = @worker.agreements.build({ job_content_id: @job_content.id, active: true, activated_at: Time.zone.now })
+      @agreement = @worker.agreements.build(job_content_id: @job_content.id, active: true, activated_at: Time.zone.now)
       @agreement.save!
       @client.client_users.each { |user| user.send_request_agreement_email(@worker, @job_content) }
       flash[:success] = I18n.t('views.common.info.success.agreement')

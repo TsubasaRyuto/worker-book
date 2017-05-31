@@ -18,10 +18,10 @@ Rails.application.routes.draw do
   post '/password_resets', to: 'password_resets#create', as: 'password_resets'
   patch '/password_reset/:id/', to: 'password_resets#update', as: 'password_reset_update'
 
-  #skills
+  # skills
   get '/autocomplete_skill/:term', to: 'skills#autocomplete_skill', defaults: { format: 'json' }
 
-  #chat
+  # chat
   get '/chat/messages/@:partner_username', to: 'chats#show'
 
   # workers/

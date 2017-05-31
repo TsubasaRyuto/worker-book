@@ -8,7 +8,7 @@ RSpec.describe OrderConfirmsController, type: :controller do
   let(:job_request) { create :job_request, worker: worker, job_content: job_content }
 
   before do
-    Timecop.travel(Date.new(2017,01,01)) do
+    Timecop.travel(Date.new(2017, 01, 01)) do
       job_content
     end
   end

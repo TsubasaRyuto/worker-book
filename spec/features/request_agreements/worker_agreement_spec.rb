@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'RequestAgreements:WorkerAgreement', type: :feature, js: true do
   let(:worker) { create :worker }
-  let(:worker_profile) { create :worker_profile, worker: worker}
+  let(:worker_profile) { create :worker_profile, worker: worker }
   let(:client) { create :client }
   let(:client_user) { create :client_user, client: client }
   let(:job_content) { create :job_content, client: client }
@@ -12,7 +12,7 @@ RSpec.feature 'RequestAgreements:WorkerAgreement', type: :feature, js: true do
       sign_on_as(client_user)
       worker
       worker_profile
-      Timecop.travel(Date.new(2017,01,01)) do
+      Timecop.travel(Date.new(2017, 01, 01)) do
         job_content
       end
     end
@@ -22,13 +22,13 @@ RSpec.feature 'RequestAgreements:WorkerAgreement', type: :feature, js: true do
         expect(page).to have_selector 'h1', text: '依頼ワーカー'
         expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"
         expect(page).to have_selector 'h1', text: '発注内容'
-        expect(page).to have_selector 'p', text: "#{job_content.title}"
+        expect(page).to have_selector 'p', text: job_content.title.to_s
         page.find('#send-request').click
         page.execute_script("$('#order-request').modal('show')")
         expect(page).to have_selector 'h4', text: '本人確認'
         fill_in id: 'password', with: client_user.password
         click_on '送信'
-        expect(page).to have_selector 'h2', text: "#{client.name}"
+        expect(page).to have_selector 'h2', text: client.name.to_s
         url = URI.parse(current_url)
         expect(url.path).to eq(client_path(clientname: client.clientname))
         click_link 'Sign out'
@@ -40,7 +40,7 @@ RSpec.feature 'RequestAgreements:WorkerAgreement', type: :feature, js: true do
         expect(page).to have_selector 'h1', text: 'My profile'
         expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"
         expect(page).to have_selector 'h1', text: 'Order content'
-        expect(page).to have_selector 'p', text: "#{job_content.title}"
+        expect(page).to have_selector 'p', text: job_content.title.to_s
         # キャンセルボタンテスト
         page.find('#send-agreement').click
         page.execute_script("$('#agreement-password-confirm').modal('show')")
@@ -68,13 +68,13 @@ RSpec.feature 'RequestAgreements:WorkerAgreement', type: :feature, js: true do
         expect(page).to have_selector 'h1', text: '依頼ワーカー'
         expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"
         expect(page).to have_selector 'h1', text: '発注内容'
-        expect(page).to have_selector 'p', text: "#{job_content.title}"
+        expect(page).to have_selector 'p', text: job_content.title.to_s
         page.find('#send-request').click
         page.execute_script("$('#order-request').modal('show')")
         expect(page).to have_selector 'h4', text: '本人確認'
         fill_in id: 'password', with: client_user.password
         click_on '送信'
-        expect(page).to have_selector 'h2', text: "#{client.name}"
+        expect(page).to have_selector 'h2', text: client.name.to_s
         url = URI.parse(current_url)
         expect(url.path).to eq client_path(clientname: client.clientname)
         click_link 'Sign out'
@@ -86,7 +86,7 @@ RSpec.feature 'RequestAgreements:WorkerAgreement', type: :feature, js: true do
         expect(page).to have_selector 'h1', text: 'My profile'
         expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"
         expect(page).to have_selector 'h1', text: 'Order content'
-        expect(page).to have_selector 'p', text: "#{job_content.title}"
+        expect(page).to have_selector 'p', text: job_content.title.to_s
         page.find('#send-agreement').click
         page.execute_script("$('#agreement-password-confirm').modal('show')")
         expect(page).to have_selector 'h4', text: '本人確認'

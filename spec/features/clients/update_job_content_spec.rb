@@ -8,7 +8,7 @@ RSpec.feature 'Clients:UpdateJobContent', type: :feature, js: true do
 
     before do
       sign_on_as(client_user)
-      Timecop.travel(Date.new(2016,01,01))
+      Timecop.travel(Date.new(2016, 01, 01))
     end
     context 'successfull' do
       it 'should update job content' do
@@ -31,7 +31,7 @@ RSpec.feature 'Clients:UpdateJobContent', type: :feature, js: true do
         expect(page).to have_selector 'span.tagit-label', text: 'HTML'
         fill_in id: 'job_content_note', with: 'test' * 101
         click_button '変更を保存'
-        expect(page).to have_selector 'h2', text: "#{client.name}"
+        expect(page).to have_selector 'h2', text: client.name.to_s
         expect(page).to have_selector '.alert-success'
         job_content.reload
         expect(job_content.title).to eq('iosアプリケーション')

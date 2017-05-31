@@ -7,7 +7,7 @@ RSpec.feature 'Clients:CreateJobContent', type: :feature, js: true do
 
     before do
       sign_on_as(client_user)
-      Timecop.travel(Date.new(2016,01,01))
+      Timecop.travel(Date.new(2016, 01, 01))
     end
     context 'successfull' do
       it 'should create job content' do
@@ -29,7 +29,7 @@ RSpec.feature 'Clients:CreateJobContent', type: :feature, js: true do
         expect(page).to have_selector 'span.tagit-label', text: 'HTML'
         fill_in id: 'job_content_note', with: 'test' * 101
         expect { click_button '発注内容登録' }.to change { JobContent.count }.by(1)
-        expect(page).to have_selector 'h2', text: "#{client.name}"
+        expect(page).to have_selector 'h2', text: client.name.to_s
       end
     end
 

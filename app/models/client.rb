@@ -5,7 +5,7 @@ class Client < ApplicationRecord
   accepts_nested_attributes_for :client_users, allow_destroy: true
   has_many :job_contents, dependent: :destroy
   has_many :agreements, through: :job_contents
-  has_many :chats ,through: :agreements
+  has_many :chats, through: :agreements
   has_many :agreements, through: :job_contents
 
   MIN_LENGTH_NAME = 3

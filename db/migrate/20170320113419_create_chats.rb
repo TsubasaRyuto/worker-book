@@ -5,7 +5,7 @@ class CreateChats < ActiveRecord::Migration[5.0]
       t.string :sender_username, null: false
       t.string :receiver_username, null: false
       t.text :message, null: false
-      t.boolean :read_flg, null:false, default: false
+      t.boolean :read_flg, null: false, default: false
 
       t.timestamps
     end
