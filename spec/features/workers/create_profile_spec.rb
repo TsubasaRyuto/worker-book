@@ -25,7 +25,7 @@ RSpec.feature 'Workers:CreateProfile', type: :feature, js: true do
         fill_in id: 'worker_profile_past_performance2', with: 'http://example2.com'
         fill_in id: 'input-price', with: '40000'
         fill_in id: 'worker_profile_appeal_note', with: 'test' * 101
-        attach_file('worker_profile_picture', 'spec/fixtures/images/lobo.png')
+        attach_file('worker_profile_picture', 'spec/fixtures/images/lobo.png', visible: false)
         select '北海道', from: 'worker_profile_location'
         fill_in id: 'worker_profile_employment_history1', with: 'Example Inc'
         fill_in id: 'worker_profile_employment_history2', with: 'Example.com Inc'
@@ -52,7 +52,7 @@ RSpec.feature 'Workers:CreateProfile', type: :feature, js: true do
         fill_in id: 'worker_profile_past_performance1', with: 'http://example1.com'
         fill_in id: 'input-price', with: '40000'
         fill_in id: 'worker_profile_appeal_note', with: 'test' * 101
-        attach_file('worker_profile_picture', 'spec/fixtures/images/lobo.png')
+        attach_file('worker_profile_picture', 'spec/fixtures/images/lobo.png', visible: false)
         select '北海道', from: 'worker_profile_location'
         fill_in id: 'worker_profile_employment_history1', with: 'Example Inc'
         expect { click_button 'Create my profile' }.to change { WorkerProfile.count }.by(0)
