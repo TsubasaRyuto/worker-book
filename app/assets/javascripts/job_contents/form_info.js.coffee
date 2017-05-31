@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).on 'ready turbolinks:load', ->
   $('#job_content_title').focus ->
     $('.title-info').css 'display', 'block'
   .blur ->

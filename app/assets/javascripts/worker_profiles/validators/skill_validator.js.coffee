@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).on 'ready turbolinks:load', ->
   valid = true
   invlaid = false
   min_warning = $('.skill-minimum-warning')

@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).on 'ready turbolinks:load', ->
   successful = '3px solid #486d94'
   failed = '2px solid #dc143c'
   normal = '1px solid #808080'

@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).on 'ready turbolinks:load', ->
   price_count = ->
     FEE = 10
     WORKING_DAYS = 22

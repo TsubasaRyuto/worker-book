@@ -31,11 +31,12 @@
 
     .logo {
       img {
+        border: 1px solid $color-main;
         border-radius: 50%;
         display: block;
-        height: 150px;
+        height: 130px;
         margin: 0 auto;
-        width: 150px;
+        width: 130px;
       }
     } // face
 

@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).on 'ready turbolinks:load', ->
   $('#input-price').keyup ->
     PRICE_REGEX = /^\d+$/
     unit_price = $('#input-price').val()

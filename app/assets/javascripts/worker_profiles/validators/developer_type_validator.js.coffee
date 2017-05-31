@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).on 'ready turbolinks:load', ->
   $('.dev-type-check:checkbox').change ->
     count = $('.dev-type-check:checked').length
     $not = $('.dev-type-check:checkbox').not(':checked')

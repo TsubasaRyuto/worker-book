@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).on 'ready turbolinks:load', ->
   MAX_LENGTH = 3000
   MIN_LENGTH = 400
   note = '.appeal-note'

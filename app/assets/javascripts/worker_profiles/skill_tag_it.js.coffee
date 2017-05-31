@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).on 'ready turbolinks:load', ->
   $('#worker-skill-field').tagit
     placeholderText: 'Type Here......',
     tagLimit: 10,

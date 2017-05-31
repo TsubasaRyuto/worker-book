@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).on 'ready turbolinks:load', ->
   $('.last-name-form').focus ->
     $('.last-name').css 'display', 'block'
 

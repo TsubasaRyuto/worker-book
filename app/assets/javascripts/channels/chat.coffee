@@ -13,7 +13,7 @@ App.chat = App.cable.subscriptions.create { channel: "ChatChannel", partner_user
   speak: (message) ->
     @perform 'speak', { message: message }
 
-$(document).on 'turbolinks:load', ->
+$(document).on 'ready turbolinks:load', ->
   $('#send-message').click ->
     return false if $('#message-input').val() == ''
     App.chat.speak $('#message-input').val()
