@@ -50,8 +50,7 @@ class WorkerProfilesController < ApplicationController
   def create
     @worker_profile = @worker.build_profile(profile_params)
     if @worker_profile.save
-      flash[:success] = I18n.t('views.common.info.success.create_profile')
-      redirect_to worker_url(username: @worker.username)
+      redirect_to worker_url(username: @worker.username), flash: { success: I18n.t('views.common.info.success.create_profile') }
     else
       set_worker_skill_list_to_gon
       render :new
@@ -61,8 +60,7 @@ class WorkerProfilesController < ApplicationController
   def update
     @worker_profile = @worker.profile
     if @worker_profile.update_attributes(profile_params)
-      flash[:success] = I18n.t('views.common.info.success.update_profile')
-      redirect_to worker_url(username: @worker.username)
+      redirect_to worker_url(username: @worker.username), flash: { success: I18n.t('views.common.info.success.update_profile') }
     else
       set_worker_skill_list_to_gon
       render :edit

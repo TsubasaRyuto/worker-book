@@ -40,9 +40,7 @@ class ClientUsersController < ApplicationController
   def update
     @client_user = ClientUser.find_by(username: params[:username])
     if @client_user.update_attributes(update_params)
-      # @client_user.send_update_email
-      flash[:success] = I18n.t('views.common.info.success.update_account')
-      redirect_to client_url(clientname: @client_user.client.clientname)
+      redirect_to client_url(clientname: @client_user.client.clientname), flash: { success: I18n.t('views.common.info.success.update_account') }
     else
       render :edit
     end
@@ -55,10 +53,9 @@ class ClientUsersController < ApplicationController
       @client.delete
       @client_user.delete
       session.delete(:user_id)
-      flash[:success] = I18n.t('views.common.info.success.delete_account')
-      redirect_to root_url
+      redirect_to root_url, flash: { success: I18n.t('views.common.info.success.delete_account') }
     else
-      flash[:warning] = I18n.t('views.common.info.danger.invalid_password')
+      flash.now[:warning] = I18n.t('views.common.info.danger.invalid_password')
       render :retire
     end
   end
@@ -69,11 +66,9 @@ class ClientUsersController < ApplicationController
     if client_user && !client_user.activated? && client_user.authenticated?(:activation, params[:token])
       client_user.activate
       sign_in client_user
-      flash[:success] = I18n.t('views.common.info.success.sign_up_completion')
-      redirect_to client_url(clientname: client_user.client.clientname)
+      redirect_to client_url(clientname: client_user.client.clientname), flash: { success: I18n.t('views.common.info.success.sign_up_completion') }
     else
-      flash[:danger] = I18n.t('views.common.info.danger.sign_up_failed')
-      redirect_to root_url
+      redirect_to root_url, flash: { danger: I18n.t('views.common.info.danger.sign_up_failed') }
     end
   end
 
@@ -86,8 +81,7 @@ class ClientUsersController < ApplicationController
   def signed_in_client
     unless signed_in?
       store_location
-      flash[:danger] = I18n.t('views.common.info.danger.not_signed_in')
-      redirect_to sign_in_url
+      redirect_to sign_in_url, flash: { danger: I18n.t('views.common.info.danger.not_signed_in') }
     end
   end
 

@@ -28,8 +28,7 @@ class AgreementsController < ApplicationController
       @agreement = @worker.agreements.build(job_content_id: @job_content.id, active: true, activated_at: Time.zone.now)
       @agreement.save!
       @client.client_users.each { |user| user.send_request_agreement_email(@worker, @job_content) }
-      flash[:success] = I18n.t('views.common.info.success.agreement')
-      redirect_to worker_url(username: @worker.username)
+      redirect_to worker_url(username: @worker.username), flash: { success: I18n.t('views.common.info.success.agreement') }
     else
       flash[:danger] = I18n.t('views.common.info.danger.invalid_password')
       redirect_back(fallback_location: root_url)
@@ -44,8 +43,7 @@ class AgreementsController < ApplicationController
       @job_request = (@worker.job_requests & @job_content.job_requests).first
       @job_request.destroy
       @client.client_users.each { |user| user.send_request_refusal_email(@worker, @job_content) }
-      flash[:success] = I18n.t('views.common.info.success.refusal')
-      redirect_to worker_url(username: @worker.username)
+      redirect_to worker_url(username: @worker.username), flash: { success: I18n.t('views.common.info.success.refusal') }
     else
       flash[:danger] = I18n.t('views.common.info.danger.invalid_password')
       redirect_back(fallback_location: root_url)
@@ -57,8 +55,7 @@ class AgreementsController < ApplicationController
   def signed_in_worker
     unless signed_in?
       store_location
-      flash[:danger] = I18n.t('views.common.info.danger.not_signed_in')
-      redirect_to sign_in_url
+      redirect_to sign_in_url, flash: { danger: I18n.t('views.common.info.danger.not_signed_in') }
     end
   end
 

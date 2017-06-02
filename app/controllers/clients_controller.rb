@@ -41,8 +41,7 @@ class ClientsController < ApplicationController
 
   def update
     if @client.update_attributes(update_params)
-      flash[:success] = I18n.t('views.common.info.success.update_profile')
-      redirect_to client_url(clientname: @client.clientname)
+      redirect_to client_url(clientname: @client.clientname), flash: { success: I18n.t('views.common.info.success.update_profile') }
     else
       render :edit
     end
@@ -61,8 +60,7 @@ class ClientsController < ApplicationController
   def signed_in_client
     unless signed_in?
       store_location
-      flash[:danger] = I18n.t('views.common.info.danger.not_signed_in')
-      redirect_to sign_in_url
+      redirect_to sign_in_url, flash: { danger: I18n.t('views.common.info.danger.not_signed_in') }
     end
   end
 

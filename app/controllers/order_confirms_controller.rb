@@ -12,8 +12,7 @@ class OrderConfirmsController < ApplicationController
   def signed_in_worker
     unless signed_in?
       store_location
-      flash[:danger] = I18n.t('views.common.info.danger.not_signed_in')
-      redirect_to sign_in_url
+      redirect_to sign_in_url, flash: { danger: I18n.t('views.common.info.danger.not_signed_in') }
     end
   end
 
