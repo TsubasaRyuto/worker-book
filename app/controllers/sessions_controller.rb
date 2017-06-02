@@ -10,8 +10,7 @@ class SessionsController < ApplicationController
         params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
         redirected
       else
-        flash[:warning] = I18n.t('views.common.info.danger.not_activate_account')
-        redirect_to root_url
+        redirect_to root_url, flash: { warning: I18n.t('views.common.info.danger.not_activate_account') }
       end
     else
       flash.now[:danger] = I18n.t('views.common.info.danger.sign_in_failed')

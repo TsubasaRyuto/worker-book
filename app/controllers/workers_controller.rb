@@ -23,9 +23,7 @@ class WorkersController < ApplicationController
   before_action :correct_worker, only: [:edit, :update, :retire, :destroy]
 
   def index
-    # binding.pry
     @worker_profiles = WorkerProfile.search_worker(skill_params, unit_price_params, developer_type_params).page(params[:page]).per(10)
-    # @worker_profiles = @worker_profiles.present? ? @worker_profiles : nil
     gon.skills = skill_params
     @unit_price = params[:unit_price]
     @developer_type = params[:type]
@@ -62,9 +60,7 @@ class WorkersController < ApplicationController
   def update
     @worker = Worker.find_by(username: params[:username])
     if @worker.update_attributes(update_params)
-      # @worker.send_update_email
-      flash[:success] = I18n.t('views.common.info.success.update_account')
-      redirect_to worker_url(username: @worker.username)
+      redirect_to worker_url(username: @worker.username), flash: { success: I18n.t('views.common.info.success.update_account') }
     else
       render :edit
     end
@@ -75,10 +71,9 @@ class WorkersController < ApplicationController
     if @worker && @worker.authenticate(params[:password])
       @worker.destroy
       session.delete(:user_id)
-      flash[:success] = I18n.t('views.common.info.success.delete_account')
-      redirect_to root_url
+      redirect_to root_url, flash: { success: I18n.t('views.common.info.success.delete_account') }
     else
-      flash[:warning] = I18n.t('views.common.info.danger.invalid_password')
+      flash.now[:warning] = I18n.t('views.common.info.danger.invalid_password')
       render :retire
     end
   end
@@ -89,11 +84,9 @@ class WorkersController < ApplicationController
     if worker && !worker.activated? && worker.authenticated?(:activation, params[:token])
       worker.activate
       sign_in worker
-      flash[:success] = I18n.t('views.common.info.success.sign_up_completion')
-      redirect_to worker_create_profile_url(worker_username: worker.username)
+      redirect_to worker_create_profile_url(worker_username: worker.username), flash: { success: I18n.t('views.common.info.success.sign_up_completion') }
     else
-      flash[:danger] = I18n.t('views.common.info.danger.sign_up_failed')
-      redirect_to root_url
+      redirect_to root_url, flash: { danger: I18n.t('views.common.info.danger.sign_up_failed') }
     end
   end
 
@@ -114,16 +107,14 @@ class WorkersController < ApplicationController
 
   def unit_price_params
     case params[:unit_price]
-    when 'medium'
-      { low: 30_000, high: 50_000 }
-    when 'large'
-      { low: 50_000, high: 70_000 }
-    when 'extra_large'
-      { low: 70_000, high: 100_000 }
-    when 'over'
-      { low: 100_000, high: 200_000 }
-    else
-      nil
+      when 'medium'
+        { low: 30_000, high: 50_000 }
+      when 'large'
+        { low: 50_000, high: 70_000 }
+      when 'extra_large'
+        { low: 70_000, high: 100_000 }
+      when 'over'
+        { low: 100_000, high: 200_000 }
     end
   end
 
@@ -134,8 +125,7 @@ class WorkersController < ApplicationController
   def signed_in_worker
     unless signed_in?
       store_location
-      flash[:danger] = I18n.t('views.common.info.danger.not_signed_in')
-      redirect_to sign_in_url
+      redirect_to sign_in_url, flash: { danger: I18n.t('views.common.info.danger.not_signed_in') }
     end
   end
 

@@ -11,8 +11,7 @@ class PasswordResetsController < ApplicationController
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
-      flash[:info] = I18n.t('views.common.info.success.send_apss_reset_email')
-      redirect_to root_url
+      redirect_to root_url, flash: { info: I18n.t('views.common.info.success.send_apss_reset_email') }
     else
       flash.now[:danger] = I18n.t('views.common.info.danger.not_found_email')
       render :new

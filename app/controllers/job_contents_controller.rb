@@ -48,8 +48,7 @@ class JobContentsController < ApplicationController
   def create
     @job_content = @client.job_contents.build(job_content_params)
     if @job_content.save
-      flash[:success] = I18n.t('views.job_content.success.create_job_content')
-      redirect_to client_path(clientname: @client.clientname)
+      redirect_to client_path(clientname: @client.clientname), flash: { success: I18n.t('views.job_content.success.create_job_content') }
     else
       set_job_content_skill_list_to_gon
       render :new
@@ -59,8 +58,7 @@ class JobContentsController < ApplicationController
   def update
     @job_content = @client.job_contents.find(params[:id])
     if @job_content.update_attributes(job_content_params)
-      flash[:success] = I18n.t('views.job_content.success.update_job_content')
-      redirect_to client_path(clientname: @client.clientname)
+      redirect_to client_path(clientname: @client.clientname), flash: { success: I18n.t('views.job_content.success.update_job_content') }
     else
       set_job_content_skill_list_to_gon
       render :edit
@@ -71,8 +69,7 @@ class JobContentsController < ApplicationController
     @job_content = @client.job_contents.find(params[:id])
     @job_content_title = @job_content.title
     @job_content.destroy!
-    flash[:success] = I18n.t('views.job_content.success.delete_job_content', title: @job_content_title)
-    redirect_to client_path(clientname: @client.clientname)
+    redirect_to client_path(clientname: @client.clientname), flash: { success: I18n.t('views.job_content.success.delete_job_content', title: @job_content_title) }
   end
 
   private
@@ -84,8 +81,7 @@ class JobContentsController < ApplicationController
   def signed_in_client
     unless signed_in?
       store_location
-      flash[:danger] = I18n.t('views.common.info.danger.not_signed_in')
-      redirect_to sign_in_url
+      redirect_to sign_in_url, flash: { danger: I18n.t('views.common.info.danger.not_signed_in') }
     end
   end
 

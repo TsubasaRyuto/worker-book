@@ -30,7 +30,7 @@ class WorkerProfile < ApplicationRecord
   validates :employment_history, emp_hist_presence: true, emp_hist_length: true
   validates :skill_list, max_count_skills: true, min_count_skills: true, duplicate_skills: true
 
-  scope :search_worker, -> (skill, unit_price_class, developer_type) {
+  scope :search_worker, ->(skill, unit_price_class, developer_type) {
     if skill && unit_price_class && developer_type
       where(unit_price: unit_price_class[:low]..unit_price_class[:high]).where(developer_type).tagged_with(skill)
     elsif skill && unit_price_class
@@ -49,8 +49,6 @@ class WorkerProfile < ApplicationRecord
       all
     end
   }
-
-
 end
 
 

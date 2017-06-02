@@ -1,26 +1,26 @@
 class DeveloperType
   ROWS = {
-    '1': 'Web Developer',
-    '2': 'Mobile Developer',
-    '3': 'Game Developer',
-    '4': 'Desktop Developer',
-    '5': 'AI Developer',
-    '6': 'QA&Testing',
-    '7': 'Web&Mobile Desiner',
-    '8': 'Project Maneger',
-    '9': 'Other'
+    '1'.freeze => 'Web Developer'.freeze,
+    '2'.freeze => 'Mobile Developer'.freeze,
+    '3'.freeze => 'Game Developer'.freeze,
+    '4'.freeze => 'Desktop Developer'.freeze,
+    '5'.freeze => 'AI Developer'.freeze,
+    '6'.freeze => 'QA&Testing'.freeze,
+    '7'.freeze => 'Web&Mobile Desiner'.freeze,
+    '8'.freeze => 'Project Maneger'.freeze,
+    '9'.freeze => 'Other.freeze'
   }.freeze
 
   ROWS2 = {
-    '1': 'type_web_developer',
-    '2': 'type_mobile_developer',
-    '3': 'type_game_developer',
-    '4': 'type_desktop_developer',
-    '5': 'type_ai_developer',
-    '6': 'type_qa_testing',
-    '7': 'type_web_mobile_desiner',
-    '8': 'type_project_maneger',
-    '9': 'type_other'
+    '1'.freeze => 'type_web_developer'.freeze,
+    '2'.freeze => 'type_mobile_developer'.freeze,
+    '3'.freeze => 'type_game_developer'.freeze,
+    '4'.freeze => 'type_desktop_developer'.freeze,
+    '5'.freeze => 'type_ai_developer'.freeze,
+    '6'.freeze => 'type_qa_testing'.freeze,
+    '7'.freeze => 'type_web_mobile_desiner'.freeze,
+    '8'.freeze => 'type_project_maneger'.freeze,
+    '9'.freeze => 'type_other'.freeze
   }.freeze
 
   def self.name

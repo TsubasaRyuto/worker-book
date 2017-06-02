@@ -7,6 +7,7 @@
       <p>
         WorkerBookをご利用いただきありがとうございます。WorkerBookを退会されるということは運営側としては残念ですが、
         ご期待にに添えるサービスとなるように改善していきますので今後ともご声援のほどよろしくお願いいたします。<br>
+
         また、<%= @client_user.client.name %> <%= @client_user.username %>さんの益々のご発展をお祈り申し上げます。
       </p>
       <p class="confirm">
@@ -16,7 +17,7 @@
         >> 引き続きWorkerBookをご利用になられる場合は「やっぱり続ける」ボタンを押してください。
       </p>
       <div class="form">
-        <%= form_tag client_path(username: @client.username), method: :delete do |f| %>
+        <%= form_tag client_user_path(username: @client_user.username), method: :delete do |f| %>
           <%= label :password, 'Password', class: 'form-label'%>
           <%= password_field_tag :password, '', class: 'form-control', placeholder: 'Password Here....' %>
           <%= link_to 'やっぱり続ける', root_path, class: 'btn btn-primary' %>
