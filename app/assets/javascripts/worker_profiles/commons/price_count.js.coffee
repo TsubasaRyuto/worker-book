@@ -1,6 +1,6 @@
-$(document).on 'ready turbolinks:load', ->
+$(document).on 'turbolinks:load', ->
   price_count = ->
-    FEE = 10
+    COMMISSION = 0.08
     WORKING_DAYS = 22
     input_price = $('#input-price').val()
     input_price = parseInt(input_price)
@@ -15,7 +15,7 @@ $(document).on 'ready turbolinks:load', ->
       return false
 
     if input_price && input_price >= 30000
-      service_fee_count = parseInt input_price / FEE
+      service_fee_count = parseInt input_price * COMMISSION
       service_fee.innerHTML = [service_fee_count].toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')
 
       receive_day_count = parseInt input_price - service_fee_count
