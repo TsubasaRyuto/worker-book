@@ -23,7 +23,12 @@ class WorkersController < ApplicationController
   before_action :correct_worker, only: [:edit, :update, :retire, :destroy]
 
   def index
-    @workers = Worker.page(params[:page]).per(10)
+    # binding.pry
+    @worker_profiles = WorkerProfile.search_worker(skill_params, unit_price_params, developer_type_params).page(params[:page]).per(10)
+    # @worker_profiles = @worker_profiles.present? ? @worker_profiles : nil
+    gon.skills = skill_params
+    @unit_price = params[:unit_price]
+    @developer_type = params[:type]
   end
 
   def show
@@ -100,6 +105,30 @@ class WorkersController < ApplicationController
 
   def update_params
     params.require(:worker).permit(:username, :email)
+  end
+
+  def skill_params
+    return nil if params[:skill].blank?
+    params[:skill].split(',')
+  end
+
+  def unit_price_params
+    case params[:unit_price]
+    when 'medium'
+      { low: 30_000, high: 50_000 }
+    when 'large'
+      { low: 50_000, high: 70_000 }
+    when 'extra_large'
+      { low: 70_000, high: 100_000 }
+    when 'over'
+      { low: 100_000, high: 200_000 }
+    else
+      nil
+    end
+  end
+
+  def developer_type_params
+    DeveloperType.col_name(params[:type])
   end
 
   def signed_in_worker

@@ -20,9 +20,9 @@
 #= require jquery.autosize.js
 #= require turbolinks
 #= require cable
-#= require_tree ./worker_profiles/
-#= require_tree ./shared/
-#= require_tree ./job_contents/
-#= require_tree ./chat/
-#= require_tree ./order_confirm/
 #= require_tree ./clients/
+#= require_tree ./job_contents/
+#= require_tree ./order_confirms/
+#= require_tree ./shared/
+#= require_tree ./worker_profiles/commons
+#= require_tree ./workers/

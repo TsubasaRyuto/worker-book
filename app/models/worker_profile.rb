@@ -12,6 +12,7 @@ class WorkerProfile < ApplicationRecord
   before_create { self.id = self.worker.id }
 
   enum availability: { limited: 0, full: 1, hard: 2 }
+  enum unit_price_class: { medium: '¥30,000 - ¥50,000', large: '¥50,000 - ¥70,000', extra_large: '¥70,000 - ¥100,000', over: '¥100,000 -' }
 
   MAX_LENGTH = 3000
   MIN_LENGTH = 400
@@ -28,6 +29,28 @@ class WorkerProfile < ApplicationRecord
   validates :picture, presence: true
   validates :employment_history, emp_hist_presence: true, emp_hist_length: true
   validates :skill_list, max_count_skills: true, min_count_skills: true, duplicate_skills: true
+
+  scope :search_worker, -> (skill, unit_price_class, developer_type) {
+    if skill && unit_price_class && developer_type
+      where(unit_price: unit_price_class[:low]..unit_price_class[:high]).where(developer_type).tagged_with(skill)
+    elsif skill && unit_price_class
+      where(unit_price: unit_price_class[:low]..unit_price_class[:high]).tagged_with(skill)
+    elsif skill && developer_type
+      where(developer_type).tagged_with(skill)
+    elsif unit_price_class && developer_type
+      where(unit_price: unit_price_class[:low]..unit_price_class[:high]).where(developer_type)
+    elsif skill
+      tagged_with(skill)
+    elsif unit_price_class
+      where(unit_price: unit_price_class[:low]..unit_price_class[:high])
+    elsif developer_type
+      where(developer_type)
+    else
+      all
+    end
+  }
+
+
 end
 
 

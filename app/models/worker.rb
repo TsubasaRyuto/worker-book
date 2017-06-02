@@ -18,7 +18,7 @@ class Worker < ApplicationRecord
   validates :username, presence: true, username: true, username_unique: true
   validates :email, presence: true, email: true, email_unique: true
   has_secure_password
-  validates :password, presence: true, length: { minimum: MIN_LENGTH_PASSWORD }, allow_nil: true
+  validates :password, presence: true, length: { minimum: MIN_LENGTH_PASSWORD }, allow_nil: true  
 
   def send_request_email(client, job_content, job_request)
     WorkerMailer.request_job(self, client, job_content, job_request).deliver_now
