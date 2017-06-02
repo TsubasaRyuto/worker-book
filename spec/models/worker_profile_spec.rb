@@ -162,4 +162,22 @@ RSpec.describe WorkerProfile, type: :model do
       end
     end
   end
+
+  describe 'scope' do
+    let(:worker_profile) { create :worker_profile, worker: worker }
+    context 'skill' do
+      subject { WorkerProfile.search_worker('Ruby', nil, nil) }
+      it { is_expected.to include worker_profile }
+    end
+
+    context 'skill and unit_price' do
+      subject { WorkerProfile.search_worker('Ruby', { low: 40_000, high: 50_000 }, nil) }
+      it { is_expected.to include worker_profile }
+    end
+
+    context 'skill ,unit_price and developer_type' do
+      subject { WorkerProfile.search_worker('Ruby', { low: 40_000, high: 50_000 }, 'type_web_developer') }
+      it { is_expected.to include worker_profile }
+    end
+  end
 end

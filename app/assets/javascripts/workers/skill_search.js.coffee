@@ -1,10 +1,10 @@
 $(document).on 'ready turbolinks:load', ->
-  $('#worker-skill-field').tagit
-    placeholderText: 'Type Here......',
-    tagLimit: 10,
+  $('#type-skill').tagit
+    placeholderText: '求めるスキル・言語',
+    tagLimit: 5,
     singleField: true,
     showAutocompleteOnFocus : true,
-    fieldName: 'worker_profile[skill_list]',
+    fieldName: 'skill',
     autocomplete: {delay: 0, minLength: 1, autoFocus: true},
     tagSource: (req, res) ->
       $.ajax
@@ -16,6 +16,9 @@ $(document).on 'ready turbolinks:load', ->
             return false
           else
             res(data)
-  if gon.worker_skills?
-    for skill in gon.worker_skills
-      $('#worker-skill-field').tagit 'createTag', skill
+  if $('.ui-autocomplete-input').length == 2
+    $('.ui-autocomplete-input').first().remove()
+
+  if gon.skills?
+    for skill in gon.skills
+      $('#type-skill').tagit 'createTag', skill

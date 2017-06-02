@@ -11,14 +11,13 @@ def clean_data
 end
 
 def workers
-  100.times do |index|
-    name = Faker::Name
-    last_name = name.last_name
-    first_name = name.first_name
-    availability = WorkerProfile.availabilities.keys.sample
-    note = Faker::Lorem.sentence(400)
-    picture = Rails.root.join('spec/fixtures/images/lobo.png').open
-
+  name = Faker::Name
+  last_name = name.last_name
+  first_name = name.first_name
+  availability = WorkerProfile.availabilities.keys.sample
+  note = Faker::Lorem.sentence(400)
+  picture = Rails.root.join('spec/fixtures/images/lobo.png').open
+  10.times do |index|
     worker = Worker.create(
       last_name: last_name,
       first_name: first_name,
@@ -41,6 +40,89 @@ def workers
       location: '02',
       employment_history1: 'Lobo 株式会社',
       skill_list: 'Ruby, PHP, C, HTML, css, JavaScript, jQuery'
+    )
+    worker_profile.save
+  end
+
+  10.times do |index|
+    worker = Worker.create(
+      last_name: last_name,
+      first_name: first_name,
+      username: "example_worker#{index + 1}a",
+      email: "worker#{index + 1}a@example.com",
+      password: 'foobar123',
+      password_confirmation: 'foobar123',
+      activated: true
+    )
+
+    worker_profile = worker.build_profile(
+      type_web_developer: true,
+      type_game_developer: true,
+      type_ai_developer: true,
+      availability: availability,
+      past_performance1: 'http://example1.com',
+      past_performance2: 'http://example2.com',
+      unit_price: 45_000,
+      appeal_note: note,
+      picture: picture,
+      location: '02',
+      employment_history1: 'Lobo 株式会社',
+      skill_list: 'Ruby, PHP, C, HTML, Ruby on Rails, Java, jQuery, Python'
+    )
+    worker_profile.save
+  end
+
+  10.times do |index|
+    worker = Worker.create(
+      last_name: last_name,
+      first_name: first_name,
+      username: "example_worker#{index + 1}b",
+      email: "worker#{index + 1}b@example.com",
+      password: 'foobar123',
+      password_confirmation: 'foobar123',
+      activated: true
+    )
+
+    worker_profile = worker.build_profile(
+      type_web_developer: true,
+      type_project_maneger: true,
+      type_qa_testing: true,
+      availability: availability,
+      past_performance1: 'http://example1.com',
+      past_performance2: 'http://example2.com',
+      unit_price: 30_000,
+      appeal_note: note,
+      picture: picture,
+      location: '02',
+      employment_history1: 'Lobo 株式会社',
+      skill_list: 'Ruby, PHP, HTML, Ruby on Rails, jQuery'
+    )
+    worker_profile.save
+  end
+  20.times do |index|
+    worker = Worker.create(
+      last_name: last_name,
+      first_name: first_name,
+      username: "example_worker#{index + 1}c",
+      email: "worker#{index + 1}c@example.com",
+      password: 'foobar123',
+      password_confirmation: 'foobar123',
+      activated: true
+    )
+
+    worker_profile = worker.build_profile(
+      type_desktop_developer: true,
+      type_project_maneger: true,
+      type_other: true,
+      availability: availability,
+      past_performance1: 'http://example1.com',
+      past_performance2: 'http://example2.com',
+      unit_price: 150_000,
+      appeal_note: note,
+      picture: picture,
+      location: '02',
+      employment_history1: 'Lobo 株式会社',
+      skill_list: 'Java, C, C++, JavaScript, BASIC, AWS'
     )
     worker_profile.save
   end
@@ -100,7 +182,7 @@ def agreement
       activated_at: Time.zone.local(2017, 5, 10)
     )
   end
-end/application_cable/connection.rb
+end
 
 clean_data
 workers

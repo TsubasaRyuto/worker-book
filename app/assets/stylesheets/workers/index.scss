@@ -12,9 +12,61 @@
 
   .body {
     background-color: $color-sub3;
-    padding: 7vh 0;
+    padding: 0;
     margin-top: 10vh;
     margin-bottom: 10vh;
+
+    .search-body {
+      display: block;
+      margin: 5vh auto 0;
+      width: 70%;
+
+      .search-type {
+        display: inline-block;
+        width: 45%;
+      }
+
+      .search-budget {
+        display: inline-block;
+        float: right;
+        width: 45%;
+      }
+
+      .select {
+        -webkit-appearance: button;
+        -moz-appearance: button;
+        appearance: button;
+        background: none transparent;
+        border: 2px solid $color-main;
+        color: $color-main;
+        font-size: inherit;
+        height: 40px;
+        outline: none;
+        padding: 8px 12px;
+        text-indent: 0.01px;
+        vertical-align: middle;
+        width: 100%;
+      }
+
+      .search-skill {
+        margin: 2vh 0 2vh;
+        .input-text {
+          border: none;
+          border-bottom: 2px solid $color-main;
+        }
+      }
+
+      .btn {
+        margin: 2vh 0 2vh;
+      }
+    }
+
+    .not-worker-mess {
+      color: $color-main;
+      font-weight: bold;
+      margin: 10vh 0;
+      text-align: center;
+    }
 
     .list {
       ul {
@@ -84,6 +136,7 @@
         .strength {
           margin-left: 8%;
           padding-bottom: 3vh;
+          width: 90%;
           p {
             font-size: 1.5em;
             margin: 0;

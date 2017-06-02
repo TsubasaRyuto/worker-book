@@ -123,44 +123,58 @@
     <div class="developer-types">
       <div class="row">
         <div class="web-developer type col-md-4">
-          <%= image_tag 'static_pages/types/web_developer.png', alt: "Web Developer", class: 'img-size' %>
-          <p class="name">Web Developer</p>
+          <%= link_to 'worker?skill=&type=1&unit_price=' do %>
+            <%= image_tag 'static_pages/types/web_developer.png', alt: "Web Developer", class: 'img-size' %>
+            <p class="name">Web Developer</p>
+          <% end %>
         </div>
         <div class="mobile-developer type col-md-4">
-          <%= image_tag 'static_pages/types/mobile_developer.png', alt: "Mobile Developer", class: 'img-size' %>
-          <p class="name">Mobile Developer</p>
+          <%= link_to 'worker?skill=&type=2&unit_price=' do %>
+            <%= image_tag 'static_pages/types/mobile_developer.png', alt: "Mobile Developer", class: 'img-size' %>
+            <p class="name">Mobile Developer</p>
+          <% end %>
         </div>
         <div class="game-developer type col-md-4">
-          <%= image_tag 'static_pages/types/game_developer.png', alt: "Game Developer", class: 'img-size' %>
-          <p class="name">Game Developer</p>
+          <%= link_to 'worker?skill=&type=3&unit_price=' do %>
+            <%= image_tag 'static_pages/types/game_developer.png', alt: "Game Developer", class: 'img-size' %>
+            <p class="name">Game Developer</p>
+          <% end %>
         </div>
-      </div>
-      <div class="row">
         <div class="desktop-developer type col-md-4">
-          <%= image_tag 'static_pages/types/desktop_developer.png', alt: "DesktopSoftware Developer", class: 'img-size' %>
-          <p class="name">DesktopSoftware Developer</p>
+          <%= link_to 'worker?skill=&type=4&unit_price=' do %>
+            <%= image_tag 'static_pages/types/desktop_developer.png', alt: "DesktopSoftware Developer", class: 'img-size' %>
+            <p class="name">DesktopSoftware Developer</p>
+          <% end %>
         </div>
         <div class="ai-developer type col-md-4">
-          <%= image_tag 'static_pages/types/ai_developer.png', alt: "AI Developer", class: 'img-size' %>
-          <p class="name">AI Developer</p>
+          <%= link_to 'worker?skill=&type=5&unit_price=' do %>
+            <%= image_tag 'static_pages/types/ai_developer.png', alt: "AI Developer", class: 'img-size' %>
+            <p class="name">AI Developer</p>
+          <% end %>
         </div>
         <div class="web-mobile-designer type col-md-4">
-          <%= image_tag 'static_pages/types/web_designer.png', alt: "Web&Mobile Designer", class: 'img-size' %>
-          <p class="name">Web＆Mobile Designer</p>
+          <%= link_to 'worker?skill=&type=6&unit_price=' do %>
+            <%= image_tag 'static_pages/types/qa_testing', alt: "QA&Testing", class: 'img-size' %>
+            <p class="name">QA ＆ Testing</p>
+          <% end %>
         </div>
-      </div>
-      <div class="row">
         <div class="project-maneger type col-md-4">
-          <%= image_tag 'static_pages/types/project_manager.png', alt: "Project Manger", class: 'img-size' %>
-          <p class="name">Project Manager</p>
+          <%= link_to 'worker?skill=&type=7&unit_price=' do %>
+            <%= image_tag 'static_pages/types/web_designer.png', alt: "Web&Mobile Designer", class: 'img-size' %>
+            <p class="name">Web＆Mobile Designer</p>
+          <% end %>
         </div>
         <div class="qa-testing type col-md-4">
-          <%= image_tag 'static_pages/types/qa_testing', alt: "QA&Testing", class: 'img-size' %>
-          <p class="name">QA ＆ Testing</p>
+          <%= link_to 'worker?skill=&type=8&unit_price=' do %>
+            <%= image_tag 'static_pages/types/project_manager.png', alt: "Project Manger", class: 'img-size' %>
+            <p class="name">Project Manager</p>
+          <% end %>
         </div>
         <div class="other type col-md-4">
-          <%= image_tag 'static_pages/wb_icon.png', alt: "Other", class: 'img-size' %>
-          <p class="name">Other</p>
+          <%= link_to 'worker?skill=&type=9&unit_price=' do %>
+            <%= image_tag 'static_pages/wb_icon.png', alt: "Other", class: 'img-size' %>
+            <p class="name">Other</p>
+          <% end %>
         </div>
       </div>
     </div>
