@@ -1,263 +1,177 @@
+@mixin title_en {
+  color: $color-main;
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+}
+
+@mixin title_ja {
+  color: $color-main;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5vh;
+}
+
 // introbody
 .introbody {
-  background-size: 350px 390px;
-  background-image: url('static_pages/top_book.png');
-  background-repeat: no-repeat;
+  border-top: none;
   background-color: $color-main;
-  background-position: center 100px;
-  height: auto;
+  height: 87.6vh;
 
-  .service-name {
+  .top-left {
     color: $color-sub3;
-    font-size: 130px;
-    font-weight: bold;
-    margin: 0;
-    padding-top: 200px;
-    text-align: center;
-    z-index: 100;
+    padding-top: 100px;
+    padding-left: 50px;
+
+    h2 {
+      font-size: 2.7em;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 3em;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1.8em;
+      line-height: 40px;
+      margin-top: 50px;
+    }
   }
 
-  .buttons {
-    padding: 20px 0 40px;
+  .top-right {
+    height: 87.6vh;
+    background-image: linear-gradient(-44.4deg, $color-sub3 50%, $color-main 50%, $color-main);
 
-    ul {
-      font-size: 0;
-      padding: 0;
-      text-align: center;
-      margin-top: 22vh;
+    .link-btn {
+      bottom: 30px;
+      position: absolute;
+      right: 0;
 
-      li {
-        background-color: $color-sub3;
-        border: 1px solid $color-main;
+      .top-btn {
+        display: block;
+        padding-left: 50px;
+      }
+
+      .bottom-btn {
+        display: block;
+        padding-right: 100px;
+      }
+
+      a {
         color: $color-main;
-        display: inline-block;
-        padding: 3vh 25px;
-        font-size: 20px;
         font-weight: bold;
-        width: 220px;
+        text-decoration: none;
 
-        &:hover {
-          background-color: $color-sub2;
+        &:hover .circle-btn{
+          background-color: $color-main;
           color: $color-sub3;
-          opacity: .7;
+
+          span:nth-child(2) {
+            display: inline;
+          }
+
+          span:nth-child(1) {
+            display: none;
+          }
+        }
+
+        .circle-btn {
+          border: 2px solid $color-main;
+          border-radius: 50%;
+          display: inline-block;
+          height: 90px;
+          line-height: 90px;
+          margin: 0 0 10px 20px;
+          text-align: center;
+          width: 90px;
+
+          span:nth-child(2) {
+            display: none;
+          }
         }
       }
     }
   }
 }
 
-// wb-explanation
-.wb-explanation {
+.wb-features {
+  border-bottom: 2px solid $color-main;
   color: $color-main;
-  padding: 10vh 0;
-
-  .title-ja {
-    font-size: 50px;
-    font-weight: bold;
-    text-align: center;
-  }
+  overflow: hidden;
+  margin: 10vh auto;
+  padding-bottom: 5vh;
+  width: 80vw;
 
   .title-en {
-    text-align: center;
-    font-weight: lighter;
+    @include title_en;
   }
 
-  .content {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 35px 0 45px;
-
-    p {
-      font-size: 28px;
-      font-weight: bold;
-      text-align: left;
-    }
+  .title-ja {
+    @include title_ja;
   }
 
-  .wb-impossible {
-    border: 2px solid $color-main;
-    border-radius: 3px;
-    padding-bottom: 4vh;
-
-    .title {
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .contents {
-      margin-left: 55px;
-
-      li {
-        list-style-type: disc;
-        padding-top: 10px;
-        font-size: 18px;
-      }
-    }
+  h4 {
+    font-size: 1.4em;
+    font-weight: bold;
   }
 
-  .wb-detail {
-    margin-top: 10vh;
-    a {
-      color: $color-main;
-      text-decoration: none;
-    }
-
-    .btn {
-      background-color: $color-sub3;
-      border: 2px solid $color-main;
-
-      &:hover {
-        background-color: $color-main;
-        color: $color-sub3;
-      }
-    }
+  p {
+    font-size: 1.3em;
   }
 }
 
 // how-it-work
 .how-it-work {
-  background-color: $color-sub2;
-  padding: 15vh 0;
+  color: $color-main;
+  display: block;
+  margin: 10vh auto;
+  width: 80vw;
+
+  .title-en {
+    @include title_en;
+  }
+
+  .title-ja {
+    @include title_ja;
+  }
 
   .img-size {
-    max-width: 180px;
-    max-height: 130px;
     display: block;
-    margin: 15px auto;
+    max-width: 280px;
+    max-height: 190px;
+    margin: 0 auto;
   }
 
-  .title-en {
-    color: $color-sub3;
-    font-size: 50px;
+  .client {
+    border-bottom: 2px solid $color-main;
+    margin-bottom: 10vh;
+    padding-bottom: 5vh;
+  }
+
+  .flow-title {
+    border-bottom: 1px solid $color-main;
+    font-size: 1.3em;
     font-weight: bold;
     text-align: center;
+    padding: 1vh 0;
   }
 
-  .title-ja {
-    color: $color-sub3;
-    text-align: center;
-    font-weight: lighter;
-  }
-
-  .client-flow {
-    margin: 40px 0;
-    background-color: $color-sub3;
-
-    .header {
-      background-color: $color-main;
-      height: 70px;
-
-      .title {
-        color: $color-sub3;
+  .flow {
+    margin-bottom: 20px;
+    .odd {
+      padding-left: 5vw;
+    }
+    .explanation {
+      h4 {
+        font-size: 1.9em;
         font-weight: bold;
-        line-height: 70px;
-        text-align: center;
+        margin-bottom: 3vh;
       }
-    }
 
-    .contents {
-      .text {
-        color: $color-main;
-
-        h3 {
-          font-weight: bold;
-          text-align: center;
-        }
-
-        p {
-          display: block;
-          font-size: 20px;
-          padding: 10px 0;
-          margin: 0 auto;
-          width: 220px;
-        }
-      }
-    }
-  }
-  .worker-flow {
-    margin-top: 30px;
-    background-color: $color-sub3;
-
-    .header {
-      background-color: $color-main;
-      height: 70px;
-
-      .title {
-        color: $color-sub3;
-        font-weight: bold;
-        line-height: 70px;
-        text-align: center;
-      }
-    }
-
-    .contents {
-      .text {
-        color: $color-main;
-
-        h3 {
-          font-weight: bold;
-          text-align: center;
-        }
-
-        p {
-          display: block;
-          font-size: 20px;
-          padding: 10px 0;
-          margin: 0 auto;
-          width: 250px;
-        }
-      }
-    }
-  }
-}
-
-// find workers
-.find-workers {
-  color: $color-main;
-  padding: 10vh 0;
-
-  .title-ja {
-    font-size: 50px;
-    font-weight: bold;
-    text-align: center;
-  }
-
-  .title-en {
-    text-align: center;
-    font-weight: lighter;
-  }
-
-  .developer-types {
-    margin-top: 50px;
-
-    .row {
-      margin: 0 auto;
-      width: 900px;
-      .type {
-        border: 1px solid $color-main;
-        height: 165px;
-
-        a {
-          color: $color-main;
-          text-decoration: none;
-
-          &:hover .name {
-            border-bottom: 2px solid $color-sub2;
-          }
-
-          .img-size {
-            max-width: 130px;
-            height: 80px;
-            display: block;
-            margin: 15px auto 10px;
-          }
-
-          .name {
-            font-size: 20px;
-            text-align: center;
-            margin-top: 15px;
-          }
-        }
+      p {
+        font-size: 1.3em;
       }
     }
   }

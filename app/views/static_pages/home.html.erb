@@ -1,182 +1,198 @@
-<section class="introbody">
-  <h1 class="service-name">WorkerBook</h1>
-  <div class="buttons">
-    <ul>
-      <% if signed_in? %>
-        <%= link_to worker_profile_present? ? worker_path(username: current_user.username) : worker_create_profile_path(worker_username: current_user.username) do %>
-          <li class="account-create">プロフィール</li>
-        <% end %>
-      <% else %>
-        <%= link_to sign_up_path do %>
-          <li class="account-create">アカウント作成</li>
-        <% end %>
-      <% end %>
-      <%= link_to workers_path do %>
-        <li class="find-worker">Workerを探す</li>
-      <% end %>
-    </ul>
+<section class="introbody" id="intro-top">
+  <div class="row">
+    <div class="top-left col-md-6">
+      <h2>より豊かにより自由な働き方を</h2>
+      <h1>WorkerBookとは</h1>
+      <p>
+        WorkerBookとは自分にあった働き方を目指す
+        フリーランスエンジニアが集まり、
+        チームに最適なフリーランスパートナーをインターネット上探し、マッチングする
+        ことができるITエンジニアに特化したマッチングサービス
+      </p>
+    </div>
+    <div class="top-right col-md-6">
+      <div class="link-btn">
+        <div class="top-btn">
+          <%= link_to '#features' do %>
+            <div class="features circle-btn">
+              <span>Features</span><span>特徴</span>
+            </div>
+          <% end %>
+          <%= link_to '#client-how-it-work' do %>
+            <div class="client circle-btn">
+              <span>Client</span><span>クライアント</span>
+            </div>
+          <% end %>
+          <%= link_to '#worker-how-it-work' do %>
+            <div class="freelancer circle-btn">
+              <span>Freelancer</span><span>フリーランス</span>
+            </div>
+          <% end %>
+        </div>
+        <div class="bottom-btn">
+          <%= link_to workers_path do %>
+            <div class="search circle-btn">
+              <span>Search</span><span>ワーカー検索</span>
+            </div>
+          <% end %>
+          <%= link_to sign_up_path do %>
+            <div class="signup circle-btn">
+              <span>Sign up</span><span>サインアップ</span>
+            </div>
+          <% end %>
+          <%= link_to sign_in_path do %>
+            <div class="signin circle-btn">
+              <span>Sign in</span><span>サインイン</span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="wb-explanation">
-  <div class="container">
-    <h1 class="title-ja">WorkerBookとは？</h1>
-    <h2 class="title-en">What's WorkerBook?</h2>
-    <div class="content">
-      <p>WorkerBookとは自分にあった働き方を目指すフリーランスエンジニアが集まり、チームに最適なフリーランスパートナーを探しマッチングすることができるITエンジニアに特化したクラウドソーシングサービスです。</p>
-    </div>
-    <div class="row">
-      <div class="wb-impossible col-md-6 col-md-offset-1">
-        <h2 class="title">WorkerBookでできないこと</h2>
-        <ul class="contents">
-          <li>コンペ形式の発注</li>
-          <li>発注内容に対しての提案受付</li>
-          <li>クライアントが報酬を決めること</li>
-        </ul>
-      </div>
-      <div class="wb-detail col-md-3 col-md-offset-1">
-        <%= link_to '#' do %>
-          <button type="button" class="btn">詳しく見る</button>
-        <% end %>
-      </div>
-    </div>
+<section class="wb-features" id="features">
+  <h2 class="title-en">Features</h2>
+  <h3 class="title-ja">特徴</h3>
+  <div class="commission col-md-4">
+    <h4>シンプルな手数料</h4>
+    <p>
+      WorkerBookのサービス手数料は報酬額の８％(振込・決済手数料は除く)となります。
+      登録料、オプション等はございません。
+    </p>
+  </div>
+  <div class="ux col-md-4">
+    <h4>シンプルなユーザー体験</h4>
+    <p>
+      WorkerBookはクライアントがワーカーを選択し、発注リクエストを送ります。
+      リクエストを受け取ったワーカーは承諾するかしないかを決めるだけす。
+    </p>
+  </div>
+  <div class="worker-first col-md-4">
+    <h4>フリーランスファースト</h4>
+    <p>
+      WorkerBookはワーカーが人日単価を
+      決めます。自分にあった単価を指定しましょう。
+      ただし、プロフィール作成は必須です。
+    </p>
   </div>
 </section>
 
 <section class="how-it-work">
-  <div class="container">
-    <h1 class="title-en">How it works</h1>
-    <h2 class="title-ja">使い方</h2>
-    <div class="client-flow">
-      <div class="header">
-        <h2 class="title">仕事の依頼フロー</h2>
-      </div>
-      <div class="contents row">
-        <div class="col-md-3">
-          <%= image_tag 'static_pages/how_it_works/create_account.png', alt: "登録", class: 'img-size' %>
-          <div class="text">
-            <h3>登録</h3>
-            <p>まずは登録から。登録をしないと発注することはできません。</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <%= image_tag 'static_pages/how_it_works/find_workers.png', alt: "探す", class: 'img-size' %>
-          <div class="text">
-            <h3>探す</h3>
-            <p>条件にあったパートナーを探す。必ず見つかるはずです。</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <%= image_tag 'static_pages/how_it_works/order_agreement.png', alt: "発注＆契約", class: 'img-size' %>
-          <div class="text">
-            <h3 >発注＆契約</h3>
-            <p>条件にあったパートナーを見つけたら仕事を発注し、契約する。</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <%= image_tag 'static_pages/how_it_works/client_work.png', alt: "支払い＆仕事", class: 'img-size' %>
-          <div class="text">
-            <h3>支払い＆仕事</h3>
-            <p>契約を終えたら、報酬を仮払いし、仕事を始める。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="worker-flow">
-      <div class="header">
-        <h2 class="title">仕事の受注フロー</h2>
-      </div>
-      <div class="contents row">
-        <div class="col-md-4">
-          <%= image_tag 'static_pages/how_it_works/create_account.png', alt: "支払い＆仕事", class: 'img-size' %>
-          <div class="text">
-            <h3>登録</h3>
-            <p>まずは登録から。できる限り正確な情報を登録しましょう。</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <%= image_tag 'static_pages/how_it_works/agreement_order.png', alt: "支払い＆仕事", class: 'img-size' %>
-          <div class="text">
-            <h3>受注＆契約</h3>
-            <p>登録をしたらあとはクライアントからの受注を待つだけ。必ずあなたと仕事をしたいというクライアントが現れます。</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <%= image_tag 'static_pages/how_it_works/worker_work.png', alt: "支払い＆仕事", class: 'img-size' %>
-          <div class="text">
-            <h3>仕事</h3>
-            <p>契約を終えたら、報酬の仮払いを確認し、仕事を始める。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <div class="client" id="client-how-it-work">
+    <h2 class="title-en">Client</h2>
+    <h3 class="title-ja">仕事を発注する</h3>
 
-<section class="find-workers">
-  <div class="container">
-    <h1 class="title-ja">Workerを探す
-    <h2 class="title-en">Find Freelancers</h2>
-    <div class="row">
-      <!-- 検索機能に関してはのちほど -->
+    <div class="row flow">
+      <div class="col-md-4">
+        <%= image_tag 'static_pages/how_it_works/create_account.png', alt: "登録", class: 'img-size' %>
+        <p class="flow-title">登録する</p>
+      </div>
+      <div class="explanation odd col-md-8">
+        <h4>Sign up & Create profile</h4>
+        <p>
+          まずは登録。<br>
+          ワーカーへの信用を得るために、正確な
+          プロフィールを登録してください。
+        </p>
+      </div>
     </div>
-    <div class="developer-types">
-      <div class="row">
-        <div class="web-developer type col-md-4">
-          <%= link_to 'worker?skill=&type=1&unit_price=' do %>
-            <%= image_tag 'static_pages/types/web_developer.png', alt: "Web Developer", class: 'img-size' %>
-            <p class="name">Web Developer</p>
-          <% end %>
-        </div>
-        <div class="mobile-developer type col-md-4">
-          <%= link_to 'worker?skill=&type=2&unit_price=' do %>
-            <%= image_tag 'static_pages/types/mobile_developer.png', alt: "Mobile Developer", class: 'img-size' %>
-            <p class="name">Mobile Developer</p>
-          <% end %>
-        </div>
-        <div class="game-developer type col-md-4">
-          <%= link_to 'worker?skill=&type=3&unit_price=' do %>
-            <%= image_tag 'static_pages/types/game_developer.png', alt: "Game Developer", class: 'img-size' %>
-            <p class="name">Game Developer</p>
-          <% end %>
-        </div>
-        <div class="desktop-developer type col-md-4">
-          <%= link_to 'worker?skill=&type=4&unit_price=' do %>
-            <%= image_tag 'static_pages/types/desktop_developer.png', alt: "DesktopSoftware Developer", class: 'img-size' %>
-            <p class="name">DesktopSoftware Developer</p>
-          <% end %>
-        </div>
-        <div class="ai-developer type col-md-4">
-          <%= link_to 'worker?skill=&type=5&unit_price=' do %>
-            <%= image_tag 'static_pages/types/ai_developer.png', alt: "AI Developer", class: 'img-size' %>
-            <p class="name">AI Developer</p>
-          <% end %>
-        </div>
-        <div class="web-mobile-designer type col-md-4">
-          <%= link_to 'worker?skill=&type=6&unit_price=' do %>
-            <%= image_tag 'static_pages/types/qa_testing', alt: "QA&Testing", class: 'img-size' %>
-            <p class="name">QA ＆ Testing</p>
-          <% end %>
-        </div>
-        <div class="project-maneger type col-md-4">
-          <%= link_to 'worker?skill=&type=7&unit_price=' do %>
-            <%= image_tag 'static_pages/types/web_designer.png', alt: "Web&Mobile Designer", class: 'img-size' %>
-            <p class="name">Web＆Mobile Designer</p>
-          <% end %>
-        </div>
-        <div class="qa-testing type col-md-4">
-          <%= link_to 'worker?skill=&type=8&unit_price=' do %>
-            <%= image_tag 'static_pages/types/project_manager.png', alt: "Project Manger", class: 'img-size' %>
-            <p class="name">Project Manager</p>
-          <% end %>
-        </div>
-        <div class="other type col-md-4">
-          <%= link_to 'worker?skill=&type=9&unit_price=' do %>
-            <%= image_tag 'static_pages/wb_icon.png', alt: "Other", class: 'img-size' %>
-            <p class="name">Other</p>
-          <% end %>
-        </div>
+    <div class="row flow">
+      <div class="explanation col-md-8">
+        <h4>Find high quality freelancers</h4>
+        <p>
+          条件にあったワーカーを探す。<br>
+          検索には、求めているスキル、デベロッパータイプ、
+          予算額を選択し、ワーカーを検索することができます。
+          より、条件にあったワーカーを選択し、プロジェクトを
+          成功させてください。
+        </p>
+      </div>
+      <div class="col-md-4">
+        <%= image_tag 'static_pages/how_it_works/find_workers.png', alt: "探す", class: 'img-size' %>
+        <p class="flow-title">ワーカーを探す</p>
+      </div>
+    </div>
+    <div class="row flow">
+      <div class="col-md-4">
+        <%= image_tag 'static_pages/how_it_works/order_agreement.png', alt: "発注＆契約", class: 'img-size' %>
+        <p class="flow-title">発注</p>
+      </div>
+      <div class="explanation odd col-md-8">
+        <h4>Send job request</h4>
+        <p>
+          ワーカーに発注リクエストを送る。<br>
+          条件にあったワーカーを見つけたら、仕事を発注リクエストを送信してください。仕事を
+          発注する前に発注内容の登録が必要です。
+          ワーカーに仕事内容が伝わるように詳しく記述してください。
+        </p>
+      </div>
+    </div>
+    <div class="row flow">
+      <div class="explanation col-md-8">
+        <h4>Pay & work</h4>
+        <p>
+          報酬の仮払いと仕事。<br>
+          ワーカーが発注リクエストを承諾した場合は報酬を仮払いしていただきます。
+          あとは、ワーカーとお仕事をするだけです。仕事上のやりとりはWorkerBookのチャット機能を
+          ご使用ください。
+        </p>
+      </div>
+      <div class="col-md-4">
+        <%= image_tag 'static_pages/how_it_works/client_work.png', alt: "支払い＆仕事", class: 'img-size' %>
+        <p class="flow-title">報酬振込 & 仕事</p>
+      </div>
+    </div>
+  </div>
+  <div class="worker" id="worker-how-it-work">
+    <h2 class="title-en">Freelancers</h2>
+    <h3 class="title-ja">仕事を受注する</h3>
+
+    <div class="row flow">
+      <div class="col-md-4">
+        <%= image_tag 'static_pages/how_it_works/create_account.png', alt: "支払い＆仕事", class: 'img-size' %>
+        <p class="flow-title">登録する</p>
+      </div>
+      <div class="explanation odd col-md-8">
+        <h4>Sign up & Create profile</h4>
+        <p>
+          まずは登録。<br>
+          サインアップ後にプロフィールを作成していただきます。プロフィール作成は必須
+          となっております。作成していない場合は
+          発注リクエストがとどきません。クライアントの信用を得るために、正確な情報を登録してください。
+        </p>
+      </div>
+    </div>
+    <div class="row flow">
+      <div class="explanation col-md-8">
+        <h4>Agreement job request</h4>
+        <p>
+          リクエストの承諾。<br>
+          リクエストが届いたら、発注内容とクライアントプロフィールを確認し、承諾するか否かを決めて
+          ください。すべてはワーカーの判断次第です。受けたくない仕事の場合はリクエストを引き受ける
+          必要はございません。
+        </p>
+      </div>
+      <div class="col-md-4">
+        <%= image_tag 'static_pages/how_it_works/agreement_order.png', alt: "支払い＆仕事", class: 'img-size' %>
+        <p class="flow-title">リクエスト承諾</p>
+      </div>
+    </div>
+    <div class="row flow">
+      <div class="col-md-4">
+        <%= image_tag 'static_pages/how_it_works/worker_work.png', alt: "支払い＆仕事", class: 'img-size' %>
+        <p class="flow-title">仕事</p>
+      </div>
+      <div class="explanation odd col-md-8">
+        <h4>Work & Work</h4>
+        <p>
+          仕事。<br>
+          リクエストを承諾した後は、得意なスキルで最高のパフォーマンスを出せるように全力を
+          尽くしましょう。必ず次の受注につながります。安心してください。報酬は仕事を始める前に
+          クライアントから、サービス側へ振り込まれております。
+        </p>
       </div>
     </div>
   </div>
 </section>
+<%= javascript_include_tag 'static_pages/page_link' %>
