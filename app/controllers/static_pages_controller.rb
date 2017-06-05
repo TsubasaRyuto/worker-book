@@ -18,4 +18,6 @@ class StaticPagesController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def privacy_policy; end
 end
