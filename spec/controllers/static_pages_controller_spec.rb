@@ -70,4 +70,10 @@ RSpec.describe StaticPagesController, type: :controller do
       let(:page) { :privacy_policy }
     end
   end
+
+  context 'privacy policy' do
+    it_behaves_like 'should get page' do
+      let(:page) { :terms }
+    end
+  end
 end

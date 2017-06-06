@@ -19,9 +19,9 @@
 
         a {
           color: $color-sub3;
+          text-decoration: none;
 
           &:hover {
-            text-decoration: none;
             border-bottom: 1px solid $color-main;
           }
         }
