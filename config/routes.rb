@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/worker/verify_email', to: 'static_pages#worker_verify_email'
   get '/client/verify_email', to: 'static_pages#client_verify_email'
   get '/privacy_policy', to: 'static_pages#privacy_policy'
+  get '/terms', to: 'static_pages#terms'
 
   # sessions
   get '/sign_in', to: 'sessions#new'

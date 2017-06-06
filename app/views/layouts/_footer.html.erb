@@ -1,10 +1,26 @@
 <footer class="footer">
   <div class="text-box">
     <ul>
-      <li><%= link_to 'Home', root_path %></li>
-      <li><%= link_to 'Company', 'http://lobo-inc.com' %></li>
-      <li><%= link_to 'PrivacyPolicy', privacy_policy_path %></li>
-      <li><%= link_to '利用規約', '#' %></li>
+      <li>
+        <%= link_to root_path do %>
+          <span>トップページ</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to 'http://lobo-inc.com' do %>
+          <span>Lobo Inc.</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to privacy_policy_path do %>
+          <span>プライバシーポリシー</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to terms_path do %>
+          <span>利用規約</span>
+        <% end %>
+      </li>
     </ul>
   </div>
   <div class="sns-links">

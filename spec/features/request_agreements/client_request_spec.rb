@@ -19,6 +19,7 @@ RSpec.feature 'RequestAgreements:ClientRequest', type: :feature, js: true do
       it 'should select worker and request job and agreement' do
         sign_on_as(client_user)
         visit workers_path
+        expect(page).to have_selector 'a', text: client_user.client.name
         expect(page).to have_selector 'h1', text: 'Worker List'
         expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"
         click_link href: worker_path(username: worker.username)
@@ -56,6 +57,7 @@ RSpec.feature 'RequestAgreements:ClientRequest', type: :feature, js: true do
       it 'should not request job' do
         sign_on_as(client_user)
         visit workers_path
+        expect(page).to have_selector 'a', text: client_user.client.name
         expect(page).to have_selector 'h1', text: 'Worker List'
         expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"
         click_link href: worker_path(username: worker.username)
