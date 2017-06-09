@@ -1,0 +1,3 @@
+os_user: centos
+app_name: workerbook
+app_root: /var/www/{{ app_name }}

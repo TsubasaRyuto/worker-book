@@ -1,0 +1,60 @@
+---
+- name: create rbenv group
+  become: yes
+  group: name=rbenv state=present
+
+- name: add user to rbenv group
+  become: yes
+  user: name=centos append=yes groups=rbenv
+
+- name: Install dependencies
+  become: yes
+  yum: pkg={{item}} state=present
+  with_items:
+    - git
+    - tar
+    - gcc
+    - make
+    - bzip2
+    - libffi-devel
+    - zlib-devel
+    - openssl-devel
+    - readline-devel
+    - ruby
+
+- name: Install rbenv
+  become: yes
+  git: repo=https://github.com/sstephenson/rbenv.git dest={{ rbenv.root_path }} force=yes
+
+- name: Install ruby-build
+  become: yes
+  git: repo=https://github.com/sstephenson/ruby-build.git dest={{ rbenv.root_path }}/plugins/ruby-build force=yes
+
+- name: create shims dir
+  become: yes
+  file: path={{ rbenv.root_path }}/shims state=directory
+
+- name: create versions dir
+  become: yes
+  file: path={{ rbenv.root_path }}/versions state=directory
+
+- name: Set rbenv env file
+  become: yes
+  copy: src=rbenv.sh dest=/etc/profile.d mode=0775
+
+- name: change owner of install dir
+  become: yes
+  command: chgrp -R rbenv {{ rbenv.root_path }}
+
+- name: change mode of install dir
+  become: yes
+  command: chmod -R 775 {{ rbenv.root_path }}
+
+- name: Install ruby with rbenv
+  shell: bash -lc 'CONFIGURE_OPTS="--disable-install-rdoc" rbenv install {{ rbenv.ruby_version }} -s'
+
+- name: "set ruby to {{ rbenv.ruby_version }} as global scope"
+  shell: bash -lc "rbenv global {{ rbenv.ruby_version }}"
+
+- name: "install bundler"
+  shell: bash -lc "gem install bundler --no-ri --no-rdoc"

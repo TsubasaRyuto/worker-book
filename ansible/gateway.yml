@@ -1,0 +1,9 @@
+---
+- hosts: gateway
+  user: centos
+  roles:
+    - common
+    - rbenv
+    - mysql-client
+    - deploy
+    - rails

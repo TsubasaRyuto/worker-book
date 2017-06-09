@@ -24,9 +24,9 @@ class ChatsController < ApplicationController
     if @partner_user
       @agreement = (@partner_user.client.agreements & current_user.agreements).first if current_user_type_worker
       @agreement = (@partner_user.agreements & current_user.client.agreements).first if current_user_type_client_user
-      @chats = @agreement.chats.all
+      @chats = @agreement.chats.all.includes(client: :client_users)
     end
-    @agreements = @current_user.agreements if current_user_type_worker
+    @agreements = @current_user.agreements.includes(:job_content, job_content: :client, job_content: { client: :client_users }) if current_user_type_worker
     @agreements = @current_user.client.agreements if current_user_type_client_user
   end
 

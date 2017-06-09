@@ -16,3 +16,11 @@ development:
 test:
   <<: *default
   database: workerbook_test
+
+staging:
+  <<: *default
+  database: workerbook_staging
+
+production:
+  <<: *default
+  database: workerbook_production

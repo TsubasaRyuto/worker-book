@@ -1,0 +1,28 @@
+---
+- name: Install common pkgs
+  become: yes
+  yum: pkg={{item}} state=present
+  with_items:
+    - epel-release
+    - cronie
+
+- name: Enable crond
+  become: yes
+  shell: systemctl start crond && systemctl enable crond
+
+- name: Create www dir
+  become: yes
+  file: path=/var/www state=directory
+
+- name: Create app root
+  become: yes
+  file: path={{ app_root }} state=directory owner={{ os_user }}
+
+- name: Edit SELinux Config file
+  become: yes
+  command: sed -i -e "s/^SELINUX=enforcing/SELINUX=permissive/g" /etc/selinux/config
+
+- name: Disable SELinux
+  become: yes
+  command: setenforce 0
+  ignore_errors: True
