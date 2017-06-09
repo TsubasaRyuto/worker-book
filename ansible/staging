@@ -1,0 +1,9 @@
+[webapps]
+52.196.123.76 ansible_ssh_user=centos ansible_ssh_private_key_file=~/.ssh/anyroute-api-staging.pem
+
+[webservers:children]
+webapps
+
+[webservers:vars]
+bucket=workerbook-staging
+elb_ip_cidr=172.16.0.0/12

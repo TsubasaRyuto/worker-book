@@ -1,0 +1,40 @@
+upstream {{ app_name }} {
+  server unix:{{ app_root }}/shared/tmp/sockets/puma.sock;
+}
+
+server {
+  listen 80 default_server;
+  server_name _;
+
+  access_log /var/log/nginx/{{ app_name }}.access.log main;
+  error_log  /var/log/nginx/{{ app_name }}.error.log;
+
+  root {{ app_root }}/current/public;
+  client_max_body_size 5M;
+
+  location ~ ^/(favicon.ico|robots.txt|audios/|uploads/) {
+    gzip_static on;
+
+    root {{ app_root }}/current/public;
+    expires 1y;
+    add_header Cache-Control public;
+
+    add_header ETag "";
+    break;
+  }
+
+  location /nginx_status {
+    stub_status on;
+    allow 127.0.0.0/8;
+    allow 172.16.0.0/12;
+    deny  all;
+  }
+
+  location / {
+    if (-f $request_filename) { break; }
+
+    proxy_set_header X-Real-IP  $remote_addr;
+    proxy_set_header Host $http_host;
+    proxy_pass http://{{ app_name }};
+  }
+}

@@ -1,0 +1,18 @@
+---
+- name: Install nginx
+  become: yes
+  yum: name=nginx state=present
+
+- name: Clear all default config
+  become: yes
+  command: find /etc/nginx/ -type f -exec rm -f '{}' \;
+
+- name: Place config files
+  become: yes
+  template: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: nginx.conf.j2, dest: /etc/nginx/nginx.conf }
+    - { src: app.conf.j2, dest: "/etc/nginx/conf.d/{{ app_name }}.conf" }
+    - { src: mime.types, dest: /etc/nginx/mime.types }
+  notify:
+    - restart nginx

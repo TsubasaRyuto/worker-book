@@ -1,0 +1,9 @@
+---
+- hosts: webapps
+  user: centos
+  roles:
+    - common
+    - rbenv
+    - mysql-client
+    - nginx
+    - rails
