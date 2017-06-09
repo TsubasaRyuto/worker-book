@@ -1,0 +1,42 @@
+.step-bar {
+  border-top: solid 2px $color-main;
+  position: relative;
+  margin: 8vh 0 12vh;
+
+  .bar {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+
+    .step-dot {
+      background-color: $color-main;
+      border-radius: 50%;
+      border: 1px solid $color-main;
+      color: $color-sub3;
+      height: 35px;
+      line-height: 35px;
+      position: absolute;
+      text-align: center;
+      top: -20px;
+      margin: 0 auto;
+      width: 35px;
+      z-index: 10;
+
+      &:first-child {
+        left: 0;
+      }
+
+      &:nth-child(2) {
+        left: 50%;
+      }
+
+      &:last-child {
+        right: 0;
+      }
+    }
+
+    .complete {
+      background-color: $color-sub2;
+    }
+  }
+}

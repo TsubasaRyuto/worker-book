@@ -1,0 +1,74 @@
+<% provide(:title, 'ワーカー一覧') %>
+
+<section class="worker-list">
+  <div class="container">
+    <div class="row">
+      <div class="body col-md-8 col-md-offset-2">
+        <%= form_tag(workers_path, method: :get, enforce_utf8: false) do %>
+          <div class="search-body">
+            <div class="search-skill">
+              <ul id="type-skill" class="input-text">
+              </ul>
+            </div>
+            <div class="search-type">
+              <%= select_tag :type, options_for_select(DeveloperType.name, selected: @developer_type), { prompt: 'デベロッパータイプ', class: 'select' } %>
+            </div>
+            <div class="search-budget">
+              <%= select_tag :unit_price, options_for_select(WorkerProfile.unit_price_classes.invert, selected: @unit_price), { prompt: '予算額', class: 'select' } %>
+            </div>
+            <%= submit_tag 'Search', name: nil, class: 'btn btn-default' %>
+          </div>
+        <% end %>
+        <h1>Worker List</h1>
+        <% if @worker_profiles.present? %>
+          <div class="list">
+            <% @worker_profiles.each do |profile| %>
+              <%= link_to worker_path(username: profile.worker.username) do %>
+                <div class="row section">
+                  <div class="face col-md-4">
+                    <%= image_tag profile.picture_url %>
+                  </div>
+                  <div class="info col-md-8">
+                    <h2><%= profile.worker.last_name %> <%= profile.worker.first_name %></h2>
+                    <p>@<%= profile.worker.username %></p>
+                    <ul>
+                      <li><%= Prefecture.name(profile.location) %></li>
+                      <li>¥<%= profile.unit_price %>/人日</li>
+                      <li>¥<%= profile.unit_price * 22 %>/人月</li>
+                      <% if profile.active? %>
+                        <li>受付中</li>
+                      <% else %>
+                        <li>未受付</li>
+                      <% end %>
+                    </ul>
+                    <p class="clear">稼働時間/週　: <%= t("enums.workers.profile.availability.#{profile.availability}") %></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="strength col-md-12">
+                    <ul class="developer-types">
+                      <p>Developer Types & Skills</p>
+                      <% developer_type_list(profile).each do |type| %>
+                        <li><%= t("worker_profile.developer_type.#{type}") %></li>
+                      <% end %>
+                    </ul>
+                    <ul class="skills">
+                    <% profile.skill.each do |skill| %>
+                      <li><%= skill.name %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="paginate">
+            <%= paginate @worker_profiles, outer_window: 3 %>
+          </div>
+        <% else %>
+          <h2 class="not-worker-mess">要件にあったワーカーはございません</h2>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="message">
+  <div class="send-info">
+    <span class="sender-username"><%= chat.sender_username %></span>
+    <span class="send-time"><%= chat.created_at.strftime("%Y/%m/%d(%I:%M %p)") %></span>
+  </div>
+  <div class="message-body">
+    <%= simple_format(chat.message) %>
+  </div>
+</div>

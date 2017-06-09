@@ -1,0 +1,28 @@
+<% provide(:title, '退会確認') %>
+
+<selction class="retire-worker retire-user">
+  <div class="container">
+    <div class="body">
+      <h1>WorkerBook 退会確認</h1>
+      <p>
+        WorkerBookをご利用いただきありがとうございます。WorkerBookを退会されるということは運営側としては残念ですが、
+        ご期待にに添えるサービスとなるように改善していきますので今後ともご声援のほどよろしくお願いいたします。<br>
+        また、<%= @worker.username %>さんの益々のご発展をお祈り申し上げます。
+      </p>
+      <p class="confirm">
+        退会した場合、ユーザーに関する情報が全て削除されます。<br>
+        今までの実績全てが削除されますがよろしいですか？<br>
+        >> よろしい場合はパスワードを入力後退会ボタンを押してください。<br>
+        >> 引き続きWorkerBookをご利用になられる場合は「やっぱり続ける」ボタンを押してください。
+      </p>
+      <div class="form">
+        <%= form_tag worker_path(username: @worker.username), method: :delete do |f| %>
+          <%= label :password, 'Password', class: 'form-label'%>
+          <%= password_field_tag :password, '', class: 'form-control', placeholder: 'Password Here....' %>
+          <%= link_to 'やっぱり続ける', root_path, class: 'btn btn-primary' %>
+          <%= submit_tag "退会", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</selction>

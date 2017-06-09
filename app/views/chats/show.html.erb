@@ -1,0 +1,45 @@
+<!-- このページのみfooterを表示させたくないため -->
+<style>
+  .footer {
+    display: none;
+  }
+</style>
+<% provide(:title, 'チャット') %>
+<section class="chat">
+  <div class="row">
+    <div class="side col-md-3">
+      <h2>@<%= @current_user.username %></h2>
+      <h3>DirectMessages</h3>
+      <% if @current_user.class == Worker %>
+        <%= render 'chats/worker/partner_list' %>
+      <% elsif @current_user.class == ClientUser %>
+        <%= render 'chats/client/partner_list' %>
+      <% end %>
+    </div>
+    <div class="body col-md-9">
+      <% if @partner_user %>
+        <div class="chat-head">
+          <h4>発注タイトル：
+            <span>
+              <%= link_to '#' do %>
+              <%= @agreement.job_content.title %>
+              <% end %>
+            </span>
+          </h4>
+          <h4>@<%= @partner_user.username %></h4>
+        </div>
+        <div class="messages-body" id="messages">
+          <%= render @chats %>
+        </div>
+        <div class="input-message">
+          <textarea placeholder="Message" id="message-input" class="input-text" cols="45" rows="18" maxlength="3000"></textarea>
+          <button type="submit" id="send-message" class="btn btn-primary">
+            <i class="glyphicon glyphicon-send"></i>
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<%= javascript_include_tag 'chats/show' %>
+<%= javascript_include_tag 'channels/chat' %>

@@ -1,0 +1,23 @@
+<%= @worker.first_name %>さん
+
+WorkerBookをご利用いただきありがとうございます。
+<%= @client.clientname %>さんから発注のリクエストが届いております。
+確認よろしくお願いいたします。
+
+<%= worker_order_confirms_url(
+  @job_request.activation_token, email: @worker.email,
+  worker_username: @worker.username, client_clientname: @client.clientname,
+  job_id: @job_content.id
+) %>
+
+Hi <%= @worker.first_name %>
+Thank you getting used WorkBook.
+
+You have received a request job e-mail for <%= @client.clientname %>.
+Prease check this request.
+
+--------------------------------------------------------------------
+※このメールは送信専用で、返信を受け付けることはできません。
+
+WorkerBook Support
+--------------------------------------------------------------------

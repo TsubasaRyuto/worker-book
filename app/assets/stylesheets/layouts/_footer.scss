@@ -1,0 +1,53 @@
+.footer{
+  background-color: $color-sub1;
+
+  .text-box{
+    font-size: 120%;
+    padding: 10vh 0;
+
+    ul {
+      text-align: center;
+
+      li {
+        display: inline-block;
+        padding-left: 7%;
+        list-style: none;
+
+        &:first-child {
+          padding: 0;
+        }
+
+        a {
+          color: $color-sub3;
+          text-decoration: none;
+
+          &:hover {
+            border-bottom: 1px solid $color-main;
+          }
+        }
+      }
+    }
+  }
+  .sns-links {
+    text-align: center;
+    margin-top: 4vh;
+
+    .twitter {
+      height: auto;
+      margin: 0 1.6%;
+      width: 4% !important;
+  	}
+
+  	.sns-img{
+      height: auto;
+  		margin: 0 2%;
+  		width: 3%;
+  	}
+  }
+  .copyright{
+    margin: 0;
+    padding: 2vh 0;
+		color: $color-sub3;
+		text-align: center;
+	}
+}

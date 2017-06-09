@@ -1,0 +1,42 @@
+.select-location {
+  margin-bottom: 50px;
+  position: relative;
+
+  &:hover {
+    .location-info {
+      display: block;
+    }
+  }
+
+  .location-info {
+    @include info_box($top: 40px);
+
+    &:after {
+      @include info_box_after($top: 15px);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    strong {
+      font-size: 20px;
+    }
+  }
+
+  select {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    background: none transparent;
+    border:2px solid $color-sub2;
+    color: $color-main;
+    font-size: inherit;
+    height: 40px;
+    outline: none;
+    padding: 8px 12px;
+    text-indent: 0.01px;
+    vertical-align: middle;
+    width: 50%;
+  }
+}

@@ -1,0 +1,92 @@
+.intro {
+  display: block;
+  height: 87px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  .navbar {
+    background-color: $color-sub3;
+    border-bottom: 2px solid $color-main;
+    height: 87px;
+    margin: 0;
+
+    .navbar-header {
+      height: 87px;
+      margin-left: 6vw;
+
+      h1 {
+        display: inline-block;
+        margin: 12px 0;
+        a {
+          color: $color-main;
+          font-size: 1.5em;
+          text-decoration: none;
+        }
+      }
+
+      button {
+        background-color: $color-main;
+        margin-top: 5vh;
+      }
+    }
+
+    .navbar-collapse {
+      .navbar-nav {
+        font-size: 1.5em;
+        margin-top: 14px;
+        margin-right: 5vw;
+
+        li {
+          a {
+            color: $color-main;
+            text-decoration: none;
+
+            &:hover {
+              color: $color-sub1;
+            }
+          }
+          .glyphicon {
+            color: $color-main;
+            font-size: 1em;
+            margin-right: .3vw;
+            padding: 0 .7vw;
+          }
+
+          .glyphicon-menu-hamburger {
+            background-color: $color-main;
+            border-radius: 50%;
+            color: $color-sub3;
+            font-size: .5em;
+            margin-right: .3vw;
+            padding: .7vw;
+            top: -0.2vh;
+          }
+        }
+
+        .open {
+          a {
+            background-color: $color-sub3;
+            &:focus{
+              background-color: $color-sub3;
+              color: $color-sub1;
+            }
+          }
+
+          ul {
+            min-width: 80%;
+            a {
+              color: $color-main;
+              padding: .5vh .7vw;
+
+              &:hover {
+                background-color: $color-main;
+                color: $color-sub3;
+              }
+            }
+          }
+        }
+      } // navbar-nav
+    } // navbar-collapse
+  } // navbar
+} //intro

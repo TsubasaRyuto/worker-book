@@ -1,0 +1,7 @@
+---
+- name: Intall prerequisites to run Ruby on Rails on CentOS7
+  user: centos
+  gather_facts: no
+  hosts: all
+
+- include: webservers.yml

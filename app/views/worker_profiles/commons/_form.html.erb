@@ -1,0 +1,254 @@
+
+<%= form_for(@worker_profile, url: { controller: :worker_profiles, action: :"#{action}" }, html: { multipart: true })do |f| %>
+
+<h2>Your strengths</h2>
+<!-- type -->
+<div class="select-type">
+  <h3>Type of Web, Mobile & software Developer</h3>
+  <%= render 'shared/error', object: f.object, field: :type %>
+  <p class="warning">Select up to 4 types of work.</p>
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <label class="label-checkbox">
+        <%= f.check_box :type_web_developer, class: 'dev-type-check' %>
+        <span class="lever">Web Developer</span>
+      </label>
+      <label class="label-checkbox">
+        <%= f.check_box :type_mobile_developer, class: 'dev-type-check' %>
+        <span class="lever">Mobile Developer</span>
+      </label>
+      <label class="label-checkbox">
+        <%= f.check_box :type_game_developer, class: 'dev-type-check' %>
+        <span class="lever">Game Developer</span>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <label class="label-checkbox">
+        <%= f.check_box :type_desktop_developer, class: 'dev-type-check' %>
+        <span class="lever">DesktopSoftware Developer</span>
+      </label>
+      <label class="label-checkbox">
+        <%= f.check_box :type_ai_developer, class: 'dev-type-check' %>
+        <span class="lever">AI Developer</span>
+      </label>
+      <label class="label-checkbox">
+        <%= f.check_box :type_qa_testing, class: 'dev-type-check' %>
+        <span class="lever">QA & Testing</span>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <label class="label-checkbox">
+        <%= f.check_box :type_web_mobile_desiner, class: 'dev-type-check' %>
+        <span class="lever">Web&Mobile Designer</span>
+      </label>
+      <label class="label-checkbox">
+        <%= f.check_box :type_project_maneger, class: 'dev-type-check' %>
+        <span class="lever">Project Maneger</span>
+      </label>
+      <label class="label-checkbox">
+        <%= f.check_box :type_other, class: 'dev-type-check' %>
+        <span class="lever">Other</span>
+      </label>
+    </div>
+  </div>
+  <div class="select-type-info">
+    <p>
+      <strong>Required</strong><br>Select type of work which you have expertise.
+    </p>
+  </div>
+</div><!-- .select-type -->
+<!-- skill -->
+<div class="select-skill">
+  <h3>Skill & Language</h3>
+  <%= render 'shared/error', object: f.object, field: :skill_list %>
+  <div class="input-skills">
+    <ul id="worker-skill-field">
+    </ul>
+  </div>
+  <p class="skill-max-warning">You have reached the limit of skills allowed to be added to your profile.</p>
+  <p class="skill-minimum-warning">Please input your programming languages or skills at least 5 things.</p>
+  <div class="select-skill-info">
+    <p>
+      <strong>Required</strong><br>Select programming languages or skills of work which you have expertise. we recommend 5 to 10.
+    </p>
+  </div>
+</div><!-- .select-skill-->
+<!-- availability -->
+<div class="select-availability">
+  <h3>Set your availability for work each week</h3>
+  <label class="label-radio">
+    <%= f.radio_button :availability, :limited %> <span class="lever"><%= t("enums.workers.profile.availability.limited") %></span>
+  </label>
+  <label class="label-radio">
+    <%= f.radio_button :availability, :full %> <span class="lever"><%= t("enums.workers.profile.availability.full") %></span>
+  </label>
+  <label class="label-radio">
+    <%= f.radio_button :availability, :hard %> <span class="lever"><%= t("enums.workers.profile.availability.hard") %></span>
+  </label>
+  <div class="select-availability-info">
+    <p>
+      <strong>Required</strong><br>Select your availability. How many hours do you have available for work each week ?
+    </p>
+  </div>
+</div><!-- .select-availability -->
+<!-- past performance -->
+<div class="type-past-performance">
+  <h3>Your past performance</h3>
+  <%= render 'shared/error', object: f.object, field: :past_performance %>
+  <p class="past-performance-warning">Please enter at least 2 URLs what you have developed an application or other things.</p>
+  <div class="url-field">
+    <%= f.url_field :past_performance1, class: 'form-control past-performance1', placeholder: 'URL Here', autocomplete: 'off' %>
+    <%= f.url_field :past_performance2, class: 'form-control past-performance2', placeholder: 'URL Here', autocomplete: 'off', disabled: true %>
+    <%= f.url_field :past_performance3, class: 'form-control past-performance3', placeholder: 'URL Here', autocomplete: 'off', disabled: true %>
+    <%= f.url_field :past_performance4, class: 'form-control past-performance4', placeholder: 'URL Here', autocomplete: 'off', disabled: true %>
+  </div>
+  <div class="past-performance-info">
+    <p>
+      <strong>Required</strong><br>Input url about your developed web service, mobile application or etc. we recommend 2 to 4.
+    </p>
+  </div>
+</div><!-- .type-past-performance -->
+<!-- unit price -->
+<div class="type-unit-price">
+  <h3>Set your Person-day Unit Price</h3>
+  <div class="price">
+    <div class="row">
+      <div class="col-md-4">
+        <p class="sub-title">Person-day Unit Price</p>
+      </div>
+      <div class="col-md-8">
+        <p class="price">
+          <span>¥</span>
+          <%= f.text_field :unit_price, placeholder: '30,000', autocomplete: 'nope', class: 'form-control', id: 'input-price' %>
+          <span>/Person-day Unit Price</span>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p class="sub-title">8% WorkerBook Service commission</p>
+      </div>
+      <div class="col-md-8">
+        <p class="price">¥<span class="view-box" id="service-fee">2,400</span>/Person-day Unit Price</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p class="sub-title">You'll receive</p>
+      </div>
+      <div class="col-md-8">
+        <p class="price">¥<span class="view-box" id="receive-day">27,600</span>/Person-day Unit Price</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p class="sub-title">You'll receive</p>
+      </div>
+      <div class="col-md-8">
+        <p class="price">¥<span class="view-box" id="receive-month">607,200</span>/Person-month Unit Price</p>
+        <span>* Person-month regard as 22 days</span>
+      </div>
+    </div>
+  </div>
+  <div class="unit-price-info">
+    <p>
+      <strong>Required</strong><br>Input your unit price of Person-day. This price is base your reward of the work.
+      <br><strong>At least 30,000 yen</strong>
+    </p>
+  </div>
+</div><!-- .type-unit-price -->
+<!-- note -->
+<div class="type-note">
+  <h3>Write Your strength and attitude towards work</h3>
+  <%= render 'shared/error', object: f.object, field: :appeal_note %>
+  <h4>Please write your top skill, experience and attitude towards work.</h4>
+  <%= f.text_area :appeal_note, class: 'form-control appeal-note', cols: 45, rows: 18, maxlength: 3000 %>
+  <p class="help-block">*You can only enter up to 3000 charcters in japanese.<span class="count-charcters">0</span></p>
+  <div class="note-info">
+    <p>
+      <strong>Required</strong><br>Describe your strengths and skills at least 400 words. This is one of the first things clients will see on your profile.
+    </p>
+  </div>
+</div><!-- .type-note -->
+<!-- picture -->
+<div class="upload-picture">
+  <h2>Other your profile</h2>
+  <h3>Upload your face</h3>
+  <%= render 'shared/error', object: f.object, field: :picture %>
+  <div class="row">
+    <%= f.label :picture, class: 'col-md-4' do %>
+    <div class="worker-picture">
+      <% if @worker_profile.picture.blank? %>
+      <%= image_tag '', alt: "NO PICTURE", id: 'preview' %>
+      <% else %>
+      <%= image_tag @worker.profile.picture_url, id: 'preview' %>
+      <% end %>
+    </div>
+    <p class="upload">Add a photo</p>
+    <%= f.file_field :picture , accept: 'image/jpeg, image/jpg, image/gif, image/png', class: 'picture-upload' %>
+    <% end %>
+    <div class="col-md-8">
+      <p class="mess">
+        Please upload your best looking pictures to gain the trust.
+      </p>
+    </div>
+  </div>
+  <div class="picture-info">
+    <p>
+      <strong>Required</strong><br>Must be an actual picture of you! Logos, clip-art, group pictures, and digitally-altered images not allowed.
+    </p>
+  </div>
+</div><!-- .upload-picture -->
+<!-- location -->
+<div class="select-location">
+  <h3>Your location</h3>
+  <%= f.select :location, Prefecture.options %>
+  <div class="location-info">
+    <p>
+      <strong>Required</strong><br>Select your activity range
+    </p>
+  </div>
+</div><!-- .select-location -->
+<!-- employment history -->
+<div class="type-history">
+  <h3>Your employment history</h3>
+  <%= render 'shared/error', object: f.object, field: :employment_history%>
+  <div class="company-name-field">
+    <%= f.text_field :employment_history1, placeholder: 'Company Name', class: 'form-control employment-history1', autocomplete: 'off' %>
+    <%= f.text_field :employment_history2, placeholder: 'Company Name', class: 'form-control employment-history2', autocomplete: 'off', disabled: true %>
+    <%= f.text_field :employment_history3, placeholder: 'Company Name', class: 'form-control employment-history3', autocomplete: 'off', disabled: true %>
+    <%= f.text_field :employment_history4, placeholder: 'Company Name', class: 'form-control employment-history4', autocomplete: 'off', disabled: true %>
+  </div>
+  <div class="employment-history-info">
+    <p>
+      <strong>Required</strong><br>Please input about previous companies you've worked. But in the case you've never worked in the companies, you should write 'Freelance only'.
+    </p>
+  </div>
+</div><!-- .type-history -->
+<!-- currently freelance -->
+<div class="check-currently check-box">
+  <label class="label-checkbox">
+    <%= f.check_box :currently_freelancer %>
+    <span class="lever">I currently work freelancer</span>
+  </label>
+</div><!-- .check-currently .check-box -->
+<!-- active -->
+<div class="check-active check-box">
+  <label class="label-checkbox">
+    <%= f.check_box :active %>
+    <span class="lever">I want to recieve an order</span>
+  </label>
+  <span class="notice">*Please unchecked if you are busy with other work</span>
+  <span class="notice">*Do't worry, you can always update this later.</span>
+  <div class="active-worker-info">
+    <p>
+      You will not be able to order the works if you do not check.
+    </p>
+  </div>
+</div><!-- .check-active .check-box -->
+<%= f.submit "#{button}", class: "btn btn-primary create-worker-profile" %>
+<% end %>

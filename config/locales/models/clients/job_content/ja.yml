@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      job_content:
+    attributes:
+      job_content:
+        title: 発注タイトル
+        start_date: 開始予定日
+        finish_date: 終了予定日
+        content: 発注詳細内容
+        skill_list: 必要とするスキル
+        note: 求めている経験値
+    errors:
+      job_contents:
+        before_finish_date: は終了日時より前に設定してください
+        after_current_date: "は#{Date.current}より後の日付を選択してください"
+        max_count_skills: は10コまで指定可能です
+        duplicate_skills: に重複している値があります

@@ -1,0 +1,22 @@
+<% provide(:title, 'Reset password') %>
+
+<selction class="reset-pass">
+  <div class="container">
+    <div class="row">
+      <div class="reset-pass-form col-md-8 col-md-offset-2">
+        <h1>Reset password</h1>
+        <%= form_for(@user, url: password_reset_update_path(params[:id])) do |f| %>
+
+          <%= hidden_field_tag :email, @user.email %>
+
+          <%= f.password_field :password, class: 'form-control password-form', placeholder: 'Password', autocomplete: 'off' %>
+          <%= render 'shared/error', object: f.object, field: :password %>
+
+          <%= f.password_field :password_confirmation, class: 'form-control confirmation-form', placeholder: 'Confirmation', autocomplete: 'off' %>
+          <%= render 'shared/error', object: f.object, field: :password_confirmation %>
+          <%= f.submit "Reset password", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</selction>

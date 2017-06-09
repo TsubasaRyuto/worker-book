@@ -1,0 +1,50 @@
+.worker-verify-email {
+  color: $color-main;
+  height: 93vh;
+  position: relatie;
+
+  h1 {
+    font-size: 270%;
+    padding-top: 10%;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 210%;
+    text-align: center;
+    padding-top: 5%;
+  }
+
+  .runningman {
+    bottom: 0;
+    height: 17vh;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.client-verify-email {
+  color: $color-main;
+  height: 93vh;
+
+  h1 {
+    font-size: 220%;
+    padding-top: 8vh;
+    text-align: center;
+  }
+
+  .verify-img {
+    display: block;
+    height: 35vh;
+    margin: 5vh auto 4vh;
+    width: 30%;
+  }
+
+  h2 {
+    display: block;
+    font-size: 150%;
+    text-align: left;
+    margin: 0 auto;
+    width: 25em;
+  }
+}

@@ -11,14 +11,18 @@ llCops:
     - !ruby/regexp /old_and_unused\.rb$/
 Rails:
   Enabled: true
+Rails:
+  SkipsValidation: false
 CaseIndentation:
   # Valid values are: case, end
   EnforcedStyle: case
   IndentOneStep: true
+Bundler/OrderedGems:
+  Enabled: false
 Metrics/AbcSize:
   Enabled: false
 Metrics/CyclomaticComplexity:
-  Max: 7
+  Max: 10
 Metrics/LineLength:
   Enabled: false
 Metrics/MethodLength:
@@ -26,7 +30,9 @@ Metrics/MethodLength:
 Metrics/ParameterLists:
   Enabled: false
 Metrics/PerceivedComplexity:
-  Max: 8
+  Max: 10
+Metrics/BlockLength:
+  Enabled: false
 Style/AsciiComments:
   Enabled: false
 Style/BlockDelimiters:
@@ -41,6 +47,8 @@ Style/EmptyLinesAroundBlockBody:
   Enabled: false
 Style/EmptyLinesAroundModuleBody:
   Enabled: false
+Style/GuardClause:
+  Enabled: false
 Style/Lambda:
   Enabled: false
 StringLiterals:
@@ -52,4 +60,8 @@ Style/RedundantSelf:
 Style/SignalException:
   Enabled: false
 Style/TrailingBlankLines:
+  Enabled: false
+Style/NumericLiteralPrefix:
+  Enabled: false
+Style/CaseEquality:
   Enabled: false

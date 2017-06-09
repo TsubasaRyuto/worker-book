@@ -1,0 +1,12 @@
+.client-user-setting {
+  @import 'clients/commons/description';
+
+  .name {
+    margin-left: 15%;
+
+    a {
+      color: $color-sub2;
+      text-decoration: none
+    }
+  }
+}

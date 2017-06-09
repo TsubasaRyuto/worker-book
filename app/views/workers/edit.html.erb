@@ -1,0 +1,53 @@
+<% provide(:title, 'Information') %>
+
+<section class="worker-setting user-setting">
+  <div class="container">
+    <div class="row">
+      <div class="body col-md-8 col-md-offset-2">
+        <div class="row">
+          <div class="face col-md-5">
+            <%= image_tag @worker.profile.picture_url %>
+          </div>
+          <div class="info col-md-7">
+            <h2><%= @worker.last_name %> <%= @worker.first_name %></h2>
+            <h4><%= link_to "@#{@worker.username}", worker_path(username: @worker.username) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="edit-form col-md-12">
+            <h3>Information</h3>
+            <%= form_for(@worker, url: { controller: :workers, action: :update }) do |f| %>
+              <div class="field-block row">
+                <div class="col-md-3">
+                  <%= f.label :username, class: 'form-label' %>
+                </div>
+                <div class="col-md-8">
+                  <%= f.text_field :username, class: 'form-control', autocomplete: 'off' %>
+                  <%= render 'shared/error', object: f.object, field: :username %>
+                </div>
+              </div>
+
+              <div class="field-block row">
+                <div class="col-md-3">
+                  <%= f.label :email, 'Emailaddress', class: 'form-label' %>
+                </div>
+                <div class="col-md-8">
+                  <%= f.email_field :email, class: 'form-control', autocomplete: 'off' %>
+                  <%= render 'shared/error', object: f.object, field: :email %>
+                </div>
+              </div>
+
+              <%= f.submit "Save changes", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="account-other col-md-12">
+            <p><%= link_to 'パスワード変更',  new_password_reset_path %></p>
+            <p><%= link_to 'アカウント削除', retire_worker_path(username: @worker.username) %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
