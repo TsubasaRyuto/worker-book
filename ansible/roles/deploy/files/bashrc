@@ -3,8 +3,8 @@ alias ll='ls -lart'
 source ~/.git-completion.sh
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
-export AWS_LOAD_BALANCER_NAME=anyroute-lb
-export AWS_REGION=us-east-1
+export AWS_LOAD_BALANCER_NAME=wb-staging-alb
+export AWS_REGION=ap-northeast-1
 export AWS_S3_BUCKET_NAME={{ bucket }}
 
 eval `ssh-agent -s`
