@@ -1,5 +1,6 @@
 [webapps]
-52.196.123.76 ansible_ssh_user=centos ansible_ssh_private_key_file=~/.ssh/anyroute-api-staging.pem
+52.193.153.243 ansible_ssh_user= ansible_ssh_private_key_file=~/.ssh/workerbook-staging.pem
+13.113.166.138 ansible_ssh_user= ansible_ssh_private_key_file=~/.ssh/workerbook-staging.pem
 
 [webservers:children]
 webapps
