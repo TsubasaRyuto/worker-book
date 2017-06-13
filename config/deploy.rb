@@ -21,9 +21,6 @@ set :puma_init_active_record, true
 set :linked_files, %w(config/database.yml config/secrets.yml)
 set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets vendor/bundle public/uploads)
 
-set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
-set :whenever_roles, -> { :batch }
-
 set :migration_role, 'db'
 set :rbenv_type, :system
 set :rbenv_ruby, '2.4.1'
