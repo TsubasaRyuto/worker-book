@@ -4,6 +4,10 @@ development:
 test:
   adapter: async
 
+staging:
+  adapter: redis
+  url: redis://wb-staging-alb-254969447.ap-northeast-1.elb.amazonaws.com
+
 production:
   adapter: redis
   url: redis://localhost:6379/1

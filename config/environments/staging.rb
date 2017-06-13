@@ -38,7 +38,7 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
-  config.action_cable.allowed_request_origins = [ 'https://worker-book.com' ]
+  config.action_cable.allowed_request_origins = ['http://http://wb-staging-alb-254969447.ap-northeast-1.elb.amazonaws.com/']
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -57,6 +57,8 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "worker-book_#{Rails.env}"
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.delivery_method = :aws_sdk
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -86,4 +88,27 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.exceptions_app = ->(env) { ErrorsController.action(:show).call(env) }
+
+  config.action_mailer.smtp_settings = {
+    address: 'email-smtp.us-east-1.amazonaws.com',
+    port: 587,
+    user_name: Rails.application.secrets.smtp_username,
+    password: Rails.application.secrets.smtp_password,
+    authentication: 'login',
+    enable_starttls_auto: true
+  }
+
+  CarrierWave.configure do |config|
+    config.fog_provider = 'fog/aws'
+    config.fog_credentials = {
+      provider:              'AWS',
+      aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+      region:                'ap-northeast-1',
+      use_iam_profile: true
+    }
+    config.fog_directory = ENV['FOG_DIRECTORY']
+    config.asset_host = Settings.cdn.host
+    config.storage = :fog
+  end
 end
