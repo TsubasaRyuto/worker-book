@@ -23,6 +23,7 @@ gem 'acts-as-taggable-on', '~> 5.0'
 gem 'gon', '~> 6.0.1'
 gem 'data-confirm-modal', '~> 1.3.0'
 gem 'kaminari', '~> 1.0.1'
+gem 'config', '~> 1.4.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -35,6 +36,13 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6.0'
   gem 'faker', '~> 1.6.3'
   gem 'timecop', '~> 0.8.1'
+end
+
+group :development, :staging, :production do
+  gem 'fog-aws', '~> 1.3.0'
+  gem 'fog', '~> 1.40.0', require: 'fog/aws/storage'
+  gem 'aws-sdk-rails', '~> 1.0.1'
+  gem 'aws-sdk', '~> 2.9.38'
 end
 
 group :development do
