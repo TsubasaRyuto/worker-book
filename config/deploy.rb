@@ -61,12 +61,12 @@ namespace :deploy do
     end
   end
 
-  task :start do
-    invoke 'puma:start'
-  end
-
-  task :stop do
-    invoke 'puma:stop'
+  desc 'Initial Deploy'
+  task :initial do
+    on roles(:app) do
+      before 'deploy:restart', 'puma:start'
+      invoke 'deploy'
+    end
   end
 
 
