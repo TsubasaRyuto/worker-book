@@ -1,10 +1,10 @@
 [webapps]
-13.113.8.188 ansible_ssh_user=centos ansible_ssh_private_key_file=~/.ssh/workerbook-staging.pem
-13.112.189.0 ansible_ssh_user=centos ansible_ssh_private_key_file=~/.ssh/workerbook-staging.pem
+13.113.167.116 ansible_ssh_user=centos ansible_ssh_private_key_file=~/.ssh/workerbook-staging.pem
+52.198.151.98 ansible_ssh_user=centos ansible_ssh_private_key_file=~/.ssh/workerbook-staging.pem
 
 [webservers:children]
 webapps
 
 [webservers:vars]
 bucket=workerbook-staging
-elb_ip_cidr=172.16.0.0/12
+elb_ip_cidr=10.0.0.1/16
