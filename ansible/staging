@@ -1,6 +1,6 @@
 [webapps]
-13.113.167.116 ansible_ssh_user=centos ansible_ssh_private_key_file=~/.ssh/workerbook-staging.pem
-52.198.151.98 ansible_ssh_user=centos ansible_ssh_private_key_file=~/.ssh/workerbook-staging.pem
+54.92.44.181 ansible_ssh_user=centos ansible_ssh_private_key_file=~/.ssh/workerbook-staging.pem
+54.64.56.224 ansible_ssh_user=centos ansible_ssh_private_key_file=~/.ssh/workerbook-staging.pem
 
 [webservers:children]
 webapps
