@@ -55,9 +55,10 @@ group :development do
   gem 'bullet', '~> 5.5.1'
 
   gem 'capistrano', '~> 3.8.1'
-  gem 'capistrano-rails', '~> 1.2.3'
+  gem 'capistrano-rails', '~> 1.3.0'
   gem 'capistrano-rbenv', '~> 2.1.1'
   gem 'capistrano3-puma', '~> 3.1.0'
+  gem 'capistrano-bundler', '~> 1.2.0'
 end
 
 group :test do
