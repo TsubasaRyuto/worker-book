@@ -61,6 +61,17 @@ namespace :deploy do
     end
   end
 
+  desc "Make sure local git is in sync with remote."
+  task :check_revision do
+    on roles(:app) do
+      unless `git rev-parse HEAD` == `git rev-parse origin/master`
+        puts "WARNING: HEAD is not the same as origin/master"
+        puts "Run `git push` to sync changes."
+        exit
+      end
+    end
+  end
+
   desc 'Initial Deploy'
   task :initial do
     on roles(:app) do
@@ -69,16 +80,25 @@ namespace :deploy do
     end
   end
 
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      invoke 'puma:restart'
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+  desc 'db_seed must be run only one time right after the first deploy'
+  task :db_seed_fu do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'db:seed_fu'
+        end
+      end
     end
   end
-  after :publishing, :restart
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      Rake::Task["puma:restart"].reenable
+      invoke 'puma:restart'
+    end
+  end
+
+  before :starting, :check_revision
   after :finishing, 'deploy:cleanup'
 end
