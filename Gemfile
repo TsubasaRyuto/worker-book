@@ -41,7 +41,7 @@ end
 group :development, :staging, :production do
   gem 'fog-aws', '~> 1.3.0'
   gem 'fog', '~> 1.40.0', require: 'fog/aws/storage'
-  gem 'aws-sdk-rails', '~> 1.0.1'
+  gem 'aws-ses', '~> 0.6'
   gem 'aws-sdk', '~> 2.9.38'
 end
 
