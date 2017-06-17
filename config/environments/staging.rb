@@ -58,7 +58,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "worker-book_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.delivery_method = :aws_sdk
+  config.action_mailer.delivery_method = :aws_ses
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -89,14 +89,6 @@ Rails.application.configure do
 
   config.exceptions_app = ->(env) { ErrorsController.action(:show).call(env) }
 
-  config.action_mailer.smtp_settings = {
-    address: 'email-smtp.us-east-1.amazonaws.com',
-    port: 587,
-    user_name: Rails.application.secrets.smtp_username,
-    password: Rails.application.secrets.smtp_password,
-    authentication: 'login',
-    enable_starttls_auto: true
-  }
 
   CarrierWave.configure do |config|
     config.fog_provider = 'fog/aws'

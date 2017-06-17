@@ -3,8 +3,5 @@ alias ll='ls -lart'
 source ~/.git-completion.sh
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
-export AWS_REGION=ap-northeast-1
-export AWS_S3_BUCKET_NAME={{ bucket }}
-
 eval `ssh-agent -s`
 ssh-add
