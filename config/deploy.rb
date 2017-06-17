@@ -34,7 +34,11 @@ set :bundle_without, %w(development test).join(' ')
 
 set :assets_roles, :app
 
-set :default_env, FOG_DIRECTORY: ENV['AWS_S3_BUCKET_NAME']
+set :default_env, {
+  FOG_DIRECTORY: ENV['AWS_S3_BUCKET_NAME'],
+  aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+  aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+}
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
