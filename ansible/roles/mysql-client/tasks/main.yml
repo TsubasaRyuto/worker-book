@@ -4,4 +4,13 @@
   yum: pkg={{item}} state=present
   with_items:
     - mysql
+    # mysql.sockエラーが発生するたインストール
+    - mariadb-server
     - mysql-devel
+
+- name: Start mysql
+  service:
+    name=mariadb
+    state=started
+    enabled=yes
+  sudo: yes

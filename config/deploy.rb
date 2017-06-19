@@ -76,7 +76,7 @@ namespace :deploy do
   desc 'db_seed must be run only one time right after the first deploy'
   task :db_seed_fu do
     on roles(:db) do |_host|
-      within current_path do
+      within release_path do
         with rails_env: fetch(:rails_env) do
           execute :rake, 'db:seed_fu'
         end
