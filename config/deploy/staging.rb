@@ -12,7 +12,7 @@ response = ec2.describe_instances(instance_ids: target_ids)
 ip_addresses = response.reservations.map { |r| r.instances.map(&:public_ip_address) }.flatten
 
 ip_addresses.each do |ip|
-  server ip.to_s, user: 'centos', roles: %w(app web db)
+  server ip.to_s, user: 'centos', roles: %w{app web db}
 end
 
 set :ssh_options, keys: %w(~/.ssh/workerbook-staging.pem),
