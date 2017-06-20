@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.8.1'
+lock '3.8.2'
 
 set :application, 'workerbook'
 set :repo_url, 'git@bitbucket.org:loboinc/worker-book.git'
@@ -22,7 +22,6 @@ set :puma_init_active_record, true
 set :linked_files, %w(config/database.yml config/secrets.yml)
 set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets vendor/bundle public/uploads)
 
-set :migration_role, 'db'
 set :rbenv_type, :system
 set :rbenv_ruby, '2.4.1'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
@@ -70,17 +69,6 @@ namespace :deploy do
     on roles(:app) do
       before 'deploy:restart', 'puma:start'
       invoke 'deploy'
-    end
-  end
-
-  desc 'db_seed must be run only one time right after the first deploy'
-  task :db_seed_fu do
-    on roles(:db) do |_host|
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :rake, 'db:seed_fu'
-        end
-      end
     end
   end
 
