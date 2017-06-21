@@ -10,7 +10,7 @@ set :puma_threads,    [4, 16]
 set :puma_workers,    0
 set :deploy_to, '/var/www/workerbook'
 
-set :puma_bind,       "unix://#{shared_path}/tmp/sockets/puma.sock"
+set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
 set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.error.log"
@@ -33,12 +33,16 @@ set :bundle_without, %w(development test).join(' ')
 
 set :assets_roles, :app
 
+set :keep_releases, 3
+
 set :default_env, {
   FOG_DIRECTORY: ENV['AWS_S3_BUCKET_NAME'],
   aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
   aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
 }
 
+
+Rake::Task["puma:start"].clear
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
   task :make_dirs do
@@ -47,6 +51,18 @@ namespace :puma do
       execute "mkdir #{shared_path}/tmp/pids -p"
     end
   end
+
+  desc 'Start puma'
+  task :start do
+    on roles(:app) do |role|
+      within current_path do
+        with rack_env: fetch(:puma_env) do
+          execute :puma, "-C #{fetch(:puma_conf)} -b #{fetch(:puma_bind)} --daemon"
+        end
+      end
+    end
+  end
+
   before :start, :make_dirs
 end
 
@@ -69,14 +85,6 @@ namespace :deploy do
     on roles(:app) do
       before 'deploy:restart', 'puma:start'
       invoke 'deploy'
-    end
-  end
-
-  desc 'Restart application'
-  task :restart do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      Rake::Task['puma:restart'].reenable
-      invoke 'puma:restart'
     end
   end
 

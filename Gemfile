@@ -4,7 +4,7 @@ ruby '2.4.1'
 
 gem 'rails', '~> 5.0.3'
 gem 'mysql2', '~> 0.4.5'
-gem 'puma', '~> 3.8.2'
+gem 'puma', '~> 3.9.1'
 gem 'sass-rails', '~> 5.0.6'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'uglifier', '>= 1.3.0'
