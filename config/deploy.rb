@@ -19,7 +19,7 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 
-set :linked_files, %w(config/database.yml config/secrets.yml)
+set :linked_files, %w(config/database.yml config/secrets.yml .rbenv-vars)
 set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets vendor/bundle public/uploads)
 
 set :rbenv_type, :system
@@ -41,25 +41,12 @@ set :default_env, {
   aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
 }
 
-
-Rake::Task["puma:start"].clear
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
   task :make_dirs do
     on roles(:app) do
       execute "mkdir #{shared_path}/tmp/sockets -p"
       execute "mkdir #{shared_path}/tmp/pids -p"
-    end
-  end
-
-  desc 'Start puma'
-  task :start do
-    on roles(:app) do |role|
-      within current_path do
-        with rack_env: fetch(:puma_env) do
-          execute :puma, "-C #{fetch(:puma_conf)} -b #{fetch(:puma_bind)} --daemon"
-        end
-      end
     end
   end
 
@@ -77,6 +64,8 @@ namespace :deploy do
 
       upload!('config/database.yml', "#{shared_path}/config/database.yml")
       upload!('config/secrets.yml', "#{shared_path}/config/secrets.yml")
+      rails_env = fetch(:stage)
+      upload!("env/#{rails_env}/.rbenv-vars", "#{shared_path}/.rbenv-vars")
     end
   end
 

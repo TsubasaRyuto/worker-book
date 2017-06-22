@@ -8,6 +8,7 @@ require 'capistrano/rails/assets'
 # require 'capistrano/rails or capistrano/rails/migrations'
 require 'capistrano/puma'
 require 'capistrano/scm/git'
+require 'capistrano/rbenv_vars'
 
 install_plugin Capistrano::SCM::Git
 install_plugin Capistrano::Puma
