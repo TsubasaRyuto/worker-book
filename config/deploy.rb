@@ -77,5 +77,11 @@ namespace :deploy do
     end
   end
 
+  task :restart do
+    on roles(:app), in: :groups, limit: 3, wait: 10 do
+      invoke 'puma:phased-restart'
+    end
+  end
+  after :publishing, :restart
   after :finishing, 'deploy:cleanup'
 end
