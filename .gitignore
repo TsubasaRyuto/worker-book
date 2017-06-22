@@ -26,3 +26,4 @@ config/secrets.yml
 /public/system
 
 .DS_Store
+env/*
