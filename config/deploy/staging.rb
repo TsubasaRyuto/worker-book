@@ -1,6 +1,7 @@
 set :stage, :staging
 set :rails_env, :staging
 set :puma_pid, -> { File.join(shared_path, 'tmp', 'pids', 'puma.pid') }
+set :asset_sync_enabled, true
 
 load_balancer_name = ENV['AWS_LOAD_BALANCER_NAME']
 elasticloadbalancing = Aws::ElasticLoadBalancing::Client.new
