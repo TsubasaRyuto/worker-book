@@ -39,6 +39,7 @@ group :development, :test do
 end
 
 group :development, :staging, :production do
+  gem 'asset_sync', '~> 2.1.0'
   gem 'fog-aws', '~> 1.3.0'
   gem 'fog', '~> 1.40.0', require: 'fog/aws/storage'
   gem 'aws-ses', '~> 0.6'

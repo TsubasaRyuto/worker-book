@@ -36,7 +36,7 @@ set :assets_roles, :app
 set :keep_releases, 3
 
 set :default_env, {
-  FOG_DIRECTORY: ENV['AWS_S3_BUCKET_NAME'],
+  FOG_DIRECTORY: ENV['FOG_DIRECTORY'],
   aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
   aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
 }
@@ -66,6 +66,10 @@ namespace :deploy do
       upload!('config/secrets.yml', "#{shared_path}/config/secrets.yml")
       rails_env = fetch(:stage)
       upload!("env/#{rails_env}/.rbenv-vars", "#{shared_path}/.rbenv-vars")
+
+      within shared_path do
+        execute 'rbenv vars'
+      end
     end
   end
 
@@ -82,6 +86,7 @@ namespace :deploy do
       invoke 'puma:phased-restart'
     end
   end
+
   after :publishing, :restart
   after :finishing, 'deploy:cleanup'
 end
