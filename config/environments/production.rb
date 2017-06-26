@@ -106,4 +106,6 @@ Rails.application.configure do
     config.asset_host = Settings.cdn.host
     config.storage = :fog
   end
+
+  GA.tracker = ENV['GOOGLE_TRACKING_ID']
 end

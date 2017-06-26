@@ -31,7 +31,7 @@ RSpec.feature 'Workers:UpdateProfile', type: :feature, js: true do
       end
     end
     context 'failed' do
-      it 'should not create profile by worker' do
+    it 'should not create profile by worker' do
         visit worker_settings_profile_path(worker_username: worker.username)
         page.find('.lever', text: 'Mobile Developer').click
         page.find('.lever', text: 'Game Developer').click
