@@ -54,6 +54,17 @@ namespace :puma do
 end
 
 namespace :deploy do
+  desc 'Initial date'
+  task :db_seed_fu
+    on roles(:db) do
+      with rails_env: fetch(:stage) do
+        within current_path do
+          execute 'bundle exec db:seed_fu'
+        end
+      end
+    end
+  end
+
   desc 'Upload secret files'
   task :upload do
     # Run only Production or Staging

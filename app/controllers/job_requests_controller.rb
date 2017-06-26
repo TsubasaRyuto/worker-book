@@ -16,6 +16,7 @@
 #
 
 class JobRequestsController < ApplicationController
+  before_action :prohibition
   before_action :signed_in_client
   before_action :correct_client_user
   def create
@@ -35,6 +36,10 @@ class JobRequestsController < ApplicationController
   end
 
   private
+
+  def prohibition
+    redirect_to errors_error_404_url
+  end
 
   def request_params
     { job_content_id: @job_content.id }
