@@ -8,7 +8,7 @@ class DeveloperType
     '6'.freeze => 'QA&Testing'.freeze,
     '7'.freeze => 'Web&Mobile Desiner'.freeze,
     '8'.freeze => 'Project Maneger'.freeze,
-    '9'.freeze => 'Other.freeze'
+    '9'.freeze => 'Other'.freeze
   }.freeze
 
   ROWS2 = {
@@ -32,6 +32,6 @@ class DeveloperType
   end
 
   def self.col_name(key)
-    ROWS2[:"#{key}"]
+    ROWS2["#{key}"]
   end
 end

@@ -17,6 +17,7 @@ RSpec.feature 'RequestAgreements:ClientRequest', type: :feature, js: true do
     end
     context 'successfull' do
       it 'should select worker and request job and agreement' do
+        pending '現在禁止機能'
         sign_on_as(client_user)
         visit workers_path
         expect(page).to have_selector 'a', text: client_user.client.name
@@ -55,6 +56,7 @@ RSpec.feature 'RequestAgreements:ClientRequest', type: :feature, js: true do
 
     context 'failed' do
       it 'should not request job' do
+        pending '現在禁止機能'
         sign_on_as(client_user)
         visit workers_path
         expect(page).to have_selector 'a', text: client_user.client.name

@@ -1,4 +1,5 @@
 class OrderConfirmsController < ApplicationController
+  before_action :prohibition
   before_action :signed_in_worker
   before_action :correct_worker
   def show
@@ -8,6 +9,10 @@ class OrderConfirmsController < ApplicationController
   end
 
   private
+
+  def prohibition
+    redirect_to errors_error_404_url
+  end
 
   def signed_in_worker
     unless signed_in?

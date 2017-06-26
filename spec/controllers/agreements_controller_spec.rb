@@ -39,73 +39,77 @@ RSpec.describe AgreementsController, type: :controller do
     context 'success' do
       before do
         sign_in_as(worker)
+        post :create, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: worker.password }
       end
       it 'should agreement' do
-        expect do
-          post :create, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: worker.password }
-        end.to change { Agreement.count }.by(1)
-        expect(response).to redirect_to worker_url(username: worker.username)
-        expect(ActionMailer::Base.deliveries.size).to eq(1)
+        expect(response).to redirect_to errors_error_404_url
+        # expect do
+        #   post :create, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: worker.password }
+        # end.to change { Agreement.count }.by(1)
+        # expect(response).to redirect_to worker_url(username: worker.username)
+        # expect(ActionMailer::Base.deliveries.size).to eq(1)
       end
     end
 
-    context 'failed' do
-      context 'invalid password' do
-        before do
-          sign_in_as(worker)
-        end
-        it 'should agreement' do
-          request.env['HTTP_REFERER'] = client_confirmation_request_job_url(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
-          expect do
-            post :create, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: 'invalidpassword' }
-          end.to change { Agreement.count }.by(0)
-          expect(response).to redirect_to client_confirmation_request_job_url(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
-        end
-      end
-
-      context 'not signed in' do
-        before do
-          post :create, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: worker.password }
-        end
-        it { expect(response).to redirect_to sign_in_url }
-      end
-    end
+    # context 'failed' do
+    #   context 'invalid password' do
+    #     before do
+    #       sign_in_as(worker)
+    #     end
+    #     it 'should agreement' do
+    #       request.env['HTTP_REFERER'] = client_confirmation_request_job_url(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
+    #       expect do
+    #         post :create, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: 'invalidpassword' }
+    #       end.to change { Agreement.count }.by(0)
+    #       expect(response).to redirect_to client_confirmation_request_job_url(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
+    #     end
+    #   end
+    #
+    #   context 'not signed in' do
+    #     before do
+    #       post :create, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: worker.password }
+    #     end
+    #     it { expect(response).to redirect_to sign_in_url }
+    #   end
+    # end
   end
 
   context 'post refusal' do
     context 'success' do
       before do
         sign_in_as(worker)
+        post :refusal, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: worker.password }
       end
       it 'should agreement' do
-        expect do
-          post :refusal, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: worker.password }
-        end.to change { JobRequest.count }.by(-1)
-        expect(response).to redirect_to worker_url(username: worker.username)
-        expect(ActionMailer::Base.deliveries.size).to eq(1)
+        expect(response).to redirect_to errors_error_404_url
+        # expect do
+        #   post :refusal, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: worker.password }
+        # end.to change { JobRequest.count }.by(-1)
+        # expect(response).to redirect_to worker_url(username: worker.username)
+        # expect(ActionMailer::Base.deliveries.size).to eq(1)
       end
     end
 
-    context 'failed' do
-      context 'invalid password' do
-        before do
-          sign_in_as(worker)
-        end
-        it 'should agreement' do
-          request.env['HTTP_REFERER'] = client_confirmation_request_job_url(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
-          expect do
-            post :refusal, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: 'invalid_password' }
-          end.to change { JobRequest.count }.by(0)
-          expect(response).to redirect_to client_confirmation_request_job_url(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
-        end
-      end
-
-      context 'not signed in' do
-        before do
-          post :refusal, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: worker.password }
-        end
-        it { expect(response).to redirect_to sign_in_url }
-      end
-    end
+    # context 'failed' do
+    #   context 'invalid password' do
+    #     before do
+    #       sign_in_as(worker)
+    #     end
+    #     it 'should agreement' do
+    #       request.env['HTTP_REFERER'] = client_confirmation_request_job_url(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
+    #       expect do
+    #         post :refusal, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: 'invalid_password' }
+    #       end.to change { JobRequest.count }.by(0)
+    #       expect(response).to redirect_to client_confirmation_request_job_url(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
+    #     end
+    #   end
+    #
+    #   context 'not signed in' do
+    #     before do
+    #       post :refusal, params: { worker_username: worker.username, client_clientname: client.clientname, job_id: job_content.id, password: worker.password }
+    #     end
+    #     it { expect(response).to redirect_to sign_in_url }
+    #   end
+    # end
   end
 end
