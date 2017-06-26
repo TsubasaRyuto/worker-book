@@ -55,7 +55,7 @@ end
 
 namespace :deploy do
   desc 'Initial date'
-  task :db_seed_fu
+  task :db_seed_fu do
     on roles(:db) do
       with rails_env: fetch(:stage) do
         within current_path do
