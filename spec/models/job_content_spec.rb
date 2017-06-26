@@ -14,6 +14,9 @@ RSpec.describe JobContent, type: :model do
       note: note, start_date: start_date, finish_date: finish_date
     )
   }
+  before do
+    Timecop.travel(Date.new(2017, 01, 01))
+  end
 
   context 'validates' do
     context 'successful' do
