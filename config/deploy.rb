@@ -57,10 +57,9 @@ namespace :deploy do
   desc 'Initial date'
   task :db_seed_fu do
     on roles(:db) do
-      with rails_env: fetch(:stage) do
-        within current_path do
-          execute 'bundle exec rake db:seed_fu'
-        end
+      within current_path do
+        rails_env = fetch(:stage)
+        execute "bundle exec rake db:seed_fu rails_env=#{rails_env}"
       end
     end
   end
