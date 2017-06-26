@@ -18,6 +18,7 @@ RSpec.feature 'RequestAgreements:WorkerAgreement', type: :feature, js: true do
     end
     context 'successfull' do
       it 'should agreement request job' do
+        pending '現在禁止機能'
         visit client_confirmation_request_job_path(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
         expect(page).to have_selector 'h1', text: '依頼ワーカー'
         expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"
@@ -64,6 +65,7 @@ RSpec.feature 'RequestAgreements:WorkerAgreement', type: :feature, js: true do
 
     context 'failed' do
       it 'should not agreement' do
+        pending '現在禁止機能'
         visit client_confirmation_request_job_path(client_clientname: client.clientname, worker_username: worker.username, id: job_content.id)
         expect(page).to have_selector 'h1', text: '依頼ワーカー'
         expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"

@@ -1,5 +1,5 @@
 cdn:
-  host: //d1d85zpmus2f4t.cloudfront.net
+  host: https//d1d85zpmus2f4t.cloudfront.net
 
 mail:
   default_from: no_reply@worker-book-stg.work
