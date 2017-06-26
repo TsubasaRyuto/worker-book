@@ -59,7 +59,7 @@ namespace :deploy do
     on roles(:db) do
       with rails_env: fetch(:stage) do
         within current_path do
-          execute 'bundle exec db:seed_fu'
+          execute 'bundle exec rake db:seed_fu'
         end
       end
     end
