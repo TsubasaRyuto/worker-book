@@ -1,0 +1,48 @@
+
+<div class="name">
+  <h3>会社名</h3>
+  <%= render 'shared/error', object: f.object, field: :name %>
+  <%= f.text_field :name, class: 'form-control', placeholder: 'ex) Lobo株式会社', autocomplete: 'off' %>
+</div>
+
+<div class="corporate-site">
+  <h3>会社サイト</h3>
+  <%= render 'shared/error', object: f.object, field: :corporate_site %>
+  <%= f.url_field :corporate_site, class: 'form-control', placeholder: 'ex) http://lobo-inc.com', autocomplete: 'off' %>
+</div>
+
+<div class="clientname">
+  <h3>クライアント名</h3>
+  <%= render 'shared/error', object: f.object, field: :clientname %>
+  <%= f.text_field :clientname, class: 'form-control', placeholder: 'ex) lobo_inc', autocomplete: 'off' %>
+</div>
+
+<div class="select-location">
+  <h3>会社所在地</h3>
+  <%= render 'shared/error', object: f.object, field: :location %>
+  <%= f.select :location, Prefecture.options %>
+</div>
+
+<div class="logo">
+  <h3>会社ロゴ</h3>
+  <%= render 'shared/error', object: f.object, field: :logo %>
+  <div class="row">
+    <%= f.label :logo, class: 'col-md-4' do %>
+      <div class="logo-img">
+        <% if @client.logo.blank? %>
+          <%= image_tag '', alt: "NO LOGO", id: 'preview_logo' %>
+        <% else %>
+          <%= image_tag @client.logo_url, id: 'preview_logo' %>
+        <% end %>
+      </div>
+      <p class="upload">Add a photo</p>
+      <%= f.file_field :logo, accept: 'image/jpeg, image/jpg, image/gif, image/png', class: 'img-upload' %>
+    <% end %>
+    <div class="col-md-8">
+      <p class="mess">
+        会社のロゴをアップロードしてください。<br>ワーカーに信頼を与えましょう。
+      </p>
+    </div>
+  </div>
+
+</div>

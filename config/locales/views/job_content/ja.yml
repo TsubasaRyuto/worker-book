@@ -1,0 +1,6 @@
+ja:
+  job_content:
+    request_job_content:
+      success: '発注リクエストを送信しました'
+      failed: '発注リクエストの送信に失敗しました。'
+      already_agreement: "#{@job_content.title}はすでに#{@worker}さんと契約済みです"

@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="title section col-md-12">
+    <h2>発注タイトル</h2>
+    <p><%= @job_content.title %></p>
+  </div>
+
+  <div class="term section col-md-12">
+    <h2>期間</h2>
+    <p>
+      <%= @job_content.start_date.strftime("%Y/%m/%d") %>　-　<%= @job_content.finish_date.strftime("%Y/%m/%d") %>()
+    </p>
+  </div>
+
+  <div class="pay section col-md-12">
+    <h2>報酬金額</h2>
+    <div class="month">
+      <h4>一月あたり：</h4>
+      <p>¥　<%= @worker.profile.unit_price %></p>
+    </div>
+    <div class="all">
+      <h4>合計：</h4>
+      <p>¥　<%= @worker.profile.unit_price %></p>
+    </div>
+  </div>
+
+  <div class="content section col-md-12">
+    <h2>発注詳細内容</h2>
+    <p><%= simple_format(@job_content.content) %></p>
+  </div>
+
+  <div class="skill-seeking section col-md-12">
+    <h2>必要とするスキル</h2>
+    <ul>
+      <% @job_content.skill.each do |skill| %>
+        <li><%= skill %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="experience-seeking section col-md-12">
+    <h2>求めている経験値</h2>
+    <p><%= simple_format(@job_content.note) %></p>
+  </div>
+</div>

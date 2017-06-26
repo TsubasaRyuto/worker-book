@@ -1,0 +1,10 @@
+[webapps]
+52.68.137.16 ansible_ssh_user=centos ansible_ssh_private_key_file=~/.ssh/workerbook-staging.pem
+54.64.13.175 ansible_ssh_user=centos ansible_ssh_private_key_file=~/.ssh/workerbook-staging.pem
+
+[webservers:children]
+webapps
+
+[webservers:vars]
+elb_ip_cidr_1=10.0.0.0/24
+elb_ip_cidr_2=10.0.1.0/24

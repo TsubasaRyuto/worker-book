@@ -1,0 +1,11 @@
+<% @agreements.each do |agreement| %>
+  <% if agreement.active? %>
+    <ul>
+      <%= link_to "/chat/messages/@#{agreement.worker.username}" do %>
+      <li class="message-link">
+        @<%= agreement.worker.username %>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

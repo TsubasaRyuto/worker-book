@@ -1,0 +1,76 @@
+<% provide(:title, @client.name) %>
+
+<section class="client-page">
+  <div class="container">
+    <div class="row">
+      <div class="body col-md-8 col-md-offset-1">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="logo">
+              <%= image_tag @client.logo_url %>
+            </div>
+            <% if signed_in? %>
+              <div class="update-profile">
+                <%= link_to client_settings_profile_path(clientname: @client.clientname) do %>
+                  <button type=button class="btn btn-primary">プロフィール変更</button>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="info col-md-8">
+            <h2><%= @client.name %></h2>
+            <%= link_to client_path(clientname: @client.clientname) do %>
+              <p>@<%= @client.clientname %></p>
+            <% end %>
+            <ul>
+              <li><%= Prefecture.name(@client.location) %></li>
+              <li>URL: <%= link_to @client.corporate_site, @client.corporate_site, target: ['_blank'] %></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="users section col-md-12">
+            <h2><%= @client.name %> Users</h2>
+            <ul>
+              <% @client.client_users.each do |user| %>
+                <%= link_to client_client_settings_account_path(client_clientname: @client.clientname, username: user.username) do %>
+                  <li><%= user.last_name %> <%= user.first_name %><span>@<%= user.username %></span><span><%= t("enums.client_users.user_type.#{user.user_type}") %></span></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="order-contents section col-md-12">
+            <h2>発注内容一覧</h2>
+            <%= link_to '発注内容登録', client_create_job_path(client_clientname: current_user.client.clientname) %>
+            <% if @job_contents.blank? %>
+              <p>発注内容は作成されておりません</p>
+            <% else %>
+              <ul>
+                <% @job_contents.each do |job_content| %>
+                  <li>
+                    タイトル：　
+                    <%= link_to edit_client_job_path(client_clientname: @client.clientname, id: job_content.id) do %>
+                      <%= job_content.title %>
+                    <% end %>
+                    <span><%= link_to '削除', client_job_path(client_clientname: @client.clientname, id: job_content.id), method: :delete, data: { confirm: "本当に#{job_content.title}を削除してもよろしいですか？", commit: '削除する', cancel: "やっぱりやめる" }, title: "削除確認" %></span>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="past-order section col-md-12">
+            <h2>過去発注実績</h2>
+            <p>発注実績はございません</p>
+          </div>
+        </div>
+      </div>
+      <div class="side col-md-3">
+        <%= render 'clients/commons/description' %>
+      </div>
+    </div><!-- row -->
+  </div><!-- container -->
+</section>

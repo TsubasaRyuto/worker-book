@@ -1,0 +1,23 @@
+h1, h2, h3, h4, h5, h6, p, a {
+  font-family: myriad Pro;
+}
+
+ul {
+  li {
+    list-style-type: none;
+  }
+}
+
+.main-body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.row {
+  margin: 0;
+}
+
+.modal {
+  padding-right: 0 !important;
+}

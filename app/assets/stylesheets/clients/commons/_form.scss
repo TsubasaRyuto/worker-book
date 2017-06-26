@@ -1,0 +1,58 @@
+.main-contents {
+  h1 {
+    color: $color-sub1;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin: 7vh 0;
+  }
+
+  h3 {
+    margin-bottom: 3vh;
+  }
+
+  .form-control {
+    @include basic_form_style();
+  }
+
+  .logo {
+    margin-bottom: 10vh;
+
+    &:hover {
+      .picture-info {
+        display: block;
+      }
+    }
+
+    .logo-img {
+      img {
+        border-radius: 50%;
+        cursor: pointer;
+        display: block;
+        font-size: 1.4em;
+        height: 130px;
+        line-height: 130px;
+        margin: 0 auto;
+        text-align: center;
+        width: 130px;
+      }
+    }
+
+    .upload {
+      color: $color-sub2;
+      cursor: pointer;
+      font-size: 1.2em;
+      margin: 2vh;
+      text-align: center;
+    }
+
+    .img-upload {
+      display: none;
+    }
+
+    .mess {
+      font-size: 1.1em;
+      margin: 5vh 0 0 3vw;
+    }
+  }
+}

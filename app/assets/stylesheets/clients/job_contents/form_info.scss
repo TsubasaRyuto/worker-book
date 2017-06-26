@@ -1,0 +1,143 @@
+.title{
+  position: relative;
+
+  &:hover {
+    .title-info {
+      display: block;
+    }
+  }
+  .title-info {
+    @include info_box($top: 0px);
+
+    &:after {
+      @include info_box_after($top: 30px);
+    }
+
+    p {
+      margin: 0;
+      strong {
+        font-size: 1.4em;
+      }
+    }
+  }
+}
+
+.start-date {
+  position: relative;
+
+  &:hover {
+    .start-date-info {
+      display: block;
+    }
+  }
+  .start-date-info {
+    @include info_box($top: -10px);
+
+    &:after {
+      @include info_box_after($top: 30px);
+    }
+
+    p {
+      margin: 0;
+      strong {
+        font-size: 1.4em;
+      }
+    }
+  }
+}
+
+.finish-date {
+  position: relative;
+
+  &:hover {
+    .finish-date-info {
+      display: block;
+    }
+  }
+  .finish-date-info {
+    @include info_box($top: -10px);
+
+    &:after {
+      @include info_box_after($top: 30px);
+    }
+
+    p {
+      margin: 0;
+      strong {
+        font-size: 1.4em;
+      }
+    }
+  }
+}
+
+.content {
+  position: relative;
+
+  &:hover {
+    .content-info {
+      display: block;
+    }
+  }
+  .content-info {
+    @include info_box($top: 70px);
+
+    &:after {
+      @include info_box_after($top: 30px);
+    }
+
+    p {
+      margin: 0;
+      strong {
+        font-size: 1.4em;
+      }
+    }
+  }
+}
+
+.skill-seeking {
+  position: relative;
+
+  &:hover {
+    .skill-seeking-info {
+      display: block;
+    }
+  }
+  .skill-seeking-info {
+    @include info_box($top: 50px);
+
+    &:after {
+      @include info_box_after($top: 20px);
+    }
+
+    p {
+      margin: 0;
+      strong {
+        font-size: 1.4em;
+      }
+    }
+  }
+}
+
+.experience-seeking {
+  position: relative;
+
+  &:hover {
+    .experience-seeking-info {
+      display: block;
+    }
+  }
+  .experience-seeking-info {
+    @include info_box($top: 70px);
+
+    &:after {
+      @include info_box_after($top: 30px);
+    }
+
+    p {
+      margin: 0;
+      strong {
+        font-size: 1.4em;
+      }
+    }
+  }
+}

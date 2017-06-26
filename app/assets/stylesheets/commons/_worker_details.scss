@@ -1,0 +1,168 @@
+h2 {
+  color: $color-main;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+
+  .btn {
+    background-color: $color-sub2;
+    display: block;
+    margin: 10px auto;
+    width: 50%;
+  }
+}
+
+
+.section {
+  border-top: 1px solid $color-main;
+  color: $color-main;
+  display: block;
+  float: none;
+  margin: 50px auto 30px;
+  width: 80%;
+}
+
+.face {
+  img {
+    border-radius: 50%;
+    border: 1px solid $color-main;
+    display: block;
+    height: 130px;
+    margin: 0 auto;
+    width: 130px;
+  }
+  a {
+    text-decoration: none;
+    .btn {
+      background-color: $color-main;
+      border: none;
+      display: block;
+      font-size: .8em;
+      margin: 2vh auto 0;
+      width: 50%;
+    }
+  }
+} // face
+.info {
+  color: $color-sub2;
+  font-size: 18px;
+
+
+  h2 {
+    display: inline-block;
+  }
+
+  ul {
+    li {
+      border-right: 1px solid $color-sub2;
+      float: left;
+      padding: 0 20px;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        border: none;
+        padding-right: 0;
+      }
+    }
+  }
+
+  p {
+    clear: both;
+    display: block;
+    padding-top: 20px;
+  }
+} // info
+
+.strength {
+  p {
+    font-size: 17px;
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  .developer-types {
+    li {
+      border: 1px solid $color-main;
+      border-radius: 3px;
+      float: left;
+      padding: 10px 20px;
+      margin-right: 30px;
+      margin-left: 10px;
+
+      span {
+        border-bottom: 1px solid $color-main;
+        display: block;
+        padding-bottom: 5px;
+      }
+    }
+  }
+
+  .skills {
+    clear: both;
+    padding-top: 15px;
+    li {
+      background-color: $color-sub2;
+      border: 1px solid $color-main;
+      border-radius: 3px;
+      color: $color-sub3;
+      float: left;
+      padding: 3px 15px;
+      margin: 10px 10px;
+    }
+  }
+} //strength
+
+.appeal {
+  .text {
+    width: 100%;
+
+    p {
+      font-size: 20px;
+      letter-spacing: 1px;
+      word-wrap:break-word;
+    }
+  }
+} // appeal
+
+.employment-history {
+  ul {
+    li {
+      font-size: 20px;
+      letter-spacing: 1.5px;
+      list-style-type: disc;
+      margin-left: 10px;
+      padding: 10px 0;
+    }
+  }
+} // employment_history
+
+.past-performance {
+  ul {
+    li {
+      padding: 10px 0;
+      margin-left: 10px;
+
+      a {
+        color: $color-sub2;
+        font-size: 20px;
+        letter-spacing: 1.5px;
+        text-decoration: none;
+
+        &:hover {
+          color: $color-main;
+        }
+      }
+    }
+  }
+} // past_performance

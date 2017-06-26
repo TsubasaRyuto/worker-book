@@ -1,0 +1,19 @@
+<%= @client_user.client.name %> <%= @client_user.last_name %>様
+
+WorkerBookにご登録いただきありがとうございます。
+メールアドレスの確認など、登録を完了するためには以下のURLをクリックする必要があります。
+
+<%= client_activate_user_url(client_clientname: @client_user.client.clientname, token: @client_user.activation_token, email: @client_user.email) %>
+
+Hi <%= @client_user.last_name %> <%= @client_user.client.name %>
+Thank you getting start with WorkerBook.
+We need a confirm your email to complete your registration.
+Click below to confirm your email address.
+
+<%= client_activate_user_url(client_clientname: @client_user.client.clientname, token: @client_user.activation_token, email: @client_user.email) %>
+
+--------------------------------------------------------------------
+※このメールは送信専用で、返信を受け付けることはできません。
+
+WorkerBook Support
+--------------------------------------------------------------------

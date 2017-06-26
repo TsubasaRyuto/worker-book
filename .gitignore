@@ -17,10 +17,13 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-vendor/
+vendor/bundle/
 
 config/database.yml
 config/secrets.yml
 
-.DS_Store
+/public/uploads
+/public/system
 
+.DS_Store
+env/*

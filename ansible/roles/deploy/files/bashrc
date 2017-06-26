@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+alias ll='ls -lart'
+source ~/.git-completion.sh
+PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+
+eval `ssh-agent -s`
+ssh-add

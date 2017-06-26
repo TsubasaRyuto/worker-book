@@ -1,0 +1,16 @@
+<% provide(:title, @worker.username) %>
+
+<section class="worker-page">
+  <div class="container">
+    <div class="row">
+      <div class="body col-md-8 col-md-offset-2">
+        <%= render 'workers/commons/details' %>
+        <% if current_user.class == ClientUser %>
+          <%= link_to client_select_job_content_url(client_clientname: current_user.client.clientname, worker_username: @worker.username) do %>
+            <button class="btn btn-primary">発注選択</button>
+          <% end %>
+        <% end %>
+      </div>
+    </div><!-- row -->
+  </div><!-- container -->
+</section>

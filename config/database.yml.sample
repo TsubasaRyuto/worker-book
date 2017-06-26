@@ -5,14 +5,29 @@ default: &default
   reconnect: false
   collation: utf8_general_ci
   pool: 5
-  username: workerbook
-  password: workerbook
   socket: /tmp/mysql.sock
 
 development:
   <<: *default
   database: workerbook_development
+  username: workerbook
+  password: workerbook
 
 test:
   <<: *default
   database: workerbook_test
+  username: workerbook
+  password: workerbook
+
+staging:
+  <<: *default
+  database: workerbook_staging
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+
+
+production:
+  <<: *default
+  database: workerbook_production
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>

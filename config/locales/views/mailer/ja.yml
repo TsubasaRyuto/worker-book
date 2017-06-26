@@ -1,0 +1,14 @@
+ja:
+  user_mailer:
+    sign_up:
+      subject: 'メールアドレス確認メール'
+    update:
+      subject: 'アカウント情報変更確認メール'
+    reset_pass:
+      subject: 'パスワード再設定メール'
+    request_agreement:
+      subject: '発注リクエスト受諾メール'
+    request_detail:
+      subject: '発注リクエスト不承諾メール'
+    job_request:
+      subject: '発注リクエストメール'

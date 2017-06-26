@@ -1,0 +1,116 @@
+// create worker profile
+@mixin text_field {
+  border: none;
+  border-bottom: 1px solid $color-main;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 23px;
+  font-style: italic;
+  font-family: $font-family-main;
+  letter-spacing: 1px;
+  margin-bottom: 45px;
+  opacity: .6;
+}
+
+@mixin info_box($top: 100px) {
+  background-color: $color-sub2;
+  color: $color-sub3;
+  display: none;
+  font-weight: bold;
+  padding: 10px 15px;
+  position: absolute;
+  top: $top;
+  right: -342px;
+  width: 200px;
+}
+
+@mixin info_box_after($top: 23px) {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -40px;
+  top: $top;
+  border: 20px solid transparent;
+  border-right: 20px solid $color-sub2;
+  pointer-events: none;
+  content: " ";
+}
+
+// base
+@import 'base';
+// select type
+@import 'type';
+// select programming languages or skills
+@import 'skill';
+// select availability
+@import 'availability';
+// type past performance
+@import 'past_performance';
+// type unit price
+@import 'unit_price';
+// type note
+@import 'note';
+// upload picture
+@import 'picture';
+// select location
+@import 'location';
+// employment history
+@import 'history';
+
+.check-box {
+  .label-checkbox {
+    cursor: pointer;
+    color: $color-main;
+
+    input[type='checkbox'] {
+      &:checked + .lever {
+        color: $color-sub2
+      }
+    }
+  }
+}
+
+.check-currently {
+  margin-bottom: 30px;
+}
+
+.check-active {
+  margin-bottom: 20px;
+  position: relative;
+
+  &:hover {
+    .active-worker-info {
+      display: block;
+    }
+  }
+
+  .active-worker-info {
+    @include info_box($top: -20px);
+
+    &:after {
+      @include info_box_after($top: 25px);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    strong {
+      font-size: 20px;
+    }
+  }
+
+  .notice {
+    color: red;
+    display: block;
+  }
+}
+
+.btn-primary {
+  background-color: $color-sub2;
+}
+.btn {
+  font-size: 20px;
+  margin-bottom: 10vh;
+  width: 100%;
+}

@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      worker:
+  enums:
+    workers:
+      profile:
+        availability:
+          limited: 20h-30h／week
+          full: 30h-40h／week
+          hard: 40h-50h／week

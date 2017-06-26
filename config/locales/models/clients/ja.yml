@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      client:
+    attributes:
+      client:
+        name: 会社名
+        clientname: クライアント名
+        location: 会社所在地
+        logo: 会社ロゴ
+        corporate_site: 会社サイトURL

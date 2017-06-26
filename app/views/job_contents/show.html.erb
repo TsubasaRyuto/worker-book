@@ -1,0 +1,29 @@
+<% provide(:title, '発注確認') %>
+
+<section class="confirmation-order">
+  <div class="row">
+    <div class="body col-md-8 col-md-offset-2">
+      <div class="worker">
+        <h1>依頼ワーカー</h1>
+        <%= render 'workers/commons/details' %>
+      </div>
+      <div class="selected-job-content">
+        <h1>発注内容</h1>
+        <%= render 'job_contents/commons/details' %>
+      </div>
+      <div class="order-btn col-md-12">
+        <button class="btn btn-primary" id="send-request">
+          依頼する
+        </button>
+      </div>
+      <div id="order-request" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <%= render 'shared/pass_confirm_modal', {
+          message: "へ、#{@job_content.title}を発注しますか",
+          partner_name: @worker.username,
+          btn: '送信',
+          url: client_job_send_job_request_url(client_clientname: @job_content.client.clientname, job_id: @job_content.id, worker_username: @worker.username)
+          } %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+<footer class="footer">
+  <div class="text-box">
+    <ul>
+      <li>
+        <%= link_to root_path do %>
+          <span>トップページ</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to 'http://lobo-inc.com' do %>
+          <span>Lobo Inc.</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to privacy_policy_path do %>
+          <span>プライバシーポリシー</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to terms_path do %>
+          <span>利用規約</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="sns-links">
+    <%= link_to 'https://twitter.com/lobo_company', target: ["_blank"] do %>
+      <%= image_tag 'footer/sns/twitter-logo.png', class: 'twitter' %>
+    <% end %>
+    <%= link_to 'https://www.facebook.com/LoboCompany/', target: ["_blank"] do %>
+      <%= image_tag 'footer/sns/fb-logo.png', class: 'sns-img' %>
+    <% end %>
+    <%= link_to 'https://www.instagram.com/lobo.inc/', target: ["_blank"] do %>
+      <%= image_tag 'footer/sns/instagram-logo.png', class: 'sns-img' %>
+    <% end %>
+  </div>
+  <p class="copyright">©︎ 2017 Lobo Inc.</p>
+</footer>

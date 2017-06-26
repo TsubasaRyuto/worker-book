@@ -1,0 +1,9 @@
+---
+- name: Install common pkgs
+  become: yes
+  yum: pkg={{item}} state=present
+  with_items:
+    - patch
+    - gcc-c++
+    - v8
+    - ImageMagick

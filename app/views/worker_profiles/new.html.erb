@@ -1,0 +1,28 @@
+<% provide(:title, 'Create worker profile') %>
+
+<section class="workers-profile profile" id="create-worker-profile">
+  <div class="container">
+    <div class="row">
+      <div class="form col-md-8 col-md-offset-2">
+        <div class="welcom-msg">
+          <h2>Hi <%= @worker.username %> Welocome to WorkerBook!</h2>
+          <p>
+            When you create your profile, clients review profile to decide and
+            select if your skill, experience and price match what they are looking for.
+            This is your chance to market your freelance business to many clients.
+          </p>
+        </div>
+        <div class="main-contents">
+          <h1>Create Profile</h1>
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <%= render 'shared/step_bar', { first: 'complete', second: 'complete' } %>
+              <%= render 'worker_profiles/commons/form', { action: 'create', button: 'Create my profile' } %>
+            </div>
+          </div>
+        </div><!-- .main-contents -->
+      </div><!-- .form col-md-8 col-md-offset-2 -->
+    </div><!-- .row -->
+  </div><!-- .container -->
+</section>
+<%= javascript_include_tag 'worker_profiles/validators/skill_validator' %>
