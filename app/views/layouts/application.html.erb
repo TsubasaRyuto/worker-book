@@ -6,6 +6,7 @@
     <%= include_gon(init: true) %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag('/favicon.ico') %>
     <%= analytics_init if Rails.env.production? %>
     <%= render 'layouts/shim' %>
   <head>
