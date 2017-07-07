@@ -1,0 +1,139 @@
+.chat {
+  height: 84vh;
+
+  a {
+    text-decoration: none;
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  .side {
+    color: $color-sub2-white;
+    background-color: $color-sub2;
+    display: block;
+    height: 87.6vh;
+    overflow: auto;
+
+    h2 {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .message-link {
+      color: $color-sub2-white;
+      font-size: 1.3em;
+      padding: 10px;
+
+    }
+
+    ul {
+      padding: 0;
+    }
+  }
+
+  .body {
+    color: $color-main;
+    display: none;
+    height: 87.6vh;
+    padding: 0;
+    position: relative;
+
+    .chat-head {
+      border-bottom: 1px solid $color-main;
+      height: 60px;
+
+      h4 {
+        font-size: 1.3em;
+        font-weight: bold;
+        margin-left: 30px;
+
+        a {
+          color: $color-sub2;
+
+          &:hover {
+            color: $color-main;
+          }
+        }
+      }
+    }
+
+    .messages-body {
+      display: block;
+      height: 70%;
+      overflow: auto;
+
+      .message {
+        border-bottom: 1px solid rgba(128, 128, 128, .4);
+        display: block;
+        margin: 0 auto;
+        padding: 5px 5px 10px 10px;
+        width: 90%;
+
+        .send-info {
+          margin-bottom: 5px;
+
+          .sender-username {
+            font-size: 1.2em;
+            font-weight: bold;
+          }
+
+          .send-time {
+            color: rgba(128, 128, 128, .7);
+            font-size: .8em;
+            padding-left: 4px;
+          }
+        }
+
+        .message-body {
+          color: $color-sub1;
+          font-size: 1.1em;
+          padding-left: 10px;
+        }
+      }
+    }
+
+    .input-message {
+      bottom: 0;
+      display: block;
+      padding-bottom: 20px;
+      position: absolute;
+
+      .input-text {
+        border: 2px solid rgba(128, 128, 128, .4);
+        border-radius: 5px;
+        color: $color-main;
+        font-size: 1.4em;
+        height: 40px;
+        resize: vertical;
+        margin-left: 20px;
+        padding-left: 10px;
+        width: 65vw;
+
+        &:focus {
+          border-color: $color-main;
+          outline: 0;
+        }
+      }
+
+      .btn {
+        background-color: $color-sub3;
+        border: 2px solid rgba(128, 128, 128, .6);
+        margin: 0;
+        margin-top: -35px;
+        padding: 0;
+        height: 40px;
+        width: 50px;
+
+        &:hover {
+          background-color: rgba(128, 128, 128, .3);
+        }
+
+        i {
+          color: $color-main;
+        }
+      }
+    }
+  }
+}

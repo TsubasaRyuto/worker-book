@@ -23,7 +23,7 @@ class WorkersController < ApplicationController
   before_action :correct_worker, only: [:edit, :update, :retire, :destroy]
 
   def index
-    @worker_profiles = WorkerProfile.search_worker(skill_params, unit_price_params, developer_type_params).includes(:skill, :worker).page(params[:page]).per(10)
+    @worker_profiles = WorkerProfile.search_worker(skill_params, unit_price_params, developer_type_params).includes(:skill, :worker).page(params[:page]).per(12)
     gon.skills = skill_params
     @unit_price = params[:unit_price]
     @developer_type = params[:type]

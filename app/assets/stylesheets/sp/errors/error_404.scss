@@ -1,0 +1,17 @@
+.error-404 {
+  display: block;
+
+  h1 {
+    color: $color-main;
+    font-size: 1.5em;
+    margin-top: 6vh;
+    text-align: center;
+  }
+
+  img {
+    display: block;
+    height: auto;
+    margin: 7vh auto 10vh;
+    width: 70%;
+  }
+}

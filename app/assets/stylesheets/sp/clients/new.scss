@@ -1,0 +1,17 @@
+.create-clients {
+  color: $color-main;
+  width: 100%;
+
+  .form {
+    background-color: $color-sub3;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    padding: 7vh 0;
+
+    @import 'sp/clients/commons/form';
+  }
+
+  .client-user {
+    display: none;
+  }
+}

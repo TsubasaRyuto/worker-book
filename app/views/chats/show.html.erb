@@ -7,7 +7,7 @@
 <% provide(:title, 'チャット') %>
 <section class="chat">
   <div class="row">
-    <div class="side col-md-3">
+    <div class="side col-xs-12 col-md-3" id='chat-side'>
       <h2>@<%= @current_user.username %></h2>
       <h3>DirectMessages</h3>
       <% if @current_user.class == Worker %>
@@ -16,7 +16,7 @@
         <%= render 'chats/client/partner_list' %>
       <% end %>
     </div>
-    <div class="body col-md-9">
+    <div class="body col-xs-12 col-md-9" id='chat-body'>
       <% if @partner_user %>
         <div class="chat-head">
           <h4>発注タイトル：

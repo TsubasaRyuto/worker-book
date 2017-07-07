@@ -1,0 +1,115 @@
+@mixin title_en {
+  color: $color-main;
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+}
+
+@mixin title_ja {
+  color: $color-main;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5vh;
+}
+
+// introbody
+.introbody {
+  border-top: none;
+  background-color: black;
+  height: 87.6vh;
+
+  .img-size {
+    display: block;
+    max-width: 380px;
+    max-height: 290px;
+    margin: 13vh auto 6vh;
+    opacity: .6;
+  }
+
+  h2 {
+    color: $color-sub3;
+    font-size: 5em;
+    font: lighter;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+}
+
+
+.link-btn {
+  border-bottom: 2px solid $color-main;
+  color: $color-main;
+  overflow: hidden;
+  margin: 10vh auto;
+  padding-bottom: 5vh;
+  width: 80vw;
+
+  a {
+    color: $color-main;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover .link{
+      border-bottom: 2px solid $color-main;
+      color: $color-sub1;
+
+
+      span:nth-child(2) {
+        display: inline;
+      }
+
+      span:nth-child(1) {
+        display: none;
+      }
+    }
+
+    .link {
+      display: inline-block;
+      font-size: 1.4em;
+      margin: 0 0 20px 40px;
+      text-align: center;
+
+      span:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+}
+
+.what-wb {
+  border-bottom: 2px solid $color-main;
+
+   h4 {
+     margin-bottom: 2vh;
+     text-align: center;
+   }
+
+   .when-use {
+     margin-top: 10vh;
+   }
+}
+
+.session-style {
+  color: $color-main;
+  overflow: hidden;
+  margin: 10vh auto;
+  padding-bottom: 5vh;
+  width: 80vw;
+
+  .title-en {
+    @include title_en;
+  }
+
+  .title-ja {
+    @include title_ja;
+  }
+
+  h4 {
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 1.3em;
+  }
+}

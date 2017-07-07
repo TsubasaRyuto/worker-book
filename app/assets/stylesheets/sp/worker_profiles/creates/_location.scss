@@ -1,0 +1,24 @@
+.select-location {
+  margin-bottom: 50px;
+
+  .location-info {
+    @include info_mess();
+  }
+
+  select {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    background: none transparent;
+    border:2px solid $color-sub2;
+    color: $color-main;
+    font-size: inherit;
+    height: 40px;
+    margin-bottom: 2vh;
+    outline: none;
+    padding: 8px 12px;
+    text-indent: 0.01px;
+    vertical-align: middle;
+    width: 50%;
+  }
+}

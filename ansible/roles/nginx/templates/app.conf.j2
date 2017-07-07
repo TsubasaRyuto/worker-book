@@ -41,6 +41,5 @@ server {
 
 server {
   listen 81;
-  server_name _;
-  rewrite ^ https://$host$request_uri permanent;
+  return 301 https://$host$request_uri;
 }

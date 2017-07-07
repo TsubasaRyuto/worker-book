@@ -23,21 +23,29 @@
               <p>@<%= @client.clientname %></p>
             <% end %>
             <ul>
-              <li><%= Prefecture.name(@client.location) %></li>
-              <li>URL: <%= link_to @client.corporate_site, @client.corporate_site, target: ['_blank'] %></li>
+              <li>所在地:　<%= Prefecture.name(@client.location) %></li>
+              <li>URL:　<%= link_to @client.corporate_site, @client.corporate_site, target: ['_blank'] %></li>
             </ul>
           </div>
         </div>
         <div class="row">
           <div class="users section col-md-12">
             <h2><%= @client.name %> Users</h2>
-            <ul>
-              <% @client.client_users.each do |user| %>
-                <%= link_to client_client_settings_account_path(client_clientname: @client.clientname, username: user.username) do %>
-                  <li><%= user.last_name %> <%= user.first_name %><span>@<%= user.username %></span><span><%= t("enums.client_users.user_type.#{user.user_type}") %></span></li>
-                <% end %>
+            <% @client.client_users.each do |user| %>
+              <%=link_to  client_client_settings_account_path(client_clientname: @client.clientname, username: user.username) do %>
+                <div class="user-list">
+                  <div class="user-name">
+                    <%= user.last_name %> <%= user.first_name %>
+                  </div>
+                  <div class="username">
+                    @<%= user.username %>
+                  </div>
+                  <div class="user-type">
+                    <%= t("enums.client_users.user_type.#{user.user_type}") %>
+                  </div>
+                </div>
               <% end %>
-            </ul>
+            <% end %>
           </div>
         </div>
         <div class="row">
@@ -47,17 +55,21 @@
             <% if @job_contents.blank? %>
               <p>発注内容は作成されておりません</p>
             <% else %>
-              <ul>
-                <% @job_contents.each do |job_content| %>
-                  <li>
-                    タイトル：　
+              <% @job_contents.each do |job_content| %>
+                <div class="job-content-list">
+                  <div class="title-key">
+                    タイトル：
+                  </div>
+                  <div class="job-content-title">
                     <%= link_to edit_client_job_path(client_clientname: @client.clientname, id: job_content.id) do %>
                       <%= job_content.title %>
                     <% end %>
-                    <span><%= link_to '削除', client_job_path(client_clientname: @client.clientname, id: job_content.id), method: :delete, data: { confirm: "本当に#{job_content.title}を削除してもよろしいですか？", commit: '削除する', cancel: "やっぱりやめる" }, title: "削除確認" %></span>
-                  </li>
-                <% end %>
-              </ul>
+                  </div>
+                  <div class="delete-link">
+                    <%= link_to '削除', client_job_path(client_clientname: @client.clientname, id: job_content.id), method: :delete, data: { confirm: "本当に#{job_content.title}を削除してもよろしいですか？", commit: '削除する', cancel: "やっぱりやめる" }, title: "削除確認" %>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>

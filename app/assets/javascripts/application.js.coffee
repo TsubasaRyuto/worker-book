@@ -11,13 +11,13 @@
 # about supported directives.
 #
 #= require jquery
-#= require bootstrap-sprockets
 #= require jquery_ujs
 #= require jquery-ui/widgets/autocomplete
 #= require jquery.Jcrop
-#= require tag-it
-#= require data-confirm-modal
 #= require jquery.autosize.js
+#= require tag-it
+#= require bootstrap-sprockets
+#= require data-confirm-modal
 #= require turbolinks
 #= require cable
 #= require_tree ./clients/

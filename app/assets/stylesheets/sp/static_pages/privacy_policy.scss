@@ -1,0 +1,69 @@
+.privacy {
+  .container {
+    color: $color-main;
+    padding: 10%;
+
+    h1 {
+      border-bottom: 1px solid $color-main;
+      font-size: 1.5em;
+      margin-bottom: 5%;
+      text-align: center;
+    }
+
+    .copyright-date {
+      text-align: right;
+      margin-bottom: 4%;
+
+      ul {
+        li {
+          font-size: 1.2em;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .copyright-block {
+      border-bottom: 1px dotted $color-sub1;
+      padding-top: 4vh;
+      padding-bottom: 4vh;
+
+      h3 {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 2%;
+      }
+
+      p {
+        font-size: 1em;
+      }
+
+      ol {
+        list-style: decimal;
+      }
+    }
+
+    .copyright-contact {
+      padding-top: 4vh;
+      padding-bottom: 4vh;
+      border-bottom: 1px dotted $color-sub1;
+
+      h3 {
+        color: $color-main;
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 2%;
+      }
+
+      p {
+        font-size: 1em;
+      }
+
+      ul {
+        li {
+          color: $color-main;
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}
