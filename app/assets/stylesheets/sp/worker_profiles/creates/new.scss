@@ -1,0 +1,61 @@
+// create worker profile
+
+// base
+@import 'base';
+// select type
+@import 'type';
+// select programming languages or skills
+@import 'skill';
+// select availability
+@import 'availability';
+// type past performance
+@import 'past_performance';
+// type unit price
+@import 'unit_price';
+// type note
+@import 'note';
+// upload picture
+@import 'picture';
+// select location
+@import 'location';
+// employment history
+@import 'history';
+
+.check-box {
+  .label-checkbox {
+    cursor: pointer;
+    color: $color-main;
+
+    input[type='checkbox'] {
+      &:checked + .lever {
+        color: $color-sub2
+      }
+    }
+  }
+}
+
+.check-currently {
+  margin-bottom: 30px;
+}
+
+.check-active {
+  margin-bottom: 20px;
+
+  .active-worker-info {
+    display: none;
+  }
+
+  .notice {
+    color: red;
+    display: block;
+  }
+}
+
+.btn-primary {
+  background-color: $color-sub2;
+}
+.btn {
+  font-size: 1.4em;
+  margin-bottom: 5vh;
+  width: 100%;
+}

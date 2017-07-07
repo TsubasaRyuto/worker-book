@@ -15,89 +15,81 @@
 // introbody
 .introbody {
   border-top: none;
-  background-color: $color-main;
+  background-color: black;
   height: 87.6vh;
 
-  .top-left {
-    color: $color-sub3;
-    padding-top: 100px;
-    padding-left: 50px;
-
-    h2 {
-      font-size: 2.7em;
-      font-weight: bold;
-    }
-
-    h1 {
-      font-size: 3em;
-      font-weight: bold;
-    }
-
-    p {
-      font-size: 1.8em;
-      line-height: 40px;
-      margin-top: 50px;
-    }
+  .img-size {
+    display: block;
+    max-width: 380px;
+    max-height: 290px;
+    margin: 13vh auto 6vh;
+    opacity: .2;
   }
 
-  .top-right {
-    height: 87.6vh;
-    background-image: linear-gradient(-44.4deg, $color-sub3 50%, $color-main 50%, $color-main);
+  h2 {
+    color: $color-main;
+    font-size: 5em;
+    font: lighter;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+}
 
-    .link-btn {
-      bottom: 30px;
-      position: absolute;
-      right: 0;
 
-      .top-btn {
-        display: block;
-        padding-left: 50px;
+.link-btn {
+  border-bottom: 2px solid $color-main;
+  color: $color-main;
+  overflow: hidden;
+  margin: 10vh auto;
+  padding-bottom: 5vh;
+  width: 80vw;
+
+  a {
+    color: $color-main;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover .link{
+      border-bottom: 2px solid $color-main;
+      color: $color-sub1;
+
+
+      span:nth-child(2) {
+        display: inline;
       }
 
-      .bottom-btn {
-        display: block;
-        padding-right: 100px;
+      span:nth-child(1) {
+        display: none;
       }
+    }
 
-      a {
-        color: $color-main;
-        font-weight: bold;
-        text-decoration: none;
+    .link {
+      display: inline-block;
+      font-size: 1.4em;
+      margin: 0 0 20px 40px;
+      text-align: center;
 
-        &:hover .circle-btn{
-          background-color: $color-main;
-          color: $color-sub3;
-
-          span:nth-child(2) {
-            display: inline;
-          }
-
-          span:nth-child(1) {
-            display: none;
-          }
-        }
-
-        .circle-btn {
-          border: 2px solid $color-main;
-          border-radius: 50%;
-          display: inline-block;
-          height: 90px;
-          line-height: 90px;
-          margin: 0 0 10px 20px;
-          text-align: center;
-          width: 90px;
-
-          span:nth-child(2) {
-            display: none;
-          }
-        }
+      span:nth-child(2) {
+        display: none;
       }
     }
   }
 }
 
-.wb-features {
+.what-wb {
   border-bottom: 2px solid $color-main;
+
+   h4 {
+     margin-bottom: 2vh;
+     text-align: center;
+   }
+
+   .when-use {
+     margin-top: 10vh;
+   }
+}
+
+.session-style {
   color: $color-main;
   overflow: hidden;
   margin: 10vh auto;
@@ -119,60 +111,5 @@
 
   p {
     font-size: 1.3em;
-  }
-}
-
-// how-it-work
-.how-it-work {
-  color: $color-main;
-  display: block;
-  margin: 10vh auto;
-  width: 80vw;
-
-  .title-en {
-    @include title_en;
-  }
-
-  .title-ja {
-    @include title_ja;
-  }
-
-  .img-size {
-    display: block;
-    max-width: 280px;
-    max-height: 190px;
-    margin: 0 auto;
-  }
-
-  .client {
-    border-bottom: 2px solid $color-main;
-    margin-bottom: 10vh;
-    padding-bottom: 5vh;
-  }
-
-  .flow-title {
-    border-bottom: 1px solid $color-main;
-    font-size: 1.3em;
-    font-weight: bold;
-    text-align: center;
-    padding: 1vh 0;
-  }
-
-  .flow {
-    margin-bottom: 20px;
-    .odd {
-      padding-left: 5vw;
-    }
-    .explanation {
-      h4 {
-        font-size: 1.9em;
-        font-weight: bold;
-        margin-bottom: 3vh;
-      }
-
-      p {
-        font-size: 1.3em;
-      }
-    }
   }
 }

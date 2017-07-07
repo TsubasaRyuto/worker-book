@@ -1,0 +1,31 @@
+.forgot-pass {
+  h1 {
+    margin: 15vh 0 3vh;
+    text-align: center;
+  }
+
+  p {
+    display: block;
+    font-size: 1.2em;
+    margin: 0 auto 5vh;
+    width: 80%;
+  }
+  .form-control {
+    border: none;
+    border-bottom: 1px solid $color-main;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 1.7em;
+    font-style: italic;
+    font-family: $font-family-main;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    width: 80%;
+  }
+  .btn {
+    display: block;
+    font-size: 1em;
+    margin: 5vh auto 10vh;
+    width: 40%;
+  }
+}

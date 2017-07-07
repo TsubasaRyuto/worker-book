@@ -27,10 +27,10 @@
   <h3>会社ロゴ</h3>
   <%= render 'shared/error', object: f.object, field: :logo %>
   <div class="row">
-    <%= f.label :logo, class: 'col-md-4' do %>
+    <%= f.label :logo, class: 'col-xs-6 col-md-4' do %>
       <div class="logo-img">
         <% if @client.logo.blank? %>
-          <%= image_tag '', alt: "NO LOGO", id: 'preview_logo' %>
+          <%= image_tag 'static_pages/sign_up/client.png', id: 'preview_logo' %>
         <% else %>
           <%= image_tag @client.logo_url, id: 'preview_logo' %>
         <% end %>
@@ -38,7 +38,7 @@
       <p class="upload">Add a photo</p>
       <%= f.file_field :logo, accept: 'image/jpeg, image/jpg, image/gif, image/png', class: 'img-upload' %>
     <% end %>
-    <div class="col-md-8">
+    <div class="col-xs-6 col-md-8">
       <p class="mess">
         会社のロゴをアップロードしてください。<br>ワーカーに信頼を与えましょう。
       </p>

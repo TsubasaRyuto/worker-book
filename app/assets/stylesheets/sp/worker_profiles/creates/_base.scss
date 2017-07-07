@@ -1,0 +1,46 @@
+.workers-profile {
+  color: $color-main;
+  width: 100%;
+
+  .form {
+    background-color: $color-sub3;
+    margin-top: 4vh;
+    margin-bottom: 5vh;
+    padding: 7vh 0;
+
+    .welcom-msg {
+      h2 {
+        font-size: 1.5em;
+        font-style: italic;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+
+      p {
+        font-size: 1.2em;
+        margin: 0 25px;
+      }
+    }
+
+    .main-contents {
+      h1 {
+        color: $color-sub1;
+        font-size: 1.6em;
+        font-weight: bold;
+        text-align: center;
+        margin: 5vh 0 0;
+      }
+
+      h2 {
+        font-size: 1.4em;
+        font-weight: bold;
+        margin-bottom: 5vh;
+      }
+
+      h3 {
+        font-size: 1.2em;
+        margin-bottom: 2vh;
+      }
+    }
+  }
+}

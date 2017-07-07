@@ -1,0 +1,40 @@
+.how-it-work {
+  color: $color-main;
+  display: block;
+  margin: 10vh auto;
+  width: 80vw;
+
+  .title-en {
+    @include title_en;
+  }
+
+  .title-ja {
+    @include title_ja;
+  }
+
+  .img-size {
+    display: none;
+  }
+
+  .flow-title {
+    display: none;
+  }
+
+  .flow {
+    margin-bottom: 20px;
+    .odd {
+      padding-left: 5vw;
+    }
+    .explanation {
+      h4 {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: 3vh;
+      }
+
+      p {
+        font-size: 1.3em;
+      }
+    }
+  }
+}

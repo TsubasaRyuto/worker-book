@@ -115,43 +115,41 @@
 <!-- unit price -->
 <div class="type-unit-price">
   <h3>Set your Person-day Unit Price</h3>
-  <div class="price">
-    <div class="row">
-      <div class="col-md-4">
-        <p class="sub-title">Person-day Unit Price</p>
-      </div>
-      <div class="col-md-8">
-        <p class="price">
-          <span>¥</span>
-          <%= f.text_field :unit_price, placeholder: '30,000', autocomplete: 'nope', class: 'form-control', id: 'input-price' %>
-          <span>/Person-day Unit Price</span>
-        </p>
-      </div>
+  <div class="row">
+    <div class="sub-title col-xs-12 col-md-4">
+      <p>Person-day Unit Price</p>
     </div>
-    <div class="row">
-      <div class="col-md-4">
-        <p class="sub-title">8% WorkerBook Service commission</p>
-      </div>
-      <div class="col-md-8">
-        <p class="price">¥<span class="view-box" id="service-fee">2,400</span>/Person-day Unit Price</p>
-      </div>
+    <div class="price col-xs-12 col-md-8">
+      <p>
+        <span>¥</span>
+        <%= f.text_field :unit_price, placeholder: '30,000', autocomplete: 'nope', class: 'form-control', id: 'input-price' %>
+        <span>/Person-day Unit Price</span>
+      </p>
     </div>
-    <div class="row">
-      <div class="col-md-4">
-        <p class="sub-title">You'll receive</p>
-      </div>
-      <div class="col-md-8">
-        <p class="price">¥<span class="view-box" id="receive-day">27,600</span>/Person-day Unit Price</p>
-      </div>
+  </div>
+  <div class="row">
+    <div class="sub-title col-xs-12 col-md-4">
+      <p>8% WorkerBook Service commission</p>
     </div>
-    <div class="row">
-      <div class="col-md-4">
-        <p class="sub-title">You'll receive</p>
-      </div>
-      <div class="col-md-8">
-        <p class="price">¥<span class="view-box" id="receive-month">607,200</span>/Person-month Unit Price</p>
-        <span>* Person-month regard as 22 days</span>
-      </div>
+    <div class="price col-xs-12 col-md-8">
+      <p>¥<span class="view-box" id="service-fee">2,400</span>/Person-day Unit Price</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sub-title col-xs-12 col-md-4">
+      <p>You'll receive</p>
+    </div>
+    <div class="price col-xs-12 col-md-8">
+      <p>¥<span class="view-box" id="receive-day">27,600</span>/Person-day Unit Price</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="sub-title col-xs-12 col-md-4">
+      <p>You'll receive</p>
+    </div>
+    <div class="price col-xs-12 col-md-8">
+      <p>¥<span class="view-box" id="receive-month">607,200</span>/Person-month Unit Price</p>
+      <span>* Person-month regard as 22 days</span>
     </div>
   </div>
   <div class="unit-price-info">
@@ -166,7 +164,7 @@
   <h3>Write Your strength and attitude towards work</h3>
   <%= render 'shared/error', object: f.object, field: :appeal_note %>
   <h4>Please write your top skill, experience and attitude towards work.</h4>
-  <%= f.text_area :appeal_note, class: 'form-control appeal-note', cols: 45, rows: 18, maxlength: 3000 %>
+  <%= f.text_area :appeal_note, class: 'form-control appeal-note', placeholder: I18n.t('worker_profile.appeal_example'), cols: 45, rows: 18, maxlength: 3000 %>
   <p class="help-block">*You can only enter up to 3000 charcters in japanese.<span class="count-charcters">0</span></p>
   <div class="note-info">
     <p>
@@ -180,10 +178,10 @@
   <h3>Upload your face</h3>
   <%= render 'shared/error', object: f.object, field: :picture %>
   <div class="row">
-    <%= f.label :picture, class: 'col-md-4' do %>
+    <%= f.label :picture, class: 'col-xs-6 col-md-4' do %>
     <div class="worker-picture">
       <% if @worker_profile.picture.blank? %>
-      <%= image_tag '', alt: "NO PICTURE", id: 'preview' %>
+      <%= image_tag 'static_pages/sign_up/worker.png', id: 'preview' %>
       <% else %>
       <%= image_tag @worker.profile.picture_url, id: 'preview' %>
       <% end %>
@@ -191,7 +189,7 @@
     <p class="upload">Add a photo</p>
     <%= f.file_field :picture , accept: 'image/jpeg, image/jpg, image/gif, image/png', class: 'picture-upload' %>
     <% end %>
-    <div class="col-md-8">
+    <div class="col-xs-6 col-md-8">
       <p class="mess">
         Please upload your best looking pictures to gain the trust.
       </p>

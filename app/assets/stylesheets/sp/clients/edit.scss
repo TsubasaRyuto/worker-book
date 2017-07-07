@@ -1,0 +1,13 @@
+.update-clients {
+  color: $color-main;
+  width: 100%;
+
+  .form {
+    background-color: $color-sub3;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    padding: 4vh 0;
+
+    @import 'sp/clients/commons/form';
+  }
+}

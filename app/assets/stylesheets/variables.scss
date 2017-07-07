@@ -1,5 +1,5 @@
 $color-main: #808080;
-$color-sub1: #000;
+$color-sub1: #222;
 $color-sub2: #486d94;
 $color-sub2-white: #d6dee7;
 $color-sub3: #fff;
@@ -43,4 +43,25 @@ $font-family-main: myriad Pro;
   letter-spacing: 1px;
   margin-bottom: 10vh;
   opacity: .6;
+}
+
+// sp用
+
+@mixin basic_form_style_sp {
+  border: none;
+  border-bottom: 1px solid $color-main;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 1.2em;
+  font-style: italic;
+  font-family: $font-family-main;
+  letter-spacing: 1px;
+  margin-bottom: 3vh;
+  opacity: .8;
+}
+
+@mixin info_mess {
+  color: $color-sub2;
+  font-size: .9em;
+  padding-left: 5%;
 }

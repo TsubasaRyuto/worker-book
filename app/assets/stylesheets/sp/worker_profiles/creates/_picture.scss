@@ -1,0 +1,47 @@
+.upload-picture {
+  margin-bottom: 50px;
+
+  .picture-info {
+    @include info_mess();
+  }
+
+  .worker-picture {
+    img {
+      border-radius: 50%;
+      border: 1px solid $color-main;
+      display: block;
+      height: 80px;
+      margin: 0 auto;
+      width: 80px;
+    }
+  }
+
+  .upload {
+    color: $color-sub2;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin: 2vh;
+    text-align: center;
+  }
+
+  .img-upload {
+    display: none;
+  }
+
+  .upload {
+    color: $color-sub2;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin: 2vh;
+    text-align: center;
+  }
+
+  .picture-upload {
+    display: none;
+  }
+
+  .mess {
+    font-size: 1.1em;
+    margin: 1vh 0 2vh 3vw;
+  }
+}

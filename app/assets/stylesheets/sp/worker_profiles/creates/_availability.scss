@@ -1,0 +1,24 @@
+.select-availability {
+  margin-bottom: 50px;
+
+  .select-availability-info {
+    @include info_mess();
+  }
+
+  .label-radio {
+    display: inline-block;
+    cursor: pointer;
+    padding-right: 10px;
+    text-align: center;
+
+    .lever {
+      font-size: 1.1em;
+    }
+
+    input[type='radio'] {
+      &:checked + .lever {
+        color: $color-sub2;
+      }
+    }
+  }
+}

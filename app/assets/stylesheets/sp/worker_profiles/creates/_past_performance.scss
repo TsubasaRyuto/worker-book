@@ -1,0 +1,20 @@
+.type-past-performance {
+  margin-bottom: 50px;
+
+  .past-performance-info {
+    @include info_mess();
+  }
+
+  .past-performance-warning {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+  }
+
+  .form-control {
+    @include basic_form_style_sp();
+  }
+
+  .past-performance3, .past-performance4 {
+    display: none;
+  }
+}
