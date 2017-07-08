@@ -6,21 +6,28 @@
   width: 100%;
 
   .navbar {
-    background-color: $color-sub3;
-    border-bottom: 2px solid $color-main;
+    background-color: $color-sub1;
     height: 87px;
-    margin: 0;
+
+    .container {
+      margin: 0;
+      padding-left: 5%;
+      padding-right: 5%;
+      width: 100%;
+    }
 
     .navbar-header {
       height: 87px;
-      margin-left: 6vw;
+      margin-left: 10%;
 
       h1 {
         display: inline-block;
-        margin: 12px 0;
+        line-height: 87px;
+        margin: 0;
+
         a {
           color: $color-main;
-          font-size: 1.5em;
+          font-size: 1.1em;
           text-decoration: none;
         }
       }
@@ -43,7 +50,7 @@
             text-decoration: none;
 
             &:hover {
-              color: $color-sub1;
+              color: $color-sub3;
             }
           }
           .glyphicon {

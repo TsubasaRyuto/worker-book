@@ -1,0 +1,55 @@
+.retire-user {
+  display: block;
+  margin-top: 10vh;
+  width: 100%;
+
+  .body {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+
+    h1 {
+      color: $color-main;
+      font-size: 1.6em;
+      margin-bottom: 5vh;
+      text-align: center;
+    }
+
+    p {
+      color: $color-main;
+      font-size: 1.1em;
+    }
+
+    .form {
+      margin-top: 5vh;
+
+      .form-label {
+        color: $color-main;
+        font-size: 1.2em;
+        margin-right: 10%;
+      }
+
+      .form-control {
+        border: none;
+        border-bottom: 1px solid $color-main;
+        border-radius: 0;
+        box-shadow: none;
+        display: inline-block;
+        font-size: 1.4em;
+        font-style: italic;
+        font-family: $font-family-main;
+        letter-spacing: 1px;
+        width: 60%;
+      }
+
+      .btn {
+        background-color: $color-main;
+        border: none;
+        display: inline-block;
+        font-size: .7em;
+        margin: 8vh 0 5vh 10%;
+        width: 35%;
+      }
+    }
+  }
+}

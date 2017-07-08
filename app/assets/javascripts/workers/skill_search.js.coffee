@@ -1,7 +1,7 @@
 $(document).on 'ready turbolinks:load', ->
   $('#type-skill').tagit
     placeholderText: '求めるスキル・言語',
-    tagLimit: 5,
+    tagLimit: 1,
     singleField: true,
     showAutocompleteOnFocus : true,
     fieldName: 'skill',

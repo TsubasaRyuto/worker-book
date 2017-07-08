@@ -1,0 +1,56 @@
+<section class="worker how-it-work" id="worker-how-it-work">
+  <h2 class="title-en">Freelancers</h2>
+  <h3 class="title-ja">仕事を受注する</h3>
+
+  <div class="row flow">
+    <div class="col-md-4">
+      <%= image_tag 'static_pages/how_it_works/create_account.png', alt: "支払い＆仕事", class: 'img-size' %>
+      <p class="flow-title">登録する</p>
+    </div>
+    <div class="explanation odd col-md-8">
+      <h4>Sign up & Create profile</h4>
+      <p>
+        まずは登録。<br>
+        サインアップ後にプロフィールを作成していただきます。プロフィール作成は必須
+        となっております。作成していない場合は
+        発注リクエストがとどきません。クライアントの信用を得るために、正確な情報を登録してください。
+      </p>
+    </div>
+  </div>
+  <div class="row flow">
+    <div class="explanation col-md-8">
+      <h4>Agreement job request</h4>
+      <p>
+        リクエストの承諾。<br>
+        リクエストが届いたら、発注内容とクライアントプロフィールを確認し、承諾するか否かを決めて
+        ください。すべてはワーカーの判断次第です。受けたくない仕事の場合はリクエストを引き受ける
+        必要はございません。
+      </p>
+    </div>
+    <div class="col-md-4">
+      <%= image_tag 'static_pages/how_it_works/agreement_order.png', alt: "支払い＆仕事", class: 'img-size' %>
+      <p class="flow-title">リクエスト承諾</p>
+    </div>
+  </div>
+  <div class="row flow">
+    <div class="col-md-4">
+      <%= image_tag 'static_pages/how_it_works/worker_work.png', alt: "支払い＆仕事", class: 'img-size' %>
+      <p class="flow-title">仕事</p>
+    </div>
+    <div class="explanation odd col-md-8">
+      <h4>Work & Work</h4>
+      <p>
+        仕事。<br>
+        リクエストを承諾した後は、得意なスキルで最高のパフォーマンスを出せるように全力を
+        尽くしましょう。必ず次の受注につながります。安心してください。報酬は仕事を始める前に
+        クライアントから、サービス側へ振り込まれております。
+      </p>
+    </div>
+  </div>
+
+  <%= link_to '/worker/sign_up' do %>
+    <button type="button" name="button" class="btn btn-default">
+      Start WorkerBook as Worker
+    </button>
+  <% end %>
+</section>

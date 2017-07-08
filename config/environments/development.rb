@@ -63,4 +63,8 @@ Rails.application.configure do
     Bullet.alert   = true
     Bullet.rails_logger = true # Railsのログ
   end
+
+  CarrierWave.configure do |config|
+    config.storage = :file
+  end
 end

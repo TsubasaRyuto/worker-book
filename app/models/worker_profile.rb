@@ -32,15 +32,15 @@ class WorkerProfile < ApplicationRecord
 
   scope :search_worker, ->(skill, unit_price_class, developer_type) {
     if skill && unit_price_class && developer_type
-      where(unit_price: unit_price_class[:low]..unit_price_class[:high]).where(developer_type).tagged_with(skill)
+      where(unit_price: unit_price_class[:low]..unit_price_class[:high]).where(developer_type).joins(:taggings).where('tag_id LIKE ?', skill)
     elsif skill && unit_price_class
-      where(unit_price: unit_price_class[:low]..unit_price_class[:high]).tagged_with(skill)
+      where(unit_price: unit_price_class[:low]..unit_price_class[:high]).joins(:taggings).where('tag_id LIKE ?', skill)
     elsif skill && developer_type
-      where(developer_type).tagged_with(skill)
+      where(developer_type).joins(:taggings).where('tag_id LIKE ?', skill)
     elsif unit_price_class && developer_type
       where(unit_price: unit_price_class[:low]..unit_price_class[:high]).where(developer_type)
     elsif skill
-      tagged_with(skill)
+      joins(:taggings).where('tag_id LIKE ?', skill)
     elsif unit_price_class
       where(unit_price: unit_price_class[:low]..unit_price_class[:high])
     elsif developer_type
@@ -50,6 +50,7 @@ class WorkerProfile < ApplicationRecord
     end
   }
 end
+
 
 
 # == Schema Information

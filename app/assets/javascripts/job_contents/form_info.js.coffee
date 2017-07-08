@@ -13,3 +13,8 @@ $(document).on 'ready turbolinks:load', ->
     $('.experience-seeking-info').css 'display', 'block'
   .blur ->
     $('.experience-seeking-info').css 'display', 'none'
+
+  $('#job-content-skill-field input').focus ->
+    $('.skill-seeking-info').css 'display', 'block'
+  .blur ->
+    $('.skill-seeking-info').css 'display', 'none'

@@ -5,3 +5,17 @@ ja:
         create_job_content: 発注内容の登録を完了いたしました。
         update_job_content: 発注内を変更いたしました。
         delete_job_content: "%{title}を削除いたしました。"
+      example: |
+            ~記述項目例~
+            開発背景
+            開発の目的
+            目標・成果
+            ターゲット
+            提案を依頼したい範囲
+            納品成果物
+            システム開発手法
+            機能要件
+      experience_seeking_example: |
+                                ~記述項目例~
+                                開発経歴
+                                上記以外でのスキル

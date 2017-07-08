@@ -1,6 +1,6 @@
 <li class="dropdown">
   <a href="#" calss="dropdown-toggle" data-toggle="dropdown">
-    <span class="glyphicon glyphicon-menu-hamburger"></span><%= current_user.username %>
+    <span class="glyphicon glyphicon-th-large"></span><%= current_user.username %>
   </a>
   <ul class="dropdown-menu">
     <% if worker_profile_present? %>
@@ -8,6 +8,7 @@
       <li><%= link_to "Profile", worker_path(username: current_user.username) %></li>
       <li><%= link_to "Settings", worker_settings_account_path(username: current_user.username) %></li>
     <% else %>
+      <li><%= link_to "Create Profile", worker_create_profile_path(worker_username: current_user.username) %></li>
       <li><%= link_to "Delete Account", retire_worker_path(username: current_user.username) %></li>
     <% end %>
   </ul>

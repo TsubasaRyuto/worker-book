@@ -38,7 +38,7 @@
   <h3>発注詳細内容</h3>
   <p>詳細な発注内容を記述してください</p>
   <%= render 'shared/error', object: f.object, field: :content %>
-  <%= f.text_area :content, class: 'form-control', placeholder: 'ex) ', cols: 45, rows: 18, maxlength: 3000 %>
+  <%= f.text_area :content, class: 'form-control', placeholder: I18n.t('views.job_content.example'), cols: 45, rows: 18, maxlength: 3000 %>
   <div class="content-info">
     <p>
       <strong>必須</strong><br>具体的な発注内容を記述してください。ワーカーが一番気になる項目です。
@@ -65,7 +65,7 @@
   <h3>求めている経験値</h3>
   <p>ワーカーに求める経験値を記述してください</p>
   <%= render 'shared/error', object: f.object, field: :note %>
-  <%= f.text_area :note, class: 'form-control', placeholder: 'ex) ', cols: 45, rows: 18, maxlength: 1000 %>
+  <%= f.text_area :note, class: 'form-control', placeholder: I18n.t('views.job_content.experience_seeking_example'), cols: 45, rows: 18, maxlength: 1000 %>
   <div class="experience-seeking-info">
     <p>
       <strong>必須</strong><br>ワーカーに求める経験値を具体的に記述してください。

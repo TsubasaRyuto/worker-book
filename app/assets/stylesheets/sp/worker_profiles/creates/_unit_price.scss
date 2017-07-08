@@ -1,0 +1,44 @@
+.type-unit-price {
+  margin-bottom: 5hh;
+
+  .unit-price-info {
+    @include info_mess();
+  }
+
+  .price {
+    margin-bottom: 3vh;
+    p {
+      font-size: 1.05em;
+    }
+  }
+
+  .sub-title {
+    p {
+      font-size: 1.05em;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+  }
+
+  .view-box {
+    border-bottom: 1px solid $color-main;
+    display: inline-block;
+    letter-spacing: 1px;
+    opacity: .6;
+    padding: 15px 12px 6px;
+    width: 30%;
+  }
+
+  .form-control {
+    border: none;
+    border-bottom: 3px solid $color-sub2;
+    border-radius: 0;
+    box-shadow: none;
+    display: inline-block;
+    font-size: 1.2em;
+    font-style: italic;
+    font-family: $font-family-main;
+    letter-spacing: 1px;
+    width: 35%;
+  }
+}

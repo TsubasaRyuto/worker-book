@@ -1,0 +1,39 @@
+.title{
+  .title-info {
+    display: none;
+    @include info_mess();
+  }
+}
+
+.start-date {
+  .start-date-info {
+    display: none;
+  }
+}
+
+.finish-date {
+  .finish-date-info {
+    display: none;
+  }
+}
+
+.content {
+  .content-info {
+    display: none;
+    @include info_mess();
+  }
+}
+
+.skill-seeking {
+  .skill-seeking-info {
+    display: none;
+    @include info_mess();
+  }
+}
+
+.experience-seeking {
+  .experience-seeking-info {
+    display: none;
+    @include info_mess();
+  }
+}
