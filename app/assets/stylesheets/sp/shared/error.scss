@@ -7,9 +7,8 @@
 // sign up error alert
 .signup-form {
   .alert {
-    background-color: $color-sub3;
     border: none;
-    margin: 10px 0 15px;
+    margin: 0 0 2vh;
     padding: 0;
     text-align: left;
 
@@ -48,46 +47,6 @@
 
 // profile validation error message
 .client-profile {
-  .alert {
-    margin: 0 0 2vh;
-    padding: 0;
-    text-align: left;
-
-    ul {
-      padding: 10px 15px;
-      margin: 0;
-
-      li {
-        color: $color-warning;
-        list-style-type: disc;
-        margin-left: 15px;
-      }
-    }
-  }
-}
-
-// user validation error message
-.client-user {
-  .alert {
-    margin: -6vh 0 4vh;
-    padding: 0;
-    text-align: left;
-
-    ul {
-      padding: 10px 15px;
-      margin: 0;
-
-      li {
-        color: $color-warning;
-        list-style-type: disc;
-        margin-left: 15px;
-      }
-    }
-  }
-}
-
-//
-.job-content {
   .alert {
     margin: 0 0 2vh;
     padding: 0;

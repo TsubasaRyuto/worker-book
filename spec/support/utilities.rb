@@ -30,8 +30,8 @@ end
 def sign_on_as(user, option = {})
   remember_me = option[:remember_me] || '1'
   visit '/sign_in'
-  fill_in placeholder: 'Email', with: user.email
-  fill_in placeholder: 'Password', with: user.password
-  check 'Remember me' if remember_me == '1'
-  click_button 'Sign In'
+  fill_in placeholder: 'メールアドレス', with: user.email
+  fill_in placeholder: 'パスワード', with: user.password
+  check 'サインイン状態を維持する' if remember_me == '1'
+  click_button 'サインイン'
 end

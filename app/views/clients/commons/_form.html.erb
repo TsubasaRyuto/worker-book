@@ -37,6 +37,7 @@
       </div>
       <p class="upload">Add a photo</p>
       <%= f.file_field :logo, accept: 'image/jpeg, image/jpg, image/gif, image/png', class: 'img-upload' %>
+      <%= f.hidden_field :logo_cache %>
     <% end %>
     <div class="col-xs-6 col-md-8">
       <p class="mess">

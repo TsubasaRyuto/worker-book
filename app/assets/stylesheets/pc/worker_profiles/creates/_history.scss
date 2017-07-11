@@ -2,28 +2,6 @@
   margin-bottom: 50px;
   position: relative;
 
-  &:hover {
-    .employment-history-info {
-      display: block;
-    }
-  }
-
-  .employment-history-info {
-    @include info_box($top: 30px);
-
-    &:after {
-      @include info_box_after($top: 25px);
-    }
-
-    p {
-      margin: 0;
-    }
-
-    strong {
-      font-size: 1.6em;
-    }
-  }
-
   .form-control {
     @include text_field();
   }

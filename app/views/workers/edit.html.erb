@@ -14,12 +14,12 @@
           </div>
         </div>
         <div class="row">
-          <div class="edit-form col-md-12">
-            <h3>Information</h3>
+          <div class="user-edit-form col-md-12">
+            <h3>アカウント情報</h3>
             <%= form_for(@worker, url: { controller: :workers, action: :update }) do |f| %>
               <div class="field-block row">
-                <div class="col-md-3">
-                  <%= f.label :username, class: 'form-label' %>
+                <div class="col-md-4">
+                  <%= f.label :username, 'ユーザーネーム', class: 'form-label' %>
                 </div>
                 <div class="col-md-8">
                   <%= f.text_field :username, class: 'form-control', autocomplete: 'off' %>
@@ -28,8 +28,8 @@
               </div>
 
               <div class="field-block row">
-                <div class="col-md-3">
-                  <%= f.label :email, 'Emailaddress', class: 'form-label' %>
+                <div class="col-md-4">
+                  <%= f.label :email, 'メールアドレス', class: 'form-label' %>
                 </div>
                 <div class="col-md-8">
                   <%= f.email_field :email, class: 'form-control', autocomplete: 'off' %>
@@ -37,7 +37,7 @@
                 </div>
               </div>
 
-              <%= f.submit "Save changes", class: "btn btn-primary" %>
+              <%= f.submit "変更を保存", class: "btn btn-primary" %>
             <% end %>
           </div>
         </div>

@@ -7,7 +7,8 @@ RSpec.feature 'Workers:CreateProfile', type: :feature, js: true do
       it 'should create profile by worker' do
         sign_on_as(worker)
         visit worker_create_profile_path(worker_username: worker.username)
-        expect(page).to have_selector 'h1', text: 'Create Profile'
+        expect(page).to have_selector 'h1', text: 'フリーランスアカウント'
+        expect(page).to have_selector 'h2', text: 'プロフィール登録'
         page.find('.lever', text: 'Web Developer').click
         page.find('.lever', text: 'Mobile Developer').click
         fill_autocomplete('ui-autocomplete-input', with: 'javas', select: 'JavaScript')
@@ -29,7 +30,7 @@ RSpec.feature 'Workers:CreateProfile', type: :feature, js: true do
         select '北海道', from: 'worker_profile_location'
         fill_in id: 'worker_profile_employment_history1', with: 'Example Inc'
         fill_in id: 'worker_profile_employment_history2', with: 'Example.com Inc'
-        expect { click_button 'Create my profile' }.to change { WorkerProfile.count }.by(1)
+        expect { click_button 'プロフィール登録' }.to change { WorkerProfile.count }.by(1)
         expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"
       end
     end
@@ -37,7 +38,8 @@ RSpec.feature 'Workers:CreateProfile', type: :feature, js: true do
       it 'should not create profile by worker' do
         sign_on_as(worker)
         visit worker_create_profile_path(worker_username: worker.username)
-        expect(page).to have_selector 'h1', text: 'Create Profile'
+        expect(page).to have_selector 'h1', text: 'フリーランスアカウント'
+        expect(page).to have_selector 'h2', text: 'プロフィール登録'
         fill_autocomplete('ui-autocomplete-input', with: 'javas', select: 'JavaScript')
         expect(page).to have_selector 'span.tagit-label', text: 'JavaScript'
         fill_autocomplete('ui-autocomplete-input', with: 'jque', select: 'jQuery')
@@ -55,8 +57,8 @@ RSpec.feature 'Workers:CreateProfile', type: :feature, js: true do
         attach_file('worker_profile_picture', 'spec/fixtures/images/lobo.png', visible: false)
         select '北海道', from: 'worker_profile_location'
         fill_in id: 'worker_profile_employment_history1', with: 'Example Inc'
-        expect { click_button 'Create my profile' }.to change { WorkerProfile.count }.by(0)
-        expect(page).to have_selector 'h1', text: 'Create Profile'
+        expect { click_button 'プロフィール登録' }.to change { WorkerProfile.count }.by(0)
+        expect(page).to have_selector 'h1', text: 'フリーランスアカウント'
       end
     end
   end

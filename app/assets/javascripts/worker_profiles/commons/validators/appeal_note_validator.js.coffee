@@ -18,13 +18,6 @@ $(document).on 'ready turbolinks:load', ->
       $(note).css 'border', "2px solid #{color_success}"
       $(count_char).css 'color', color_success
 
-
-  $(note).focus ->
-    $(info).css 'display', 'block'
-
-  $(note).blur ->
-    $(info).css 'display', 'none'
-
   if $(note).val()
     first_note_val_length = $(note).val().length
     $(count_char).html first_note_val_length

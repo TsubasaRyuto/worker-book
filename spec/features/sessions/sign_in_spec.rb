@@ -6,12 +6,13 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
       shared_examples_for 'valid information but not create profile' do
         it 'should sign in on remember_me' do
           visit '/sign_in'
-          expect(page).to have_selector 'h1', text: 'Sign In'
-          fill_in placeholder: 'Email', with: user.email
-          fill_in placeholder: 'Password', with: user.password
-          click_button 'Sign In'
+          expect(page).to have_selector 'h1', text: 'サインイン'
+          fill_in placeholder: 'メールアドレス', with: user.email
+          fill_in placeholder: 'パスワード', with: user.password
+          click_button 'サインイン'
           expect(signed_on?(user)).to be_truthy
-          expect(page).to have_selector 'h1', text: 'Create Profile'
+          expect(page).to have_selector 'h1', text: 'フリーランスアカウント'
+          expect(page).to have_selector 'h2', text: 'プロフィール登録'
           expect(page).to have_link user.username.to_s
           expect(page).to have_link 'Sign out', href: '/sign_out'
         end
@@ -23,10 +24,10 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
         end
         it 'should sign in on remember_me' do
           visit '/sign_in'
-          expect(page).to have_selector 'h1', text: 'Sign In'
-          fill_in placeholder: 'Email', with: user.email
-          fill_in placeholder: 'Password', with: user.password
-          click_button 'Sign In'
+          expect(page).to have_selector 'h1', text: 'サインイン'
+          fill_in placeholder: 'メールアドレス', with: user.email
+          fill_in placeholder: 'パスワード', with: user.password
+          click_button 'サインイン'
           expect(signed_on?(user)).to be_truthy
 
           if user_type(user) == 'worker'
@@ -95,11 +96,11 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
       context 'invalid information' do
         it 'should not sign in' do
           visit '/sign_in'
-          expect(page).to have_selector 'h1', text: 'Sign In'
-          fill_in placeholder: 'Email', with: ''
-          fill_in placeholder: 'Password', with: ''
-          click_button 'Sign In'
-          expect(page).to have_selector 'h1', text: 'Sign In'
+          expect(page).to have_selector 'h1', text: 'サインイン'
+          fill_in placeholder: 'メールアドレス', with: ''
+          fill_in placeholder: 'パスワード', with: ''
+          click_button 'サインイン'
+          expect(page).to have_selector 'h1', text: 'サインイン'
           expect(page).to have_selector '.alert'
           visit root_path
           expect(page).to_not have_selector '.alert'
@@ -109,10 +110,10 @@ RSpec.feature 'Sessions::SignIn', type: :feature do
       shared_examples_for 'no account activation' do
         it 'should not sign in' do
           visit '/sign_in'
-          expect(page).to have_selector 'h1', text: 'Sign In'
-          fill_in placeholder: 'Email', with: user.email
-          fill_in placeholder: 'Password', with: user.password
-          click_button 'Sign In'
+          expect(page).to have_selector 'h1', text: 'サインイン'
+          fill_in placeholder: 'メールアドレス', with: user.email
+          fill_in placeholder: 'パスワード', with: user.password
+          click_button 'サインイン'
           expect(page).to have_selector 'h1', text: 'WorkerBook'
           expect(page).to have_selector '.alert'
         end

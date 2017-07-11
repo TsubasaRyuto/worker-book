@@ -1,28 +1,6 @@
 .upload-picture {
   margin-bottom: 50px;
 
-  &:hover {
-    .picture-info {
-      display: block;
-    }
-  }
-
-  .picture-info {
-    @include info_box($top: 80px);
-
-    &:after {
-      @include info_box_after($top: 40px);
-    }
-
-    p {
-      margin: 0;
-    }
-
-    strong {
-      font-size: 1.6em;
-    }
-  }
-
   .worker-picture {
     img {
       border-radius: 50%;

@@ -1,18 +1,16 @@
 <% provide(:title, 'Update client profile') %>
 
-<section class="update-clients client-error" id="update-client-profile">
+<section class="update-clients edit-page client-error" id="update-client-profile">
   <div class="container">
     <div class="row">
       <div class="form col-md-8 col-md-offset-2">
-        <div class="main-contents">
-          <h1>Update Client profile</h1>
-          <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-              <%= form_for(@client, url: { controller: :clients, action: :update })do |f| %>
-                <%= render 'clients/commons/form', { action: 'update', button: '変更を保存', f: f } %>
-                <%= f.submit '変更を保存', class: "btn btn-primary" %>
-              <% end %>
-            </div>
+        <h1>プロフィール更新</h1>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <%= form_for(@client, url: { controller: :clients, action: :update })do |f| %>
+              <%= render 'clients/commons/form', { action: 'update', button: '変更を保存', f: f } %>
+              <%= f.submit '変更を保存', class: "btn btn-primary" %>
+            <% end %>
           </div>
         </div>
       </div>

@@ -23,3 +23,10 @@ ja:
           not_found_email: メールアドレスが正しくありません。
           expired_link: パスワード再設定用リンクの有効期限が切れております。
           invalid_username: 正しいユーザーネームを入力してください
+      sign_up:
+        last_name: 名前-氏
+        first_name: 名前-名
+        username: ユーザーネーム
+        email: メールアドレス
+        password: パスワード
+        confirmation: パスワード確認
