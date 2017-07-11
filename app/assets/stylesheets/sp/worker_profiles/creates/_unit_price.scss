@@ -1,10 +1,6 @@
 .type-unit-price {
   margin-bottom: 5hh;
 
-  .unit-price-info {
-    @include info_mess();
-  }
-
   .price {
     margin-bottom: 3vh;
     p {

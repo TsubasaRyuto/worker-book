@@ -1,10 +1,6 @@
 .select-availability {
   margin-bottom: 50px;
 
-  .select-availability-info {
-    @include info_mess();
-  }
-
   .label-radio {
     display: inline-block;
     cursor: pointer;

@@ -1,9 +1,6 @@
 .select-skill {
   margin-bottom: 50px;
 
-  .select-skill-info {
-    @include info_mess();
-  }
   .skill-max-warning {
     color: $color-warning;
     display: none;

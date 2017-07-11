@@ -20,11 +20,11 @@ RSpec.feature 'Workers:DeleteAccount', type: :feature do
 
           # 削除したアカウントでのサインイン＝＞error
           visit '/sign_in'
-          expect(page).to have_selector 'h1', text: 'Sign In'
-          fill_in placeholder: 'Email', with: worker_email
-          fill_in placeholder: 'Password', with: worker_password
-          click_button 'Sign In'
-          expect(page).to have_selector 'h1', text: 'Sign In'
+          expect(page).to have_selector 'h1', text: 'サインイン'
+          fill_in placeholder: 'メールアドレス', with: worker_email
+          fill_in placeholder: 'パスワード', with: worker_password
+          click_button 'サインイン'
+          expect(page).to have_selector 'h1', text: 'サインイン'
           expect(page).to have_selector '.alert'
         end
       end

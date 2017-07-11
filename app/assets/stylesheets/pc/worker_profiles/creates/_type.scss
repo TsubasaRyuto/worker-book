@@ -6,27 +6,6 @@
     padding: 0;
   }
 
-  &:hover {
-    .select-type-info {
-      display: block;
-    }
-  }
-
-  .select-type-info {
-    @include info_box;
-
-    &:after {
-      @include info_box_after;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    strong {
-      font-size: 1.6em;
-    }
-  }
   .label-checkbox {
     cursor: pointer;
     input[type='checkbox'] {

@@ -1,10 +1,6 @@
 .upload-picture {
   margin-bottom: 50px;
 
-  .picture-info {
-    @include info_mess();
-  }
-
   .worker-picture {
     img {
       border-radius: 50%;

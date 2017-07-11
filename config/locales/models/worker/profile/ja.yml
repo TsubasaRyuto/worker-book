@@ -4,19 +4,23 @@ ja:
       worker_profile:
     attributes:
       worker_profile:
-          type: Developer type
-          past_performance: Past performance
-          employment_history: Employment history
+          type: デベロッパータイプ
+          past_performance: 過去実績
+          employment_history: 職歴
+          skill_list: スキル
+          appeal_note: 仕事に対する思い、スキルアピール
+          picture: 画像アップロード
+
 
     errors:
       worker_profile:
-        preset_type: " is required."
-        max_count_type: You may select up to four categories of work.
+        preset_type: " は必須項目です。"
+        max_count_type: 最大４つまで選択可能です。
         wrong_size: " is the wrong size (should be %{file_size})"
         size_too_small: " is too small (should be at least %{file_size})"
         size_too_big: " is too big (should be at most %{file_size})"
-        past_performance_min: " is required, to enter at least 2 URSs"
-        past_performance_dup: " is duplicated"
-        past_performance_formant: " is invalid url format"
-        emp_hist_presence: " is required, to enter at least 1"
-        emp_hist_length: " is not less than 3 characters"
+        past_performance_min: " は必須項目です。"
+        past_performance_dup: " はすでに登録されています。"
+        past_performance_formant: " は、間違ったURL形式です。"
+        emp_hist_presence: " は必須項目です。"
+        emp_hist_length: " は最低3文字以上記述してください。"

@@ -11,12 +11,12 @@
               <p>@<%= @client_user.username %></p>
           </div>
           <% end %>
-          <div class="edit-form col-md-12">
-            <h3>Information</h3>
+          <div class="user-edit-form col-md-12">
+            <h3>アカウント情報</h3>
             <%= form_for(@client_user, url: { controller: :client_users, action: :update }) do |f| %>
               <div class="field-block row">
-                <div class="col-md-3">
-                  <%= f.label :username, class: 'form-label' %>
+                <div class="col-md-4">
+                  <%= f.label :username, 'ユーザーネーム', class: 'form-label' %>
                 </div>
                 <div class="col-md-8">
                   <%= f.text_field :username, class: 'form-control', autocomplete: 'off' %>
@@ -25,8 +25,8 @@
               </div>
 
               <div class="field-block row">
-                <div class="col-md-3">
-                  <%= f.label :email, 'Emailaddress', class: 'form-label' %>
+                <div class="col-md-4">
+                  <%= f.label :email, 'メールアドレス', class: 'form-label' %>
                 </div>
                 <div class="col-md-8">
                   <%= f.email_field :email, class: 'form-control', autocomplete: 'off' %>
