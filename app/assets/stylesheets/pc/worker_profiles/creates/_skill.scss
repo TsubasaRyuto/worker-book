@@ -2,27 +2,6 @@
   margin-bottom: 50px;
   position: relative;
 
-  &:hover {
-    .select-skill-info {
-      display: block;
-    }
-  }
-
-  .select-skill-info {
-    @include info_box($top: 0);
-
-    &:after {
-      @include info_box_after($top: 40px);
-    }
-
-    p {
-      margin: 0;
-    }
-
-    strong {
-      font-size: 1.6em;
-    }
-  }
   .skill-max-warning {
     color: $color-warning;
     display: none;

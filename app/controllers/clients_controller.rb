@@ -50,7 +50,7 @@ class ClientsController < ApplicationController
   private
 
   def profile_params
-    params.require(:client).permit(:name, :corporate_site, :clientname, :location, :logo, client_users_attributes: [:last_name, :first_name, :username, :email, :password, :password_confirmation])
+    params.require(:client).permit(:name, :corporate_site, :clientname, :location, :logo, :logo_cache, client_users_attributes: [:last_name, :first_name, :username, :email, :password, :password_confirmation])
   end
 
   def update_params

@@ -11,7 +11,7 @@ RSpec.feature 'Workers:UpdateProfile', type: :feature, js: true do
     context 'successfull' do
       it 'should create profile by worker' do
         visit worker_settings_profile_path(worker_username: worker.username)
-        expect(page).to have_selector 'h1', text: 'Update Profile'
+        expect(page).to have_selector 'h1', text: 'プロフィール編集'
         page.find('.lever', text: 'Web Developer').click
         page.find('.lever', text: 'Other').click
         choose id: 'worker_profile_availability_full'
@@ -23,7 +23,7 @@ RSpec.feature 'Workers:UpdateProfile', type: :feature, js: true do
         select '北海道', from: 'worker_profile_location'
         fill_in id: 'worker_profile_employment_history1', with: 'Example Inc'
         fill_in id: 'worker_profile_employment_history2', with: 'Example.com Inc'
-        click_button 'Save changes'
+        click_button '変更を保存'
         expect(page).to have_selector 'div.alert-success'
         expect(page).to have_selector 'h2', text: "#{worker.last_name} #{worker.first_name}"
         worker_profile.reload
@@ -36,7 +36,7 @@ RSpec.feature 'Workers:UpdateProfile', type: :feature, js: true do
         page.find('.lever', text: 'Mobile Developer').click
         page.find('.lever', text: 'Game Developer').click
         page.find('.lever', text: 'Web Developer').click
-        expect(page).to have_selector 'h1', text: 'Update Profile'
+        expect(page).to have_selector 'h1', text: 'プロフィール編集'
         fill_autocomplete('ui-autocomplete-input', with: 'javas', select: 'JavaScript')
         expect(page).to have_selector 'span.tagit-label', text: 'JavaScript'
         fill_autocomplete('ui-autocomplete-input', with: 'jque', select: 'jQuery')
@@ -54,8 +54,8 @@ RSpec.feature 'Workers:UpdateProfile', type: :feature, js: true do
         attach_file('worker_profile_picture', 'spec/fixtures/images/lobo.png', visible: false)
         select '北海道', from: 'worker_profile_location'
         fill_in id: 'worker_profile_employment_history1', with: 'Example Inc'
-        click_button 'Save changes'
-        expect(page).to have_selector 'h1', text: 'Update Profile'
+        click_button '変更を保存'
+        expect(page).to have_selector 'h1', text: 'プロフィール編集'
       end
     end
   end

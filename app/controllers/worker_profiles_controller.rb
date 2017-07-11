@@ -74,7 +74,7 @@ class WorkerProfilesController < ApplicationController
       :skill_id, :type_web_developer, :type_mobile_developer, :type_game_developer,
       :type_desktop_developer, :type_ai_developer, :type_qa_testing, :type_web_mobile_desiner,
       :type_project_maneger, :type_other, :availability, :past_performance1, :past_performance2,
-      :past_performance3, :past_performance4, :unit_price, :appeal_note, :picture, :location,
+      :past_performance3, :past_performance4, :unit_price, :appeal_note, :picture, :picture_cache, :location,
       :employment_history1, :employment_history2, :employment_history3, :employment_history4,
       :currently_freelancer, :active, :skill_list
     )

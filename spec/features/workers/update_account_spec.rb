@@ -13,9 +13,9 @@ RSpec.feature 'Workers:UpdateAccount', type: :feature do
         email = 'change_email@example.com'
         sign_on_as(worker)
         visit worker_settings_account_path(username: worker.username)
-        fill_in 'Username', with: username
-        fill_in 'Email', with: email
-        find_button('Save changes').trigger('click')
+        fill_in 'ユーザーネーム', with: username
+        fill_in 'メールアドレス', with: email
+        find_button('変更を保存').trigger('click')
         expect(page).to have_selector '.alert'
         worker.reload
         expect(worker.username).to eq username
@@ -27,10 +27,10 @@ RSpec.feature 'Workers:UpdateAccount', type: :feature do
       it 'should not update' do
         sign_on_as(worker)
         visit worker_settings_account_path(username: worker.username)
-        fill_in 'Username', with: 'invali+info'
-        fill_in 'Email', with: 'worker@invalid'
-        find_button('Save changes').trigger('click')
-        expect(page).to have_selector 'h3', text: 'Information'
+        fill_in 'ユーザーネーム', with: 'invali+info'
+        fill_in 'メールアドレス', with: 'worker@invalid'
+        find_button('変更を保存').trigger('click')
+        expect(page).to have_selector 'h3', text: 'アカウント情報'
         expect(page).to have_selector 'div#error_explanation'
         expect(page).to have_selector 'div.field_with_errors'
       end

@@ -1,10 +1,6 @@
 .type-history {
   margin-bottom: 50px;
 
-  .employment-history-info {
-    @include info_mess();
-  }
-
   .form-control {
     @include basic_form_style_sp();
   }

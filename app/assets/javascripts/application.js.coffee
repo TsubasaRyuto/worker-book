@@ -23,6 +23,5 @@
 #= require_tree ./clients/
 #= require_tree ./job_contents/
 #= require_tree ./order_confirms/
-#= require_tree ./shared/
 #= require_tree ./worker_profiles/commons
 #= require_tree ./workers/

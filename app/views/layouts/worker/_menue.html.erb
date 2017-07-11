@@ -5,11 +5,11 @@
   <ul class="dropdown-menu">
     <% if worker_profile_present? %>
       <li><%= link_to 'WBチャット', '/chat/messages/@workerbook' %></li>
-      <li><%= link_to "Profile", worker_path(username: current_user.username) %></li>
-      <li><%= link_to "Settings", worker_settings_account_path(username: current_user.username) %></li>
+      <li><%= link_to "プロフィール", worker_path(username: current_user.username) %></li>
+      <li><%= link_to "アカウント設定", worker_settings_account_path(username: current_user.username) %></li>
     <% else %>
-      <li><%= link_to "Create Profile", worker_create_profile_path(worker_username: current_user.username) %></li>
-      <li><%= link_to "Delete Account", retire_worker_path(username: current_user.username) %></li>
+      <li><%= link_to "プロフィール作成", worker_create_profile_path(worker_username: current_user.username) %></li>
+      <li><%= link_to "アカウント削除", retire_worker_path(username: current_user.username) %></li>
     <% end %>
   </ul>
   <li>

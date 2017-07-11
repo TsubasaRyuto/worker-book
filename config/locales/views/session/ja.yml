@@ -1,0 +1,8 @@
+ja:
+  views:
+    session:
+      email: メールアドレス
+      password: パスワード
+      remember_me: サインイン状態を維持する
+      create_account: アカウント作成
+      forgot_password: パスワードを忘れた
