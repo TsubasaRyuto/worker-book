@@ -1,9 +1,3 @@
-h2 {
-  color: $color-main;
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
 ul {
   padding: 0;
   margin: 0;
@@ -20,7 +14,6 @@ a {
   }
 }
 
-
 .section {
   border-top: 1px solid $color-main;
   color: $color-main;
@@ -30,7 +23,22 @@ a {
   width: 90%;
 
   h2 {
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+
+  h3 {
     font-size: 1.2em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  ul {
+    li {
+      font-size: 1em;
+    }
   }
 }
 
@@ -43,6 +51,14 @@ a {
     margin: 0 auto;
     width: 80px;
   }
+
+  h2 {
+    color: $color-main;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+  }
+
   a {
     text-decoration: none;
     .btn {
@@ -50,48 +66,42 @@ a {
       border: none;
       display: block;
       font-size: .8em;
-      margin: 2vh auto 0;
+      margin: 1vh auto 2vh;
       width: 50%;
     }
   }
 } // face
 .info {
-  color: $color-sub2;
+  color: $color-main;
+  padding-left: 10%;
 
-  h2 {
-    text-align: center;
-  }
+  .info-table {
+    display: blck;
+    float: left;
+    width: 50%;
 
-  ul {
-    margin: 0 auot;
-
-    li {
-      border-right: 1px solid $color-sub2;
-      float: left;
-      font-size: .7em;
-      padding: 0 10px;
-
-      &:first-child {
-        padding-left: 0;
-      }
-
-      &:last-child {
-        border: none;
-        padding-right: 0;
-      }
+    .key {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin: 0;
+      opacity: .6;
     }
-  }
 
-  p {
-    clear: both;
-    display: block;
-    padding-top: 20px;
+    .value {
+      font-size: 1em;
+      margin-bottom: 2vh;
+      margin-left: 10%;
+    }
+
+    p {
+      display: block;
+      font-size: 1.2em;
+    }
   }
 } // info
 
 .strength {
   p {
-    font-size: 1em;
     margin: 0;
     padding: 1vh 0;
   }
@@ -129,7 +139,6 @@ a {
     width: 100%;
 
     p {
-      font-size: .9em;
       letter-spacing: 1px;
       word-wrap:break-word;
     }
@@ -139,7 +148,6 @@ a {
 .employment-history {
   ul {
     li {
-      font-size: .9em;
       letter-spacing: 1.5px;
       list-style-type: disc;
       margin-left: 10px;
@@ -156,7 +164,6 @@ a {
 
       a {
         color: $color-sub2;
-        font-size: .9em;
         letter-spacing: 1.5px;
         text-decoration: none;
       }

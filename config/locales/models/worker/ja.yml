@@ -14,6 +14,6 @@ ja:
     workers:
       profile:
         availability:
-          limited: 20h-30h／week
-          full: 30h-40h／week
-          hard: 40h-50h／week
+          limited: 20h-30h/週
+          full: 30h-40h/週
+          hard: 40h-50h/週
