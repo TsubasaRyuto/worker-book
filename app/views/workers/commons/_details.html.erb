@@ -1,38 +1,49 @@
 <div class="row">
   <div class="face col-xs-12 col-md-4">
     <%= image_tag @worker.profile.picture_url %>
+    <h2><%= @worker.last_name %> <%= @worker.first_name %></h2>
     <% if signed_in? && current_user.username == params[:username] %>
       <%= link_to worker_settings_profile_path(worker_username: current_user.username) do %>
         <button type=button class="btn btn-primary">プロフィール変更</button>
       <% end %>
     <% end %>
   </div>
-  <div class="info col-md-8 col-xs-12">
-    <h2><%= @worker.last_name %> <%= @worker.first_name %></h2>
-    <ul>
-      <li><%= Prefecture.name(@worker.profile.location) %></li>
-      <li>¥<%= @worker.profile.unit_price %>/人日</li>
-      <li>¥<%= @worker.profile.unit_price * 22 %>/人月</li>
-      <% if @worker.profile.active? %>
-        <li>受付中</li>
-      <% else %>
-        <li>未受付</li>
-      <% end %>
-    </ul>
-    <p class="clear">稼働時間/週　: <%= t("enums.workers.profile.availability.#{@worker.profile.availability}") %></p>
+  <div class="info info-right col-xs-12 col-md-8">
+    <div class="info-table">
+      <p class="key">拠点</p>
+      <p class="value"><%= Prefecture.name(@worker.profile.location) %></p>
+
+      <p class="key">稼働時間/週</p>
+      <p class="value"><%= t("enums.workers.profile.availability.#{@worker.profile.availability}") %></p>
+
+      <p>
+        <% if @worker.profile.active? %>
+          <li>受付中</li>
+        <% else %>
+          <li>未受付</li>
+        <% end %>
+      </p>
+    </div>
+
+    <div class="info-table">
+      <p class="key">人日単価</p>
+      <p class="value">¥<%= @worker.profile.unit_price %>/人日</p>
+
+      <p class="key">人月単価</p>
+      <p class="value">¥<%= @worker.profile.unit_price * 22 %>月日</p>
+    </div>
   </div>
 </div>
 <div class="row">
   <div class="strength section col-xs-12 col-md-12">
-    <h2>Developer Types & Skills</h2>
+    <h2>デベロッパータイプ</h2>
     <ul class="developer-types">
-      <p>Developer Types</p>
       <% developer_type_list(@worker.profile).each do |type| %>
         <li><%= t("views.worker_profile.developer_type.#{type}") %></li>
       <% end %>
     </ul>
     <ul class="skills">
-    <p>skills & programming languages</p>
+    <h2>スキル・プログラミング言語</h2>
     <% @worker.profile.skill.each do |skill| %>
       <li><%= skill.name %></li>
     <% end %>
