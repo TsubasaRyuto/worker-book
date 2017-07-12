@@ -105,5 +105,6 @@ Rails.application.configure do
     config.fog_directory = ENV['FOG_DIRECTORY']
     config.asset_host = Settings.cdn.host
     config.storage = :fog
+    config.cache_storage = :fog
   end
 end
