@@ -1,0 +1,100 @@
+.intro {
+  display: block;
+  height: 87px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  .navbar {
+    background-color: $color-sub1;
+    border-bottom: none;
+    height: 87px;
+
+    .container {
+      margin: 0;
+      padding-left: 5%;
+      padding-right: 5%;
+      width: 100%;
+    }
+
+    .navbar-header {
+      height: 87px;
+      margin-left: 10%;
+
+      h1 {
+        display: inline-block;
+        line-height: 87px;
+        margin: 0;
+
+        a {
+          color: $color-sub3;
+          font-size: 1.1em;
+          text-decoration: none;
+        }
+      }
+
+      button {
+        background-color: $color-main;
+        margin-top: 5vh;
+      }
+    }
+
+    .navbar-collapse {
+      .navbar-nav {
+        font-size: 1.5em;
+        margin-top: 14px;
+        margin-right: 5vw;
+
+        li {
+          a {
+            color: $color-sub3;
+            text-decoration: none;
+
+            &:hover {
+              color: $color-main;
+
+              .glyphicon {
+                color: $color-main;
+              }
+            }
+
+            .glyphicon {
+              color: $color-sub3;
+              font-size: 1em;
+              margin-right: .3vw;
+              padding: 0 .7vw;
+            }
+          }
+        }
+        .open {
+          a {
+            background-color: $color-sub1;
+
+            &:focus{
+              color: $color-main;
+
+              .glyphicon {
+                color: $color-main;
+              }
+            }
+          }
+
+          ul {
+            background-color: $color-main;
+            min-width: 80%;
+            padding: 0;
+
+            a {
+              color: $color-sub3;
+              padding: .5vh .7vw;
+
+              &:hover {
+                color: $color-main;
+              }
+            }
+          }
+        }
+      } // navbar-nav
+    } // navbar-collapse
+  } // navbar
+} //intro

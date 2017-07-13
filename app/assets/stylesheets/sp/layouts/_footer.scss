@@ -1,0 +1,48 @@
+.footer{
+  background-color: $color-sub1;
+
+  .text-box{
+    font-size: 1em;
+    padding: 10vh 0 3vh;
+
+    ul {
+
+      li {
+        padding-left: 7%;
+        padding-bottom: 4px;
+        list-style: none;
+
+        a {
+          color: $color-sub3;
+          text-decoration: none;
+
+          &:hover {
+            border-bottom: 1px solid $color-main;
+          }
+        }
+      }
+    }
+  }
+  .sns-links {
+    text-align: center;
+    margin-top: 4vh;
+
+    .twitter {
+      height: auto;
+      margin: 0 1.6%;
+      width: 28px !important;
+  	}
+
+  	.sns-img{
+      height: auto;
+  		margin: 0 2%;
+  		width: 20px;
+  	}
+  }
+  .copyright{
+    margin: 0;
+    padding: 2vh 0;
+		color: $color-sub3;
+		text-align: center;
+	}
+}

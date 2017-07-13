@@ -8,7 +8,8 @@ RSpec.feature 'ClientUsers:SingUp', type: :feature, js: true do
     context 'valid information' do
       it 'should sign up with account activate' do
         visit '/client/sign_up'
-        expect(page).to have_selector 'h1', text: 'Create Account of Client'
+        expect(page).to have_selector 'h1', text: 'クライアントアカウント'
+        expect(page).to have_selector 'h2', text: '会社情報登録'
         fill_in placeholder: 'ex) Lobo株式会社', with: 'Test 株式会社会社'
         fill_in placeholder: 'ex) http://lobo-inc.com', with: 'http://example.com'
         fill_in placeholder: 'ex) lobo_inc', with: 'client_example'
@@ -17,13 +18,14 @@ RSpec.feature 'ClientUsers:SingUp', type: :feature, js: true do
         page.find('#next-step').click
         page.execute_script("$('.fade-out').hide()")
         page.execute_script("$('#signup-client-user').show()")
-        expect(page).to have_selector 'h1', text: 'Create Account of Client user'
-        fill_in placeholder: 'Last Name', with: 'Foo'
-        fill_in placeholder: 'First Name', with: 'Bar'
-        fill_in placeholder: 'Username', with: 'foobar'
-        fill_in placeholder: 'Email', with: 'foobar@example.com'
-        fill_in placeholder: 'Password', with: 'foobar123'
-        fill_in placeholder: 'Confirmation', with: 'foobar123'
+        expect(page).to have_selector 'h1', text: 'クライアントアカウント'
+        expect(page).to have_selector 'h2', text: '担当者情報登録'
+        fill_in placeholder: '名前-氏', with: 'Foo'
+        fill_in placeholder: '名前-名', with: 'Bar'
+        fill_in placeholder: 'ユーザーネーム', with: 'foobar'
+        fill_in placeholder: 'メールアドレス', with: 'foobar@example.com'
+        fill_in placeholder: 'パスワード', with: 'foobar123'
+        fill_in placeholder: 'パスワード確認', with: 'foobar123'
         expect { click_button 'アカウント作成' }.to change { ClientUser.count }.by(1)
         expect(page).to have_selector 'h1', text: '会員登録はまだ完了しておりません。'
         expect(ApplicationMailer.deliveries.size).to eq 1
@@ -48,7 +50,8 @@ RSpec.feature 'ClientUsers:SingUp', type: :feature, js: true do
     context 'invalid information' do
       it 'should not sign up' do
         visit '/client/sign_up'
-        expect(page).to have_selector 'h1', text: 'Create Account of Client'
+        expect(page).to have_selector 'h1', text: 'クライアントアカウント'
+        expect(page).to have_selector 'h2', text: '会社情報登録'
         fill_in placeholder: 'ex) Lobo株式会社', with: ''
         fill_in placeholder: 'ex) http://lobo-inc.com', with: ''
         fill_in placeholder: 'ex) lobo_inc', with: ''
@@ -57,15 +60,16 @@ RSpec.feature 'ClientUsers:SingUp', type: :feature, js: true do
         page.find('#next-step').click
         page.execute_script("$('.fade-out').hide()")
         page.execute_script("$('#signup-client-user').show()")
-        expect(page).to have_selector 'h1', text: 'Create Account of Client user'
-        fill_in placeholder: 'Last Name', with: ''
-        fill_in placeholder: 'First Name', with: ''
-        fill_in placeholder: 'Username', with: 'invali+info'
-        fill_in placeholder: 'Email', with: 'client@invalid'
-        fill_in placeholder: 'Password', with: 'foo'
-        fill_in placeholder: 'Confirmation', with: 'bar'
+        expect(page).to have_selector 'h1', text: 'クライアントアカウント'
+        expect(page).to have_selector 'h2', text: '担当者情報登録'
+        fill_in placeholder: '名前-氏', with: ''
+        fill_in placeholder: '名前-名', with: ''
+        fill_in placeholder: 'ユーザーネーム', with: 'invali+info'
+        fill_in placeholder: 'メールアドレス', with: 'client@invalid'
+        fill_in placeholder: 'パスワード', with: 'foo'
+        fill_in placeholder: 'パスワード確認', with: 'bar'
         expect { click_button 'アカウント作成' }.to_not change { ClientUser.count }
-        expect(page).to have_selector 'h1', text: 'Create Account of Client'
+        expect(page).to have_selector 'h1', text: 'クライアントアカウント'
         expect(page).to have_selector 'div#error_explanation'
         expect(page).to have_selector 'div.field_with_errors'
       end

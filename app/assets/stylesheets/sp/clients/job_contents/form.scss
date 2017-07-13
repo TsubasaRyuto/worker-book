@@ -1,0 +1,38 @@
+.job-content {
+  width: 100%;
+
+  .form {
+    h3 {
+      font-size: 1.3em;
+      margin-bottom: 3vh;
+    }
+    .title, .term {
+      .form-control {
+        @include basic_form_style_sp();
+      }
+    }
+
+    .content, .experience-seeking {
+      .form-control {
+        color: $color-main;
+        border-color: $color-main;
+        font-size: 1.2em;
+        resize: vertical;
+        margin-bottom: 3vh;
+
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+
+    .btn-primary {
+      background-color: $color-sub2;
+    }
+    .btn {
+      font-size: 1em;
+      margin: 10vh 0;
+      width: 100%;
+    }
+  }
+}

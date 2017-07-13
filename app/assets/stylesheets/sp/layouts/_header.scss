@@ -1,0 +1,73 @@
+.intro {
+  display: block;
+  height: 87px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  .navbar {
+    background-color: $color-sub1;
+    height: 87px;
+
+    .container {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    .navbar-header {
+      height: 87px;
+      margin-left: 10%;
+
+      h1 {
+        display: inline-block;
+        line-height: 87px;
+        margin: 0;
+
+        a {
+          color: $color-sub3;
+          font-size: .7em;
+          text-decoration: none;
+        }
+      }
+
+      button {
+        margin-top: 4vh;
+      }
+    }
+
+    .navbar-collapse {
+      background-color: $color-sub1;
+      .navbar-nav {
+        font-size: 1.5em;
+        margin-top: 14px;
+        margin-right: 5vw;
+
+        li {
+          padding-left: 10px;
+          a {
+            color: $color-sub3;
+            text-decoration: none;
+          }
+
+          .glyphicon {
+            color: $color-sub3;
+            font-size: 1em;
+            margin-right: .8vw;
+            padding: 0 .7vw;
+          }
+
+          .glyphicon-menu-hamburger {
+            background-color: $color-sub3;
+            border-radius: 50%;
+            color: $color-sub1;
+            font-size: .5em;
+            margin-right: 1vw;
+            padding: 1.7%;
+            top: -0.2vh;
+          }
+        }
+      } // navbar-nav
+    } // navbar-collapse
+  } // navbar
+} //intro

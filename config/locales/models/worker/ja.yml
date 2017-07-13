@@ -2,10 +2,18 @@ ja:
   activerecord:
     models:
       worker:
+    attributes:
+      worker:
+        last_name: 名前-氏
+        first_name: 名前-名
+        username: ユーザーネーム
+        email: メールアドレス
+        password: パスワード
+        confirmation: パスワード確認
   enums:
     workers:
       profile:
         availability:
-          limited: 20h-30h／week
-          full: 30h-40h／week
-          hard: 40h-50h／week
+          limited: 20h-30h/週
+          full: 30h-40h/週
+          hard: 40h-50h/週

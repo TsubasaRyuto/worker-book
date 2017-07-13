@@ -42,25 +42,25 @@ RSpec.feature 'ResetsPassword', type: :feature do
 
       # valid email and valid token
       visit edit_password_reset_path(reset_token, email: user.email)
-      expect(page).to have_selector 'h1', text: 'Reset password'
+      expect(page).to have_selector 'h1', text: 'パスワード'
       expect(find('input[name=email]', visible: false).value).to eq user.email
 
       # invalid password and confirmation
       fill_in placeholder: 'Password', with: 'foobaz12'
       fill_in placeholder: 'Confirmation', with: 'barquux'
-      click_button 'Reset password'
+      click_button 'パスワード変更'
       expect(page).to have_selector 'div#error_explanation'
 
       # password is empty
       fill_in placeholder: 'Password', with: ''
       fill_in placeholder: 'Confirmation', with: ''
-      click_button 'Reset password'
+      click_button 'パスワード変更'
       expect(page).to have_selector 'div#error_explanation'
 
       # valid password and confirmation
       fill_in placeholder: 'Password', with: 'foobaz12'
       fill_in placeholder: 'Confirmation', with: 'foobaz12'
-      click_button 'Reset password'
+      click_button 'パスワード変更'
       user.reload
       expect(signed_on?(user)).to be_truthy
       expect(page).to have_selector '.alert'

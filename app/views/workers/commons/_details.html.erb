@@ -1,38 +1,49 @@
 <div class="row">
-  <div class="face col-md-4">
+  <div class="face col-xs-12 col-md-4">
     <%= image_tag @worker.profile.picture_url %>
+    <h2><%= @worker.last_name %> <%= @worker.first_name %></h2>
     <% if signed_in? && current_user.username == params[:username] %>
       <%= link_to worker_settings_profile_path(worker_username: current_user.username) do %>
         <button type=button class="btn btn-primary">プロフィール変更</button>
       <% end %>
     <% end %>
   </div>
-  <div class="info col-md-8">
-    <h2><%= @worker.last_name %> <%= @worker.first_name %></h2>
-    <ul>
-      <li><%= Prefecture.name(@worker.profile.location) %></li>
-      <li>¥<%= @worker.profile.unit_price %>/人日</li>
-      <li>¥<%= @worker.profile.unit_price * 22 %>/人月</li>
-      <% if @worker.profile.active? %>
-        <li>受付中</li>
-      <% else %>
-        <li>未受付</li>
-      <% end %>
-    </ul>
-    <p class="clear">稼働時間/週　: <%= t("enums.workers.profile.availability.#{@worker.profile.availability}") %></p>
+  <div class="info info-right col-xs-12 col-md-8">
+    <div class="info-table">
+      <p class="key">拠点</p>
+      <p class="value"><%= Prefecture.name(@worker.profile.location) %></p>
+
+      <p class="key">稼働時間/週</p>
+      <p class="value"><%= t("enums.workers.profile.availability.#{@worker.profile.availability}") %></p>
+
+      <p>
+        <% if @worker.profile.active? %>
+          <li>受付中</li>
+        <% else %>
+          <li>未受付</li>
+        <% end %>
+      </p>
+    </div>
+
+    <div class="info-table">
+      <p class="key">人日単価</p>
+      <p class="value">¥<%= @worker.profile.unit_price %>/人日</p>
+
+      <p class="key">人月単価</p>
+      <p class="value">¥<%= @worker.profile.unit_price * 22 %>月日</p>
+    </div>
   </div>
 </div>
 <div class="row">
-  <div class="strength section col-md-12">
-    <h2>Developer Types & Skills</h2>
+  <div class="strength section col-xs-12 col-md-12">
+    <h2>デベロッパータイプ</h2>
     <ul class="developer-types">
-      <p>Developer Types</p>
       <% developer_type_list(@worker.profile).each do |type| %>
-        <li><%= t("worker_profile.developer_type.#{type}") %></li>
+        <li><%= t("views.worker_profile.developer_type.#{type}") %></li>
       <% end %>
     </ul>
     <ul class="skills">
-    <p>skills & programming languages</p>
+    <h2>スキル・プログラミング言語</h2>
     <% @worker.profile.skill.each do |skill| %>
       <li><%= skill.name %></li>
     <% end %>
@@ -40,7 +51,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="appeal section col-md-12">
+  <div class="appeal section col-xs-12 col-md-12">
     <h2>仕事に対する思い、スキルアピール</h2>
     <div class="text">
       <%= simple_format(@worker.profile.appeal_note) %>
@@ -48,7 +59,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="employment-history section col-md-12">
+  <div class="employment-history section col-xs-12 col-md-12">
     <h2>職歴</h2>
     <ul>
       <li><%= @worker.profile.employment_history1 %></li>
@@ -68,7 +79,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="past-performance section col-md-12">
+  <div class="past-performance section col-xs-12 col-md-12">
     <h2>ポートフォリオ／過去制作物</h2>
     <ul>
       <li><%= link_to @worker.profile.past_performance1,  @worker.profile.past_performance1 %></li>
@@ -83,7 +94,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="wb-past-performance section col-md-12">
+  <div class="wb-past-performance section col-xs-12 col-md-12">
     <h2>過去実績</h2>
     <div class="list">
       <h3>実績一覧</h3>

@@ -1,26 +1,23 @@
 <% provide(:title, 'Create worker profile') %>
 
-<section class="workers-profile profile" id="create-worker-profile">
+<section class="workers-profile new-page" id="create-worker-profile">
   <div class="container">
     <div class="row">
       <div class="form col-md-8 col-md-offset-2">
-        <div class="welcom-msg">
-          <h2>Hi <%= @worker.username %> Welocome to WorkerBook!</h2>
-          <p>
-            When you create your profile, clients review profile to decide and
-            select if your skill, experience and price match what they are looking for.
-            This is your chance to market your freelance business to many clients.
-          </p>
-        </div>
-        <div class="main-contents">
-          <h1>Create Profile</h1>
-          <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-              <%= render 'shared/step_bar', { first: 'complete', second: 'complete' } %>
-              <%= render 'worker_profiles/commons/form', { action: 'create', button: 'Create my profile' } %>
+        <h1>フリーランスアカウント</h1>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <%= render 'shared/worker_step_bar', { first: 'complete', second: 'complete' } %>
+            <h2>プロフィール登録</h2>
+            <p>
+              プロフィールはクライアントが発注する際に、一番最初に見る情報です。
+              多くのクライアントと契約できるチャンスです。より正確な情報を登録しましょう。
+            </p>
+            <div class="profile-form">
+              <%= render 'worker_profiles/commons/form', { action: 'create', button: 'プロフィール登録' } %>
             </div>
           </div>
-        </div><!-- .main-contents -->
+        </div>
       </div><!-- .form col-md-8 col-md-offset-2 -->
     </div><!-- .row -->
   </div><!-- .container -->

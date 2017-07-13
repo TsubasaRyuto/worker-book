@@ -23,7 +23,7 @@ class WorkersController < ApplicationController
   before_action :correct_worker, only: [:edit, :update, :retire, :destroy]
 
   def index
-    @worker_profiles = WorkerProfile.search_worker(skill_params, unit_price_params, developer_type_params).includes(:skill, :worker).page(params[:page]).per(10)
+    @worker_profiles = WorkerProfile.search_worker(skill_id(skill_params), unit_price_params, developer_type_params).includes(:skill, :worker).page(params[:page]).per(12)
     gon.skills = skill_params
     @unit_price = params[:unit_price]
     @developer_type = params[:type]
@@ -132,5 +132,11 @@ class WorkersController < ApplicationController
   def correct_worker
     @worker = Worker.find_by(username: params[:username])
     redirect_to root_url unless current_user?(@worker)
+  end
+
+  def skill_id(skill)
+    return unless skill
+    skill = Skill.find_by(name: skill[0])
+    skill.id
   end
 end

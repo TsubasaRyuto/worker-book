@@ -1,10 +1,10 @@
 ja:
   activerecord:
     models:
-      worker_skill: Worker Skills
-      skill_list: Worker skills
+      worker_skill: スキル
+      skill_list: スキル
     errors:
       worker_skills:
-        too_many: 'is selectable to up to 10.'
-        too_little: 'is selectable to enter at least 5 skills.'
-        duplicate: 'is duplicate'
+        too_many: 'は10まで選択可能です。'
+        too_little: 'は最低5つ選択する必要があります。'
+        duplicate: 'に重複があります。'

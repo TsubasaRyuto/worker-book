@@ -1,0 +1,71 @@
+<section class="client how-it-work">
+  <h2 class="title-en">Client</h2>
+  <h3 class="title-ja">仕事を発注する</h3>
+
+  <div class="row flow">
+    <div class="col-md-4">
+      <%= image_tag 'static_pages/how_it_works/create_account.png', alt: "登録", class: 'img-size' %>
+      <p class="flow-title">登録する</p>
+    </div>
+    <div class="explanation odd col-md-8">
+      <h4>Sign up & Create profile</h4>
+      <p>
+        まずは登録。<br>
+        ワーカーへの信用を得るために、正確な
+        プロフィールを登録してください。
+      </p>
+    </div>
+  </div>
+  <div class="row flow">
+    <div class="explanation col-md-8">
+      <h4>Find high quality freelancers</h4>
+      <p>
+        条件にあったワーカーを探す。<br>
+        検索には、求めているスキル、デベロッパータイプ、
+        予算額を選択し、ワーカーを検索することができます。
+        より、条件にあったワーカーを選択し、プロジェクトを
+        成功させてください。
+      </p>
+    </div>
+    <div class="col-md-4">
+      <%= image_tag 'static_pages/how_it_works/find_workers.png', alt: "探す", class: 'img-size' %>
+      <p class="flow-title">ワーカーを探す</p>
+    </div>
+  </div>
+  <div class="row flow">
+    <div class="col-md-4">
+      <%= image_tag 'static_pages/how_it_works/order_agreement.png', alt: "発注＆契約", class: 'img-size' %>
+      <p class="flow-title">発注</p>
+    </div>
+    <div class="explanation odd col-md-8">
+      <h4>Send job request</h4>
+      <p>
+        ワーカーに発注リクエストを送る。<br>
+        条件にあったワーカーを見つけたら、仕事を発注リクエストを送信してください。仕事を
+        発注する前に発注内容の登録が必要です。
+        ワーカーに仕事内容が伝わるように詳しく記述してください。
+      </p>
+    </div>
+  </div>
+  <div class="row flow">
+    <div class="explanation col-md-8">
+      <h4>Pay & work</h4>
+      <p>
+        報酬の仮払いと仕事。<br>
+        ワーカーが発注リクエストを承諾した場合は報酬を仮払いしていただきます。
+        あとは、ワーカーとお仕事をするだけです。仕事上のやりとりはWorkerBookのチャット機能を
+        ご使用ください。
+      </p>
+    </div>
+    <div class="col-md-4">
+      <%= image_tag 'static_pages/how_it_works/client_work.png', alt: "支払い＆仕事", class: 'img-size' %>
+      <p class="flow-title">報酬振込 & 仕事</p>
+    </div>
+  </div>
+
+  <%= link_to '/client/sign_up' do %>
+    <button type="button" name="button" class="btn btn-default">
+      クライアントとしてWorkerBookを始める
+    </button>
+  <% end %>
+</section>

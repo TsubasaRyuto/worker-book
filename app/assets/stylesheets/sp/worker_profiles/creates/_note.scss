@@ -1,0 +1,19 @@
+.type-note {
+  margin-bottom: 30px;
+
+  .form-control {
+    color: $color-main;
+    border-color: $color-main;
+    font-size: 1.2em;
+    resize: vertical;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .count-charcters {
+    color: $color-warning;
+    padding-left: 150px;
+  }
+}

@@ -1,0 +1,172 @@
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+
+  .btn {
+    background-color: $color-sub2;
+    display: block;
+    margin: 10px auto;
+    width: 50%;
+  }
+}
+
+.section {
+  border-top: 1px solid $color-main;
+  color: $color-main;
+  display: block;
+  float: none;
+  margin: 5vh auto 2vh;
+  width: 90%;
+
+  h2 {
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  ul {
+    li {
+      font-size: 1em;
+    }
+  }
+}
+
+.face {
+  img {
+    border-radius: 50%;
+    border: 1px solid $color-main;
+    display: block;
+    height: 80px;
+    margin: 0 auto;
+    width: 80px;
+  }
+
+  h2 {
+    color: $color-main;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  a {
+    text-decoration: none;
+    .btn {
+      background-color: $color-main;
+      border: none;
+      display: block;
+      font-size: .8em;
+      margin: 1vh auto 2vh;
+      width: 50%;
+    }
+  }
+} // face
+.info {
+  color: $color-main;
+  padding-left: 10%;
+
+  .info-table {
+    display: blck;
+    float: left;
+    width: 50%;
+
+    .key {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin: 0;
+      opacity: .6;
+    }
+
+    .value {
+      font-size: 1em;
+      margin-bottom: 2vh;
+      margin-left: 10%;
+    }
+
+    p {
+      display: block;
+      font-size: 1.2em;
+    }
+  }
+} // info
+
+.strength {
+  p {
+    margin: 0;
+    padding: 1vh 0;
+  }
+
+  .developer-types {
+    li {
+      border: 1px solid $color-main;
+      border-radius: 3px;
+      font-size: .7em;
+      float: left;
+      padding: 6px 10px;
+      margin: 3px 5px;
+    }
+  }
+
+  .skills {
+    clear: both;
+    padding-top: 1vh;
+
+    li {
+      background-color: $color-sub2;
+      border: 1px solid $color-main;
+      border-radius: 3px;
+      color: $color-sub3;
+      font-size: .7em;
+      float: left;
+      padding: 3px 10px;
+      margin: 3px 5px;
+    }
+  }
+} //strength
+
+.appeal {
+  .text {
+    width: 100%;
+
+    p {
+      letter-spacing: 1px;
+      word-wrap:break-word;
+    }
+  }
+} // appeal
+
+.employment-history {
+  ul {
+    li {
+      letter-spacing: 1.5px;
+      list-style-type: disc;
+      margin-left: 10px;
+      padding: 10px 0;
+    }
+  }
+} // employment_history
+
+.past-performance {
+  ul {
+    li {
+      padding: 10px 0;
+      margin-left: 10px;
+
+      a {
+        color: $color-sub2;
+        letter-spacing: 1.5px;
+        text-decoration: none;
+      }
+    }
+  }
+} // past_performance

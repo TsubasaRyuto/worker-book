@@ -26,14 +26,14 @@ RSpec.feature 'Clients:UpdateProfile', type: :feature, js: true do
     context 'failed' do
       it 'should not create profile by client_user' do
         visit client_settings_profile_path(clientname: client.clientname)
-        expect(page).to have_selector 'h1', text: 'Update Client profile'
+        expect(page).to have_selector 'h1', text: 'プロフィール更新'
         fill_in placeholder: 'ex) Lobo株式会社', with: ''
         fill_in placeholder: 'ex) http://lobo-inc.com', with: ''
         fill_in placeholder: 'ex) lobo_inc', with: 'client_example'
         select '北海道', from: 'client_location'
         attach_file('client_logo', 'spec/fixtures/images/lobo.png', visible: false)
         click_button '変更を保存'
-        expect(page).to have_selector 'h1', text: 'Update Client profile'
+        expect(page).to have_selector 'h1', text: 'プロフィール更新'
       end
     end
   end

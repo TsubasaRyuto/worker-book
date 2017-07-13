@@ -1,0 +1,111 @@
+.user-setting {
+  display: block;
+  width: 100%;
+
+  h2 {
+    color: $color-main;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  .body {
+    padding: 7vh 0;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+
+    .face {
+      img {
+        border-radius: 50%;
+        border: 1px solid $color-main;
+        display: block;
+        height: 80px;
+        margin: 0 auto;
+        width: 80px;
+      }
+    } // face
+    .info {
+      h2 {
+        color: $color-main;
+        font-size: 1.5em;
+        margin: 5vh 0 0;
+        text-align: center;
+      }
+
+      h4 {
+        margin: 1vh 0;
+        color: $color-sub2;
+        font-size: .9em;
+        text-align: center;
+
+        a {
+          text-decoration: none;
+        }
+      }
+    } // info
+
+    .user-edit-form {
+      border-top: 1px solid $color-main;
+      color: $color-main;
+      display: block;
+      float: none;
+      margin: 5vh auto 10vh;
+      padding-top: 3vh;
+      width: 80%;
+
+      h3 {
+        font-size: 1.5em;
+        margin-bottom: 4vh;
+      }
+
+      .field-block {
+        margin-bottom: 4vh;
+
+        .form-label {
+          font-size: 1em;
+          font-weight: normal;
+          font-family: $font-family-main;
+        }
+
+        .form-control {
+          border: none;
+          border-bottom: 1px solid $color-main;
+          border-radius: 0;
+          box-shadow: none;
+          font-size: 1.2em;
+          font-style: italic;
+          font-family: $font-family-main;
+          letter-spacing: 1px;
+        }
+      }
+
+      .btn {
+        margin: 0;
+      }
+    }
+
+    .account-other {
+      border-top: 1px solid $color-main;
+      color: $color-main;
+      display: block;
+      float: none;
+      margin: 2vh auto 10vh;
+      padding-top: 7vh;
+      width: 80%;
+
+      p {
+        margin-bottom: 4vh;
+
+        a {
+          color: $color-main;
+          font-size: 1.2em;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

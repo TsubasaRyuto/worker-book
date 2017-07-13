@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   # static_pages
   root to: 'static_pages#home'
+  get '/how_it_works/client', to: 'static_pages#client'
+  get '/how_it_works/worker', to: 'static_pages#worker'
   get '/sign_up', to: 'static_pages#signup'
   get '/worker/verify_email', to: 'static_pages#worker_verify_email'
   get '/client/verify_email', to: 'static_pages#client_verify_email'

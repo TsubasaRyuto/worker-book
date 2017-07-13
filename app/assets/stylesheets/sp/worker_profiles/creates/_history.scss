@@ -1,0 +1,11 @@
+.type-history {
+  margin-bottom: 50px;
+
+  .form-control {
+    @include basic_form_style_sp();
+  }
+
+  .employment-history3, .employment-history4 {
+    display: none;
+  }
+}

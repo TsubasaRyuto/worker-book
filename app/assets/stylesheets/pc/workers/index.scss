@@ -1,0 +1,192 @@
+.worker-list {
+  display: block;
+  width: 100%;
+
+  h1 {
+    color: $color-main;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3vh;
+  }
+
+  .search-body {
+    background-color: $color-sub3;
+    padding: 0;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+
+    .search-type {
+      display: inline-block;
+      width: 45%;
+    }
+
+    .search-budget {
+      display: inline-block;
+      float: right;
+      width: 45%;
+    }
+
+    .select {
+      -webkit-appearance: button;
+      -moz-appearance: button;
+      appearance: button;
+      background: none transparent;
+      border: 2px solid $color-main;
+      color: $color-main;
+      font-size: inherit;
+      height: 40px;
+      outline: none;
+      padding: 8px 12px;
+      text-indent: 0.01px;
+      vertical-align: middle;
+      width: 100%;
+    }
+
+    .search-skill {
+      margin: 2vh 0 2vh;
+      .input-text {
+        border: none;
+        border-bottom: 2px solid $color-main;
+      }
+    }
+
+    .btn {
+      margin: 2vh 0 2vh;
+    }
+  }
+
+  .workers-info {
+    .not-worker-mess {
+      color: $color-main;
+      font-weight: bold;
+      margin: 10vh 0;
+      text-align: center;
+    }
+
+    a {
+      color: $color-main;
+      display: block;
+      text-decoration: none;
+
+    }
+
+    .list {
+      .worker {
+        border: 1px solid $color-main;
+        margin-bottom: 5vh;
+
+        &:hover {
+          background-color: rgba(128, 128, 128, .5);
+        }
+
+        ul {
+          padding: 0;
+          margin: 0;
+        }
+
+        .section {
+          display: block;
+          float: none;
+          padding-top: 3vh;
+
+          .face {
+            img {
+              border-radius: 50%;
+              border: 1px solid $color-main;
+              display: block;
+              height: 80px;
+              margin: 0 auto;
+              width: 80px;
+            }
+          } // face
+
+          .info {
+            color: $color-main;
+            font-size: 1.3em;
+
+            h2 {
+              font-size: 1.5em;
+              font-weight: bold;
+              margin-bottom: 0;
+              text-align: center;
+            }
+
+            h3 {
+              color: $color-sub2;
+              font-size: .9em;
+              margin-top: 0;
+              text-align: center;
+            }
+
+            table {
+              clear: both;
+              display: block;
+              font-size: .8em;
+              margin: 0 auto;
+              width: 80%;
+
+              tr {
+                border-bottom: 1px solid $color-main;
+                display: inline-block;
+                margin-bottom: 2vh;
+                padding: 1vh 2vh;
+                width: 100%;
+
+                .key {
+                  float: left;
+                }
+
+                .value {
+                  float: right;
+                }
+              }
+            }
+          } // info
+        }
+
+        .strength {
+          padding-bottom: 3vh;
+
+          p {
+              font-size: 1.3em;
+              margin: 0;
+              padding: 10px 0;
+              text-align: center;
+            }
+
+          .developer-types {
+            li {
+              border: 1px solid $color-main;
+              border-radius: 3px;
+              font-size: .7em;
+              float: left;
+              padding: 6px 10px;
+              margin: 3px 5px;
+            }
+          }
+
+          .skills {
+            clear: both;
+            padding-top: 1vh;
+
+            li {
+              background-color: $color-sub2;
+              border: 1px solid $color-main;
+              border-radius: 3px;
+              color: $color-sub3;
+              font-size: .7em;
+              float: left;
+              padding: 3px 10px;
+              margin: 3px 5px;
+            }
+          }
+        } //strength
+      }
+    }
+
+    .paginate {
+      border-top: 1px solid $color-main;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+.select-type {
+  margin-bottom: 5vh;
+
+  .col-md-12 {
+    padding: 0;
+  }
+
+  .label-checkbox {
+    input[type='checkbox'] {
+      display: none;
+    }
+
+    input[type='checkbox']:checked + .lever {
+      background-color: $color-sub2;
+      border-color: $color-main;
+      color: $color-sub3;
+    }
+
+    .lever {
+      border: 1px solid $color-main;
+      border-radius:3px;
+      color: $color-main;
+      display: inline-block;
+      text-align: center;
+      font-size: .8em;
+      font-weight: lighter;
+      padding: 3px 3px;
+      margin: 3px 2px;
+      -webkit-transition: all 300ms cubic-bezier(1, 0, 0, 1);
+      -moz-transition: all 300ms cubic-bezier(1, 0, 0, 1);
+      -o-transition: all 300ms cubic-bezier(1, 0, 0, 1);
+      transition: all 300ms cubic-bezier(1, 0, 0, 1);
+      -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+      -moz-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+      -o-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+      transition-timing-function: cubic-bezier(1, 0, 0, 1);
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.type-history {
+  margin-bottom: 50px;
+  position: relative;
+
+  .form-control {
+    @include text_field();
+  }
+
+  .employment-history3, .employment-history4 {
+    display: none;
+  }
+}

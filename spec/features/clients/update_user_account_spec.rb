@@ -14,8 +14,8 @@ RSpec.feature 'Clients:UpdateUserAccount', type: :feature do
         expect(client_user.username).to_not eq username
         expect(client_user.email).to_not eq email
         visit client_client_settings_account_path(client_clientname: client.clientname, username: client_user.username)
-        fill_in 'Username', with: username
-        fill_in 'Email', with: email
+        fill_in 'ユーザーネーム', with: username
+        fill_in 'メールアドレス', with: email
         click_button '変更を保存'
         expect(page).to have_selector '.alert'
         client_user.reload
@@ -27,10 +27,10 @@ RSpec.feature 'Clients:UpdateUserAccount', type: :feature do
     context 'failed' do
       it 'should not update' do
         visit client_client_settings_account_path(client_clientname: client.clientname, username: client_user.username)
-        fill_in 'Username', with: 'invali+info'
-        fill_in 'Email', with: 'worker@invalid'
+        fill_in 'ユーザーネーム', with: 'invali+info'
+        fill_in 'メールアドレス', with: 'worker@invalid'
         click_button '変更を保存'
-        expect(page).to have_selector 'h3', text: 'Information'
+        expect(page).to have_selector 'h3', text: 'アカウント情報'
         expect(page).to have_selector 'div#error_explanation'
         expect(page).to have_selector 'div.field_with_errors'
       end

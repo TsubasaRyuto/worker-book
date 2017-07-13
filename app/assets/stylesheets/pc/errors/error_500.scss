@@ -1,0 +1,20 @@
+.error-500 {
+  display: block;
+  height: 90vh;
+
+  h1 {
+    color: $color-main;
+    font-size: 3em;
+    font-weight: bold;
+    padding-top: 5%;
+    text-align: center;
+  }
+
+  img {
+    display: block;
+    height: 45vh;
+    margin: 4% auto 2%;
+    width: 35%;
+
+  }
+}

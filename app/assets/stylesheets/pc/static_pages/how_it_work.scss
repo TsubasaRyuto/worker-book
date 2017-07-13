@@ -1,0 +1,53 @@
+.how-it-work {
+  color: $color-main;
+  display: block;
+  margin: 10vh auto;
+  width: 80vw;
+
+  .title-en {
+    @include title_en;
+  }
+
+  .title-ja {
+    @include title_ja;
+  }
+
+  .img-size {
+    display: block;
+    max-width: 280px;
+    max-height: 190px;
+    margin: 0 auto;
+  }
+
+  .client {
+    border-bottom: 2px solid $color-main;
+    margin-bottom: 10vh;
+    padding-bottom: 5vh;
+  }
+
+  .flow-title {
+    border-bottom: 1px solid $color-main;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    padding: 1vh 0;
+  }
+
+  .flow {
+    margin-bottom: 20px;
+    .odd {
+      padding-left: 5vw;
+    }
+    .explanation {
+      h4 {
+        font-size: 1.9em;
+        font-weight: bold;
+        margin-bottom: 3vh;
+      }
+
+      p {
+        font-size: 1.3em;
+      }
+    }
+  }
+}

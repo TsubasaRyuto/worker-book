@@ -1,0 +1,38 @@
+.step-bar {
+  overflow: hidden;
+  padding: 0;
+  list-style: none;
+  margin: 0 0 10%;
+
+  .step {
+    display: block;
+    float: left;
+    text-align: center;
+    width: 33.3%;
+
+    .step-num {
+      border: 1px solid $color-sub1;
+      border-radius: 50%;
+      display: block;
+      font-size: 1.3em;
+      height: 65px;
+      line-height: 65px;
+      margin: 0 auto 20px;
+      width: 65px;
+    }
+
+    p {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .complete {
+    background-color: $color-sub2;
+    color: $color-sub3;
+  }
+}

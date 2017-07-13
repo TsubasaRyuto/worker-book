@@ -8,17 +8,36 @@
 @import "bootstrap";
 @import "variables";
 @import "base";
-@import "layouts/header";
-@import "layouts/footer";
-@import "shared/*";
-@import "sessions/*";
-@import "static_pages/*";
-@import "worker_profiles/creates/new";
-@import "workers/*";
-@import "errors/*";
-@import "pass_resets/*";
-@import "clients/*";
-@import "clients/users/*";
-@import "clients/job_contents/*";
-@import "chats/*";
-@import "order_confirms/*";
+@media screen and (min-width: 700px) {
+  @import "pc/layouts/header";
+  @import "pc/layouts/footer";
+  @import "pc/shared/*";
+  @import "pc/sessions/*";
+  @import "pc/static_pages/*";
+  @import "pc/worker_profiles/creates/new";
+  @import "pc/workers/*";
+  @import "pc/errors/*";
+  @import "pc/pass_resets/*";
+  @import "pc/clients/*";
+  @import "pc/clients/users/*";
+  @import "pc/clients/job_contents/*";
+  @import "pc/chats/*";
+  @import "pc/order_confirms/*";
+}
+
+@media screen and (max-width:699px) {
+  @import "sp/layouts/header";
+  @import "sp/layouts/footer";
+  @import "sp/shared/*";
+  @import "sp/sessions/*";
+  @import "sp/static_pages/*";
+  @import "sp/worker_profiles/creates/new";
+  @import "sp/workers/*";
+  @import "sp/errors/*";
+  @import "sp/pass_resets/*";
+  @import "sp/clients/*";
+  @import "sp/clients/users/*";
+  @import "sp/clients/job_contents/*";
+  @import "sp/chats/*";
+  @import "sp/order_confirms/*";
+}

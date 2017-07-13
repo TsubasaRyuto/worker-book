@@ -1,0 +1,9 @@
+.create-clients {
+  .form {
+    @import 'sp/clients/commons/form';
+  }
+
+  .client-user {
+    display: none;
+  }
+}

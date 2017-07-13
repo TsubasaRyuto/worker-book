@@ -1,0 +1,61 @@
+.worker-confirm-order {
+  display: block;
+  width: 100%;
+
+  h1 {
+    color: $color-sub2;
+    border-bottom: 3px solid $color-sub2;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 5vh;
+    padding-bottom: 25px;
+    text-align: center;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+
+    .btn {
+      background-color: $color-sub2;
+      display: block;
+      margin: 10px auto;
+      width: 50%;
+    }
+  }
+
+  .body {
+    background-color: $color-sub3;
+    padding: 4vh 0;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+  }
+
+  .worker {
+    @import "sp/commons/worker_details";
+  }
+
+  .selected-job-content {
+    @import "sp/commons/job_content_details";
+  }
+
+  .order-btn {
+    display: block;
+    text-align: center;
+  }
+  .btn {
+    display: inline-block !important;
+    font-size: 1em;
+    width: 30% !important;
+  }
+
+  .btn-warning {
+    background-color: $color-main !important;
+    border-color: $color-main;
+    margin-left: 20px !important;
+  }
+}

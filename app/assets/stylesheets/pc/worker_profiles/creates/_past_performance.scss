@@ -1,0 +1,17 @@
+.type-past-performance {
+  margin-bottom: 50px;
+  position: relative;
+
+  .past-performance-warning {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+  }
+
+  .form-control {
+    @include text_field;
+  }
+
+  .past-performance3, .past-performance4 {
+    display: none;
+  }
+}

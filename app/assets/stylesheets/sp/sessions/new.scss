@@ -1,0 +1,49 @@
+.sign-in {
+  display: block;
+  width: 100%;
+
+  .signin-form {
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+    padding: 7vh 0;
+
+    h1 {
+      color: $color-main;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 8vh;
+    }
+
+    .form-control {
+      @include basic_form_style();
+    }
+
+    .checkbox {
+      color: $color-main;
+      font-weight: normal;
+      font-family: $font-family-main;
+      margin-left: 20px;
+    }
+
+    .btn-primary {
+      background-color: $color-sub2;
+    }
+
+    .btn {
+      font-size: 1em;
+      margin-bottom: 2vh;
+      width: 100%;
+    }
+
+    ul {
+      display: inline-block;
+      padding: 0;
+      li {
+        float: left;
+        font-size: 1.2em;
+        padding-right: 20px;
+      }
+    }
+  }
+}

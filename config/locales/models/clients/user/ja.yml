@@ -2,6 +2,14 @@ ja:
   activerecord:
     models:
       client_user:
+    attributes:
+      client_user:
+        last_name: 名前-氏
+        first_name: 名前-名
+        username: ユーザーネーム
+        email: メールアドレス
+        password: パスワード
+        confirmation: パスワード確認
   enums:
     client_users:
         user_type:

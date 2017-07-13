@@ -22,4 +22,8 @@ class StaticPagesController < ApplicationController
   def privacy_policy; end
 
   def terms; end
+
+  def client; end
+
+  def worker; end
 end

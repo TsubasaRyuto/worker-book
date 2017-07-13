@@ -1,0 +1,24 @@
+.select-skill {
+  margin-bottom: 50px;
+
+  .skill-max-warning {
+    color: $color-warning;
+    display: none;
+    font-size: 1.1em;
+  }
+
+  .skill-minimum-warning {
+    color: $color-main;
+    display: block;
+    font-size: 1.1em;
+  }
+  // tagのスタイルを変更
+  .tagit-choice {
+    background-color: $color-sub2!important;
+    border-color: $color-sub2!important;
+  }
+
+  .tagit-label {
+    color: $color-sub3!important;
+  }
+}

@@ -10,10 +10,10 @@ RSpec.feature 'Sessions::SignOut', type: :feature do
         it 'should sign out' do
           visit '/sign_in'
           expect(signed_on?(user)).to be_falsey
-          expect(page).to have_selector 'h1', text: 'Sign In'
-          fill_in placeholder: 'Email', with: user.email
-          fill_in placeholder: 'Password', with: user.password
-          click_button 'Sign In'
+          expect(page).to have_selector 'h1', text: 'サインイン'
+          fill_in placeholder: 'メールアドレス', with: user.email
+          fill_in placeholder: 'パスワード', with: user.password
+          click_button 'サインイン'
           expect(signed_on?(user)).to be_truthy
           click_link 'Sign out'
           expect(page).to have_selector 'h1', text: 'WorkerBook'
