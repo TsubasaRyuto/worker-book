@@ -1,6 +1,6 @@
 $(document).on 'turbolinks:load', ->
   price_count = ->
-    COMMISSION = 0.08
+    COMMISSION = 0.05
     WORKING_DAYS = 22
     input_price = $('#input-price').val()
     input_price = parseInt(input_price)
