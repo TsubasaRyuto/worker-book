@@ -1,48 +1,45 @@
 .footer{
   background-color: $color-sub1;
+  height: 400px;
+  position: relative;
 
   .text-box{
-    font-size: 1em;
-    padding: 10vh 0 3vh;
+    font-size: .7em;
+    padding-top: 8vh;
 
-    ul {
+    .footer-col {
+      float: left;
+      width: 50%;
 
-      li {
-        padding-left: 7%;
-        padding-bottom: 4px;
-        list-style: none;
-
-        a {
-          color: $color-sub3;
-          text-decoration: none;
-
-          &:hover {
-            border-bottom: 1px solid $color-main;
-          }
+      ul {
+        li {
+          line-height: 20px;
         }
+      }
+
+      a {
+        color: $color-sub3;
+        text-decoration: none;
+      }
+
+      .sns-img{
+        height: auto;
+        margin: 0 2%;
+        width: 20px;
       }
     }
   }
-  .sns-links {
-    text-align: center;
-    margin-top: 4vh;
 
-    .twitter {
-      height: auto;
-      margin: 0 1.6%;
-      width: 28px !important;
-  	}
-
-  	.sns-img{
-      height: auto;
-  		margin: 0 2%;
-  		width: 20px;
-  	}
-  }
   .copyright{
-    margin: 0;
-    padding: 2vh 0;
-		color: $color-sub3;
-		text-align: center;
-	}
+    bottom: 30px;
+    color: $color-sub3;
+    clear: both;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+
+    .service-title {
+      font-size: .6em;
+    }
+  }
 }
