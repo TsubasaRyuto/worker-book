@@ -1,6 +1,12 @@
 class StaticPagesController < ApplicationController
   def home; end
 
+  def how_it_works; end
+
+  def client; end
+
+  def worker; end
+
   def signup; end
 
   def worker_verify_email
@@ -23,7 +29,5 @@ class StaticPagesController < ApplicationController
 
   def terms; end
 
-  def client; end
-
-  def worker; end
+  def guideline; end
 end

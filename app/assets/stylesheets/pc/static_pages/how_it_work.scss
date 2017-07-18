@@ -1,3 +1,47 @@
+.select-user-type {
+  background-color: $color-main;
+
+  h2 {
+    color: $color-sub3;
+    font-size: 2em;
+    margin: 10vh 0;
+    text-align: center;
+  }
+
+  .area-frame {
+    position: relative;
+
+    .area {
+      background-color: $color-sub3;
+      display: block;
+      margin: 0 auto 10vh;
+      width: 45%;
+
+      .contents {
+        .icon {
+          display: block;
+          margin: 80px auto 50px;
+          height: 150px;
+          width: 130px;
+        }
+
+        .caption {
+          color: $color-main;
+          font-size: 1.6em;
+          letter-spacing: 1.5px;
+          margin-bottom: 8vh;
+          text-align: center;
+        }
+      }
+    }
+
+    .right {
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+
 .how-it-work {
   color: $color-main;
   display: block;
