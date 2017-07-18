@@ -17,6 +17,24 @@ RSpec.describe StaticPagesController, type: :controller do
     end
   end
 
+  context 'how it works' do
+    it_behaves_like 'should get page' do
+      let(:page) { :how_it_works }
+    end
+  end
+
+  context 'how it works of worker' do
+    it_behaves_like 'should get page' do
+      let(:page) { :worker}
+    end
+  end
+
+  context 'how it works of client' do
+    it_behaves_like 'should get page' do
+      let(:page) { :client }
+    end
+  end
+
   context 'sign up' do
     it_behaves_like 'should get page' do
       let(:page) { :signup }
@@ -71,9 +89,15 @@ RSpec.describe StaticPagesController, type: :controller do
     end
   end
 
-  context 'privacy policy' do
+  context 'terms' do
     it_behaves_like 'should get page' do
       let(:page) { :terms }
+    end
+  end
+
+  context 'guideline' do
+    it_behaves_like 'should get page' do
+      let(:page) { :guideline }
     end
   end
 end

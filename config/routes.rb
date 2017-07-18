@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # static_pages
   root to: 'static_pages#home'
+  get '/how_it_works', to: 'static_pages#how_it_works'
   get '/how_it_works/client', to: 'static_pages#client'
   get '/how_it_works/worker', to: 'static_pages#worker'
   get '/sign_up', to: 'static_pages#signup'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   get '/client/verify_email', to: 'static_pages#client_verify_email'
   get '/privacy_policy', to: 'static_pages#privacy_policy'
   get '/terms', to: 'static_pages#terms'
+  get '/guideline', to: 'static_pages#guideline'
 
   # sessions
   get '/sign_in', to: 'sessions#new'

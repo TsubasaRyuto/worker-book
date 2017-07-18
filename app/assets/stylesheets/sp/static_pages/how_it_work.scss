@@ -1,3 +1,40 @@
+.select-user-type {
+  background-color: $color-main;
+
+  h2 {
+    color: $color-sub3;
+    font-size: 1.4em;
+    margin: 7vh 0;
+    text-align: center;
+  }
+
+  .area-frame {
+    .area {
+      background-color: $color-sub3;
+      display: block;
+      margin: 0 auto 5vh;
+      width: 100;
+
+      .contents {
+        .icon {
+          display: block;
+          margin: 30px auto 30px;
+          height: 100px;
+          width: 80px;
+        }
+
+        .caption {
+          color: $color-main;
+          font-size: 1.1em;
+          font-weight: bold;
+          margin-bottom: 3vh;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
 .how-it-work {
   color: $color-main;
   display: block;
@@ -36,5 +73,9 @@
         font-size: 1.3em;
       }
     }
+  }
+
+  .btn {
+    font-size: .8em;
   }
 }

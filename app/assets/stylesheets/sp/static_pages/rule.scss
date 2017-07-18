@@ -1,30 +1,32 @@
-.terms {
+.rule {
   .container {
     color: $color-main;
     padding: 10%;
 
     h1 {
-      text-align: center;
-      margin-bottom: 5%;
       border-bottom: 1px solid $color-main;
+      font-size: 1.8em;
+      margin-bottom: 5%;
+      text-align: center;
     }
 
-    .terms-block {
+    .rule-block {
       border-bottom: 1px dotted $color-sub1;
       padding-top: 4vh;
       padding-bottom: 4vh;
 
       h3 {
         margin-bottom: 2%;
+        font-size: 1.4em;
         font-weight: bold;
       }
 
       p {
-        font-size: 1.4em;
+        font-size: 1em;
       }
 
       ol {
-        font-size: 1.2em;
+        font-size: 1em;
         list-style: decimal;
 
         li {
