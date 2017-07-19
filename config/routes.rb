@@ -74,6 +74,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # inquiry/
+  get 'inquiry', to: 'inquiries#index'
+  post 'inquiry/confirm', to: 'inquiries#confirm'
+  post 'inquiry/thanks', to: 'inquiries#thanks'
+
   # errors/
   get 'errors/error_404', to: 'errors#error_404'
   get 'errors/error_500', to: 'errors#error_500'

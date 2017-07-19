@@ -1,0 +1,48 @@
+<% provide(:title, 'お問い合わせ') %>
+<section class="inquiry">
+  <div class="container">
+    <div class="row">
+      <div class="form col-md-8 col-md-offset-2">
+        <h1>お問い合わせ</h1>
+        <p>こんにちは。WorkerBookにご興味をお持ちいただきありがとうございます。ご質問やご意見はお気軽にお問い合わせください。</p>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <%= form_for @inquiry, url: inquiry_confirm_path do |f| %>
+              <div class="form-group">
+                <%= f.label :name, class: 'control-label' do %>
+                  名前<span class="label label-danger">必須</span>
+                <% end %>
+                <%= render 'shared/error', object: f.object, field: :name %>
+                <%= f.text_field :name, class: 'form-control' %>
+              </div>
+              <div class="form-group">
+                <%= f.label :email, class: 'control-label' do %>
+                  メールアドレス<span class="label label-danger">必須</span>
+                <% end %>
+                <%= render 'shared/error', object: f.object, field: :email %>
+                <%= f.text_field :email, class: 'form-control' %>
+              </div>
+              <div class="form-group">
+                <%= f.label :inquiry_title, class: 'control-label' do %>
+                  お問い合わせ件名<span class="label label-danger">必須</span>
+                <% end %>
+                <%= render 'shared/error', object: f.object, field: :inquiry_title %>
+                <%= f.text_field :inquiry_title, class: 'form-control' %>
+              </div>
+              <div class="form-group">
+                <%= f.label :message, class: 'control-label' do %>
+                  お問い合わせ内容<span class="label label-danger">必須</span>
+                <% end %>
+                <%= render 'shared/error', object: f.object, field: :message %>
+                <%= f.text_area :message, class: 'form-control', cols: 45, rows: 10, maxlength: 3000 %>
+              </div>
+              <div class="form-group">
+                <%= f.submit '確認画面へ', class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
