@@ -1,0 +1,61 @@
+.inquiry {
+  display: block;
+  width: 100%;
+
+  .form {
+    padding: 7vh 0;
+
+    h1 {
+      color: $color-main;
+      font-size: 1.6em;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 3vh;
+    }
+
+    p {
+      color: $color-main;
+      display: block;
+      margin: 3vh auto;
+      width: 70%;
+    }
+
+    // お問い合わせフォーム
+    .form-group {
+      margin-bottom: 5vh;
+
+      label {
+        color: $color-main;
+      }
+
+      .label {
+        margin-left: 2vh;
+      }
+
+      .form-control {
+        box-shadow: none;
+
+        &:focus {
+          border-color: $color-sub2;
+        }
+      }
+    }
+
+    // お問い合わせ確認
+    .confirm-group {
+      margin-bottom: 5vh;
+
+      label {
+        color: $color-main;
+      }
+
+      p {
+        color: $color-main;
+        font-size: 1.2em;
+        margin: 2vh;
+        word-wrap: break-word;
+        width: 100%;
+      }
+    }
+  }
+}

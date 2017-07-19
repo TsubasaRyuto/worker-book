@@ -1,0 +1,20 @@
+.inquiry-conplete {
+  h1 {
+    color: $color-main;
+    font-size: 1.4em;
+    margin: 5vh 0;
+    text-align: center;
+  }
+
+  p {
+    display: block;
+    font-size: 1em;
+    margin: 0 auto 5vh;
+    width: 80%;
+  }
+
+  a {
+    color: $color-sub2;
+    text-decoration: none;
+  }
+}
