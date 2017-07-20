@@ -1,33 +1,53 @@
-.select-user-type {
-  background-color: $color-main;
-
+.wb-guide {
   h2 {
-    color: $color-sub3;
-    font-size: 1.4em;
-    margin: 7vh 0;
+    color: $color-main;
+    font-size: 1.8em;
+    margin: 10vh 0 2vh;
+    text-align: center;
+  }
+
+  p {
+    color: $color-main;
+    font-size: 1em;
     text-align: center;
   }
 
   .area-frame {
+    margin: 4vh 0;
+
+    a {
+      text-decoration: none;
+    }
+
     .area {
-      background-color: $color-sub3;
-      display: block;
-      margin: 0 auto 5vh;
-      width: 100;
+      margin-bottom: 25px;
 
       .contents {
-        .icon {
+        border: 1px solid $color-main;
+        border-radius: 3px;
+        display: block;
+        height: 180px;
+        margin: 0 auto;
+        width: 99%;
+
+        .icon-height {
           display: block;
-          margin: 30px auto 30px;
-          height: 100px;
-          width: 80px;
+          margin: 35px auto 10px;
+          height: 90px;
+          width: 70px;
+        }
+
+        .icon-width {
+          display: block;
+          margin: 35px auto 10px;
+          height: 70px;
+          width: 90px;
         }
 
         .caption {
           color: $color-main;
-          font-size: 1.1em;
-          font-weight: bold;
-          margin-bottom: 3vh;
+          font-size: 1.2em;
+          letter-spacing: 1.5px;
           text-align: center;
         }
       }
@@ -42,7 +62,10 @@
   width: 80vw;
 
   .title-en {
-    @include title_en;
+    color: $color-main;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
   }
 
   .title-ja {

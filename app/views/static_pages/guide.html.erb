@@ -1,0 +1,66 @@
+<% provide(:title, 'How it works') %>
+
+<section class="wb-guide">
+  <div class="container">
+    <div class="row">
+      <h2>WorkerBookガイド</h2>
+      <p>「どうやって使うの？」「いくらかかるの？」などわからないことを解決します。</p>
+      <div class="area-frame">
+        <div class="row">
+          <div class="area col-xs-12 col-md-4">
+            <%= link_to how_it_works_client_path do %>
+              <div class="contents">
+                <%= image_tag 'static_pages/worker_book.png', alt: 'WorkerBookとは？', class: 'icon-height' %>
+                <h3 class="caption">WorkerBookとは？</h3>
+              </div>
+            <% end %>
+          </div>
+          <div class="area col-xs-12 col-md-4" >
+            <%= link_to how_it_works_worker_path do %>
+              <div class="contents">
+                <%= image_tag 'static_pages/guide/worker_guide.png', alt: '仕事を受注したい', class: 'icon-height' %>
+                <h3 class="caption">仕事を受注したい</h3>\
+              </div>
+            <% end %>
+          </div>
+          <div class="area col-xs-12 col-md-4">
+            <%= link_to how_it_works_client_path do %>
+              <div class="contents">
+                <%= image_tag 'static_pages/sign_up/client.png', alt: '仕事を依頼したい', class: 'icon-height' %>
+                <h3 class="caption">仕事を依頼したい</h3>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="area col-xs-12 col-md-4">
+            <%= link_to how_it_works_client_path do %>
+              <div class="contents">
+                <%= image_tag 'static_pages/guide/fee.png', alt: '料金', class: 'icon-width' %>
+                <h3 class="caption">料金</h3>
+              </div>
+            <% end %>
+          </div>
+          <div class="area col-xs-12 col-md-4">
+            <%= link_to how_it_works_client_path do %>
+              <div class="contents">
+                <%= image_tag 'static_pages/guide/rule.png', alt: '利用ルール', class: 'icon-height' %>
+                <h3 class="caption">利用ルール</h3>
+              </div>
+            <% end %>
+          </div>
+          <div class="area col-xs-12 col-md-4">
+            <%= link_to inquiry_path do %>
+              <div class="contents">
+                <%= image_tag 'static_pages/guide/inquiry.png', alt: 'お問い合わせ', class: 'icon-width' %>
+                <h3 class="caption">お問い合わせ</h3>
+              </div>
+            <% end %>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

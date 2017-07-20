@@ -1,43 +1,62 @@
-.select-user-type {
-  background-color: $color-main;
-
+.wb-guide {
   h2 {
-    color: $color-sub3;
+    color: $color-main;
     font-size: 2em;
-    margin: 10vh 0;
+    margin: 10vh 0 2vh;
+    text-align: center;
+  }
+
+  p {
+    color: $color-main;
+    font-size: 1.2em;
     text-align: center;
   }
 
   .area-frame {
-    position: relative;
+    margin: 10vh 0;
+
+    a {
+      text-decoration: none;
+    }
 
     .area {
-      background-color: $color-sub3;
-      display: block;
-      margin: 0 auto 10vh;
-      width: 45%;
+      margin-bottom: 25px;
 
       .contents {
-        .icon {
+        border: 1px solid $color-main;
+        border-radius: 3px;
+        display: block;
+        height: 200px;
+        margin: 0 auto;
+        width: 99%;
+
+        &:hover {
+          .caption {
+            color: $color-sub1;
+          }
+        }
+
+        .icon-height {
           display: block;
-          margin: 80px auto 50px;
-          height: 150px;
-          width: 130px;
+          margin: 35px auto 10px;
+          height: 100px;
+          width: 80px;
+        }
+
+        .icon-width {
+          display: block;
+          margin: 35px auto 10px;
+          height: 80px;
+          width: 100px;
         }
 
         .caption {
           color: $color-main;
-          font-size: 1.6em;
+          font-size: 1.4em;
           letter-spacing: 1.5px;
-          margin-bottom: 8vh;
           text-align: center;
         }
       }
-    }
-
-    .right {
-      position: absolute;
-      right: 0;
     }
   }
 }
@@ -49,7 +68,10 @@
   width: 80vw;
 
   .title-en {
-    @include title_en;
+    color: $color-main;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
   }
 
   .title-ja {
