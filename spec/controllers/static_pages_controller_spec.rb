@@ -17,9 +17,9 @@ RSpec.describe StaticPagesController, type: :controller do
     end
   end
 
-  context 'how it works' do
+  context 'workerbook/guide' do
     it_behaves_like 'should get page' do
-      let(:page) { :how_it_works }
+      let(:page) { :guide}
     end
   end
 
