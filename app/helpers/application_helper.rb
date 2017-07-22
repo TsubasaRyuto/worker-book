@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def full_title(page_title = '')
-    base_title = 'WorkerBook - ITフリーランスのためのクラウドソーシングサービス'
+    base_title = 'WorkerBook(α) - ITフリーランスのためのクラウドソーシングサービス'
     if page_title.empty?
       base_title
     else
