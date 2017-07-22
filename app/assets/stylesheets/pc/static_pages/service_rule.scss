@@ -1,0 +1,66 @@
+.service-rule {
+  margin: 10vh 0 2vh;
+
+  p {
+    color: $color-sub1;
+    font-size: 1.2em;
+    margin-left: 2%;
+
+    strong {
+      border-bottom: 1px solid $color-main;
+    }
+
+    a {
+      color: $color-sub2;
+    }
+  }
+
+  h2 {
+    color: $color-main;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 10vh 0;
+    text-align: center;
+  }
+
+  h3 {
+    border-bottom: 3px solid $color-main;
+    color: $color-main;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 5vh;
+    padding-bottom: 2vh;
+  }
+
+  h4 {
+    color: $color-main;
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+  
+  .rule-head {
+    display: block;
+    margin: 0 auto 10vh;
+    width: 80%;
+  }
+
+  .client-explanation {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+
+    .explanation-block {
+      margin-bottom: 5vh;
+    }
+  }
+
+  .worker-explanation {
+    display: block;
+    margin: 10vh auto;
+    width: 80%;
+
+    .explanation-block {
+      margin-bottom: 5vh;
+    }
+  }
+}

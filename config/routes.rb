@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   # static_pages
   root to: 'static_pages#home'
+  get '/workerbook/about', to: 'static_pages#about'
   get 'workerbook/guide', to: 'static_pages#guide'
+  get '/workerbook/charge', to: 'static_pages#charge'
+  get '/workerbook/rule', to: 'static_pages#service_rule'
   get '/how_it_works/client', to: 'static_pages#client'
   get '/how_it_works/worker', to: 'static_pages#worker'
   get '/sign_up', to: 'static_pages#signup'
