@@ -4,21 +4,21 @@ $(document).on 'turbolinks:load', ->
     WORKING_DAYS = 22
     input_price = $('#input-price').val()
     input_price = parseInt(input_price)
-    service_fee = document.getElementById('service-fee')
+    service_charge = document.getElementById('service-charge')
     receive_day = document.getElementById('receive-day')
     receive_month = document.getElementById('receive-month')
 
     if !input_price || input_price < 30000
-      service_fee.innerHTML = '0'
+      service_charge.innerHTML = '0'
       receive_day.innerHTML = '0'
       receive_month.innerHTML = '0'
       return false
 
     if input_price && input_price >= 30000
-      service_fee_count = parseInt input_price * COMMISSION
-      service_fee.innerHTML = [service_fee_count].toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')
+      service_charge_count = parseInt input_price * COMMISSION
+      service_charge.innerHTML = [service_charge_count].toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')
 
-      receive_day_count = parseInt input_price - service_fee_count
+      receive_day_count = parseInt input_price - service_charge_count
       receive_day.innerHTML = [receive_day_count].toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')
 
       receive_month_count = parseInt receive_day_count * WORKING_DAYS

@@ -52,56 +52,58 @@
 <section class="what-wb session-style" id="what">
   <h1>ITフリーランサーと企業をつなぐマッチングプラットフォーム</h1>
   <h2 class="title-ja">WorkerBookとは？</h2>
-  <p>ITフリーランスとして働いている人は、自分のスキルや経験を登録して公開するだけです。企業は条件にあった人材を探し、仕事の依頼をすることができます。</p>
+  <p>ITフリーランサーは、自分のスキルや経験を登録して公開するだけです。企業は条件にあった人材を探し、仕事の依頼をすることができます。</p>
 
   <p >＊α版につきまして、登録のみとなっております。</p>
 </section>
-
-<!-- <section class='when-use-wb session-style'>
-  <h2 class="title-ja when-use">どんな時にWorkerBookを使う？</h2>
-  <div class="worker col-md-6 col-xs-12">
-    <h3>フリーランス</h3>
-    <p>
-      フリーランスの方は自分のプロフィールを作成して待つだけです。
-      発注依頼が来たら受けるか受けないかを選択してください。
-      自分で自分の価値を決めることができます。
-    </p>
-  </div>
-
-  <div class="client col-md-6 col-xs-12">
-    <h3>企業</h3>
-    <p>
-      「新しいプロジェクトが始まるけどプログラマーが足りない。」、
-      「急に社員さんがやめてしまった。」、「いいアイディアがあるけど作れる人がいない。」
-      そんな時、WorkerBookで求めているパートナーを探し、発注をしましょう。
-      必ず見つかります。
-    </p>
-  </div>
-</section> -->
 
 <section class="wb-features session-style" id="features">
   <h2 class="title-ja">WorkerBookの特徴</h2>
   <div class="commission col-md-4">
     <h3>シンプルな手数料</h3>
     <p>
-      WorkerBookのサービス手数料は報酬額の５％(振込・決済手数料は除く)となります。
+      サービス手数料は報酬額の５％(振込・決済手数料は除く)となります。
       登録料等はございません。
     </p>
   </div>
   <div class="ux col-md-4">
     <h3>シンプルなユーザー体験</h3>
     <p>
-      WorkerBookはクライアントがワーカーを選択し、発注リクエストを送ります。
-      リクエストを受け取ったワーカーは承諾するかしないかを決めるだけす。
+      クライアントがワーカーを選択し、発注リクエストを送ります。
+      リクエストを受け取ったワーカーは承諾するか否かを決めるだけです。
     </p>
   </div>
   <div class="worker-first col-md-4">
     <h3>フリーランスファースト</h3>
     <p>
-      WorkerBookはワーカーが人日単価を
-      決めます。自分にあった単価を指定しましょう。
-      ただし、プロフィール作成は必須です。
+      ワーカーが定めた人日単価を元に報酬額が決まります。自分自身の価値を決めてください。
+      ただし、WorkerBook内での実績数が３件以下のワーカーは一律で人日単価20,000円となっております。
     </p>
   </div>
+</section>
+
+<section class='session-style sp-none'>
+  <div class="col-md-4">
+    <%= link_to sign_up_path do %>
+      <div class="link-block">
+        今すぐ始める
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <%= link_to workerbook_about_path do %>
+      <div class="link-block">
+        WorkerBookを知る
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <%= link_to workers_path do %>
+      <div class="link-block">
+        ワーカーを探す
+      </div>
+    <% end %>
+  </div>
+
 </section>
 <%= javascript_include_tag 'static_pages/page_link' %>

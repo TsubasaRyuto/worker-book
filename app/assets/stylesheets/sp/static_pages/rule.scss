@@ -1,7 +1,7 @@
 .rule {
   .container {
     color: $color-main;
-    padding: 10%;
+    padding: 5%;
 
     h1 {
       border-bottom: 1px solid $color-main;
@@ -28,12 +28,14 @@
       ol {
         font-size: 1em;
         list-style: decimal;
+        padding-left: 10%;
 
         li {
           padding-bottom: 10px;
 
           ol {
             list-style-type: none;
+            padding-left: 5%;
 
             li {
               counter-increment: cnt;

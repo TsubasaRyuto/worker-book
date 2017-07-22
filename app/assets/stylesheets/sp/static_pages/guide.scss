@@ -1,0 +1,56 @@
+.wb-guide {
+  h2 {
+    color: $color-main;
+    font-size: 1.8em;
+    margin: 10vh 0 2vh;
+    text-align: center;
+  }
+
+  p {
+    color: $color-main;
+    font-size: 1em;
+    text-align: center;
+  }
+
+  .area-frame {
+    margin: 4vh 0;
+
+    a {
+      text-decoration: none;
+    }
+
+    .area {
+      margin-bottom: 25px;
+
+      .contents {
+        border: 1px solid $color-main;
+        border-radius: 3px;
+        display: block;
+        height: 180px;
+        margin: 0 auto;
+        width: 99%;
+
+        .icon-height {
+          display: block;
+          margin: 35px auto 10px;
+          height: 90px;
+          width: 70px;
+        }
+
+        .icon-width {
+          display: block;
+          margin: 35px auto 10px;
+          height: 70px;
+          width: 90px;
+        }
+
+        .caption {
+          color: $color-main;
+          font-size: 1.2em;
+          letter-spacing: 1.5px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

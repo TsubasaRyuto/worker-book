@@ -12,7 +12,7 @@
       <h4>Sign up & Create profile</h4>
       <p>
         まずは登録。<br>
-        ワーカーへの信用を得るために、正確な
+        ワーカーへの信頼を得るために、正確な
         プロフィールを登録してください。
       </p>
     </div>
@@ -22,9 +22,9 @@
       <h4>Find high quality freelancers</h4>
       <p>
         条件にあったワーカーを探す。<br>
-        検索には、求めているスキル、デベロッパータイプ、
+        検索には、求めているスキル・デベロッパータイプ・
         予算額を選択し、ワーカーを検索することができます。
-        より、条件にあったワーカーを選択し、プロジェクトを
+        条件にあったワーカーを選択し、プロジェクトを
         成功させてください。
       </p>
     </div>
@@ -42,8 +42,8 @@
       <h4>Send job request</h4>
       <p>
         ワーカーに発注リクエストを送る。<br>
-        条件にあったワーカーを見つけたら、仕事を発注リクエストを送信してください。仕事を
-        発注する前に発注内容の登録が必要です。
+        条件にあったワーカーを見つけたら、発注リクエストを送信してください。
+        発注リクエストを送るには発注内容の登録が必要です。
         ワーカーに仕事内容が伝わるように詳しく記述してください。
       </p>
     </div>
@@ -55,7 +55,7 @@
         報酬の仮払いと仕事。<br>
         ワーカーが発注リクエストを承諾した場合は報酬を仮払いしていただきます。
         あとは、ワーカーとお仕事をするだけです。仕事上のやりとりはWorkerBookのチャット機能を
-        ご使用ください。
+        ご使用ください。<%= link_to '報酬額について', workerbook_rule_path %> | <%= link_to 'システム利用手数料', workerbook_charge_path %>
       </p>
     </div>
     <div class="col-md-4">
@@ -63,10 +63,11 @@
       <p class="flow-title">報酬振込 & 仕事</p>
     </div>
   </div>
-
-  <%= link_to '/client/sign_up' do %>
-    <button type="button" name="button" class="btn btn-default">
-      クライアントとしてWorkerBookを始める
-    </button>
+  <% unless signed_in? %>
+    <%= link_to '/client/sign_up' do %>
+      <button type="button" name="button" class="btn btn-default">
+        クライアントとしてWorkerBookを始める
+      </button>
+    <% end %>
   <% end %>
 </section>

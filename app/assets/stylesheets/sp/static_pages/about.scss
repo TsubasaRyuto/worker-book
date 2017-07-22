@@ -1,0 +1,75 @@
+.about-workerbook {
+  p {
+    color: $color-sub1;
+    font-size: 1em;
+    margin-left: 2%;
+
+    strong {
+      border-bottom: 1px solid $color-main;
+    }
+
+    a {
+      color: $color-sub2;
+    }
+  }
+
+  h2 {
+    color: $color-main;
+    font-size: 1.8em;
+    margin: 10vh 0 2vh;
+    text-align: center;
+  }
+
+  h3 {
+    color: $color-main;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 5vh;
+    text-align: center;
+  }
+
+  .about-body {
+    .explanation-block {
+      border: 1px solid $color-main;
+      display: block;
+      height: 365px;
+      margin: 3vh auto;
+      padding: 5%;
+      width: 95%;
+
+      ul {
+        padding-left: 5%;
+
+        li {
+          color: $color-sub1;
+          font-size: 1em;
+          list-style-type: disc;
+        }
+      }
+
+      .icon-height {
+        display: block;
+        margin: 35px auto 10px;
+        height: 90px;
+        width: 70px;
+      }
+
+      .icon-width {
+        display: block;
+        margin: 35px auto 10px;
+        height: 70px;
+        width: 90px;
+      }
+    }
+
+
+    .start-link{
+      text-decoration: none;
+
+      .explanation-block {
+        border: 2px solid $color-sub2;
+        border-radius: 2px;
+      }
+    }
+  }
+}

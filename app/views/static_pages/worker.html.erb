@@ -14,7 +14,7 @@
         まずは登録。<br>
         サインアップ後にプロフィールを作成していただきます。プロフィール作成は必須
         となっております。作成していない場合は
-        発注リクエストがとどきません。クライアントの信用を得るために、正確な情報を登録してください。
+        発注リクエストが届きません。クライアントの信頼を得るために、正確な情報を登録してください。
       </p>
     </div>
   </div>
@@ -43,15 +43,17 @@
       <p>
         仕事。<br>
         リクエストを承諾した後は、得意なスキルで最高のパフォーマンスを出せるように全力を
-        尽くしましょう。必ず次の受注につながります。安心してください。報酬は仕事を始める前に
+        尽くしましょう。必ず次の受注につながります。報酬は仕事を始める前に
         クライアントから、サービス側へ振り込まれております。
+        <%= link_to '報酬額について', workerbook_rule_path %>
       </p>
     </div>
   </div>
-
-  <%= link_to '/worker/sign_up' do %>
-    <button type="button" name="button" class="btn btn-default">
-      フリーランスとしてWorkerBookを始める
-    </button>
+  <% unless signed_in? %>
+    <%= link_to '/worker/sign_up' do %>
+      <button type="button" name="button" class="btn btn-default">
+        フリーランスとしてWorkerBookを始める
+      </button>
+    <% end %>
   <% end %>
 </section>
