@@ -3,3 +3,4 @@ cdn:
 
 mail:
   default_from: no_reply@worker-book-stg.work
+  default_to: support@worker-book.com

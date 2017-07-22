@@ -2,10 +2,13 @@
   color: $color-main;
   display: block;
   margin: 10vh auto;
-  width: 80vw;
+  width: 90%;
 
   .title-en {
-    @include title_en;
+    color: $color-main;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
   }
 
   .title-ja {
@@ -33,8 +36,16 @@
       }
 
       p {
-        font-size: 1.3em;
+        font-size: 1.2em;
+
+        a {
+          color: $color-sub2;
+        }
       }
     }
+  }
+
+  .btn {
+    font-size: .8em;
   }
 }

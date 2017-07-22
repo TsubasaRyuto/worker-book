@@ -1,0 +1,45 @@
+<% provide(:title, 'お問い合わせ内容確認') %>
+<section class="inquiry">
+  <div class="container">
+    <div class="row">
+      <div class="form col-md-8 col-md-offset-2">
+        <h1>お問い合わせ内容確認</h1>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <%= form_for @inquiry, url: inquiry_thanks_path do |f| %>
+              <div class="confirm-group">
+                <%= f.label :name, '名前', class: 'control-label' %>
+                <%= f.hidden_field :name %>
+                <p><%= @inquiry.name %></p>
+              </div>
+              <div class="confirm-group">
+                <%= f.label :email, class: 'control-label' do %>
+                  メールアドレス
+                <% end %>
+                <%= f.hidden_field :email %>
+                <p><%= @inquiry.email %></p>
+              </div>
+              <div class="confirm-group">
+                <%= f.label :inquiry_title, class: 'control-label' do %>
+                  お問い合わせ件名
+                <% end %>
+                <%= f.hidden_field :inquiry_title %>
+                <p><%= @inquiry.inquiry_title %></p>
+              </div>
+              <div class="confirm-group">
+                <%= f.label :message, class: 'control-label' do %>
+                  お問い合わせ内容
+                <% end %>
+                <%= f.hidden_field :message %>
+                <%= simple_format(@inquiry.message) %>
+              </div>
+              <div class="confirm-group">
+                <%= f.submit '送信', class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

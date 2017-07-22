@@ -1,4 +1,4 @@
-.terms {
+.rule {
   .container {
     color: $color-main;
     padding: 10%;
@@ -9,7 +9,11 @@
       border-bottom: 1px solid $color-main;
     }
 
-    .terms-block {
+    li {
+      font-size: 1.2em;
+    }
+
+    .rule-block {
       border-bottom: 1px dotted $color-sub1;
       padding-top: 4vh;
       padding-bottom: 4vh;
@@ -20,21 +24,20 @@
       }
 
       p {
-        font-size: 1.4em;
+        font-size: 1.2em;
       }
 
       ol {
-        font-size: 1.2em;
         list-style: decimal;
 
         li {
           padding-bottom: 10px;
-
           ol {
             list-style-type: none;
 
             li {
               counter-increment: cnt;
+              font-size: 1em;
 
               &:before {
                 content: "(" counter(cnt) ")";

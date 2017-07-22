@@ -1,12 +1,6 @@
-@mixin title_en {
-  color: $color-main;
-  font-size: 3em;
-  font-weight: bold;
-  text-align: center;
-}
-
 @mixin title_ja {
   color: $color-main;
+  font-size: 2em;
   font-weight: bold;
   text-align: center;
   margin-bottom: 5vh;
@@ -20,8 +14,7 @@
 
   .img-size {
     display: block;
-    max-width: 380px;
-    max-height: 290px;
+    max-height: 38vh;
     margin: 13vh auto 6vh;
     opacity: .6;
   }
@@ -37,79 +30,137 @@
 
 
 .link-btn {
-  border-bottom: 2px solid $color-main;
   color: $color-main;
   overflow: hidden;
-  margin: 10vh auto;
-  padding-bottom: 5vh;
+  margin: 10vh auto 5vh;
   width: 80vw;
 
   a {
     color: $color-main;
+
     font-weight: bold;
     text-decoration: none;
 
     &:hover .link{
-      border-bottom: 2px solid $color-main;
       color: $color-sub1;
-
-
-      span:nth-child(2) {
-        display: inline;
-      }
-
-      span:nth-child(1) {
-        display: none;
-      }
     }
 
     .link {
       display: inline-block;
-      font-size: 1.4em;
-      margin: 0 0 20px 40px;
+      font-size: 1.2em;
+      margin: 0 0 20px 30px;
       text-align: center;
-
-      span:nth-child(2) {
-        display: none;
-      }
     }
   }
 }
 
 .what-wb {
-  border-bottom: 2px solid $color-main;
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+  }
 
-   h4 {
-     margin-bottom: 2vh;
-     text-align: center;
-   }
+  p {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+  }
+}
 
-   .when-use {
-     margin-top: 10vh;
-   }
+.when-use-wb{
+  h3 {
+    font-weight: bold;
+    margin-bottom: 2vh;
+    text-align: center;
+  }
+
+  .when-use {
+    margin-top: 10vh;
+  }
 }
 
 .session-style {
+  border-top: 2px solid $color-main;
   color: $color-main;
   overflow: hidden;
-  margin: 10vh auto;
-  padding-bottom: 5vh;
+  margin: 5vh auto 5vh;
+  padding-bottom: 8vh;
+  padding-top: 8vh;
   width: 80vw;
-
-  .title-en {
-    @include title_en;
-  }
 
   .title-ja {
     @include title_ja;
   }
 
-  h4 {
+  h3 {
     font-size: 1.4em;
     font-weight: bold;
   }
 
   p {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.link-block {
+  display: block;
+  height: 25vh;
+  margin: 0 auto;
+  position: relative;
+  width: 80%;
+  transition: all .5s;
+
+  // 文字スタイル
+  color: $color-main;
+  font-size: 1.4em;
+  font-weight: bold;
+  line-height: 25vh;
+  text-align: center;
+
+  &:before, &:after {
+    position: absolute;
+    z-index: 2;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 4px solid transparent;
+  }
+
+  &:before {
+    top: 0;
+    left: 0;
+  }
+
+  &:after {
+    bottom: 0;
+    right: 0;
+  }
+
+  &:hover:before, &:hover:after {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover:before {
+    border-bottom-color: $color-sub2;
+    border-left-color: $color-sub2;
+    transition: height .2s, width .2s .2s;
+  }
+
+  &:hover:after {
+    border-top-color: $color-sub2;
+    border-right-color: $color-sub2;
+    transition: height .2s, width .2s .2s;
+  }
+}
+
+.link-blok:hover:after {
+  border-top-color: #3be5ae;
+  border-right-color: #3be5ae;
+  transition: height .5s .4s, width .5s .6s;
 }

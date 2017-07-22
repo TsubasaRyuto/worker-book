@@ -5,7 +5,10 @@
   width: 80vw;
 
   .title-en {
-    @include title_en;
+    color: $color-main;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
   }
 
   .title-ja {
@@ -47,6 +50,10 @@
 
       p {
         font-size: 1.3em;
+
+        a {
+          color: $color-sub2;
+        }
       }
     }
   }

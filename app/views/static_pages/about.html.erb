@@ -1,0 +1,79 @@
+<% provide(:title, 'WorkerBookとは?') %>
+
+<section class="about-workerbook">
+  <div class="container">
+    <div class="row">
+      <h2>WorkerBookとは？</h2>
+      <div class="about-body row">
+        <div class="col-xs-12 col-md-4">
+          <div class="explanation-block">
+            <%= image_tag 'static_pages/worker_book.png', alt: 'WorkerBookとは？', class: 'icon-height' %>
+            <h3>WorkerBookとは?</h3>
+            <p>
+              ITフリーランサーと企業をつなぐ、マッチングプラットフォームです。
+              ITフリーランサーはスキルを生かせる仕事を受注することができます。企業は必要とする人材を見つけ仕事を依頼することができます。
+            </p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="explanation-block">
+            <%= image_tag 'static_pages/guide/compare.png', alt: 'シンプルな手数料', class: 'icon-width' %>
+            <h3>他社との違い</h3>
+            <ul>
+              <li>コンペ形式の廃止。</li>
+              <li>発注依頼に対する提案の廃止。</li>
+              <li>ワーカーが自らの報酬額を決める。</li>
+              <li>手数料の低額化。</li>
+              <li>ITフリーランスへの発注のみ。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="explanation-block">
+            <%= image_tag 'static_pages/guide/charge.png', alt: 'シンプルな手数料', class: 'icon-width' %>
+            <h3>シンプルな手数料</h3>
+            <p>
+              ワーカーのシステム利用手数料は報酬金額の5%(税込/振込・決済手数料は除く)です。たったこれだけです。
+              クライアントのシステム利用手数料は、発注するワーカーのタイプによって異なります。
+              <%= link_to '手数料について', workerbook_charge_path %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="about-body row">
+        <div class="col-xs-12 col-md-4">
+          <div class="explanation-block">
+            <%= image_tag 'static_pages/guide/simple_ux.png', alt: 'シンプルな手数料', class: 'icon-width' %>
+            <h3>シンプルなユーザー体験</h3>
+            <p>
+              クライアントがワーカーを選択し、発注リクエストを送ります。 リクエストを受け取ったワーカーは承諾するか否かを決めるだけです。
+              あとは、お互いにお仕事を進めてください。
+            </p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="explanation-block">
+            <%= image_tag 'static_pages/guide/worker_guide.png', alt: 'フリーランスファースト', class: 'icon-height' %>
+            <h3>フリーランスファースト</h3>
+            <p>
+              ワーカーが定めた人日単価を元に報酬金額が決まります。自分自身の価値を決めてください。
+              ただし、WorkerBook内での実績数が３件以下のワーカーは一律で人日単価20,000円となっております。
+            </p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <%= link_to sign_up_path, class: 'start-link' do %>
+            <div class="explanation-block">
+              <%= image_tag 'static_pages/guide/start_workerbook.png', alt: '今すぐ始める', class: 'icon-height' %>
+              <h3>今すぐ始める</h3>
+              <p>
+                WorkerBookで仕事を受注または発注するにはアカウントを作成する必要があります。
+              </p>
+              <p>今すぐアカウントを作成しましょう。</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

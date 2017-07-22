@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   # static_pages
   root to: 'static_pages#home'
+  get '/workerbook/about', to: 'static_pages#about'
+  get 'workerbook/guide', to: 'static_pages#guide'
+  get '/workerbook/charge', to: 'static_pages#charge'
+  get '/workerbook/rule', to: 'static_pages#service_rule'
   get '/how_it_works/client', to: 'static_pages#client'
   get '/how_it_works/worker', to: 'static_pages#worker'
   get '/sign_up', to: 'static_pages#signup'
@@ -10,6 +14,7 @@ Rails.application.routes.draw do
   get '/client/verify_email', to: 'static_pages#client_verify_email'
   get '/privacy_policy', to: 'static_pages#privacy_policy'
   get '/terms', to: 'static_pages#terms'
+  get '/guideline', to: 'static_pages#guideline'
 
   # sessions
   get '/sign_in', to: 'sessions#new'
@@ -71,6 +76,11 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  # inquiry/
+  get 'inquiry', to: 'inquiries#index'
+  post 'inquiry/confirm', to: 'inquiries#confirm'
+  post 'inquiry/thanks', to: 'inquiries#thanks'
 
   # errors/
   get 'errors/error_404', to: 'errors#error_404'

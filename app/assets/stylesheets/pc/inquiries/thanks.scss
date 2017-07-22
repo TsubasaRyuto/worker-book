@@ -1,0 +1,25 @@
+.inquiry-conplete {
+  h1 {
+    color: $color-main;
+    font-size: 1.8em;
+    margin: 10vh 0;
+    text-align: center;
+  }
+
+  p {
+    display: block;
+    font-size: 1.4em;
+    margin: 0 auto 10vh;
+    width: 60%;
+  }
+
+  a {
+    color: $color-sub2;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-sub2;
+      border-bottom: 1px solid $color-sub2;
+    }
+  }
+}

@@ -1,0 +1,116 @@
+.about-workerbook {
+  margin: 10vh 0 2vh;
+
+  p {
+    color: $color-sub1;
+    font-size: 1.2em;
+    margin-left: 2%;
+
+    a {
+      color: $color-sub2;
+    }
+  }
+
+  h2 {
+    color: $color-main;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 10vh 0;
+    text-align: center;
+  }
+
+  h3 {
+    color: $color-main;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 2vh;
+    text-align: center;
+  }
+
+  .about-body {
+    margin-bottom: 5vh;
+
+    .explanation-block {
+      border: 1px solid $color-main;
+      display: block;
+      height: 365px;
+      margin: 0 auto;
+      padding: 5%;
+      width: 95%;
+
+      ul {
+        padding-left: 5%;
+
+        li {
+          color: $color-sub1;
+          font-size: 1.2em;
+          list-style-type: disc;
+        }
+      }
+
+      .icon-height {
+        display: block;
+        margin: 35px auto 10px;
+        height: 100px;
+        width: 80px;
+      }
+
+      .icon-width {
+        display: block;
+        margin: 35px auto 10px;
+        height: 80px;
+        width: 120px;
+      }
+    }
+
+
+    .start-link{
+      text-decoration: none;
+
+      .explanation-block {
+        position: relative;
+        transition: all .5s;
+
+        &:before, &:after {
+          position: absolute;
+          z-index: 2;
+          content: '';
+          width: 0;
+          height: 0;
+          border: 2px solid transparent;
+        }
+
+        &:before {
+          top: 0;
+          left: 0;
+        }
+
+        &:after {
+          bottom: 0;
+          right: 0;
+        }
+
+        &:hover {
+          border-color: $color-sub2;
+        }
+
+        &:hover:before, &:hover:after {
+          width: 100%;
+          height: 100%;
+        }
+
+        &:hover:before {
+          border-bottom-color: $color-sub2;
+          border-left-color: $color-sub2;
+          transition: height .2s, width .2s .2s;
+        }
+
+        &:hover:after {
+          border-top-color: $color-sub2;
+          border-right-color: $color-sub2;
+          transition: height .2s, width .2s .2s;
+        }
+      }
+    }
+  }
+}

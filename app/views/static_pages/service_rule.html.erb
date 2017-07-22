@@ -1,0 +1,167 @@
+<% provide(:title, 'サービス利用ルール') %>
+<section class="service-rule">
+  <div class="container">
+    <div class="row">
+      <h2>サービス利用ルール</h2>
+      <div class="rule-head">
+        <p>
+          WorkerBookとは、ITフリーランサーと企業をつなぐ、マッチングプラットフォームです。WorkerBookを活用すると、
+          ITフリーランサーはスキルを生かせる仕事を受注することができ、企業は必要とする人材を見つけ仕事を依頼することができるサービスです。
+        </p>
+        <p>
+          このページは、WorkerBookをご利用していただく際のルールや決まりごとを簡潔にまとめております。より詳細な規約は<%= link_to '利用規約', terms_path %>をご覧ください。
+        </p>
+      </div>
+      <div class="client-explanation">
+        <h3>クライアントとして仕事を依頼</h3>
+        <div class="explanation-block">
+          <h4>アカウント登録</h4>
+          <p>
+            WorkerBookを使用するためにはアカウント登録をしていただく必要があります。アカウント登録は無料です。
+            また、ワーカーからの信頼を得るために正しい会社情報を登録していただきます。
+          </p>
+        </div>
+        <div class="explanation-block">
+          <h4>仕事の依頼</h4>
+          <p>
+            仕事を依頼する際には依頼内容を作成していただく必要があります。作成した依頼内容に対してワーカーから提案を募集することはできません。
+          </p>
+          <p>
+            仕事の依頼方法は一つです。他社サービスのようなコンペ形式や提案募集等はできません。
+            仕事を依頼する場合はクライアントが条件にあったワーカーを探し発注依頼をしていただきます。発注依頼をした際に、作成していただいた依頼内容と会社情報等を元にワーカーは受注するか否かを判断いたします。
+            具体的かつ正しい情報を載せるようにしてください。
+          </p>
+        </div>
+        <div class="explanation-block">
+          <h4>システム利用手数料</h4>
+          <p>WorkerBookでのシステム利用手数料はワーカーのタイプによって料金が異なります。各料金プランは下記の通りです。それ以外の料金は必要ありません。</p>
+          <div class="charge-list">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <th class="key">ワーカータイプ</th>
+                  <th class="value">料金(税込)</th>
+                  <th>詳細説明</th>
+                </tr>
+                <tr>
+                  <td class="key">実績なしワーカー</td>
+                  <td class="value">無料</td>
+                  <td>WorkerBookでの実績数が３件以下のワーカー</td>
+                </tr>
+                <tr>
+                  <td class="key">実績ありワーカー</td>
+                  <td class="value">10,000円</td>
+                  <td>WorkerBookでの実績数が４件以上のワーカー</td>
+                </tr>
+                <tr>
+                  <td class="key">人気ワーカー</td>
+                  <td class="value">10,000円</td>
+                  <td>WorkerBookでの実績数が４件以上かつ評価数が４.５以上のワーカー</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="explanation-block">
+          <h4>依頼金額</h4>
+          <p>
+            ワーカーへの依頼金額は、ワーカーのタイプによって異なります。ワーカーのタイプと依頼額(人日単価)は下記の通りです。
+          </p>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th class="key">ワーカータイプ</th>
+                <th class="value">依頼額/人日単価</th>
+                <th>詳細説明</th>
+              </tr>
+              <tr>
+                <td class="key">実績なしワーカー</td>
+                <td class="value">20,000円</td>
+                <td>WorkerBookでの実績数が３件以下のワーカー</td>
+              </tr>
+              <tr>
+                <td class="key">実績ありワーカー</td>
+                <td class="value">ワーカー設定金額</td>
+                <td>WorkerBookでの実績数が４件以上のワーカー</td>
+              </tr>
+              <tr>
+                <td class="key">人気ワーカー</td>
+                <td class="value">ワーカー設定金額 ＋ 設定金額の３％</td>
+                <td>WorkerBookでの実績数が４件以上かつ評価数が４.５以上のワーカー</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="explanation-block">
+          <h4>ワーカーの評価</h4>
+          <p>
+            仕事が終了したら、クライアントにはワーカーを５段階で複数項目を評価していただきます。この評価は多くのクライアントが参考とする項目となっておりますので、正確に評価してください。
+            また、こちらの評価は誰がどの評価をつけたのかはわからないようになっております。
+          </p>
+        </div>
+      </div>
+      <div class="worker-explanation">
+        <h3>ワーカーとして仕事を受注</h3>
+        <div class="explanation-block">
+          <h4>アカウント登録</h4>
+          <p>
+            WorkerBookを使用するにはアカウント登録をしていただく必要があります。アカウント登録は無料です。
+            また、ワーカーとして仕事を受注したい方はプロフィールを作成しないと仕事受けることができません。必ずプロフィールを作成してください。
+            クライアントが発注依頼をする判断となります。
+          </p>
+        </div>
+        <div class="explanation-block">
+          <h4>仕事を受注</h4>
+          <p>
+            仕事を受注するには、クライアントからの依頼がないと受注することができません。他サービスのような、提案やコンペ形式はございません。
+          </p>
+          <p>
+            仕事の発注依頼が届いた際はワーカーが受注するか否かを決めることができます。依頼内容や会社情報を確認した上で仕事を受注するかを決めてください。
+          </p>
+        </div>
+        <div class="explanation-block">
+          <h4>システム利用手数料</h4>
+          <p>WorkerBookは仕事が成立し報酬の支払いが確定した際に、システム利用料をお支払いいただきます。それ以外の料金は必要ありません。</p>
+          <p>システム利用手数料は、クライアントからワーカーへの支払い報酬のうち<strong>5%（税込）</strong>となります。</p>
+        </div>
+        <div class="explanation-block">
+          <h4>報酬金額とワーカータイプ</h4>
+          <p>
+          ワーカーのタイプによって報酬額(人日単価)が異なります。ワーカーのタイプと人日単価は下記の通りです。
+          </p>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th class="key">ワーカータイプ</th>
+                <th class="value">人日単価</th>
+                <th>詳細説明</th>
+              </tr>
+              <tr>
+                <td class="key">実績なしワーカー</td>
+                <td class="value">20,000円</td>
+                <td>WorkerBookでの実績数が３件以下のワーカー</td>
+              </tr>
+              <tr>
+                <td class="key">実績ありワーカー</td>
+                <td class="value">各自設定金額</td>
+                <td>WorkerBookでの実績数が４件以上のワーカー</td>
+              </tr>
+              <tr>
+                <td class="key">人気ワーカー</td>
+                <td class="value">各自設定金額 ＋ 設定金額の３％</td>
+                <td>WorkerBookでの実績数が４件以上かつ評価数が4.5以上のワーカー</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="explanation-block">
+          <h4>クライアントの評価</h4>
+          <p>
+            仕事が終了したら、ワーカーにはクライアントを５段階で複数項目を評価していただきます。この評価は多くのワーカーが参考とする項目となっておりますので、正確に評価してください。
+            また、こちらの評価は誰がどの評価をつけたのかはわからないようになっております。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
