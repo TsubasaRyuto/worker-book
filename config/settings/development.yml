@@ -1,2 +1,3 @@
 mail:
-  default_from: 'no_reply@example.com'
+  default_from: no_reply@example.com
+  default_to: support@example.com

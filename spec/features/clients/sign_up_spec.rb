@@ -68,8 +68,9 @@ RSpec.feature 'ClientUsers:SingUp', type: :feature, js: true do
         fill_in placeholder: 'メールアドレス', with: 'client@invalid'
         fill_in placeholder: 'パスワード', with: 'foo'
         fill_in placeholder: 'パスワード確認', with: 'bar'
-        expect { click_button 'アカウント作成' }.to_not change { ClientUser.count }
+        click_button 'アカウント作成'
         expect(page).to have_selector 'h1', text: 'クライアントアカウント'
+        expect(page).to have_selector 'h2', text: '会社情報登録'
         expect(page).to have_selector 'div#error_explanation'
         expect(page).to have_selector 'div.field_with_errors'
       end

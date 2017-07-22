@@ -1,6 +1,6 @@
 <section class="introbody" id="intro-top">
   <div class="row">
-    <%= image_tag 'static_pages/top_book.png', alt: "WorkerBook", class: 'img-size' %>
+    <%= image_tag 'static_pages/worker_book.png', alt: "WorkerBook", class: 'img-size' %>
     <h2>We are freelancers.</h2>
   </div>
 </section>
@@ -10,105 +10,100 @@
     <% if current_user.class == ClientUser %>
       <%= link_to client_path(clientname: current_user.client.clientname) do %>
         <div class="profile link">
-          <span>Profile</span><span>プロフィール</span>
+          <span>プロフィール</span>
         </div>
       <% end %>
     <% elsif current_user.class == Worker %>
       <%= link_to worker_path(username: current_user.username) do %>
         <div class="profile link">
-          <span>Profile</span><span>プロフィール</span>
+          <span>プロフィール</span>
         </div>
       <% end %>
     <% end %>
   <% else %>
     <%= link_to sign_up_path do %>
       <div class="signup link">
-        <span>Sign up</span><span>サインアップ</span>
+        <span>Sign up</span>
       </div>
     <% end %>
   <% end %>
+  <%= link_to workers_path do %>
+    <div class="search link">
+      <span>ワーカー検索</span>
+    </div>
+  <% end %>
   <%= link_to '#what' do %>
     <div class="features link">
-      <span>What?</span><span>WorkerBookとは</span>
+      <span>WorkerBookとは</span>
     </div>
   <% end %>
   <%= link_to '#features' do %>
     <div class="features link">
-      <span>Features</span><span>WorkerBookの特徴</span>
+      <span>WorkerBookの特徴</span>
     </div>
   <% end %>
-  <%= link_to  how_it_works_client_path do  %>
-    <div class="client link">
-      <span>Client</span><span>クライアント</span>
-    </div>
-  <% end %>
-  <%= link_to  how_it_works_worker_path do %>
-    <div class="freelancer link">
-      <span>Freelancer</span><span>フリーランス</span>
-    </div>
-  <% end %>
-  <%= link_to workers_path do %>
-    <div class="search link">
-      <span>Search</span><span>ワーカー検索</span>
+  <%= link_to  workerbook_guide_path do  %>
+    <div class="how-it-works link">
+      <span>WorkerBookガイド</span>
     </div>
   <% end %>
 </section>
 
 <section class="what-wb session-style" id="what">
-  <h2 class="title-en">What's WorkerBook?</h2>
-  <h3 class="title-ja">WorkerBookとは？</h3>
-  <h4>より豊かにより自由な働き方を</h4>
-  <p>
-    WorkerBookとは自分にあった働き方を目指すハイクオリティなフリーランスエンジニアが集まり、
-    チームに最適なフリーランスパートナーをインターネット上で探し、マッチングすることができるITエンジニアに特化したマッチングサービス
-  </p>
-  <p>＊α版につきまして、登録のみとなっております。</p>
+  <h1>ITフリーランサーと企業をつなぐマッチングプラットフォーム</h1>
+  <h2 class="title-ja">WorkerBookとは？</h2>
+  <p>ITフリーランサーは、自分のスキルや経験を登録して公開するだけです。企業は条件にあった人材を探し、仕事の依頼をすることができます。</p>
 
-  <h3 class="title-ja when-use">どんな時にWorkerBookを使う？</h3>
-  <div class="worker col-md-6 col-xs-12">
-    <h4>Worker</h4>
+  <p >＊α版につきまして、登録のみとなっております。</p>
+</section>
+
+<section class="wb-features session-style" id="features">
+  <h2 class="title-ja">WorkerBookの特徴</h2>
+  <div class="commission col-md-4">
+    <h3>シンプルな手数料</h3>
     <p>
-      フリーランスの方は自分のプロフィールを作成して待つだけです。
-      発注依頼が来たら受けるか受けないかを選択してください。
-      自分で自分の価値を決めることができます。
+      サービス手数料は報酬額の５％(振込・決済手数料は除く)となります。
+      登録料等はございません。
     </p>
   </div>
-
-  <div class="client col-md-6 col-xs-12">
-    <h4>Client</h4>
+  <div class="ux col-md-4">
+    <h3>シンプルなユーザー体験</h3>
     <p>
-      「新しいプロジェクトが始まるけどプログラマーが足りない。」、
-      「急に社員さんがやめてしまった。」、「いいアイディアがあるけど作れる人がいない。」
-      そんな時、WorkerBookで求めているパートナーを探し、発注をしましょう。
-      必ず見つかります。
+      クライアントがワーカーを選択し、発注リクエストを送ります。
+      リクエストを受け取ったワーカーは承諾するか否かを決めるだけです。
+    </p>
+  </div>
+  <div class="worker-first col-md-4">
+    <h3>フリーランスファースト</h3>
+    <p>
+      ワーカーが定めた人日単価を元に報酬額が決まります。自分自身の価値を決めてください。
+      ただし、WorkerBook内での実績数が３件以下のワーカーは一律で人日単価20,000円となっております。
     </p>
   </div>
 </section>
 
-<section class="wb-features session-style" id="features">
-  <h2 class="title-en">Features</h2>
-  <h3 class="title-ja">特徴</h3>
-  <div class="commission col-md-4">
-    <h4>シンプルな手数料</h4>
-    <p>
-      WorkerBookのサービス手数料は報酬額の８％(振込・決済手数料は除く)となります。
-      登録料、オプション等はございません。
-    </p>
+<section class='session-style sp-none'>
+  <div class="col-md-4">
+    <%= link_to sign_up_path do %>
+      <div class="link-block">
+        今すぐ始める
+      </div>
+    <% end %>
   </div>
-  <div class="ux col-md-4">
-    <h4>シンプルなユーザー体験</h4>
-    <p>
-      WorkerBookはクライアントがワーカーを選択し、発注リクエストを送ります。
-      リクエストを受け取ったワーカーは承諾するかしないかを決めるだけす。
-    </p>
+  <div class="col-md-4">
+    <%= link_to workerbook_about_path do %>
+      <div class="link-block">
+        WorkerBookを知る
+      </div>
+    <% end %>
   </div>
-  <div class="worker-first col-md-4">
-    <h4>フリーランスファースト</h4>
-    <p>
-      WorkerBookはワーカーが人日単価を
-      決めます。自分にあった単価を指定しましょう。
-      ただし、プロフィール作成は必須です。
-    </p>
+  <div class="col-md-4">
+    <%= link_to workers_path do %>
+      <div class="link-block">
+        ワーカーを探す
+      </div>
+    <% end %>
   </div>
+
 </section>
 <%= javascript_include_tag 'static_pages/page_link' %>

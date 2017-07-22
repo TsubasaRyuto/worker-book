@@ -1,10 +1,3 @@
-@mixin title_en {
-  color: $color-main;
-  font-size: 2em;
-  font-weight: bold;
-  text-align: center;
-}
-
 @mixin title_ja {
   color: $color-main;
   font-size: 1.4em;
@@ -38,26 +31,16 @@
 
 
 .link-btn {
-  border-bottom: 2px solid $color-main;
-  color: $color-main;
-  overflow: hidden;
-  margin: 10vh auto;
-  padding-bottom: 5vh;
-  width: 80vw;
+  background: $color-sub1;
 
   a {
-    color: $color-main;
-    font-weight: bold;
+    color: $color-sub3;
     text-decoration: none;
 
     .link {
-      display: inline-block;
-      font-size: 1.4em;
-      margin: 0 40px 20px 0;
-
-      span:nth-child(2) {
-        display: none;
-      }
+      border-top: 1px solid $color-main;
+      font-size: 1.2em;
+      padding: 2vh 5vh;
     }
   }
 }
@@ -65,14 +48,16 @@
 .what-wb {
   border-bottom: 2px solid $color-main;
 
-   h4 {
-     margin-bottom: 2vh;
-     text-align: center;
-   }
+  h1 {
+    font-size: 1.6em;
+    font-weight: bold;
+    text-align: center;
+  }
 
-   .when-use {
-     margin-top: 10vh;
-   }
+  p {
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 .session-style {
@@ -82,15 +67,11 @@
   padding-bottom: 5vh;
   width: 80vw;
 
-  .title-en {
-    @include title_en;
-  }
-
   .title-ja {
     @include title_ja;
   }
 
-  h4 {
+  h3 {
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 10px;
@@ -101,4 +82,8 @@
     font-size: 1em;
     margin-bottom: 30px;
   }
+}
+
+.sp-none {
+  display: none;
 }

@@ -23,6 +23,8 @@
   @import "pc/clients/job_contents/*";
   @import "pc/chats/*";
   @import "pc/order_confirms/*";
+  @import "pc/inquiries/*";
+
 }
 
 @media screen and (max-width:699px) {
@@ -40,4 +42,5 @@
   @import "sp/clients/job_contents/*";
   @import "sp/chats/*";
   @import "sp/order_confirms/*";
+  @import "sp/inquiries/*";
 }

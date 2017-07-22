@@ -1,0 +1,67 @@
+.charge {
+  margin: 10vh 0 2vh;
+
+  p {
+    color: $color-sub1;
+    font-size: 1.2em;
+    margin-left: 2%;
+
+    strong {
+      border-bottom: 1px solid $color-main;
+    }
+
+    a {
+      color: $color-sub2;
+    }
+  }
+
+  h2 {
+    color: $color-main;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 10vh 0;
+    text-align: center;
+  }
+
+  h3 {
+    border-bottom: 3px solid $color-main;
+    color: $color-main;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 5vh;
+    padding-bottom: 2vh;
+  }
+
+  h4 {
+    color: $color-main;
+    font-size: 1.4em;
+  }
+  
+  .worker-charge {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+
+    .example {
+      margin-top: 7vh;
+    }
+  }
+
+  .client-charge {
+    display: block;
+    margin: 10vh auto;
+    width: 80%;
+
+    table {
+      margin: 5vh 2%;
+    }
+
+    .example {
+      margin-top: 7vh;
+
+      .example-1 {
+        margin-bottom: 5vh;
+      }
+    }
+  }
+}
